@@ -1,0 +1,3 @@
+mod token;
+
+fn main() {}
