@@ -64,4 +64,44 @@ impl TokenKind {
             _ => TokenKind::Identifier,
         }
     }
+
+    pub fn spelling(&self) -> &'static str {
+        match self {
+            TokenKind::Array => "array",
+            TokenKind::Begin => "begin",
+            TokenKind::Const => "const",
+            TokenKind::Do => "do",
+            TokenKind::Else => "else",
+            TokenKind::End => "end",
+            TokenKind::Func => "func",
+            TokenKind::If => "if",
+            TokenKind::In => "in",
+            TokenKind::Let => "let",
+            TokenKind::Of => "of",
+            TokenKind::Proc => "proc",
+            TokenKind::Record => "record",
+            TokenKind::Then => "then",
+            TokenKind::Type => "type",
+            TokenKind::Var => "var",
+            TokenKind::While => "while",
+            TokenKind::Dot => ".",
+            TokenKind::Colon => ":",
+            TokenKind::Semicolon => ";",
+            TokenKind::Comma => ",",
+            TokenKind::Becomes => ":=",
+            TokenKind::Is => "~",
+            TokenKind::LParen => "(",
+            TokenKind::RParen => ")",
+            TokenKind::LBracket => "[",
+            TokenKind::RBracket => "]",
+            TokenKind::LCurly => "{",
+            TokenKind::RCurly => "}",
+            TokenKind::Eof => "",
+            TokenKind::Error => "",
+            TokenKind::Identifier => "<identifier>",
+            TokenKind::IntLiteral => "<int>",
+            TokenKind::CharLiteral => "<char>",
+            TokenKind::Operator => "<operator>",
+        }
+    }
 }

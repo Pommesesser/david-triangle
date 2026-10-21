@@ -124,11 +124,10 @@ impl<'a> Lexer<'a> {
         self.lex.clear();
 
         let start = self.line;
-        let kind = self.lex_token();
         let finish = self.line;
 
         Token {
-            kind,
+            kind: TokenKind::of(&self.lex),
             lex: self.lex.clone(),
             pos: (start, finish),
         }
