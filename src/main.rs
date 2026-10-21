@@ -1,3 +1,3 @@
-mod token;
+mod syntactic_analyzer;
 
 fn main() {}
