@@ -42,8 +42,8 @@ pub enum TokenKind {
 }
 
 impl TokenKind {
-    pub fn of(lex: &str) -> TokenKind {
-        match lex {
+    pub fn get_specific_token_for_identifier(spelling: &str) -> TokenKind {
+        match spelling {
             "array" => TokenKind::Array,
             "begin" => TokenKind::Begin,
             "const" => TokenKind::Const,

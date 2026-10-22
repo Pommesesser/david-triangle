@@ -8,6 +8,17 @@ pub struct Token {
 }
 
 impl Token {
+    pub fn new(kind: TokenKind, lex: &str, pos: (u64, u64)) -> Self {
+        Token {
+            kind: match kind {
+                TokenKind::Identifier => TokenKind::get_specific_token_for_identifier(lex),
+                _ => kind,
+            },
+            lex: lex.to_string(),
+            pos,
+        }
+    }
+
     pub fn test_repr(&self) -> String {
         format!(
             "{},{},({}|{})",
