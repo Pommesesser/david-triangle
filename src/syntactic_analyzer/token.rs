@@ -1,21 +1,22 @@
+use crate::syntactic_analyzer::source_position::SourcePosition;
 use crate::syntactic_analyzer::token_kind::TokenKind;
 
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct Token {
     pub kind: TokenKind,
-    pub lex: String,
-    pub pos: (u64, u64),
+    pub spelling: String,
+    pub position: SourcePosition,
 }
 
 impl Token {
-    pub fn new(kind: TokenKind, lex: &str, pos: (u64, u64)) -> Self {
+    pub fn new(kind: TokenKind, spelling: &str, position: SourcePosition) -> Self {
         Token {
             kind: match kind {
-                TokenKind::Identifier => TokenKind::get_specific_token_for_identifier(lex),
+                TokenKind::Identifier => TokenKind::get_specific_token_for_identifier(spelling),
                 _ => kind,
             },
-            lex: lex.to_string(),
-            pos,
+            spelling: spelling.to_string(),
+            position,
         }
     }
 
@@ -23,9 +24,9 @@ impl Token {
         format!(
             "{},{},({}|{})",
             self.kind.spelling(),
-            self.lex.clone(),
-            self.pos.0,
-            self.pos.1
+            self.spelling.clone(),
+            self.position.start,
+            self.position.finish
         )
     }
 }

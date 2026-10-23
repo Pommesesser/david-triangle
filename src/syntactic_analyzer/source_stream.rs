@@ -5,7 +5,7 @@ pub const EOL: char = '\n';
 
 pub struct SourceStream<R: Read> {
     reader: R,
-    pub line: u64,
+    pub line: i32,
 }
 
 impl<R: Read> SourceStream<R> {

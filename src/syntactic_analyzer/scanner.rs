@@ -1,4 +1,5 @@
 use std::io::{Read};
+use crate::syntactic_analyzer::source_position::SourcePosition;
 use crate::syntactic_analyzer::source_stream;
 use crate::syntactic_analyzer::source_stream::SourceStream;
 use crate::syntactic_analyzer::token::Token;
@@ -131,7 +132,7 @@ impl<R: Read> Scanner<R> {
         let kind = self.scan_token();
 
         let finish = self.source_stream.line;
-        Token::new(kind, &self.lex, (start, finish))
+        Token::new(kind, &self.lex, SourcePosition{start, finish})
     }
 
     fn is_letter(c: char) -> bool {
