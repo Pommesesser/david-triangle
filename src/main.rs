@@ -1,5 +1,6 @@
 
 mod syntactic_analyzer;
+pub mod abstract_syntax_trees;
 
 use std::io::{self, BufReader};
 use crate::syntactic_analyzer::scanner::Scanner;

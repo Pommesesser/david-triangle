@@ -40,4 +40,8 @@ impl<R: Read> Parser<R> {
     fn finish(&mut self, position: &mut SourcePosition) {
         position.finish = self.previous_token_position.finish.clone();
     }
+
+    pub fn parse_program()  {
+
+    }
 }
