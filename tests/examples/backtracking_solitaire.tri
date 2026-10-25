@@ -1,0 +1,371 @@
+! Backtracking Algorithm for solving a Solitaire game
+! Author Joachim Fritschi
+
+let
+!game table constants
+	const INVALID ~ 2;
+	const OCCUPIED ~ 1;
+	const FREE ~ 0;
+	const free ~ ' ';
+	const occupied ~ 'O';
+	const invalid ~ 'X';
+!solution constants
+	const NORTH ~ 0;
+	const EAST ~ 1;
+	const SOUTH ~ 2;
+	const WEST ~ 3;
+!Array representation of the game table
+	type row ~ record
+		column: array 11 of Integer,
+		length: Integer
+	end;
+	var table: array 11 of row;
+	var foundSolution: Boolean;
+
+!Array representation of the game solution
+!The Records a steps containing the position x,y of the stone to move and the direction
+	type step ~ record
+		column: array 3 of Integer,
+		length: Integer
+	end;
+	var solution: array 32 of row;
+
+
+	proc initTable() ~
+	let
+	var x: Integer;
+	var y: Integer
+	in begin
+		x := 0;
+		while( x < 11) do
+		begin
+!			putint(x);
+			y := 0;
+			while( y < 11) do
+			begin
+!				putint(y);
+				table[y].column[x] := INVALID;
+				y := y + 1
+			end;
+			x := x + 1;
+		end;
+	
+		x := 2;
+		while(x < 9) do
+		begin
+			table[4].column[x] := OCCUPIED;
+			table[5].column[x] := OCCUPIED;
+			table[6].column[x] := OCCUPIED;
+			table[x].column[4] := OCCUPIED;
+			table[x].column[5] := OCCUPIED;
+			table[x].column[6] := OCCUPIED;
+			x := x + 1;
+		end;
+		table[5].column[5] := FREE;
+	end;
+
+! Intitalize the solution Array
+	proc initSolution() ~
+	let
+	var x: Integer;
+	var y: Integer
+	in begin	
+	x := 0;
+		y := 0;
+		while( x < 32) do
+		begin
+			y := 0;
+			while( y < 3) do
+			begin
+				solution[x].column[y] := 0;
+				y := y + 1
+			end;
+			x := x + 1;
+		end;
+	end;
+
+! Print the game table
+	proc printTable() ~
+	let
+	var x: Integer;
+	var y: Integer
+	in begin
+		y := 10;
+		while( y >= 0) do
+		begin
+			x := 0;
+			while( x < 11) do
+			begin
+				if table[y].column[x] = INVALID then
+					put(invalid)
+				else
+					if table[y].column[x] = FREE then
+						put(free)
+					else
+						put(occupied);
+					
+				x := x + 1;
+			end;
+			puteol();
+			y := y - 1;
+		end;
+		puteol();
+		
+	end;
+
+! execute a Move on the game table
+	proc makeMove(x: Integer,y : Integer,dir : Integer) ~
+	begin
+	if dir = NORTH then
+	begin
+		table[y].column[x] := FREE;
+		table[y + 1].column[x] := FREE;
+		table[y + 2].column[x] := OCCUPIED;
+	end
+	else
+	begin
+		if dir = EAST then
+		begin
+			table[y].column[x] := FREE;
+			table[y].column[x+1] := FREE;
+			table[y].column[x+2] := OCCUPIED;
+		end
+		else
+		begin
+			if dir = SOUTH then
+			begin
+				table[y].column[x] := FREE;
+				table[y - 1].column[x] := FREE;
+				table[y - 2].column[x] := OCCUPIED;
+			end
+			else
+			begin
+				if dir = WEST then
+				begin
+					table[y].column[x] := FREE;
+					table[y].column[x-1] := FREE;
+					table[y].column[x-2] := OCCUPIED;
+				end
+				else
+				begin
+				end
+			end
+		end		
+	end;
+	end;
+
+! undo a move on the game table
+	proc undoMove(x: Integer,y : Integer,dir : Integer) ~
+	begin
+	if dir = NORTH then
+	begin
+		table[y].column[x] := OCCUPIED;
+		table[y + 1].column[x] := OCCUPIED;
+		table[y + 2].column[x] := FREE;
+	end
+	else
+	begin
+		if dir = EAST then
+		begin
+			table[y].column[x] := OCCUPIED;
+			table[y].column[x+1] := OCCUPIED;
+			table[y].column[x+2] := FREE;
+		end
+		else
+		begin
+			if dir = SOUTH then
+			begin
+				table[y].column[x] := OCCUPIED;
+				table[y - 1].column[x] := OCCUPIED;
+				table[y - 2].column[x] := FREE;
+			end
+			else
+			begin
+				if dir = WEST then
+				begin
+					table[y].column[x] := OCCUPIED;
+					table[y].column[x-1] := OCCUPIED;
+					table[y].column[x-2] := FREE;
+				end
+				else
+				begin
+				end
+			end
+		end
+	end
+	end;
+
+!save a move in the solution array
+	proc saveSolution(stepNr: Integer,x : Integer,y : Integer, dir : Integer) ~
+	begin 
+		solution[stepNr].column[0] := x;
+		solution[stepNr].column[1] := y;
+		solution[stepNr].column[2] := dir;
+	end;
+
+!rekursive solution of the game with a backtracking algorithm
+	proc calcSolution(stepNr: Integer,var status: Boolean)~
+	begin
+		if (stepNr = 31) /\ (table[5].column[5] = OCCUPIED) then
+			status := true
+		else 
+			let
+				var x: Integer;
+				var y: Integer
+			in begin
+				x := 2;
+				while ( x < 9) do
+				begin
+					y := 2;
+					while ( y < 9) do
+					begin
+						if(table[y].column[x] = OCCUPIED) /\ (table[y+1].column[x] = OCCUPIED ) /\ (table[y + 2].column[x] = FREE ) /\ \status then
+						begin
+							makeMove(x,y,NORTH);
+							calcSolution(stepNr + 1, var status);
+							if status = true then
+								begin
+								saveSolution(stepNr,x,y,NORTH);
+								end
+							else	
+								begin
+								undoMove(x,y,NORTH);
+								end
+						end
+						else
+						begin
+						end;
+
+
+						if(table[y].column[x] = OCCUPIED) /\ (table[y-1].column[x] = OCCUPIED ) /\ (table[y - 2].column[x] = FREE ) /\ \status then
+						begin
+							makeMove(x,y,SOUTH);
+							calcSolution(stepNr + 1, var status);
+							if status = true then
+								begin
+								saveSolution(stepNr,x,y,SOUTH);
+								end
+							else	
+								begin
+								undoMove(x,y,SOUTH);
+								end
+						end
+						else
+						begin
+						end;
+
+						if(table[y].column[x] = OCCUPIED) /\ (table[y].column[x+1] = OCCUPIED ) /\ (table[y].column[x + 2] = FREE ) /\ \status then
+						begin
+							makeMove(x,y,EAST);
+							calcSolution(stepNr + 1, var status);
+							if status = true then
+								begin
+								saveSolution(stepNr,x,y,EAST);
+								end
+							else	
+								begin
+								undoMove(x,y,EAST);
+								end
+						end
+						else
+						begin
+						end;
+
+						if(table[y].column[x] = OCCUPIED) /\ (table[y].column[x-1] = OCCUPIED ) /\ (table[y].column[x - 2] = FREE ) /\ \status then
+						begin
+							makeMove(x,y,WEST);
+							calcSolution(stepNr + 1, var status);					
+							if status = true then
+								begin
+								saveSolution(stepNr,x,y,WEST);
+								end
+							else	
+								begin
+								undoMove(x,y,WEST);
+								end
+						end
+						else
+						begin
+						end;
+					y := y + 1		
+					end;
+				x := x + 1
+				end;
+			end;
+	end;
+
+!little helper funktion to write the directions human readable
+	proc writeDirection(dir: Integer) ~
+	begin
+	if dir = NORTH then
+	begin
+	put('N');
+	put('O');
+	put('R');
+	put('T');
+	put('H');
+	end
+	else
+		if dir = EAST then
+		begin
+		put('E');
+		put('A');
+		put('S');
+		put('T');
+		end
+		else
+			if dir = SOUTH then
+			begin
+			put('S');
+			put('O');
+			put('U');
+			put('T');
+			put('H');
+			end
+			else
+				if dir = WEST then
+				begin
+				put('W');
+				put('E');
+				put('S');
+				put('T');
+				end
+				else
+	end;
+
+!print the solution on the stout
+	proc printSolution() ~
+	let
+		var count: Integer
+	in begin
+		initTable();
+		puteol();
+		printTable();
+		count := 0;
+		while count < 31 do
+		begin
+			putint(count + 1);
+			put(' ');
+			put('[');
+			putint(solution[count].column[0]);
+			put(',');
+			putint(solution[count].column[1]);
+			put(']');
+			put(' ');
+			writeDirection(solution[count].column[2]);
+			puteol();
+			makeMove(solution[count].column[0],solution[count].column[1],solution[count].column[2]);
+			printTable();
+			count := count + 1
+		end
+	end
+
+
+in begin
+	foundSolution := false;
+	initTable();
+	initSolution();
+	calcSolution(0,var foundSolution);
+	printSolution();
+	
+end

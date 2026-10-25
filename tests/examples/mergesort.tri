@@ -1,0 +1,134 @@
+let
+
+        type IntArray ~ record
+		content: array 80 of Integer,
+		length: Integer
+	end;
+
+        ! Liest Eingabe und speichert es in intarray
+	proc readArray(var intarray: IntArray) ~
+	let
+		var i: Integer;
+		var testeof : Boolean
+	in begin
+		intarray.length := 0;
+		getint(var i);
+		eof(var testeof);
+		while i \= 0 /\ \ testeof do begin
+			intarray.content[intarray.length] := i;
+			intarray.length := intarray.length + 1;
+			getint(var i);
+			eof(var testeof);
+		end;
+	end;
+
+	! gibt Inhalt des Arrays auf den Bildschirm
+	proc writeArray(var intarray: IntArray) ~
+	let
+		var i: Integer
+
+	in begin
+		i := 0;
+		while i < intarray.length do begin
+			putint(intarray.content[i]);
+			i := i+1;
+			puteol()
+		end;
+	end;
+
+	! Teilt intarray in zwei Teile auf
+	! intarray.length muss größer als 1 sein!
+	proc splitArray(var intarray: IntArray, var ia1: IntArray, var ia2: IntArray) ~
+	let
+                var i: Integer;
+                var j: Integer
+
+        in begin
+                i := 0;
+                j := intarray.length / 2;
+
+                while i<j do begin
+                      ia1.content[i] := intarray.content[i];
+                      i := i + 1
+                end;
+
+                ia1.length := i;
+
+                ! zu diesem Zeitpunkt muss gelten i = j (tut es auch, falls nicht irgendwo ein Fehler im Code steckt)
+                while i < intarray.length do begin
+                      ia2.content[i-j] := intarray.content[i];
+                      i := i + 1
+                end;
+
+                ia2.length := i-j
+        end;
+
+        ! Fügt die bereits sortierten Arrays ia1 und ia2 zum ebenfalls sortierten intarray zusammen
+        proc mergeArray(var intarray: IntArray, var ia1: IntArray, var ia2: IntArray) ~
+        let
+                var i : Integer;
+                var j : Integer;
+                var k : Integer
+
+        in begin
+                i := 0;
+                j := 0;
+                k := 0;
+
+                intarray.length := ia1.length + ia2.length;
+
+                ! Diese While-Schleife läuft so lange, bis das letzte 
+                ! Element von entweder ia1 oder ia2 durchgenommen wurde
+                while (i < intarray.length) /\ (j < ia1.length) /\ (k < ia2.length) do begin
+
+                      if ia1.content[j] < ia2.content[k] then begin
+                            intarray.content[i] := ia1.content[j];
+                            j := j + 1
+                      end
+                      else begin
+                            intarray.content[i] := ia2.content[k];
+                            k := k + 1
+                      end;
+                      i := i + 1
+
+                end;
+
+                ! Wenn eines der zusammenzufügenden Arrays durch ist, füge den Rest des anderen Arrays ein
+                if j < ia1.length then
+                      while i < intarray.length do begin
+                            intarray.content[i] := ia1.content[j];
+                            i := i + 1;
+                            j := j + 1
+                      end
+                else
+                      while i < intarray.length do begin
+                            intarray.content[i] := ia2.content[k];
+                            i := i + 1;
+                            k := k + 1
+                      end;
+        end;
+
+        ! Sortiert gegebenes Array mit MergeSort Algorithmus
+	proc mergesort(var intarray: IntArray) ~
+        let
+                var ia1: IntArray;
+                var ia2: IntArray
+
+        in begin
+                if intarray.length >= 2 then begin
+                      splitArray(var intarray, var ia1, var ia2);
+                      mergesort(var ia1);
+                      mergesort(var ia2);
+                      mergeArray(var intarray, var ia1, var ia2)
+                end
+                else;
+        end;
+
+	var intarray: IntArray
+
+in begin
+        readArray(var intarray);
+        puteol();
+        mergesort(var intarray);
+        writeArray(var intarray);
+end

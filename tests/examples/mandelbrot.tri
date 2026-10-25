@@ -1,0 +1,236 @@
+let
+	! Stores the mantisse and exponent in base 2
+	type Float ~
+		record
+			mnt: Integer,
+			exp: Integer
+		end;
+
+	! ==============
+	! Private procedures
+	! ==============
+	
+	! Print out in scientific notation.
+	proc print(x: Float) ~
+		begin
+			putint(x.mnt);
+			put(' ');
+			put('*');
+			put(' ');
+			put('2');
+			put('^');
+			putint(x.exp);
+		end;
+	
+	! Compare two Floats and return true if x is greater than y.
+	func gt(x: Float, y: Float) : Boolean ~
+		if x.exp > y.exp then true
+		else if x.exp = y.exp then x.mnt > y.mnt
+		else false;
+
+	! Compare two Floats and return true if x is less than y.
+	func lt(x: Float, y: Float) : Boolean ~
+		if x.exp < y.exp then true
+		else if x.exp = y.exp then x.mnt < y.mnt
+		else false;
+		
+	! Shift the mantisse to the right.
+	proc shr(var x: Float) ~
+		begin
+			x.mnt := x.mnt / 2;
+			x.exp := x.exp + 1;		
+		end;
+
+	! Shift the mantisse to the left.
+	proc shl(var x: Float) ~
+		begin
+			x.mnt := x.mnt * 2;
+			x.exp := x.exp - 1;		
+		end;
+
+	! Normalize float number.
+	! Shift mantisse until it exceeds given limit.
+	proc normalizel(var x: Float, limit: Integer) ~
+		if x.mnt = 0 then else
+		if x.mnt < 0 then
+		begin
+			x.mnt := 0 - x.mnt;
+			normalizel(var x, limit);
+			x.mnt := 0 - x.mnt
+		end
+		else while x.mnt < limit do shl(var x);
+
+	proc normalizer(var x: Float, limit: Integer) ~
+		if x.mnt = 0 then else
+		if x.mnt < 0 then
+		begin
+			x.mnt := 0 - x.mnt;
+			normalizer(var x, limit);
+			x.mnt := 0 - x.mnt
+		end
+		else while x.mnt > limit do shr(var x);
+
+	! Shift mantisse until both exponents have the same value.
+	proc adjust(var x: Float, var y: Float) ~
+		begin
+			if x.exp < y.exp then
+				adjust(var y, var x)
+			else
+				while x.exp > y.exp do shr(var y);
+		end;
+
+	! ==============
+	! Public procedures
+	! ==============
+
+	proc float(var x: Float, mnt: Integer, exp: Integer) ~
+		begin
+			x.mnt := mnt;
+			x.exp := exp;
+			normalizel(var x, 16384);
+		end;
+
+	! Add x and y. Store result in given parameter.
+	proc add(a: Float, b: Float, var result: Float) ~
+		let 
+			var x: Float;
+			var y: Float
+		in
+		begin
+			x := a;
+			y := b;
+			normalizer(var x, 8192);
+			normalizer(var y, 8192);
+			adjust(var x, var y);
+			result.exp := x.exp;
+			result.mnt  := x.mnt + y.mnt;
+			normalizel(var result, 16384);		
+		end;
+		
+	! Subtract x by y. Store result in given parameter.
+	proc sub(a: Float, b: Float, var result: Float) ~
+		let 
+			var x: Float;
+			var y: Float
+		in
+		begin
+			x := a;
+			y := b;
+			normalizer(var x, 8192);
+			normalizer(var y, 8192);
+			adjust(var x, var y);
+			result.exp := x.exp;
+			result.mnt  := x.mnt - y.mnt;
+			normalizel(var result, 16384);
+		end;
+
+	! Multiply x by y. Store result in given parameter.
+	proc mul(a: Float, b: Float, var result: Float) ~
+		let 
+			var x: Float;
+			var y: Float
+		in
+		begin
+			x := a;
+			y := b;
+			normalizer(var x, 128);
+			normalizer(var y, 128);
+			result.exp := x.exp + y.exp;
+			result.mnt  := x.mnt * y.mnt;
+			normalizel(var result, 16384);		
+		end;
+
+	! Divide x by y. Store result in given parameter.
+	proc div(a: Float, b: Float, var result: Float) ~
+		let 
+			var x: Float;
+			var y: Float
+		in
+		begin
+			x := a;
+			y := b;
+			normalizel(var x, 16384);		
+			normalizer(var y, 16384);
+			!Why doesn't the parser swallow this?
+			!while ((y.mnt & 1) = 0) do shr(var y);
+			result.exp := x.exp - y.exp;
+			result.mnt  := x.mnt / y.mnt;
+			normalizel(var x, 16384);
+		end;
+	
+	var x1: Float;
+	var y1: Float;
+	var x: Float;
+	var y: Float;
+	var x0: Float;
+	var y0: Float;
+	var x2: Float;
+	var y2: Float;
+	var dx: Float;
+	var dy: Float;
+	var t: Float;
+	var c: Float;
+	var i: Integer;
+	var max: Integer;
+	var r: Float
+in
+begin
+
+	float(var dx, 1, 0-5);
+	float(var dy, 1, 0-5);
+
+	float(var y0, 0-1, 0);
+	float(var y1,   1, 0);
+
+	while lt(y0, y1) do
+	begin
+		float(var x0, 0-1, 0);
+		float(var x1,   1, 0);
+
+		while lt(x0, x1) do
+		begin			
+			x := x0;
+			y := y0;
+
+			mul(x, x, var x2);
+			mul(y, y, var y2);
+
+			i   := 0;
+			max := 10;
+
+			add(x2, y2, var c);
+
+			while (i < max) /\ (c.exp < 1) do
+			begin
+				mul(x, y, var y);
+				float(var t, 2, 0);
+				mul(y, t, var y);
+				add(y, y0, var y);
+
+				sub(x2, y2, var x);
+				add(x, x0, var x);
+
+				mul(x, x, var x2);
+				mul(y, y, var y2);
+
+				i := i + 1;
+
+				add(x2, y2, var c);
+			end;
+
+			if i = max then
+				put(' ')
+			else
+				put('.');
+
+			add(x0, dx, var x0);
+
+		end;
+
+		puteol();
+
+		add(y0, dy, var y0);
+	end;
+	
+end
+	

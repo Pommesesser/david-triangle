@@ -1,0 +1,291 @@
+! CRC-12 Pruefsummenberechnung
+!
+! Verwendetes Generatorpolynom: G(x)=x^12+x^11+x^3+x^2+x+1 (== 1100000001111)
+
+let
+	! Diverse Register
+	var r24 : array 24 of Integer; ! 3 zu checkende bytes
+	var r36 : array 36 of Integer; ! r24 mit angehaengten Nullen
+	var r13 : array 13 of Integer; ! Generatorpolynom
+	var rcs : array 13 of Integer; ! Gesamtchecksumme
+
+	! Generator in Bitschreibweise und als Integersumme
+	const G ~ [1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1];
+	var g : Integer;
+
+	! Potenzen schlagen wir nach
+	const pot8 ~ [128, 64, 32, 16, 8, 4, 2, 1];
+	const pot13 ~ [4096, 2048, 1024, 512, 256, 128, 64, 32, 16, 8, 4, 2, 1];
+
+	! Drei einzulesende Bytes -> r24
+	var chr1 : Char;
+	var chr2 : Char;
+	var chr3 : Char;
+
+	! Triangle ist gut im "hinter der Datei lesen", also doch selber machen
+	var readbehindeof : Boolean;
+
+	! "counter" zaehlt die 1024-Byte-Blocks in "blocks"
+	var counter : Integer;
+	var blocks : Integer;
+
+	! "i" wie Integer-Hilfsvariable
+	var i : Integer;
+
+	! Gesamtchecksumme als Int
+	var checksum : Integer;
+
+	! Debug
+	proc showr13() ~
+	begin
+		i := 0;
+		while (i<13) do
+		begin
+			putint(r13[i]);
+			i := i+1;
+		end;
+		puteol();
+	end;
+
+	! Debug
+	proc showr24() ~
+	begin
+		i := 0;
+		while (i<24) do
+		begin
+			putint(r24[i]);
+			i := i+1;
+		end;
+		puteol();
+	end;
+
+	! Debug
+	proc showr36() ~
+	begin
+		i := 0;
+		while (i<36) do
+		begin
+			putint(r36[i]);
+			i := i+1;
+		end;
+		puteol();
+	end;
+
+
+	! XOR zweier Bits
+	func xor(val1: Integer, val2: Integer) : Integer ~
+	     if (val1 \= val2) then
+		 1
+	     else
+	         0
+	;
+
+	! CRC-12 auf 3 Bytes berechnen
+	proc crc() ~
+	let
+		var i : Integer;
+		var j : Integer;
+		var k : Integer
+	in
+	begin
+		! r36 von links auffüllen, Rest nullen
+		i := 0;
+		while (i < 24) do
+		begin
+			r36[i] := r24[i];
+			i := i + 1;
+		end;
+		while (i < 36) do
+		begin
+			r36[i] := 0;
+			i := i + 1;
+		end;
+		
+		! Division Modulo 2 (eigentlich XOR)
+		j := 0;
+		while (j < 22) do
+		begin
+			i := 0;
+			k := 0;
+			while (i < 13) do
+			begin
+				k := r36[i+j] * pot13[i] + k;
+				i := i + 1;
+			end;
+
+			if (k >= g) then
+			begin
+				i := 0;
+				while (i < 13) do
+				begin
+					r36[i+j] := xor(r36[i+j], r13[i]);
+					i := i + 1;
+				end;
+			end
+			else
+			begin
+				i := 0;
+				while (i < 13) do
+				begin
+					r36[i+j] := xor(r36[i+j], 0); ! sprich: einfach weitergehen und nix machen
+					i := i + 1;
+				end;
+			end;
+			j := j + 1;
+		end;
+
+		! Leider noch unbefriedigend...
+		! Gesamtchecksumme erreicht schnell 2^12-1,
+		! evtl. faellt mir noch was besseres ein
+		! (Triangle gibt bei Zahlen > maxint einfach 0 aus, hmmm....)
+		i := 0;
+		while (i < 13) do
+		begin
+!			r13[i] := r36[i+24];
+			rcs[i] := xor(r13[i], rcs[i]);
+			i := i + 1;
+		end;
+	end;
+
+	! Lese Wert nach r24, wobei place=1=linkesByte=MSB, place=2=mittleresByte, und place=3=rechtesByte=LSB
+	proc load(place: Integer, val: Integer) ~
+	let
+		var i : Integer;
+		var j : Integer;
+		var v : Integer;
+
+		! Ist Bit mit Wertigkeit div gesetzt?
+		func bitset(val: Integer, div: Integer) : Integer ~
+			if (div = 0) then
+			    0
+			else
+			    if ((val / div) > 0) then
+			        1
+			    else
+				0
+	in
+	begin
+		v := val;
+		i := (place-1)*8;
+		j := 0;
+
+		! ganzes Byte in r24 einsetzen
+		while (j < 8) do
+		begin
+			r24[i] := bitset(v, pot8[j]);
+			if (r24[i] = 1) then
+			    v := v - pot8[j]
+			else
+			;
+			i := i + 1;
+			j := j + 1;
+		end;
+	end;
+
+	! 24 bits einlesen, falls möglich
+	proc readin() ~
+	let
+		var n1 : Integer;
+		var n2 : Integer;
+		var n3 : Integer;
+		var i : Integer;
+		var testeof : Boolean
+	in
+	begin
+		counter := 0;
+		blocks := 1;
+		readbehindeof := false;
+
+		eof(var testeof);
+		while \testeof do
+		begin 
+		      chr1 := ' ';
+		      chr2 := ' ';
+		      chr3 := ' ';
+		      get(var chr1);
+		      get(var chr2);
+		      get(var chr3);
+		      n1 := ord(chr1);
+		      n2 := ord(chr2);
+		      n3 := ord(chr3);
+		      ! Falls wir ueber das Dateiende hinausgelesen haben,
+		      ! dann von hinten den "Muell" wegmachen und fuer uns
+		      ! in "readbehindoef" klarstellen, dass wir definitiv 
+		      ! fertig sind
+		      if (n3 < 0) then
+			     begin
+			       counter := counter-1;
+			       n3 := 0;
+			       if (n2 < 0) then
+				      begin
+               		                counter := counter-1;
+				        n2 := 0;
+					if (n1 < 0) then
+					       begin
+                                                 readbehindeof := true;
+					         counter := counter-1;
+					         n1 := 0;
+					       end
+					else
+					;
+				      end
+				else
+				;
+			      end
+		      else
+		      ;
+		      ! nun die Bytes ins Register r24 schieben und die CRC darueber berechnen
+		      if (\ readbehindeof) then
+		      begin
+			load(1, n1);
+			load(2, n2);
+			load(3, n3);
+			crc();
+		      end
+                      else
+                      ;
+		      ! und als Bonus die Anzahl der 1k-Bloecke bestimmen
+		      counter := counter+3;
+		      if (counter >= 1024) then
+		      begin
+		              counter := 0;
+			      blocks := blocks + 1;
+                      end
+                      else
+                      ;
+
+			eof(var testeof);
+		end;
+	end
+
+in
+begin
+	! Initalisierungen, Generatorpolynom -> r13 und als Integer
+	i := 0;
+	g := 0;
+	checksum := 0;
+	while (i < 13) do
+	begin
+		rcs[i] := 1;
+		r13[i] := G[i];
+		g := (r13[i] * pot13[i]) + g;
+		i := i + 1;
+	end;
+
+	! von STDIN lesen und CRC-12 berechnen
+	readin();
+
+	! Checksumme aus der Bitschreibweise errechnen
+	i := 0;
+	while (i < 12) do
+	begin
+		checksum := rcs[i+1] * pot13[i+1] + checksum;
+		i := i + 1;
+	end;
+
+	! Checksumme und Blocks ausgeben
+	putint(checksum);
+	put(' ');
+	putint(blocks);
+	puteol();
+end;

@@ -1,0 +1,330 @@
+let
+	var matrix : array 9 of array 9 of Integer;
+	var set : array 9 of array 9 of array 10 of Boolean;
+	var ready : Boolean;
+	var i : Integer;
+	var j : Integer;
+	var k : Integer;
+	var l : Integer;
+	var x : Integer;
+	var y : Integer;
+	var z : Integer;
+	var tmp : Integer;
+	var count : Integer;
+	var pos : Integer;
+	var pos1 : Integer;
+	var pos2 : Integer
+in begin
+	! Initalisierungen
+	
+	matrix := [	[0,5,7, 0,0,2, 3,0,6],
+			[1,0,2, 7,0,0, 5,0,8],
+			[3,8,0, 5,0,9, 7,0,2],
+			
+			[0,0,5, 1,0,0, 8,0,4],
+			[8,1,3, 0,5,0, 2,0,9],
+			[7,0,0, 0,0,8, 1,0,5],
+			
+			[6,3,1, 2,4,5, 9,8,7],
+			[5,7,9, 0,0,6, 4,2,1],
+			[0,0,8, 9,7,1, 6,5,3]];
+	
+	i := 0;
+	while i < 9 do
+	begin
+		j := 0;
+		while j < 9 do
+		begin
+			k := 1;
+			while k < 10 do
+			begin
+				if matrix[i][j] = 0 then
+					set[i][j][k] := true
+!				else if matrix[i][j] = k then
+!					set[i][j][k] := true
+				else
+					set[i][j][k] := false;
+
+					
+				k := k + 1;
+			end;
+			j := j + 1;
+		end;
+		i := i + 1;
+	end;
+	
+	while \ready do
+	begin
+!put('a');	
+
+		ready := true;
+		
+		!! Mögliche Inhalte der Felder feststellen
+		
+		! Zeilen durchgehen
+		i := 0;
+		while i < 9 do
+		begin
+!put('e');	
+			! Spalten durchgehen
+			j := 0;
+			while j < 9 do
+			begin
+!put('f');	
+				if matrix[i][j] = 0 then
+				begin
+!put('g');	
+					! Vorhandene Zahlen in Zeile/Spalte streichen
+					k := 0;
+					while k < 9 do
+					begin
+!put('h');	
+						tmp := matrix[i][k];
+						if  tmp \= 0 then
+							set[i][j][tmp] := false
+						else ;
+						tmp := matrix[k][j];
+						if  tmp \= 0 then
+							set[i][j][tmp] := false
+						else ;
+						k := k + 1;
+					end;
+
+
+					
+					! Vorhandene Zahlen in Kästchen streichen
+					if (0 <= i) /\ (i <= 2) then x := 0
+					else if (3 <= i) /\ (i <= 5) then x := 1
+					else if (6 <= i) /\ (i <= 8) then x := 2 else;
+					if (0 <= j) /\ (j <= 2) then y := 0
+					else if (3 <= j) /\ (j <= 5) then y := 1
+					else if (6 <= j) /\ (j <= 8) then y := 2 else;
+					
+					k := 0;
+					l := 0;
+					while k < 3 do
+					begin
+!put('i');	
+						while l < 3 do
+						begin
+!put('j');	
+							tmp := matrix[k + (x * 3)][l + (y * 3)];
+							if tmp \= 0 then
+								set[i][j][tmp] := false
+							else;
+							l := l + 1;
+						end;
+						k := k + 1;
+					end
+				end
+				else begin ! Bei belegtem Feld set auf false setzen
+					k := 1;
+					while k < 10 do
+					begin
+!						if k = matrix[i][j] then
+!							set[i][j][k] := true
+!						else
+							set[i][j][k] := false;
+						k := k + 1;
+					end
+				end;
+				j := j + 1;
+			end;
+			i := i + 1;
+		end;
+		
+		!! Felder berechnen
+
+		! check Feld alleine
+		i := 0;
+		while i < 9 do
+		begin
+			j := 0;
+			while j < 9 do
+			begin
+				if matrix[i][j] = 0 then
+				begin
+					count := 0;
+					k := 1;
+					while k < 10 do
+					begin
+						if set[i][j][k] = true then
+						begin
+							count := count + 1;
+							pos := k;
+						end else;
+						k := k + 1;
+					end;
+			
+					if (count = 1) /\ (matrix[i][j] = 0) then
+					begin
+!put('c');
+!putint(i); put(','); putint(j); put(','); putint(pos);
+						matrix[i][j] := pos;
+						ready := false;
+					end else;
+				end else;
+				j := j + 1;
+			end;
+			i := i + 1;
+		end;
+
+
+		
+		z := 1;
+		while z < 10 do
+		begin
+		
+!put('k');	
+			! check row
+			i := 0;
+			while i < 9 do
+			begin
+!put('l');	
+				count := 0;
+				j := 0;
+				while j < 9 do
+				begin
+!put('m');	
+					if set[i][j][z] = true then
+					begin
+						count := count + 1;
+						pos := j;
+					end else;
+					j := j + 1;
+				end;
+				
+				if (count = 1) /\ (matrix[i][pos] = 0) then
+				begin
+				
+!put('n');
+!putint(i); put(','); putint(pos); put(','); putint(z);
+
+					matrix[i][pos] := z;
+					ready := false;
+				end else;
+				
+				i := i + 1;
+			end;
+
+			! check column
+			j := 0;
+			while j < 9 do
+			begin
+!put('o');	
+				count := 0;
+				i := 0;
+				while i < 9 do
+				begin
+					if set[i][j][z] = true then
+					begin
+						count := count + 1;
+						pos := i;
+					end else;
+					i := i + 1;
+				end;
+				
+				if (count = 1) /\ (matrix[pos][j] = 0) then
+				begin
+!put('p');	
+!putint(pos); put(','); putint(j); put(','); putint(z);
+				
+					matrix[pos][j] := z;
+					ready := false;
+				end else;
+				
+				j := j + 1;
+			end;
+			
+			! check rc
+			x := 0;
+			while x < 3 do
+			begin
+!put('q');	
+				y := 0;
+				while y < 3 do
+				begin
+!put('r');	
+					count := 0;
+					i := 0;
+					while i < 3 do
+					begin
+!put('s');	
+						j := 0;
+						while j < 3 do
+						begin
+							if set[i + (x * 3)][j + (y * 3)][z] = true then
+							begin
+								count := count + 1;
+								pos1 := i;
+								pos2 := j;
+							end else;
+							j := j + 1;
+						end;
+						i := i + 1;
+					end;
+					
+					pos1 := pos1 + (x * 3);
+					pos2 := pos2 + (y * 3);
+
+					if (count = 1) /\ (matrix[pos1][pos2] = 0) then
+					begin
+!put('t');
+!putint(i+(x*3)); put(','); putint(j+(y*3)); put(','); putint(z);
+						matrix[pos1][pos2] := z;
+						ready := false;
+					end else;
+					y := y + 1;
+
+				end;
+				x := x + 1;
+			end;
+			z := z + 1;
+		end;
+
+
+	! Ergebniss ausdrucken
+	puteol();
+	i := 0;
+	while i < 9 do
+	begin
+		j := 0;
+		while j < 9 do
+		begin
+			putint(matrix[i][j]);
+			put(' ');
+			j := j + 1;
+		end;
+		puteol();
+		i := i + 1;
+	end;
+	puteol();
+
+
+	
+	end;
+	
+	! Mögliche Belegungen der Felder ausgeben
+	i := 0;
+	while i < 9 do
+	begin
+		j := 0;
+		while j < 9 do
+		begin
+			puteol(); putint(i); put(','); putint(j); put(':'); put(' ');
+			k := 1;
+			while k < 10 do
+			begin
+				if set[i][j][k] = true then
+				begin
+					putint(k);
+					put(' ');
+				end else;
+				k := k + 1;
+			end;
+			j := j + 1;
+		end;
+		i := i + 1;
+	end;
+
+end

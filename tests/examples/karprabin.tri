@@ -1,0 +1,260 @@
+let
+    ! Länge des zu suchenden Patterns. Bei Änderung der Länge müssen 
+    ! ausschließlich die nächsten beiden Zeilen editiert werden
+    const searchPatLen  ~ 6;
+    ! Pattern als array of Char 
+    type  Pattern       ~ array 6 of Char;
+
+    ! Anzahl der zu suchenden Patterns. Der Karp-Rabin Algorithmus spielt seine
+    ! Performance besonders beim Suchen mehrerer verschiedener Patterns aus
+    const numPatterns ~ 4;
+
+    ! Anzahl Zeilen und Spalten in der Datei
+    const numRows       ~ 1000;
+    const numCols       ~ 1000;
+
+    ! Zwischenvariablen für den Randomizer. Je nach Startwert dieser beiden
+    ! Variablen entstehen verschiedene Zufallsfolgen
+    var randomSeed1 : Integer;
+    var randomSeed2 : Integer;
+
+    ! Liefert eine zufällige Base (A, C, G oder T)
+    proc getRandomBase(var result : Char) ~
+        let 
+            var i : Integer
+        in begin
+            randomSeed1 := (randomSeed1 * 7 + 167) // 1847;
+            randomSeed2 := (randomSeed2 * 9 + 521) // 1451;
+            i := (randomSeed1 + randomSeed2) // 4;
+            if i = 0 then begin
+                result := 'A';
+            end else;       
+            if i = 1 then begin
+                result := 'C';
+            end else;
+            if i = 2 then begin
+                result := 'G';
+            end else;
+            if i = 3 then begin
+                result := 'T';
+            end else;
+        end;
+
+    ! Konvertiert die Base aus dem Parameter base in eine Integer 
+    ! Repräsentation. Dies könnte zwar auch mit ord(base) erledigt werden
+    ! dabei kommen allerdings zu große Zahlen als Ergebnis heraus, so dass
+    ! bei den folgenden Berechnungen Overflows auftreten
+    proc baseToInt(base : Char, var result : Integer) ~ 
+        begin
+            if base = 'A' then begin
+                result := 0;
+            end else;       
+            if base = 'C' then begin
+                result := 1;
+            end else;
+            if base = 'G' then begin
+                result := 2;
+            end else;
+            if base = 'T' then begin
+                result := 3;
+            end else;
+        end;
+    
+    ! Berechnet den initialen Hashwert eines Patterns Nach der Formel
+    ! Pattern[0] * 4^n-1 + Pattern[1] * 4^n-2 + ... + Pattern[n-1] * 4^0
+    proc makeHash(pattern : Pattern, var result : Integer) ~
+        let
+            var i       : Integer;
+            var exp     : Integer;
+            var baseInt : Integer
+        in begin
+            result := 0;
+            exp := 1;
+            i := searchPatLen - 1;
+            while i >= 0 do begin
+                baseToInt(pattern[i], var baseInt);
+                result := result + (baseInt * exp); 
+                exp := exp * 4;
+                i := i - 1;
+            end;
+        end;
+
+    ! Berechnet den neuen Hashwert für das nächste Pattern. Dieses nächste 
+    ! Pattern entsteht aus dem alten Pattern, durch Entfernen des ersten 
+    ! Zeichens, Shiftens der restlichen Zeichen um eine Stelle nach links und
+    ! anschließendem Einfügen des nächsten Zeichens an der Stelle ganz rechts.
+    ! Damit ist das rehashen mit konstantem Aufwand verbunden, nicht mit 
+    ! linearem Aufwand wie bei komplett neuem Hashing.Die Formel dafür lautet:
+    ! 4 * (hash - (linkesZeichen * 4^n-1) + neuesZeichen
+    proc rehash(oldHash : Integer, removeChar : Char, addChar : Char, var newHash : Integer) ~
+        let
+            var multi   : Integer;
+            var i       : Integer;
+            var remInt  : Integer;
+            var addInt  : Integer
+        in begin
+            baseToInt(removeChar, var remInt);
+            baseToInt(addChar, var addInt);
+
+            i := 0;
+            multi := 1;
+            while i < (searchPatLen - 1) do begin
+                multi := multi * 4;
+                i := i + 1;
+            end;
+
+            newHash := (4 * (oldHash - (remInt * multi))) + addInt;
+        end;
+
+    var filehandle      : Integer;
+    var filename        : array 20 of Char;   
+    var i               : Integer;
+    var j               : Integer;
+    var k               : Integer;
+    var l               : Integer;
+    var searchPats      : array 5 of Pattern;
+    var patternHashes   : array 5 of Integer;
+    var actualPattern   : Pattern;
+    var oldPattern      : Pattern;
+    var actualHash      : Integer;
+    var row             : Integer;
+    var col             : Integer;
+    var base            : Char
+    
+
+    in begin
+        randomSeed1 := 254;
+        randomSeed2 := 982;
+
+        ! Zu suchende Pattern
+        searchPats[0][0] := 'G'; searchPats[0][1] := 'C'; searchPats[0][2] := 'C';
+        searchPats[0][3] := 'A'; searchPats[0][4] := 'T'; searchPats[0][5] := 'A';
+     
+        searchPats[1][0] := 'A'; searchPats[1][1] := 'G'; searchPats[1][2] := 'A';
+        searchPats[1][3] := 'A'; searchPats[1][4] := 'T'; searchPats[1][5] := 'G';
+
+        searchPats[2][0] := 'T'; searchPats[2][1] := 'T'; searchPats[2][2] := 'A';
+        searchPats[2][3] := 'T'; searchPats[2][4] := 'T'; searchPats[2][5] := 'A';
+
+        searchPats[3][0] := 'C'; searchPats[3][1] := 'C'; searchPats[3][2] := 'T';
+        searchPats[3][3] := 'G'; searchPats[3][4] := 'A'; searchPats[3][5] := 'G';
+
+        ! Name der Datei, in der die zufällige DNA Sequenz abgespeichert wird
+        filename[0] := 'B';
+        filename[1] := 'a';
+        filename[2] := 's';
+        filename[3] := 'e';
+        filename[4] := '.';
+        filename[5] := 't';
+        filename[6] := 'x';
+        filename[7] := 't';
+        filename[8] := chr(0);
+
+        ! Datei mit Schreibzugriff öffnen
+        fopen(var filehandle, filename, true);
+
+        ! Da in Triangle Integer nur bis ~16000 gehen, werden zwei geschachtelte
+        ! Schleifen verwendet um 1 Mio. Zeichen in die Datei zu schreiben
+        i := 0;
+        j := 0;
+        while i < numRows do begin
+            while j < numCols do begin
+                ! Zufällige Base erzeugen und in die Datei schreiben
+                getRandomBase(var base);
+                fput(filehandle, base);
+                j := j + 1;
+            end;
+            ! Nach jeweils 1000 Zeichen wird ein Zeilenumbruch ausgegeben
+            fputeol(filehandle);
+            i := i + 1;
+            j := 0;
+        end;
+
+        fclose(filehandle);
+
+        ! Einmaliges Berechnen der Hashwerte der zu suchenden Basenfolgen
+        i := 0;
+        while i < numPatterns do begin
+            makeHash(searchPats[i], var patternHashes[i]);
+            i := i + 1;
+        end;
+
+        ! Datei mit Lesezugriff öffnen
+        fopen(var filehandle, filename, false);
+        
+        ! ActualPattern erstellen, indem die ersten n Zeichen aus der Datei
+        ! gelesen werden
+        i := 0;
+        while i < searchPatLen do begin
+            fget(filehandle, var actualPattern[i]);
+            i := i + 1;
+        end;
+
+        ! Hashwert von ActualPattern berechnen
+        makeHash(actualPattern, var actualHash);
+
+        i := 0;
+        j := searchPatLen;
+        while i < numRows do begin
+            while j < numCols do begin
+                ! Prüfen ob der Hashwert eines der zu suchenden Patterns mit 
+                ! demjenigen des aktuellen Patterns übereinstimmt
+                k := 0;
+                while k < numPatterns do begin
+                    if actualHash = patternHashes[k] then begin
+                        ! Nur wenn dies tatsächlich der Fall ist, wird geprüft,
+                        ! ob die beiden Zeichenketten auch tatsächlich identisch
+                        ! sind
+                        if searchPats[k] = actualPattern then begin
+                            ! Berechnen der aktuellen Zeilen- und Spaltennummer
+                            row := i;
+                            col := j - searchPatLen;
+                            if col < 0 then begin
+                                col := col + 1000;
+                                row := row - 1;
+                            end else;
+    
+                            ! Ausgabe Fundstelle
+                            put('F'); put('o'); put('u'); put('n'); put('d'); 
+                            put(' '); put('P'); put('a'); put('t'); put('t');
+                            put('e'); put('r'); put('n'); put(' '); put('#');
+                            putint(k); put(' '); put('(');
+                            
+                            l := 0;
+                            while l < searchPatLen do begin
+                                put(searchPats[k][l]);
+                                l := l + 1;
+                            end;
+
+                            put(')'); put(' '); put('a'); put('t'); put(' ');
+                            putint(row + 1); put(' '); putint(col + 1); puteol();
+                        end else; 
+                    end else;
+                    k := k + 1;
+                end;
+   
+                oldPattern := actualPattern;
+                k := 0;
+                ! Das vorherige Pattern wird um eine Position nach links 
+                ! verschoben. Dabei fällt das linke Zeichen weg und an die
+                ! Position ganz rechts rückt das nächste gelesene Zeichen
+                while k < (searchPatLen - 1) do begin
+                    actualPattern[k] := oldPattern[k + 1];
+                    k := k + 1;
+                end;
+                fget(filehandle, var actualPattern[searchPatLen - 1]);
+
+                ! Berechnen des neuen Hashwertes
+                rehash(actualHash, oldPattern[0], actualPattern[searchPatLen - 1], var actualHash);
+         
+                j := j + 1;
+            end;
+            
+            ! Nächste Zeile
+            fgeteol(filehandle);
+            i := i + 1;
+            j := 0;
+        end;
+
+        fclose(filehandle);
+    end;

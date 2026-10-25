@@ -1,0 +1,6 @@
+let
+  var x : Integer;
+  const n ~ 42;
+  const m ~ n + 1
+in
+  x := x + n * m;

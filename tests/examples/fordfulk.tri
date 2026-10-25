@@ -1,0 +1,200 @@
+let
+
+const BLACK ~ 0;
+const GRAY ~ 1;
+const WHITE ~ 2;
+
+proc enqueue(node: Integer, var queue: array 15 of Integer, var color: array 15 of Integer, var queueLength: Integer) ~
+begin
+	queueLength := queueLength + 1;
+	queue[queueLength - 1] := node;
+	color[node] := GRAY;
+end;
+
+proc dequeue (var queue: array 15 of Integer, var color: array 15 of Integer, var length: Integer, var x: Integer) ~
+let
+	var i : Integer
+in 
+begin
+	x := queue[0];
+	i := 0;
+	length := length - 1;
+	while i < length do begin
+		queue[i] := queue[i+1];
+		i := i + 1
+	end;
+	! as 0 is black
+	color[x] := BLACK;
+end;
+
+proc bfs (start: Integer, target: Integer, actualNodes: Integer, capacity: array 15 of array 15 of Integer, 
+var flow: array 15 of array 15 of Integer, var color: array 15 of Integer,  var pred: array 15 of Integer, 
+var bfsReturn: Boolean) ~
+
+let
+	var u: Integer;
+	var v: Integer;
+	var queueLength: Integer;
+	var queue: array 15 of Integer 
+in begin
+	queueLength := 0;
+	
+	u := 0;
+	while (u < actualNodes) do begin
+		color[u] := WHITE;
+		u := u + 1
+	end;
+	
+	enqueue(start, var queue, var color, var queueLength);
+	pred[start] := 0 - 1;
+	while queueLength > 0 do begin
+		dequeue(var queue, var color, var queueLength, var u);
+		v := 0;
+		while (v < actualNodes) do begin
+			if color[v]= WHITE /\ (capacity[u][v] - flow[u][v] > 0) then begin
+				enqueue(v, var queue, var color, var queueLength);
+				pred[v] := u
+			end
+			else; !?
+			v := v + 1 ;
+		end;
+	end;
+	bfsReturn := color[target]= BLACK;
+end;
+
+proc maxFlow (actualNodes: Integer, capacity: array 15 of array 15 of Integer, var maxFlow: Integer) ~
+
+let
+
+	var flow: array 15 of array 15 of Integer;
+	var color: array 15 of Integer;
+	var pred: array 15 of Integer;
+	
+	var i: Integer;
+	var j: Integer;
+	var u: Integer;
+	var increased: Integer;
+	var increment: Integer;
+	var bfsReturn: Boolean
+in begin
+	
+	!initialization
+	maxFlow := 0;
+	i := 0;
+	while i < actualNodes do begin
+		color[i] := BLACK;
+		pred[i] := 0;
+		j := 0;
+		while j < actualNodes do begin
+			flow[i][j] := 0;
+			j := j + 1
+		end;
+		i := i + 1;
+	end;
+	
+	bfs(0, actualNodes - 1, actualNodes, capacity, var flow,  var color, var pred, var bfsReturn);
+	while bfsReturn do begin
+		
+		!very big value
+		increment := 31500;
+		
+		u := actualNodes - 1;
+		while pred[u] >= 0 do begin
+			if capacity[pred[u]][u] - flow[pred[u]][u] < increment
+			then
+				increment := capacity[pred[u]][u] - flow[pred[u]][u]
+			else;
+			u := pred[u]
+		end;
+		
+		u := actualNodes - 1;
+		while pred[u] >= 0 do begin
+			flow[pred[u]][u] := flow[pred[u]][u] + increment;
+			flow[u][pred[u]] := flow[u][pred[u]] - increment;
+			u := pred[u]
+		end;		
+		
+		maxFlow := maxFlow + increment; 
+		
+		bfs(0, actualNodes - 1, actualNodes, capacity, var flow,  var color, var pred, var bfsReturn);
+	end;
+	
+end;
+
+
+
+proc readInput(var actualNodes: Integer, var capacity: array 15 of array 15 of Integer) ~
+let
+	var counter: Integer;
+	var subcounter: Integer;
+	var edgecount: Integer;
+	var from: Integer;
+	var with: Integer;
+	var to: Integer
+in 
+begin
+
+	counter := 0;
+	while counter < 15 do begin
+		subcounter := 0;
+		while subcounter < 15 do begin
+			capacity[counter][subcounter] := 0;
+			subcounter := subcounter +1
+		end;
+		capacity[counter][counter] := 0;
+		counter := counter +1
+	end;
+	
+	getint(var actualNodes);
+	getint(var edgecount);
+	counter := 0;
+	while counter < edgecount do begin
+		getint(var from);
+		getint(var with);
+		getint(var to);
+		capacity[from][to] := with;
+		counter := counter + 1
+	end;
+	
+	! for debugging purposes, print matrix
+	counter := 0;
+	while counter < actualNodes do begin
+		subcounter := 0;
+		while subcounter < actualNodes do begin
+			putint(capacity[counter][subcounter]);
+			subcounter := subcounter +1
+		end;
+		puteol();
+		counter := counter +1;
+	end;	
+end;
+
+!
+!
+!
+!
+!
+!
+! MAIN PROGRAM
+!
+!
+!
+!
+!
+!
+!
+
+
+
+
+var actualNodes: Integer;
+var capacity: array 15 of array 15 of Integer;
+var source: Integer;
+var sink: Integer;
+var max: Integer
+
+in begin
+	readInput(var actualNodes, var capacity);
+	maxFlow(actualNodes, capacity, var max);
+	putint(max);
+end;

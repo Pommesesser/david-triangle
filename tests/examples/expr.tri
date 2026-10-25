@@ -1,0 +1,9 @@
+let
+	const MAX ~ 10;
+	var n: Integer
+in begin
+	putint(4*5+2);
+	puteol();
+	putint(2+4*5);
+	puteol();
+end

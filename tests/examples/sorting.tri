@@ -1,0 +1,288 @@
+!
+! Implementation of several sorting function in Triangle by 
+! - Alexander Constantin constant@rbg.informatik.tu-darmstadt.de
+! - Nico Rottstädt rottstae@rbg.informatik.tu-darmstadt.de
+!
+! This is an excercise from A. Koch's Lecture "Optimierende Compiler",
+! summer term 2006 at TU Darmstadt / Germany, course homepage (German):
+! http://www.esa.informatik.tu-darmstadt.de/twiki/bin/view/Lectures/OptimierendeCompilerDe.html
+
+let
+	! Test Array
+	var testArray: array 100 of Integer;
+
+	! Boolean used for validity check
+	var validityOfSorting : Boolean;
+
+	! Prodcedure which plots the array to standard out
+	! ------------------------------------------------
+	proc putArray(arr: array 100 of Integer) ~
+		let 
+			var i : Integer
+		in begin
+			i := 0;
+			put('[');
+			while (i < 100) do begin
+				putint(arr[i]);
+				if ( i < 99) then
+					begin
+						put(',');
+						put(' ');
+					end
+				else;
+				i := i + 1;
+			end;
+			put(']');
+			puteol();
+		end;
+		
+
+! Heap Sort Implementation
+! ------------------------
+
+	! swap array entries
+	proc swap(var arr: array 100 of Integer, x : Integer, y : Integer) ~
+		let	
+			var temp : Integer
+		in begin
+			temp := arr[x];
+			arr[x] := arr[y];
+			arr[y] := temp
+		end;
+
+	proc sift(var arr: array 100 of Integer, start : Integer, count : Integer) ~
+		let
+			var root : Integer;
+			var child : Integer;
+			var stayInLoop : Boolean;
+			var bool1 : Boolean;
+			var bool2 : Boolean
+		in begin
+			root := start;
+			child := 0;
+			stayInLoop := true;
+			
+			
+			while ((((root * 2) + 1) < count) /\ stayInLoop) do begin
+				child := (root * 2) + 1;
+				bool1 := child < (count - 1);
+				bool2 := arr[child] < arr[child + 1];
+				if (bool1 /\ bool2) then
+					child := child + 1
+				else;
+				
+				if (arr[root] < arr[child]) then
+					begin
+						swap(var arr, root, child);
+						root := child
+					end
+				else
+					stayInLoop := false;
+			
+			end
+			
+		end;
+
+
+	proc heapsort(var arr: array 100 of Integer, count : Integer) ~
+		let
+			var start : Integer;
+			var ende : Integer
+		in begin
+			start := count / 2;
+			start := start - 1;
+			ende := count - 1;
+			
+			while (start >= 0) do begin
+				sift(var arr, start, count);
+				start := start - 1
+			end;
+
+			while (ende > 0) do begin
+				swap(var arr, ende, 0);
+				sift(var arr, 0, ende);
+				ende := ende - 1
+			end
+		end;
+		
+
+
+! Quick Sort Implementation
+! -------------------------
+	proc quicksort(var arr : array 100 of Integer, l : Integer, r : Integer) ~
+		let
+			var lpos : Integer;
+			var rpos : Integer;
+			var tmp : Integer;
+			var pivot : Integer
+		in begin
+			pivot := arr[(l+r)/2];
+			lpos := l;
+			rpos := r;
+			
+			while (lpos <= rpos) do begin
+				while (arr[lpos] < pivot) do lpos := lpos + 1;
+				while (arr[rpos] > pivot) do rpos := rpos - 1;
+				if lpos < rpos then begin
+					tmp := arr[lpos];
+					arr[lpos] := arr[rpos];
+					arr[rpos] := tmp
+				end
+				else;
+				if lpos <= rpos then begin
+					lpos := lpos + 1;
+					rpos := rpos - 1
+				end
+				else;
+			end;
+	
+				if l < rpos then quicksort(var arr, l, rpos) else;
+				if lpos < r then quicksort(var arr, lpos, r) else
+	
+		end;
+
+! Bubble Sort Implementation
+! --------------------------
+	proc bubblesort(var arr: array 100 of Integer, count : Integer) ~
+		let
+			var i: Integer;
+			var j: Integer;
+			var tmp : Integer;
+			var foo : Integer
+		in begin
+			i := 0;
+			
+		
+			while (i < count) do begin
+				foo := count - i - 2;
+				j := 0;
+				while (j <= foo) do begin
+					if (arr[j] > arr[j+1]) then
+						begin
+							tmp := arr[j];
+							arr[j] := arr[j+1];
+							arr[j+1] := tmp;
+						end
+					else;
+					j := j + 1;
+				end;
+				i := i + 1;
+			end
+		
+		end;
+
+! Check validity of array sorting and plot result to standard out
+! ---------------------------------------------------------------
+
+	proc checkArraySorting(arr: array 100 of Integer, count : Integer, var valid : Boolean) ~
+		let
+			var i : Integer
+		in begin
+			i := 0;
+			valid := true;
+			while (i < (count - 1) /\ valid) do begin
+				valid := arr[i] <= arr[i+1];
+				i := i + 1;
+			end;
+			
+			put('s');put('o');put('r');put('t');put('i');put('n');put('g');put(':');put(' ');
+			if (valid) then
+				begin
+					put('O');put('K');
+				end
+			else 
+				begin
+					put('i');put('n');put('v');put('a');put('l');put('i');;put('d');
+				end;
+			puteol()
+		end;
+	
+	! Array Entries (Randoms generated in Java)
+	! -----------------------------------------
+	proc buildTestArray1(var arr: array 100 of Integer) ~
+		let
+			var foo: Integer ! dummy var
+		in begin
+			arr[0] := 10690; arr[1] := 21584; arr[2] := 24270; arr[3] := 3653; arr[4] := 1307; arr[5] := 17096; arr[6] := 10992; arr[7] := 9183; arr[8] := 11046; arr[9] := 13206; 
+			arr[10] := 28037; arr[11] := 7567; arr[12] := 22399; arr[13] := 10778; arr[14] := 11956; arr[15] := 23117; arr[16] := 11576; arr[17] := 6163; arr[18] := 16207; arr[19] := 12336; 
+			arr[20] := 2700; arr[21] := 6146; arr[22] := 2338; arr[23] := 18116; arr[24] := 15568; arr[25] := 12391; arr[26] := 26919; arr[27] := 25563; arr[28] := 17520; arr[29] := 27064; 
+			arr[30] := 23250; arr[31] := 9326; arr[32] := 11345; arr[33] := 3436; arr[34] := 10496; arr[35] := 20940; arr[36] := 8102; arr[37] := 25909; arr[38] := 23299; arr[39] := 28153; 
+			arr[40] := 25820; arr[41] := 17943; arr[42] := 10678; arr[43] := 12475; arr[44] := 13277; arr[45] := 7064; arr[46] := 29208; arr[47] := 354; arr[48] := 405; arr[49] := 1038; 
+			arr[50] := 22731; arr[51] := 32; arr[52] := 21053; arr[53] := 24448; arr[54] := 8994; arr[55] := 27712; arr[56] := 28553; arr[57] := 30560; arr[58] := 12371; arr[59] := 9016; 
+			arr[60] := 32653; arr[61] := 7631; arr[62] := 30419; arr[63] := 5939; arr[64] := 27820; arr[65] := 20465; arr[66] := 30613; arr[67] := 29277; arr[68] := 22185; arr[69] := 1873; 
+			arr[70] := 14971; arr[71] := 9918; arr[72] := 24685; arr[73] := 31488; arr[74] := 7415; arr[75] := 26915; arr[76] := 7637; arr[77] := 6607; arr[78] := 1389; arr[79] := 2114; 
+			arr[80] := 10343; arr[81] := 874; arr[82] := 27532; arr[83] := 14268; arr[84] := 31086; arr[85] := 14099; arr[86] := 6000; arr[87] := 16760; arr[88] := 5041; arr[89] := 4867; 
+			arr[90] := 32507; arr[91] := 7729; arr[92] := 18035; arr[93] := 6220; arr[94] := 17051; arr[95] := 14586; arr[96] := 26429; arr[97] := 13230; arr[98] := 30718; arr[99] := 6103
+
+			! additional arrays for testing purpose
+			! -------------------------------------
+			! arr[0] := 26636; arr[1] := 1280; arr[2] := 2751; arr[3] := 30869; arr[4] := 11802; arr[5] := 23990; arr[6] := 26539; arr[7] := 13626; arr[8] := 32267; arr[9] := 7996; 
+			! arr[10] := 26462; arr[11] := 6796; arr[12] := 11817; arr[13] := 11426; arr[14] := 13255; arr[15] := 15511; arr[16] := 17282; arr[17] := 14632; arr[18] := 19452; arr[19] := 7270; 
+			! arr[20] := 7034; arr[21] := 23014; arr[22] := 5481; arr[23] := 4578; arr[24] := 17910; arr[25] := 31445; arr[26] := 11807; arr[27] := 3176; arr[28] := 25858; arr[29] := 11003; 
+			! arr[30] := 12607; arr[31] := 113; arr[32] := 20450; arr[33] := 4491; arr[34] := 31070; arr[35] := 30877; arr[36] := 9361; arr[37] := 24575; arr[38] := 3111; arr[39] := 17608; 
+			! arr[40] := 25581; arr[41] := 15156; arr[42] := 15699; arr[43] := 10670; arr[44] := 10727; arr[45] := 24519; arr[46] := 16011; arr[47] := 16399; arr[48] := 3082; arr[49] := 13338; 
+			! arr[50] := 15490; arr[51] := 25111; arr[52] := 9741; arr[53] := 3165; arr[54] := 22798; arr[55] := 6702; arr[56] := 23824; arr[57] := 6998; arr[58] := 17643; arr[59] := 32327; 
+			! arr[60] := 26447; arr[61] := 25733; arr[62] := 29456; arr[63] := 16136; arr[64] := 12108; arr[65] := 654; arr[66] := 23200; arr[67] := 29213; arr[68] := 13938; arr[69] := 14035; 
+			! arr[70] := 31616; arr[71] := 17243; arr[72] := 11377; arr[73] := 32109; arr[74] := 23795; arr[75] := 16452; arr[76] := 1428; arr[77] := 19113; arr[78] := 1153; arr[79] := 23999; 
+			! arr[80] := 29581; arr[81] := 9571; arr[82] := 28340; arr[83] := 10230; arr[84] := 16711; arr[85] := 974; arr[86] := 25180; arr[87] := 16457; arr[88] := 13159; arr[89] := 9758; 
+			! arr[90] := 2557; arr[91] := 26016; arr[92] := 13400; arr[93] := 9463; arr[94] := 5719; arr[95] := 16204; arr[96] := 15309; arr[97] := 1872; arr[98] := 18456; arr[99] := 745
+			! 
+			! arr[0] := 3785; arr[1] := 30177; arr[2] := 7613; arr[3] := 20935; arr[4] := 9822; arr[5] := 2096; arr[6] := 1524; arr[7] := 21137; arr[8] := 16509; arr[9] := 12639; 
+			! arr[10] := 24028; arr[11] := 6116; arr[12] := 22329; arr[13] := 318; arr[14] := 11688; arr[15] := 21704; arr[16] := 30746; arr[17] := 16365; arr[18] := 1338; arr[19] := 13352; 
+			! arr[20] := 13867; arr[21] := 24778; arr[22] := 3467; arr[23] := 24652; arr[24] := 13973; arr[25] := 25424; arr[26] := 23209; arr[27] := 25536; arr[28] := 8384; arr[29] := 30402; 
+			! arr[30] := 17762; arr[31] := 3326; arr[32] := 2039; arr[33] := 6059; arr[34] := 4779; arr[35] := 25194; arr[36] := 13784; arr[37] := 25650; arr[38] := 29206; arr[39] := 31822; 
+			! arr[40] := 4561; arr[41] := 3736; arr[42] := 25509; arr[43] := 18061; arr[44] := 15134; arr[45] := 8986; arr[46] := 24712; arr[47] := 15375; arr[48] := 18402; arr[49] := 18637; 
+			! arr[50] := 12647; arr[51] := 8673; arr[52] := 31994; arr[53] := 15098; arr[54] := 12270; arr[55] := 8233; arr[56] := 14194; arr[57] := 29366; arr[58] := 18566; arr[59] := 21325; 
+			! arr[60] := 10612; arr[61] := 22176; arr[62] := 27713; arr[63] := 4010; arr[64] := 31192; arr[65] := 18586; arr[66] := 16902; arr[67] := 5722; arr[68] := 18048; arr[69] := 4033; 
+			! arr[70] := 18765; arr[71] := 25030; arr[72] := 32445; arr[73] := 26298; arr[74] := 18389; arr[75] := 31942; arr[76] := 1105; arr[77] := 25798; arr[78] := 18106; arr[79] := 1834; 
+			! arr[80] := 32386; arr[81] := 2559; arr[82] := 4769; arr[83] := 7881; arr[84] := 19459; arr[85] := 28011; arr[86] := 9657; arr[87] := 23607; arr[88] := 1386; arr[89] := 26008; 
+			! arr[90] := 6510; arr[91] := 28262; arr[92] := 2892; arr[93] := 657; arr[94] := 14530; arr[95] := 8356; arr[96] := 10212; arr[97] := 21036; arr[98] := 2963; arr[99] := 14964
+			! 
+			! arr[0] := 23958; arr[1] := 11737; arr[2] := 13787; arr[3] := 12537; arr[4] := 4244; arr[5] := 15107; arr[6] := 19835; arr[7] := 3507; arr[8] := 21260; arr[9] := 21897; 
+			! arr[10] := 21493; arr[11] := 15985; arr[12] := 14474; arr[13] := 19888; arr[14] := 20669; arr[15] := 13974; arr[16] := 13852; arr[17] := 14626; arr[18] := 7140; arr[19] := 25022; 
+			! arr[20] := 14890; arr[21] := 4295; arr[22] := 16385; arr[23] := 25639; arr[24] := 20450; arr[25] := 29505; arr[26] := 30037; arr[27] := 1330; arr[28] := 20293; arr[29] := 9739; 
+			! arr[30] := 5955; arr[31] := 25740; arr[32] := 19476; arr[33] := 21834; arr[34] := 6255; arr[35] := 17083; arr[36] := 10981; arr[37] := 7330; arr[38] := 24790; arr[39] := 12716; 
+			! arr[40] := 31952; arr[41] := 4420; arr[42] := 11373; arr[43] := 29274; arr[44] := 32590; arr[45] := 22476; arr[46] := 28622; arr[47] := 6270; arr[48] := 24300; arr[49] := 18049; 
+			! arr[50] := 31711; arr[51] := 17768; arr[52] := 8369; arr[53] := 11932; arr[54] := 4137; arr[55] := 26482; arr[56] := 24357; arr[57] := 9615; arr[58] := 18163; arr[59] := 27456; 
+			! arr[60] := 21764; arr[61] := 2349; arr[62] := 17745; arr[63] := 12420; arr[64] := 211; arr[65] := 32725; arr[66] := 23624; arr[67] := 23508; arr[68] := 420; arr[69] := 24544; 
+			! arr[70] := 20347; arr[71] := 19302; arr[72] := 9859; arr[73] := 14224; arr[74] := 16616; arr[75] := 1179; arr[76] := 1809; arr[77] := 8480; arr[78] := 20547; arr[79] := 25686; 
+			! arr[80] := 23815; arr[81] := 9329; arr[82] := 20418; arr[83] := 13411; arr[84] := 15213; arr[85] := 8727; arr[86] := 1836; arr[87] := 1043; arr[88] := 10616; arr[89] := 8603; 
+
+		end
+	
+		
+
+in begin
+	
+	
+	! check Bubble Sort
+	! -----------------
+	put('b'); put('u');put('b');put('b');put('l');put('e');puteol();
+	buildTestArray1(var testArray);
+	putArray(testArray);
+	checkArraySorting(testArray, 100, var validityOfSorting);
+	bubblesort(var testArray, 100);
+	putArray(testArray);
+	checkArraySorting(testArray, 100, var validityOfSorting);
+
+	! check quick Sort
+	! -----------------
+	put('q'); put('u');put('i'); put('c');put('k');puteol();
+	buildTestArray1(var testArray);
+	putArray(testArray);
+	checkArraySorting(testArray, 100, var validityOfSorting);
+	quicksort(var testArray, 0, 99);
+	putArray(testArray);
+	checkArraySorting(testArray, 100, var validityOfSorting);
+
+	! check heap Sort
+	! -----------------
+	put('h');put('e');put('a');put('p');puteol();
+	buildTestArray1(var testArray);
+	putArray(testArray);
+	checkArraySorting(testArray, 100, var validityOfSorting);
+	heapsort(var testArray, 100);
+	putArray(testArray);
+	checkArraySorting(testArray, 100, var validityOfSorting)
+	
+end

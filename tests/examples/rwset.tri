@@ -1,0 +1,42 @@
+let
+  ! genrwset: decl {x.0}
+  var x : Integer;
+  ! genrwset: decl {y.1}
+  var y : Integer;
+
+  ! genrwset: decl {k.2, l.3} read {k.2,l.3,y.1} write {k.2,y.1}
+  proc foo (var k : Integer, l : Integer) ~
+    let
+      ! genrwset: decl {o.4}
+      var o : Integer;
+
+      ! genrwset: decl {k.5,l.6} read {k.5,l.6,y.1} write {k.5,y.1}
+      proc bar (var k : Integer, l : Integer) ~
+        let
+					! genrwset: decl {dummy.7}
+				  var dummy : Integer
+        in begin
+          ! genrwset: read {l.6,y.1} write {k.5} 
+          k := l * y;
+          ! genrwset: read {k.5} write {y.1}
+          y := k + 1
+        end
+
+    in begin
+      ! genrwset: read {l.3} write {o.3}
+      o := l * 2;
+      ! genrwset: read (k.2,o.3,y.1} write {k.2,y.1}
+      bar(var k, o)
+    end
+
+
+in begin
+  ! genrwset: write {x.0}
+  x := 42;
+  ! genrwset: read {x.0,y.1} write {x.0,y.1}
+  foo(var x, 3);
+  ! genrwset: read {x.0}
+  putint(x);
+  ! genrwset: read {y.1}
+  putint(y)
+end

@@ -1,0 +1,357 @@
+let
+
+!##############################################################################
+!############## Datenstruktur "Long" mit Grundrechenoperationen ###############
+!##############################################################################
+
+type Long  ~ record
+	hi: Integer,
+	lo: Integer
+end;
+
+!Funktion "less than"
+func lt(l1: Long, l2: Long): Boolean ~
+	if (l1.hi <= l2.hi) /\ (l1.lo < l2.lo) then
+		true
+	else
+		false;
+
+!Inkrementiert eine POSITIVE Long-Zahl
+proc incrLong(var nr: Long) ~
+begin
+	if nr.lo < maxint then
+		nr.lo := nr.lo + 1
+	else begin
+		nr.hi := nr.hi + 1;
+		nr.lo := 0
+	end
+end;	!incrLong
+
+!Dekrementiert eine POSITIVE Long-Zahl wenn sie größer 0 ist
+proc decrLong(var nr: Long) ~
+begin
+	if nr.lo > 0 then
+		nr.lo := nr.lo - 1
+	else if nr.hi > 0 then begin
+			nr.hi := nr.hi - 1;
+			nr.lo := maxint
+		end else;
+end;	!decrLong
+
+!Addition zweier POSITIVER Long-Zahlen
+proc addLong(l1: Long, l2: Long, var result: Long) ~
+begin
+	result.lo := 0;
+	result.hi := 0;
+	if ( maxint - l1.lo) < l2.lo then
+		!ueberlauf
+		begin
+		result.hi := l2.hi + l1.hi;
+		result.hi := result.hi + 1;
+		result.lo :=  0 - maxint +  l1.lo  + l2.lo - 1
+		end
+	else
+		begin
+		result.hi := l2.hi + l1.hi;
+		result.lo := l2.lo + l1.lo
+		end
+end;	!addLong
+
+!Multiplikation zweier POSITIVER Long-Zahlen
+proc mulLong(l1: Long, l2: Long, var result: Long) ~
+let
+	var count: Long
+in begin
+	result.lo := 0;
+	result.hi := 0;
+	if lt(l1, l2) then
+		begin
+			count := l1;
+			while ((count.hi > 0) \/ (count.lo > 0)) do begin
+				decrLong(var count);
+				addLong(result, l2, var result)
+			end
+		end
+	else
+		begin
+			count := l2;
+			while ((count.hi > 0) \/ (count.lo > 0)) do begin
+				decrLong(var count);
+				addLong(result, l1, var result)
+				end				
+		end
+end;	!mulLong
+
+!Berechnet den Rest der Division eines Long durch einen Integer
+proc modLong(d1: Long, d2: Integer, var result: Long) ~
+let
+	var temp: Long
+in begin
+	temp := d1;
+	result.lo := 0;
+	result.hi := 0;
+	while temp.hi > 0 do begin
+		result.lo := result.lo - d2;
+		if result.lo < 0 then begin
+			temp.hi := temp.hi - 1;
+			result.lo := (result.lo + maxint) + 1
+		end	else;
+	end;
+	result.lo := result.lo // d2;
+	temp.lo := temp.lo // d2;
+	if result.lo <= (maxint - temp.lo) then
+		result.lo := (result.lo + temp.lo) // d2
+	else
+		result.lo := ((result.lo - d2) + temp.lo) // d2;
+end;	!modLong
+
+!Gibt eine Long Zahl aus
+proc showLong(zahl: Long) ~
+begin
+	putint(zahl.hi);
+	put(chr(44));
+	putint(zahl.lo);
+end;	!showLong
+
+!##############################################################################
+!####################### Ende der "Long" Datenstruktur ########################
+!##############################################################################
+
+	type CharMsg ~ record
+		content: array 60 of Char,
+		length: Integer
+	end;
+
+	type IntMsg ~ record
+		content: array 80 of Integer,
+		length: Integer
+	end;
+	
+	var msg: CharMsg;
+	var crypt: CharMsg;
+	var exp: Integer;
+	var n: Integer;
+	var d: Integer;
+	
+	var testeof : Boolean;
+	var testeol : Boolean;
+	
+	! reads a line from the standard input
+	proc readLine(var line: CharMsg) ~
+	let
+		var ch: Char
+	in begin
+		line.length := 0;
+		get(var ch);
+		eol(var testeol);
+		eof(var testeof);
+		while (\ testeol /\ \ testeof) /\ \(ord(ch) = 13) do begin
+			line.content[line.length] := ch;
+			line.length := line.length + 1;
+			get(var ch);
+			eol(var testeol);
+			eof(var testeof);
+		end;
+	end;
+	
+	!Konvertiert eine Zeile bis zum ersten "ungültigen" Zeichen in interne Repräsentation
+	proc convertLine(line: CharMsg, var conline: IntMsg) ~
+	let
+		var i: Integer;
+		var tmp: Integer
+	in begin
+		conline.length := line.length;
+		i := 0;
+		tmp := ord(line.content[i]);
+		!Solange "Leerzeichen" oder "a - z" gelesen wird konvertieren
+		while ((tmp = 32) \/ ((96 < tmp) /\ (tmp < 123))) /\ (i < 60) do begin
+			if tmp = 32 then
+				conline.content[i] := 0
+			else
+				conline.content[i] := tmp - 96;
+			i := i + 1;
+			tmp := ord(line.content[i])
+		end
+	end;
+
+	!Übersetzt eine Int-Zeile in Char-Repräsentation zurück
+	proc reconvertLine(line: IntMsg, var conline: CharMsg) ~
+	let
+		var i: Integer;
+		var tmp: Integer
+	in begin
+		i := 0;
+		tmp := line.content[i];
+		while i < line.length do begin
+			if tmp = 0 then
+				conline.content[i] := chr(32)
+			else
+				conline.content[i] := chr(tmp + 96);
+			i := i + 1;
+			tmp := line.content[i]
+		end;
+		conline.length := line.length
+	end;
+
+	!Gibt eine CharMsg-Zeile auf der Konsole aus
+	proc writeCharLine(line: CharMsg) ~
+	let
+		var i: Integer
+	in begin
+		i := 0;
+		while i < line.length do begin
+			put(line.content[i]);
+			i := i + 1;
+		end;
+		puteol()
+	end;
+	
+	!Exponentiation mit Modulo-Berechnung
+	proc powmod(var base: Long, var exp: Integer, mod: Integer, var result: Long) ~
+	begin
+		result.lo := 1;
+		result.hi := 0;
+		while exp > 0 do begin
+			!Wenn aktueller Exponent ungerade ist Basis * aktuelles Ergebisnis berechnen
+			if exp // 2 = 1 then begin
+				mulLong(result, base, var result);
+				modLong(result, mod, var result);
+			end else;
+			!Basis quadrieren und Exponent halbieren
+			mulLong(base, base, var base);
+			modLong(base, mod, var base);
+			exp := exp / 2
+		end
+	end;
+
+	!RSA-Verschlüsselung in Blöcken
+	!Jeweils 3 Zeichen Klartext werden zu 4 Zeichen Schlüsseltext kodiert
+	proc encrypt(plain: CharMsg, var crypt: CharMsg) ~
+	let
+		var plainint: IntMsg;
+		var cryptint: IntMsg;
+		var i: Integer;
+		var j: Integer;
+		var tmpexp: Integer;
+		var value: Long;
+		var result: Long
+	in begin
+		
+		!Zähler initialisieren
+		i := 0;
+		j := 0;
+		
+		!Zeile von Char in Int-Repräsentation konvertieren
+		convertLine(plain, var plainint);
+		
+		!Längenattribute setzen
+		plainint.length := plainint.length + (3 - (plainint.length // 3));
+		cryptint.length := (plainint.length / 3) * 4;
+		
+		!Solange es noch Zeichen zu kodieren gibt nächsten Block verschlüsseln
+		while i < plainint.length do begin
+			tmpexp := exp;
+			
+			!Jeweils 3 Zahlen als eine der Basis 27 interpretieren
+			value.hi := 0;
+			value.lo := ((plainint.content[i] * 27) * 27)
+					+ (plainint.content[i + 1] * 27)
+					+ plainint.content[i + 2];
+			
+			!Value verschlüsseln
+			powmod(var value, var tmpexp, n, var result);
+			
+			!Verschlüsselte Zahl wieder zur Basis 27 in cryptint schreiben
+			cryptint.content[j] := result.lo / ((27 * 27) * 27);
+			cryptint.content[j + 1] := (result.lo // ((27 * 27) * 27)) / (27 * 27);
+			cryptint.content[j + 2] := (result.lo // (27 * 27)) / 27;
+			cryptint.content[j + 3] := result.lo // 27;
+			
+			!Zähler erhöhen
+			i := i + 3;
+			j := j + 4
+		end;
+		
+		!Verschlüsselte Nachricht wieder in Char-Repräsentation schreiben
+		reconvertLine(cryptint, var crypt);
+	end;
+	
+	!RSA-Entschlüsselung
+	!Schlüsseltextblöcke werden wieder entschlüsselt
+	proc decrypt(crypt: CharMsg, var plain: CharMsg) ~
+	let
+		var plainint: IntMsg;
+		var cryptint: IntMsg;
+		var i: Integer;
+		var j: Integer;
+		var tmpexp: Integer;
+		var value: Long;
+		var result: Long
+	in begin
+
+		!Zähler initialisieren
+		i := 0;
+		j := 0;
+
+		!Zeile von Char in Int-Repräsentation konvertieren
+		convertLine(crypt, var cryptint);
+
+		!Längenattribut setzen
+		plainint.length := (cryptint.length / 4) * 3;
+		
+		!Solange noch nicht alles dekodiert ist weiter entschlüsseln	
+		while i < cryptint.length do begin
+			tmpexp := d;
+			
+			!Jeweils 4 Zahlen als eine der Basis 27 interpretieren
+			value.hi := 0;
+			value.lo := (((cryptint.content[i] * 27) * 27) * 27)
+					+ ((cryptint.content[i + 1] * 27) * 27)
+					+ (cryptint.content[i + 2] * 27)
+					+ cryptint.content[i + 3];
+					
+			!Value entschlüsseln
+			powmod(var value, var tmpexp, n, var result);
+			
+			!Entschlüsselte Zahl wieder zur Basis 27 in plainint schreiben
+			plainint.content[j] := result.lo / (27 * 27);
+			plainint.content[j + 1] := (result.lo // (27 * 27)) / 27;
+			plainint.content[j + 2] := result.lo // 27;
+			
+			!Zähler erhöhen
+			i := i + 4;
+			j := j + 3
+		end;
+		
+		!Entschlüsselte Nachricht wieder in Char-Repräsentation schreiben
+		reconvertLine(plainint, var plain)
+	end
+
+in begin
+	
+	!Einlesen des öffentlichen Schlüssels
+	getint(var n);
+	getint(var exp);
+
+	!Einlesen der zu verschlüsselnden Nachricht
+	readLine(var msg);
+	puteol();
+	
+	!Verschlüsseln
+	encrypt(msg, var crypt);
+	
+	!Verschlüsselten Text ausgeben
+	writeCharLine(crypt);
+	puteol();
+
+	!Geheimen Schlüssel einlesen
+	getint(var n);	
+	getint(var d);
+	
+	!Entschlüsseln
+	decrypt(crypt, var msg);
+	
+	!Entschlüsselte Nachricht ausgeben
+	writeCharLine(msg)
+	
+end

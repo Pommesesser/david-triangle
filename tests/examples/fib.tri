@@ -1,0 +1,12 @@
+let
+	var n : Integer;
+
+	func mfib(n : Integer) : Integer ~
+	if n <= 2 then n + 1
+	else
+		mfib(n-1) + mfib(n-2)
+
+in begin
+	getint(var n);
+	putint(mfib(n));	
+end

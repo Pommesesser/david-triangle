@@ -1,0 +1,193 @@
+! 
+! Gruppe:
+!	Jan Sinschek
+!	Benjamin Otto
+!	Anselm Foehr
+!
+! 
+!  Autor: Benjamin Otto
+!  
+!  Programm zur Loesung des Diskreten Logarithmus-Problems g^x = a mod n
+!  mittels Shanks BabyStep-Giantstep-Verfahren.
+!  Funktioniert für Körper bis Ordnung 181, sonst Integer-Overflow
+!
+! Eingabe: Gruppenordnung n, Basis g, Potenz a
+!
+
+let
+	! Berechnet das Inverse von g modulo n mittels Euklid und gibts in x zurück
+	proc invertmodulo(g : Integer, n : Integer, var x: Integer) ~
+	let
+		var a : Integer;
+		var b : Integer;
+		var x0 : Integer;
+		var x1 : Integer;
+		var y0 : Integer;
+		var y1 : Integer;
+		var xx : Integer;
+		var yy : Integer;
+		var q : Integer;
+		var r : Integer;
+		var sign : Integer
+		
+	in begin
+	
+		!Parameter übergeben
+		a := g;
+		b := n;
+		
+		! Extended Euklid
+		x0 := 1; x1 := 0;
+		y0 := 0; y1 := 1;
+		sign := 1;
+		while b \= 0 do begin
+			r := a // b;
+			q := a / b;
+			a := b;
+			b := r;
+			xx := x1;
+			yy := y1;
+			x1 := q * x1 + x0;
+			y1 := q * y1 + y0;
+			x0 := xx;
+			y0 := yy;
+			sign := 0 - sign
+	
+		end;
+		
+		if (x0 * g) // n = 1 then 
+			! x0 ist das gesuchte inverse
+			x := x0 
+		else begin 
+			x := n - x0;
+		
+		end
+		
+	end;
+
+	! Hilfsfunktion zum Wurzelziehen; zieht wurzel und rundet auf (ziemlich primitiv:))
+	proc sqrtroundup(n : Integer, var x : Integer) ~
+	begin
+		x := 0;
+		while x * x < n do x:= x + 1
+	end;	
+	
+	! Hilfsfunktion zum potenzieren in endlichen Körpern
+	proc potmodulo(base :Integer, exp : Integer, n : Integer, var x : Integer) ~
+	let
+		var i : Integer !countervariable
+	in begin
+		i := 1;
+		x := 1;
+		while i <= exp do begin
+			x := x * base;
+			x := x // n;
+			i := i + 1
+		end
+	end;	
+	
+	
+	proc babystepgiantstep(n : Integer, g : Integer, a : Integer, var x : Integer) ~
+	let
+		var babysteps : array 100 of Integer; ! Speicherplatz für bis zu hundert Babysteps
+		var m : Integer;
+		var ginvert : Integer;
+		var atemp : Integer; !Babysteps-Dummy
+		var d : Integer; !Giantstep-Basis
+		var dtemp : Integer; !Giantsteps-Dummy
+		var r : Integer; !BabyStepzähler
+		var q : Integer; !GiantStep-Zähler
+		var foundtrivial : Boolean; ! flag, ob eine direkte lösung in den babysteps gefunden wurde
+		var found : Boolean ! flag, ob eine Lösung in den Giantsteps gefunden wurde
+	in begin
+	
+		! m berechnen
+		sqrtroundup(n, var m);
+		
+		! g^-1 mod n berechnen
+		invertmodulo(g, n, var ginvert);
+		
+		!Zunächst die Babysteps berechnen
+		r := 0;
+		atemp := a;
+		foundtrivial := false;
+		while (r < m) /\ \foundtrivial /\ \found do begin
+		
+			!r-ten babystep speichern
+			babysteps [r] := atemp;
+			
+			
+			!sonderfall babystep == 1 checken
+			if atemp = 1 then begin
+				foundtrivial := true; !flag setzen
+				x := r; ! lösung ist in diesem Fall r
+			end
+			else begin end;
+			
+			!naechsten BS berechnen
+			atemp := (atemp * ginvert) // n;
+			
+			!weiterzaehlen
+			r := r + 1
+			
+		end;
+
+		!Jetzt die GiantSteps durchgehen falls noch nicht gefunden
+		q := 1;
+		potmodulo(g, m, n, var d);
+		dtemp := d;
+		if \foundtrivial then begin
+		
+			while \ found do begin
+			
+				! die Babysteps nach einem Match mit aktuellem d durchsuchen
+				r := 0;
+				found := false;
+				while r < m /\ \found do begin
+					if dtemp = babysteps[r] then begin
+						found := true;
+						x := q * m + r;
+					end
+					else begin end;
+					r := r + 1
+				end;
+				
+				dtemp:= (dtemp * d) // n;
+				
+				!Test ob keine Lösung da
+				if q > (2 * m) then begin 
+					found := true;
+					x := 0 - 1;
+				end
+				else begin end;
+				
+				q := q + 1
+			end		
+			
+		end
+		else begin end;
+	end;
+
+	var n : Integer;
+	var g : Integer;
+	var a : Integer;
+	var solution : Integer
+
+in begin  ! Hauptprogramm
+
+	put('G');put('r');put('u');put('p');put('p');put('e');put('n');put('o');put('r');
+	put('d');put('n');put('u');put('n');put('g');put(' ');put(':');put(' ');
+	getint(var n);
+	put('g');put(' ');put(':');put(' ');
+	getint(var g);
+	put('a');put(' ');put(':');put(' ');
+	getint(var a);
+	
+	!BSGS ausführen
+	babystepgiantstep(n, g, a, var solution);
+	
+	!Ausgabe des Ergebnisses
+	put('L');put('o');put('e');put('s');put('u');put('n');put('g');put(' ');put(':');put(' ');
+	putint(solution)
+	
+end

@@ -1,0 +1,53 @@
+!
+! Simple File I/O example
+! Copies from file `infile' to file `outfile'
+! 
+let
+	const INNAME ~ 
+		[ 'i', 'n', 'f', 'i', 'l', 'e', chr(0), chr(0), chr(0), chr(0), 
+		  chr(0), chr(0), chr(0), chr(0), chr(0), chr(0), chr(0), chr(0), chr(0), chr(0)];
+	const OUTNAME ~ 
+		[ 'o', 'u', 't', 'f', 'i', 'l', 'e', chr(0), chr(0), chr(0), 
+		  chr(0), chr(0), chr(0), chr(0), chr(0), chr(0), chr(0), chr(0), chr(0), chr(0)];
+	var infile : Integer;
+	var outfile : Integer;
+	var c : Char;
+	var eof : Boolean
+in begin
+
+	fopen(var infile, INNAME, false);
+
+	if (infile < 0) then begin
+
+		! error opening input file, message 'I!'
+		put('I');
+		put('!');
+		puteol()
+
+	end else begin
+
+		fopen(var outfile, OUTNAME, true);
+
+		if (outfile < 0) then begin
+
+			! error opening output file, message 'O!'
+			put('O');
+			put('!');
+			puteol()
+
+		end else begin
+
+			! both files open, begin copying
+			feof(infile, var eof);
+			while (\ eof) do begin
+				fget(infile, var c);
+				fput(outfile, c);
+				feof(infile, var eof)
+			end;
+			fclose(outfile)
+
+		end;
+
+		fclose(infile)
+	end
+end

@@ -1,0 +1,290 @@
+! thh build tree from inorder preorder v1.0 
+
+let
+	const Arraylength ~ 128;
+	type Tree ~ array 128 of Char;
+	
+	type String ~ array 20 of Char;
+	
+	var loop: Char;
+	
+	var newLevel : array 7 of Integer;
+	
+	proc initLevel() ~
+	begin
+		newLevel[0] := 2;
+		newLevel[1] := 4;
+		newLevel[2] := 8;
+		newLevel[3] := 16;
+		newLevel[4] := 32;
+		newLevel[5] := 64;
+		newLevel[6] := 128;
+	end;
+	
+	var inorder : Tree;
+	var preorder: Tree;
+	var realtree: Tree;
+	
+	! set all entries to '_'
+	proc initTree(var tree : Tree) ~
+	let
+		var count : Integer
+	in begin
+		count := 1;
+		while count < Arraylength do begin
+			tree[count] := '_';
+			count := count + 1;
+		end;
+	end;
+	
+	! print complete tree to console
+	proc printTree(tree : Tree) ~
+	let
+		var count : Integer;
+		var levelCount : Integer
+	in begin
+		count := 1;
+		levelCount := 0;
+		while count < Arraylength do begin
+			if newLevel[levelCount] = count then 
+				begin 
+					puteol();
+					levelCount := levelCount + 1
+				end
+				
+				else;
+			
+			put('_');put(tree[count]);put('_');put(' ');
+			count := count + 1;
+		end
+	end;
+
+
+	!inits preorder filename to read
+	proc initFileStringP(var filenameP : String) ~
+	begin
+		filenameP[0] := 'p';
+		filenameP[1] := 'r';
+		filenameP[2] := 'e';
+		filenameP[3] := '.';
+		filenameP[4] := 't';
+		filenameP[5] := 'x';
+		filenameP[6] := 't';
+		filenameP[7] := chr(0);
+	end;
+
+	!inits inorder filename to read
+	proc initFileStringI(var filenameI : String) ~
+	begin
+		filenameI[0] := 'i';
+		filenameI[1] := 'n';
+		filenameI[2] := '.';
+		filenameI[3] := 't';
+		filenameI[4] := 'x';
+		filenameI[5] := 't';
+		filenameI[6] := chr(0);
+	end;
+	
+	var filenameP : String;	
+	var filenameI : String;	
+	var filehandle : Integer;
+	var testeof : Boolean;
+	var testeol : Boolean;
+    var testint : Integer;
+	var testchar : Char;
+	
+	! reads file and puts each char the tree array
+	proc putFileToTree(filename : String, var tree : Tree) ~
+	let
+		var count : Integer;
+		var newchar : Char
+	in begin
+		count := 1;
+		fopen(var filehandle, filename, false);
+		feof(filehandle, var testeof);
+		while \ testeof
+		do begin
+	 
+			feol(filehandle, var testeol);
+			feof(filehandle, var testeof);
+			while \ testeol /\ \ testeof
+			do begin
+				fget(filehandle, var newchar);
+				tree[count] := newchar ;
+				count := count + 1;
+				feol(filehandle, var testeol);
+				feof(filehandle, var testeof);
+			end;
+		
+			feol(filehandle, var testeol);
+			while testeol
+			do begin
+				fgeteol(filehandle);
+				feol(filehandle, var testeol);
+			end;
+
+			feof(filehandle, var testeof);
+		end;
+		fclose(filehandle)
+	end;
+	
+	! search index of char in array
+	proc getIndexInTree(tree: Tree, wanted: Char, var position: Integer) ~
+	begin
+		position := 1;
+		while \ (tree[position] = wanted) /\ (position <= (Arraylength + 1)) 
+		do position := position + 1;
+		
+		if position = (Arraylength + 1) then
+				position := 0
+				else;
+	end;
+	
+	
+	
+	
+	! the REAL work
+	proc setNodeFromPI(var preorder : Tree , var inorder : Tree, var realtree: Tree,  node : Integer, countPre: Integer) ~ 
+	let
+		var countP : Integer;
+		var countI : Integer;
+		var posThis : Integer;
+		var posNext : Integer;
+		var posParent: Integer;
+		var leftChildIndex: Integer;
+		var rightChildIndex: Integer
+	in begin
+	
+	
+	! if current node is not set
+	! set it and calculate next node
+	if preorder[countPre] \= '_' then
+	
+	begin
+		countP := node;
+		countI := node;
+		leftChildIndex := (2*node);
+		rightChildIndex := (2*node)+1;
+
+		puteol();put('-');put('-');put(preorder[countPre]);put('-');put('>');putint(node);puteol();
+		!putint(node);put('<');put('-');putint(countPre);puteol();
+		!put(realtree[node]);put('<');put('-');put(preorder[countPre]);puteol();
+
+		
+		! put current preorder value to right place in real tree
+		realtree[node] := preorder[countPre];  
+	
+		! find node and preorder successor in inorder
+		getIndexInTree(inorder, preorder[countPre], var posThis );
+		getIndexInTree(inorder, preorder[countPre+1], var posNext );
+		
+		! if next element is left of current
+		if posNext < posThis then
+				! posNext is in left subtree
+				begin 
+					!realtree[leftChildIndex] := preorder[(node+1)];
+					! go down the tree on the left side
+					setNodeFromPI(var preorder, var inorder, var realtree, leftChildIndex, (countPre+1) )
+				end
+					
+				else
+				begin
+					
+					! otherwise calculate next position
+					!if posParent < posNext then
+						let 
+							var helper : Integer;
+							var posReal: Integer;
+							var once: Integer
+						in begin
+							! look whether element is left of parent
+							getIndexInTree(inorder, preorder[countPre-1], var posParent );
+							!puteol();put('*');puteol();puteol();
+							helper := 0;
+							once:=1;
+							
+							!find element of which current is left of
+							while (posParent < posNext) \/ (once = 1) do
+								begin
+									helper := helper + 1;
+									!putint(helper);put(':');putint(countPre-helper);put(preorder[countPre-helper]);puteol();
+									getIndexInTree(inorder, preorder[countPre-helper], var posParent );
+									once:= 0
+							end;
+							!helper := helper - 1;
+							!puteol();put(':');putint(countPre-helper);put(':');put(preorder[(countPre-helper)]);puteol();puteol();
+							
+							
+							if (countPre-helper) = 0 then begin
+								! if gone above root - take root
+								helper := 1;
+							end else
+								begin
+									! find position of element of which current is left in real tree
+									getIndexInTree(realtree, preorder[countPre-helper], var posReal );
+									helper := (((posReal)*2)*2)+1
+								end;	
+							
+							
+							
+							
+							! get empty place from there
+							while realtree[helper] \= '_' do
+								begin
+									helper := (helper*2)+1
+							end;
+							
+							!puteol();put('!');putint(helper);put('!');put('!');putint(countPre);puteol();
+							
+							! put current element there
+							setNodeFromPI(var preorder, var inorder, var realtree, helper, (countPre+1) )
+						end
+					!else 
+					!begin
+						!puteol();put('#');puteol();
+						!setNodeFromPI(var preorder, var inorder, var realtree, rightChildIndex, node )
+						!realtree[rightChildIndex] := preorder[node];
+					!end;
+					!realtree[rightChildIndex] := preorder[node];
+					!setNodeFromPI(var preorder, var inorder, var realtree, , node)
+				end	;
+		end
+		else;
+	
+	end
+	
+	
+in begin
+	! initialisings
+	initLevel();
+	initTree(var inorder);
+	initTree(var preorder);
+	initTree(var realtree);
+	
+	! read files
+	initFileStringP(var filenameP);
+	initFileStringI(var filenameI);
+
+	! put file content in arrays
+	putFileToTree(filenameP, var preorder);
+	putFileToTree(filenameI, var inorder);
+	
+	!puteol();puteol();puteol();puteol();
+	!put(':');put(preorder[1]);puteol();
+	
+	! start constructing real tree from node 1
+	setNodeFromPI(var preorder , var inorder , var realtree, 1, 1);
+	
+	! do output
+	put('I');put(':');puteol();
+	printTree(inorder);
+	puteol();puteol();
+	put('P');put(':');puteol();
+	printTree(preorder);
+	!puteol();puteol();puteol();puteol();puteol();
+	puteol();puteol();
+	put('R');put(':');puteol();
+	printTree(realtree);
+	
+end;	
+

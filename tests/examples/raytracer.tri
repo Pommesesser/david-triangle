@@ -1,0 +1,235 @@
+let
+	type Vektor ~ record
+		x: Integer,
+		y: Integer,
+		z: Integer
+	end;
+	
+	!  _   _
+	! (x - m)^2 = r^2
+	! 
+	type Kugel ~ record
+		m: Vektor, ! Mittelpunkt
+		r: Integer ! Radius
+	end;
+
+	! _            _
+	! o + lambda * p
+	!
+	type Gerade ~ record
+		o: Vektor, ! Ort
+		p: Vektor  ! Richtung
+		
+	end;
+	
+	! Subtraktion von Vektoren
+	proc sub(a: Vektor, b: Vektor, var ret: Vektor) ~
+	begin
+		ret.x := a.x - b.x;
+		ret.y := a.y - b.y;
+		ret.z := a.z - b.z;
+	end;
+
+	! skalen in gerade Einsetzen um Koordinaten rauszubekommen
+	proc geradeEinsetzen(g: Gerade, lambda: array 2 of Integer, var ret: array 2 of Vektor) ~
+	let
+		var i: Integer
+	in
+	begin
+		i:=0;
+		while (i<2) do
+		begin
+			ret[i].x := g.o.x + (lambda[i] * g.p.x);
+			ret[i].y := g.o.y + (lambda[i] * g.p.y);
+			ret[i].z := g.o.z + (lambda[i] * g.p.z);
+			i:=i+1;
+		end
+	end;
+
+	! print padded
+	proc putintPadded(value: Integer) ~
+	begin
+!		if (value <= 99) then
+!			putint(0)
+!		else
+!		;
+		if (value <= 9) then
+			putint(0)
+		else
+		;
+		putint(value);
+	end;
+
+	! Quadratwurzel
+	proc sqrt(x: Integer, var ret: Integer) ~
+	let
+		var tmp: Integer
+	in
+	begin
+		tmp:=(x+1) / 2;
+		ret:=0;
+		while (tmp>ret) do
+		begin
+			tmp:=tmp-ret;
+			ret:=ret+1
+		end
+	end;
+
+	! Loesung quadratischer Gleichungen der Form ax^2 + bx + c = 0
+	! max 2 Loesungen
+	proc solvesq(a: Integer, b:Integer, c: Integer, var ret: array 2 of Integer, var success: Boolean) ~
+	let
+		var p: Integer;
+		var q: Integer;
+		var d: Integer
+	in
+	begin
+		p:=b/a;
+		q:=c/a;
+
+		if (((p/2)*(p/2))-q < 0) then
+			success:=false
+		else
+		begin
+			success:=true;
+			sqrt(((p/2)*(p/2))-q, var d);
+			ret[0]:=0-(p/2)-d;
+			ret[1]:=0-(p/2)+d;
+		
+		!	putint(ret[0]);
+		!	put(' ');
+		!	putint(ret[1]);
+		!	put(' ');
+		!	put(' ');
+		end
+		;
+	end;
+	
+	var a: Integer;
+	var b: Integer;
+	var c: Integer;
+	
+	var tmp: Vektor;
+	var success: Boolean;
+	var lambda: array 2 of Integer;
+	var schnittpunkte: array 2 of Vektor;
+
+! START EDITING HERE
+! START EDITING HERE
+! START EDITING HERE
+! START EDITING HERE
+
+	!Dimensionen des Fensters, Position und Richtung sind erstmal nicht aenderbar
+	!Die Mitte des Fensters befindet sich bei 0/0
+	const WIDTH ~ 15;
+	const HEIGHT ~ 15;
+
+	var k: Kugel;
+	var g: Gerade;
+
+	var frame: Integer
+
+in begin
+    frame:=0;
+    while (frame<7) do
+    begin
+	frame:=frame+1;
+
+	k.m.x:=0;
+	k.m.y:=0;
+
+	g.o.x:=0;
+	g.o.y:=0;
+
+	k.r:=75;            !Kugelradius
+
+	k.m.z:=150;         !Entfernung der Kugel vom Fenster
+	tmp.z:=frame;       !Entfernung des Fensters (Animation, die Distanz Beobachter<->Fenster wird groesser, dadurch sieht das Objekt groesser aus)
+	g.o.z:=0;           !Entfernung des Betrachters vom Fenster
+	
+	!Beobachter und Sicht
+
+
+! STOP EDITING HERE
+! STOP EDITING HERE
+! STOP EDITING HERE
+! STOP EDITING HERE
+
+
+	!erst Zeilen, dann Spalten
+	tmp.y:=(HEIGHT/2+1);
+	while tmp.y > (0-(HEIGHT/2)) do begin 
+		tmp.x:=0-(WIDTH/2);
+		while tmp.x < (WIDTH/2+1) do begin
+			! Berechne den Richtungsvektor des Beobachters durchs Fenster
+			sub(tmp, g.o, var g.p);
+
+			! Kugel mit Strahl schneiden und quadratische Gleichung bestimmen
+			a:=	(g.p.x * g.p.x) +
+				(g.p.y * g.p.y) +
+				(g.p.z * g.p.z);
+			
+			b:=	((g.o.x+(0-k.m.x))*2*g.p.x) +
+				((g.o.y+(0-k.m.y))*2*g.p.y) +
+				((g.o.z+(0-k.m.z))*2*g.p.z);
+				
+			c:=	   (g.o.x *   g.o.x ) +
+				   (g.o.x *(0-k.m.x)) +
+				   (g.o.x *(0-k.m.x)) +
+				((0-k.m.x)*(0-k.m.x)) +
+
+				   (g.o.y *   g.o.y ) +
+				   (g.o.y *(0-k.m.y)) +
+				   (g.o.y *(0-k.m.y)) +
+				((0-k.m.y)*(0-k.m.y)) +
+
+				   (g.o.z *   g.o.z ) +
+				   (g.o.z *(0-k.m.z)) +
+				   (g.o.z *(0-k.m.z)) +
+				((0-k.m.z)*(0-k.m.z)) -
+
+				(k.r*k.r);
+
+			solvesq(a,b,c, var lambda, var success);
+			geradeEinsetzen(g, lambda, var schnittpunkte);
+			
+			! Wir wollen nur Schnittpunkte sehen, die jenseits des Fensters liegen
+
+		if (success) then
+			if ((schnittpunkte[0].z > tmp.z) /\
+                           (schnittpunkte[1].z > tmp.z)) then
+				if (schnittpunkte[0].z <
+                                   schnittpunkte[1].z) then
+					putintPadded(schnittpunkte[0].z/10)
+				else
+					putintPadded(schnittpunkte[1].z/10)
+			else
+				if (schnittpunkte[0].z > tmp.z) then
+					putintPadded(schnittpunkte[0].z/10)
+				else
+					if (schnittpunkte[1].z > tmp.z) then
+						putintPadded(schnittpunkte[1].z/10)
+					else
+					begin
+						put(' ');
+						put(' ');
+!						put(' ');
+					end
+		else
+		begin
+			put(' ');
+			put(' ');
+!			put(' ');
+		end
+			;
+			
+			put(' ');
+			tmp.x:=tmp.x+1;
+		end;
+
+		! Zeilenende, weiter mit naechster Zeile
+		puteol();
+		tmp.y:=tmp.y-1;
+	end;
+    end
+end

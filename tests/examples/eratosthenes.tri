@@ -1,0 +1,113 @@
+! @author: Stefan Kropp
+let
+	const MAXPRIM ~ 32750; ! Obere Grenze der Primzahlsuche
+	
+	const UPPERBOUND ~ 250; ! Größe des BoolArrays
+	type BoolArray ~ array 250 of Boolean;
+	var numbers : BoolArray;
+	
+	! Setzt das Element mit dem Index index des Arrays Array auf den Wert bool
+	proc setArrayElement(var Array : BoolArray, index : Integer, bool : Boolean) ~
+	begin
+		if (index >= 0) \/ (index < UPPERBOUND)
+		then
+			Array[index] := bool
+		else
+	end;
+	
+	! Setzt alle Werte des Arrays auf true
+	proc initArray(var Array : BoolArray) ~
+	let
+		var count : Integer
+	in begin
+		count := 0;
+		while count < UPPERBOUND
+		do begin
+			setArrayElement(var Array, count, true);
+			count := count + 1
+		end
+	end;
+	
+	! Streicht Vielfache der Zahl number aus dem Array, indem der jeweilige
+	! Index auf false gesetzt wird. Dabei wird erst beim start-Wert angefangen
+	! zu streichen, um auch größere Werte als 255 zu bearbeiten.
+	proc eraseMultiples(var Array : BoolArray, number : Integer, start : Integer) ~
+	let
+		var multiples : Integer
+	in begin
+		! Mit number^2 anfangen, kleinere Werte sind bereits gestrichen worden
+		multiples := number * number;
+		
+		while multiples < (start + UPPERBOUND)
+		do begin
+			! Erst einmal die Vielfachen erhöhen, bis sie überhaupt den start-Wert erreicht haben
+			if multiples > (start - 1)
+			then
+				setArrayElement(var Array, multiples - start, false)
+			else ;
+			multiples := multiples + number
+		end
+	end;
+	
+	type String ~ array 20 of Char;	
+	var filename : String;
+	
+	! Initialisiert den Dateinamen für die Ausgabedatei auf 'prim.txt'
+	proc initFilename(var file : String) ~
+	begin 
+		file[0] := 'p'; file[1] := 'r'; file[2] := 'i';
+		file[3] := 'm'; file[4] := '.'; file[5] := 't';
+		file[6] := 'x'; file[7] := 't'; file[8] := chr(0);
+	end;
+	
+	! Schreibt das übergebene Array in die Datei mit dem übergebenen Filehandle.
+	! Dabei wird der start-Wert auf den Array-Index aufaddiert
+	proc printPrimToFile(numbers : BoolArray, filehandle : Integer, start : Integer) ~
+	let
+		var count : Integer
+	in begin
+		count := 0;
+		if filehandle > (0 - 1)
+		then
+			while count < UPPERBOUND
+			do begin
+				if (numbers[count] = true)
+				then
+					begin
+						fputint(filehandle, count + start);
+						fputeol(filehandle)
+					end
+				else ;
+				count := count + 1
+			end
+		else ;
+	end;
+	
+	var filehandle : Integer;
+	var maxNumber : Integer;
+	var actualNumber : Integer
+	
+in begin
+	initFilename(var filename);
+	fopen(var filehandle, filename, true);
+	maxNumber := UPPERBOUND;
+	
+	while maxNumber < MAXPRIM
+	do begin
+		! Mit 2 anfangen, Vielfache von 1 sind nicht interessant
+		actualNumber := 2;
+		initArray(var numbers);
+		
+		! Nur so lange streichen, wie actualNumber^2 kleiner als die maxNumber ist
+		while (actualNumber * actualNumber) < maxNumber
+		do begin
+			eraseMultiples(var numbers, actualNumber, maxNumber - UPPERBOUND + 1);
+			actualNumber := actualNumber + 1
+		end;
+		
+		printPrimToFile(numbers, filehandle, maxNumber - UPPERBOUND + 1);
+		maxNumber := maxNumber + UPPERBOUND
+	end;
+	
+	fclose(filehandle)
+end

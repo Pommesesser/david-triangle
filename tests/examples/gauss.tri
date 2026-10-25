@@ -1,0 +1,288 @@
+! gauss.tri implementiert die Gauss-Elimination 
+! für nicht-singuläre quadratische rationale 
+! Matrizen A der Größe n x n und löst ein Gleichungs-
+! system der Form Ax=b.
+
+let
+
+	const n ~ 4;
+	!Record zur Behandlung rationaler Zahlen
+	type Rational ~ record
+		p: Integer,
+		q: Integer
+	end;
+
+	!bei Änderung von n sollte hier die Dimension
+	!mit verändert werden
+	type Column ~ record
+		r: array 4 of Rational
+	end;
+
+	type Matrix ~ record
+		c: array 4 of Column
+	end;
+
+	!Methode zur GGT-Bestimmung
+	func ggt(a: Integer, b: Integer) : Integer ~
+		if b = 0 then a
+		else ggt(b, a // b);
+
+	!Kürzt einen Rational
+	proc reduce(var x: Rational) ~
+	let
+		var i : Integer
+	in begin
+		i := ggt(x.p,x.q);
+		if i = 0 then begin i := 1; end else ;
+		x.p := x.p / i;
+		x.q := x.q / i;
+	end;	
+
+	!Methode zur Addition zweier Rationals
+	proc add(x: Rational, y: Rational, var temp: Rational) ~
+	let
+		var b: Integer
+	in begin
+		temp.q := x.q*y.q;
+		temp.p := (x.p*y.q) + (y.p*x.q);
+		reduce(var temp);
+	end;
+
+	!Methode zur Subtraktion zweier Rationals
+	proc sub(x: Rational, y: Rational, var temp: Rational) ~
+	let
+		var b: Integer
+	in begin
+		temp.q := y.q;
+		temp.p := 0 - y.p;
+		add(x, temp, var temp);
+	end;
+
+	!Multiplikation zweier Rationals
+	proc mul(x: Rational, y: Rational, var temp: Rational) ~
+	let
+		var b: Integer
+	in begin
+		temp.p := x.p*y.p;
+		temp.q := x.q*y.q;
+		reduce(var temp);
+	end;
+
+	!Teilt x durch y
+	proc div(x: Rational, y: Rational, var  temp: Rational) ~
+	let
+		var b: Integer
+	in begin
+		temp.q := y.p;
+		temp.p := y.q;
+		mul(x,temp,var temp)
+	end;
+
+	!Löst Ax=b für eine nxn-Dreiecksmatrix
+	proc solve(a: Matrix, b: Column, var x: Column) ~
+	let
+		var i: Integer;
+		var j: Integer;
+		var temp : Rational
+	in begin
+		i := n-1;
+		while i >= 0 do begin
+			j := n-1;
+			x.r[i] := b.r[i];
+			while j > i do begin
+				mul(a.c[j].r[i],x.r[j],var temp);
+				sub(x.r[i],temp,var x.r[i]);
+				j := j - 1;
+			end;
+			div(x.r[i],a.c[i].r[i],var x.r[i]);
+			i := i - 1;
+		end;
+	end;
+
+	!Invertiert ein Rational
+	proc inv(var x: Rational) ~
+	let
+		var temp: Rational
+	in begin
+		temp.q := x.p;
+		temp.p := x.q;
+		x := temp;
+	end;
+
+	!Vertauscht die Zeilen i und j von A und b
+	proc switch(var a:Matrix, var b: Column, i: Integer, j: Integer) ~ 
+	let
+		var temp: Rational;
+		var k: Integer
+	in begin
+		k := 0;
+		!Vertausche die Zeilen der Matrix
+		while k < n do begin
+			temp := a.c[k].r[i];
+			a.c[k].r[i] := a.c[k].r[j];
+			a.c[k].r[j] := temp;
+			k := k + 1;
+		end;
+		!Vertausche die Zeilen des Vektors
+		temp := b.r[i];
+		b.r[i] := b.r[j];
+		b.r[j] := temp;
+	end;
+
+	!Vergleicht zwei Rationals a und b
+	func greater(a: Rational, b: Rational): Boolean ~
+		if (a.p*b.q) > (a.q*b.p) then true else false;
+
+
+	!Implementiert Spaltenpivotwahl für Gauss. Liefert das Inverse des Pivot-Elements sowie
+	!die Matrix nach Vertauschung
+	proc getPivot(line: Integer, var a: Matrix, var b: Column, var pivot: Rational) ~
+	let
+		var i: Integer;
+		var max: Rational;
+		var temp: Integer
+	in begin
+		i := line + 1;
+		max := a.c[line].r[line];
+		temp := line;
+		while i < n do begin
+			if greater(a.c[line].r[i],max) then begin
+				max := a.c[line].r[i];
+				temp := i;
+			end else ;
+			i := i + 1;
+		end;
+		if \ (temp = line) then begin
+			switch(var a, var b,temp,line);
+		end
+		else ;
+		pivot := max;
+		inv(var pivot);
+	end;
+
+	!Subtrahiert von der j-ten Zeile die i-te mal z
+	proc linesub(var a: Matrix, var b: Column, i: Integer, j: Integer, z: Rational) ~
+	let
+		var k: Integer;
+		var temp: Rational
+	in begin
+		k := 0;
+		while k < n do begin
+			mul(a.c[k].r[i],z,var temp);
+			sub(a.c[k].r[j],temp,var a.c[k].r[j]);
+			k := k + 1;
+		end;
+		mul(b.r[i],z,var temp);
+		sub(b.r[j],temp,var b.r[j]);
+	end;
+
+	!Berechnet aus einer nxn-Matrix eine nxn-obere Dreiecksmatrix mit Spaltenpivotwahl
+	proc gauss(var a:Matrix, var b: Column) ~ 
+	let
+		var pivot: Rational;
+		var temp: Rational;
+		var i: Integer;
+		var j: Integer
+	in begin
+		i := 0;
+		while i < n do begin
+			getPivot(i,var a, var b, var pivot);
+			j := (i+1);
+			
+			!subtrahiere von den restlichen Zeilen Vielfache der Pivot-Zeile
+			while j < n do begin
+				temp := a.c[i].r[j];
+				if \(temp.p = 0) then begin
+					mul(temp,pivot,var temp);
+					linesub(var a, var b, i, j, temp);
+				end else ;
+				j := j + 1;
+			end;			
+			i := i + 1;
+		end;
+	end;
+
+	!Liest eine Matrix ein
+	proc readMatrix(var a: Matrix) ~
+	let
+		var i:         Integer;
+		var j:	       Integer;
+		var col:       Column;
+		var rat:	Rational
+	in begin
+		i := 0;
+		while i < n do begin
+			j := 0;
+			while j < n do begin
+				getint(var rat.p);
+				getint(var rat.q);
+				col.r[j] := rat;
+				j := j + 1;
+			end;
+			a.c[i] := col;
+			i := i + 1;
+		end
+	end;
+
+	!Liest den Vektor b ein
+	proc readVector(var b: Column) ~
+	let
+		var i:         Integer;
+		var rat:	Rational
+	in begin
+		i := 0;
+		while i < n do begin
+			getint(var rat.p);
+			getint(var rat.q);
+			b.r[i] := rat;
+			i := i + 1;
+		end;
+	end;
+
+	var i: Integer;
+	var a: Matrix;
+	var b: Column;
+	var x: Column;
+	var temp: Rational;
+	var j: Integer
+in begin
+	readMatrix(var a);
+	readVector(var b);
+	gauss(var a, var b);
+
+!Ausgabe von A und b nach Ausführung der
+!Gauss-Elimination
+
+!	i := 0;
+!	while i < n do begin
+!		j := 0;
+!		while j < n do begin
+!			putint(a.c[i].r[j].p);
+!			put(chr(47));
+!			putint(a.c[i].r[j].q);
+!			put(chr(9));
+!			j := j + 1;
+!		end;
+!		i := i + 1;
+!	end;
+!	i := 0;
+!	while i < 3 do begin
+!		putint(b.r[i].p);
+!		put(chr(47));
+!		putint(b.r[i].q);
+!		put(chr(9));
+!		i := i + 1;
+!	end;
+
+!Ausgabe von x
+
+	solve(a,b,var x);
+	i := 0;
+	while i < n do begin
+		putint(x.r[i].p);
+		put(chr(47));
+		putint(x.r[i].q);
+		put(chr(9));
+		i := i + 1;
+	end;
+end

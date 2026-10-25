@@ -1,0 +1,167 @@
+let
+
+	! record for storing a directed edge
+	type Edge ~ record
+		endNodeID: Integer,
+		distance:  Integer
+	end;
+
+	! record for storing all outgoing edges of a node
+	type EdgeArray ~ record
+		content:   array 10 of Edge,
+		length:    Integer
+	end;
+
+	! record for storing a node with his current state and his edges
+	type Node ~ record
+		label:     Integer,
+		permanent: Boolean,
+		edges:     EdgeArray
+	end;
+
+	! record for storing all nodes
+	type NodeArray ~ record
+		content:   array 40 of Node,
+		length:    Integer
+	end;
+	
+	! procedure for initiating the nodes for Djikstra-phase
+	proc iniNodes(var nodes: NodeArray) ~
+	let
+	
+		var i: Integer
+		
+	in begin
+		i := 0;
+		while i < nodes.length do begin
+			nodes.content[i].label := maxint;
+			nodes.content[i].permanent := false;
+			i := i + 1;
+		end;
+	end;
+	
+	! procedure for reading the graph from the standard input
+	proc readGraph(var nodes: NodeArray) ~
+	let
+
+		! procedure for adding an edge to the array
+		proc addEdge(var edges: EdgeArray, e: Edge) ~
+		begin
+			edges.content[edges.length].endNodeID := e.endNodeID;
+			edges.content[edges.length].distance := e.distance;
+			edges.length := edges.length + 1;
+		end;
+                
+		var i:         Integer;
+		var startID:   Integer;
+		var endID:     Integer;
+		var distance:  Integer;
+		var edge:      Edge;
+                
+		var testeof : Boolean
+	in begin
+		! reading nodecount
+		getint(var nodes.length);
+		! initiating edge-arrays
+		i := 0;
+		while i < nodes.length do begin
+			nodes.content[i].edges.length := 0;
+			i := i + 1;
+		end;
+		! reading edges
+		eof(var testeof);
+		while \ testeof do begin
+			! reading an edge
+			getint(var startID);
+			getint(var endID);
+			getint(var distance);
+			edge.endNodeID := endID;
+			edge.distance := distance;
+			! adding the Edge to the array
+			addEdge(var nodes.content[startID].edges, edge);
+			eof(var testeof);
+		end;
+	end;
+
+	! procedure for writing the results of a Djikstra-phase to the standard output
+	proc outputResults(var nodes: NodeArray, startID: Integer) ~
+	let
+
+		var i: Integer
+                
+	in begin
+		i := 0;
+		putint(startID);
+		while i < nodes.length do begin
+			put(chr(9));
+			! write only the value if the node has been reached
+			if nodes.content[i].label < maxint then
+				putint(nodes.content[i].label)
+			else;
+			i := i + 1;
+		end;
+		puteol();
+	end;
+
+	var nodes:    NodeArray;
+	var actID:    Integer;
+	var destID:   Integer;
+	var newLabel: Integer;
+	var n:        Integer;
+	var i:        Integer
+	
+in begin
+	readGraph(var nodes);
+	! output of the headline with the node-IDs
+	n := 0;
+	while n < nodes.length do begin
+		put(chr(9));
+		putint(n);
+		n := n + 1
+	end;
+	puteol();
+	! selection and initiation of the startNode
+	n := 0;
+	while n < nodes.length do begin
+		iniNodes(var nodes);
+		nodes.content[n].label := 0;
+		actID := n;
+		! one Djikstra-phase
+		while (\ nodes.content[actID].permanent) do begin
+			! setting node-label as permanent
+			nodes.content[actID].permanent := true;
+			i := 0;
+			! actualizing the labels of all neighbours
+			while i < nodes.content[actID].edges.length do begin
+				newLabel := nodes.content[actID].label + nodes.content[actID].edges.content[i].distance;
+				destID := nodes.content[actID].edges.content[i].endNodeID;
+				! path about current row is shorter, then actualize label
+				if nodes.content[destID].label > newLabel then
+					nodes.content[destID].label := newLabel
+				else;
+				i := i + 1;
+			end;
+			i := 0;
+			! selecting the next node
+			while i < nodes.length do begin
+				! select only nodes that are not labeled permanently
+				if \ nodes.content[i].permanent then
+					! select only nodes that already has been reached
+					if nodes.content[i].label < maxint then
+						! select the first node, that is not labeled permanently
+						if nodes.content[actID].permanent then
+							actID := i
+						else
+							! select the node with the minimal label
+							if nodes.content[actID].label > nodes.content[i].label then
+								actID := i
+							else
+					else
+				else;
+				i := i + 1;
+			end;
+		end;
+		outputResults(var nodes, n);
+		n := n + 1
+	end
+end

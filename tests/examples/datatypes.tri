@@ -1,0 +1,264 @@
+!
+! Implementation of several data types in Triangle by Boris Nickel, boris-nickel@web.de
+!
+! This is an excercise from A. Koch's Lecture "Optimierende Compiler",
+! summer term 2006 at TU Darmstadt / Germany, course homepage (German):
+! http://www.esa.informatik.tu-darmstadt.de/twiki/bin/view/Lectures/OptimierendeCompilerDe.html
+!
+
+let
+! Strings
+!--------
+! 		The easy way - Triangle knows constant sized arrays only, so I add a fixed string type,
+! 		the string terminator is always a backslash \
+		type String ~ record 
+			Str: array 80 of Char
+		end;
+
+	! Fill a string
+	proc readstring(var strg: String) ~
+		let
+			var chint: Char;
+			var length: Integer;
+			var testeof : Boolean;
+			var testeol : Boolean
+		in begin
+				length := 0;
+				eof(var testeof);
+				eol(var testeol);
+				while \ testeol /\ \ testeof do begin
+					get(var chint);
+					strg.Str[length] := chint;
+					length := length + 1;
+					eof(var testeof);
+					eol(var testeol);
+				end;
+				strg.Str[length-2] := '\';
+		end;
+	
+	! Concatenate two strings: Add content of str2 to str1
+	proc strcat(var str1: String, var str2: String) ~
+		let
+			var ix: Integer;
+			var jx: Integer
+		in begin
+				! search for terminator in first string...
+				ix := 0;
+				while str1.Str[ix] \= '\' do begin
+					ix := ix + 1;
+				end;
+
+				! now start copying....
+				jx := 0;
+				while str2.Str[jx] \= '\' do begin
+					str1.Str[ix+jx] := str2.Str[jx];
+					jx := jx + 1;
+				end;
+				str1.Str[ix+jx] := '\';
+		end;
+
+	! Print a string
+	proc putstring(var strg: String) ~
+		let
+			var i: Integer
+		in begin
+				i := 0;
+				while \ (strg.Str[i] = '\') do begin
+					put(strg.Str[i]);
+					i := i + 1;
+				end;
+		end;
+	
+	! length of a string
+	proc strlen(strg: String, var length: Integer) ~
+		begin
+				length := 0;
+				while \ (strg.Str[length] = '\') do begin
+					length := length + 1;
+				end;
+		end;
+
+	! Reverse a string
+	proc strrev(var strg: String) ~
+		let
+			var i: Integer;
+			var j: Integer;
+			var tempstr: String
+		in begin
+				strlen(strg, var i);
+				i:= i - 1; j := 0;
+				while i >= 0 do begin
+					tempstr.Str[j] := strg.Str[i];
+					i := i - 1;
+					j := j + 1;
+				end;
+				tempstr.Str[j] := '\';
+				strg := tempstr;
+		end;
+
+
+
+! Date / Time types and operations
+!---------------------------------
+
+  ! Standard date in ddmmyyyy format
+     type Date ~ record
+         day: Integer,
+         month: Integer,
+         year: Integer
+     end;
+
+  ! Standard time in hh:mm:ss format
+     type Time ~ record
+         hours: Integer,
+         minutes: Integer,
+         seconds: Integer
+     end;
+
+  ! Date Constructor to ensure correct format on creation (dd/mm/yyyy)
+		 func createDate (day: Integer, month: Integer, year: Integer) : Date ~ 
+		 	let
+				var datum: Date
+			in
+				if ( (day > 0) /\ (day <= 31) /\ (month > 0) /\ (month <=12) /\ (year <= 9999) ) then 
+					{day ~ day, month ~ month, year ~ year}
+				else 
+					{day ~ 1, month ~ 1, year ~ 1000 };
+
+  ! Time Constructor to ensure correct format on creation (hh:mm:ss)
+		 func createTime (hours: Integer, minutes: Integer, seconds: Integer) : Time ~ 
+		 	let
+				var zeit: Time
+			in
+				if ( (hours > 0) /\ (hours <= 23) /\ (minutes > 0) /\ (minutes <=59) /\ (seconds > 0) /\ (seconds <= 59) ) then 
+					{hours ~ hours, minutes ~ minutes, seconds ~ seconds}
+				else 
+					{hours ~ 0, minutes ~ 0, seconds ~ 0};
+
+	! ToString methods:
+		 proc putdate (inDate: Date) ~
+		 begin
+			 if (inDate.day <= 9) then put('0') else; putint(inDate.day); put('/');
+			 if (inDate.month <= 9) then put('0') else; putint(inDate.month); put('/');
+			 if (inDate.year <= 999) then 
+				 begin 
+					 put('1'); put('0'); put('0'); put('0'); 
+				 end
+ 			 else putint(inDate.year);
+		 end;
+
+	! type = 1 means 24hr format hh:mm:ss, type = 2 am / pm format
+		 proc puttime (inTime: Time, outtype: Integer) ~
+		 begin
+		 		if outtype = 1 then
+		 			begin
+						if (inTime.hours <= 9) then put('0') else; putint(inTime.hours); put(':');
+						if (inTime.minutes <= 9) then put('0') else; putint(inTime.minutes); put(':');
+						if (inTime.seconds <= 9) then put('0') else; putint(inTime.seconds);
+					end
+				else
+					begin
+						if inTime.hours > 12 then
+							putint(inTime.hours - 12)
+						else
+							putint(inTime.hours); put(':');
+						
+						if (inTime.minutes <= 9) then put('0') else; putint(inTime.minutes); put(':');
+						if (inTime.seconds <= 9) then put('0') else; putint(inTime.seconds);
+						
+						if inTime.hours <12 then
+							begin put(' '); put('a'); put('m') end
+						else
+							begin put(' '); put('p'); put('m'); end
+					end
+		 end;
+
+	! how many days are between two dates ? I'm not taking care of leapyears.
+		 proc diffdays(date1: Date, date2: Date, var output: Integer) ~
+		 let 
+		 		var diffd: Integer;
+		 		var total: Integer;
+		 		var months: array 13 of Integer;
+		 		var tmpdate: Date;
+		 		var tmpdate1: Date;
+		 		var tmpdate2: Date
+		 in begin
+		 		diffd := 0; total:= 0; output := 0;
+		 		months := [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]; 
+		 		
+		 		!check if date1 is > than date2:
+		 		if (date1.year < date2.year) \/ ((date1.year = date2.year) /\ (date1.month < date2.month)) \/ ((date1.year = date2.year) /\ (date1.month = date2.month) /\ (date1.day < date2.day)) then
+		 				begin
+		 					tmpdate1 := date2;
+		 					tmpdate2 := date1;
+		 				end
+		 		else
+		 			begin
+		 					tmpdate1 := date1;
+		 					tmpdate2 := date2;
+		 			end;
+		 		
+				!now count all the remaining days:
+						 		tmpdate := tmpdate2;
+				while \ ( (tmpdate1.day = tmpdate.day) /\ (tmpdate1.month = tmpdate.month) /\ (tmpdate1.year = tmpdate.year) ) do begin
+						output := output + 1;
+						
+						if tmpdate.day < months[tmpdate.month] then
+							tmpdate.day := tmpdate.day + 1
+						else
+							begin
+								tmpdate.day := 1;
+								if tmpdate.month < 12 then 
+									tmpdate.month := tmpdate.month + 1
+								else
+									begin
+										tmpdate.month := 1;
+										tmpdate.year := tmpdate.year + 1
+									end
+							end
+
+				end;
+		 end;
+
+
+ 
+ ! Main Program - Test "class"
+ ! ---------------------------
+
+	var str1: String;
+	var str2: String;
+	var x: Integer;
+	var datum : Date;
+	var datum2 : Date;
+	var zeit: Time
+	
+	in begin
+	
+		! Test Date creator
+		datum := createDate(14, 5, 1977);
+		putdate(datum); puteol();
+
+		! Test Time creator
+		zeit := createTime(4, 8, 33);
+		puttime(zeit, 1); puteol();
+		puttime(zeit, 2); puteol();
+		
+		! String tests
+		readstring(var str2);
+		!str2.Str[0] := 'y'; str2.Str[1] := 'y'; str2.Str[2] := 'y';	str2.Str[3] := '\';
+		str1.Str[0] := 'x'; str1.Str[1] := 'x'; str1.Str[2] := 'x';	str1.Str[3] := '\';
+
+		strcat(var str2, var str1);
+		putstring(var str2); puteol();
+
+		strlen(str2, var x);
+		putint(x); puteol();
+
+		strrev(var str2);
+		putstring(var str2); puteol();
+		
+		datum2 := createDate(14, 5, 2006);
+		diffdays(datum, datum2, var x);
+		putint(x);
+		
+	end

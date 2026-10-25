@@ -1,0 +1,46 @@
+let
+	var a : Integer;
+	var b : Integer;
+	var c : Integer;
+	var ringzahl : Integer;
+	
+	proc tausche(var x : Integer, var y : Integer) ~
+	let
+		var tmp : Integer
+	in begin
+		tmp := x;
+		x := y;
+		y:= tmp;
+	end;
+	
+	proc setze1() ~
+	begin
+		putint(a);
+		put(' ');
+		put('-');
+		put('>');
+		put(' ');
+		putint(b);
+		puteol();
+	end;
+
+	proc setzen(n : Integer) ~
+	if n = 1 then
+		setze1()
+	else begin
+		tausche(var b, var c);
+		setzen(n - 1);
+		tausche(var b, var c);
+		setze1();
+		tausche(var a, var c);
+		setzen(n - 1);
+		tausche(var a, var c)
+	end
+
+in begin
+	a := 1;
+	b := 2;
+	c := 3;
+	getint(var ringzahl);
+	setzen(ringzahl);
+end

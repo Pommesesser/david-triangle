@@ -1,0 +1,44 @@
+let
+
+	type Line ~ record
+		content: array 80 of Char,
+		length: Integer
+	end;
+
+	! reads a line from the standard input
+	proc readLine(var line: Line) ~
+	let
+		var ch: Char
+	in begin
+		line.length := 0;
+		get(var ch);
+		while \ eol() /\ \ eof() do begin
+			line.content[line.length] := ch;
+			line.length := line.length + 1;
+			get(var ch);
+		end;
+	end;
+
+	! writes the reversed line to the standard output
+	proc putReversedLine(line: Line) ~
+	let
+		var i: Integer
+	in begin
+		i := line.length;
+		while i > 0 do begin
+			i := i-1;
+			put(line.content[i])
+		end;
+		puteol();
+	end;
+
+	var line: Line
+
+in begin
+	! [JO]: eof() and eol() are actually procedures with a var parameter in the reference compiler,
+	!       even when the book says otherwise
+	while \ eof () do begin
+		readLine(var line);
+		putReversedLine(line);
+	end;
+end

@@ -1,0 +1,187 @@
+let
+	const k ~ 28;
+	const q ~ 1000;
+	type Buffer ~ record
+		content: array 512 of Char,
+		first : Integer,
+		last : Integer
+	end;
+	type CharBuffer ~ array 28 of Integer;
+
+proc inc(var i:Integer) ~
+begin
+	i := i+1;
+end;
+
+proc initBuffer(var c : CharBuffer) ~
+let
+	var i : Integer
+in begin
+	i := 0;
+	while i < k do begin
+		c[i] := 0;
+		inc(var i);
+	end;
+end;
+
+proc compareBuffer(a : CharBuffer, b : CharBuffer, var x : Boolean) ~
+let
+	var i : Integer
+in begin
+	i := 1;
+	x := true;
+	while i < k do begin
+		if(a[i] \= b[i]) then x := false else;
+		inc(var i);
+	end;
+end;
+
+! Converts a Char to a Integer representation, ignoring case
+proc charToInt(c : Char, var i : Integer) ~
+let
+	var x : Integer
+in begin
+	i := 0;
+	if(ord(c) >= ord('a')) /\ (ord(c) <= ord('z')) then i := ord(c)-ord('a')+1 else;
+	if(ord(c) >= ord('A')) /\ (ord(c) <= ord('Z')) then i := ord(c)-ord('A')+1 else; 
+end;
+
+!computes n^m mod q
+proc modpot(n : Integer, m : Integer, q : Integer, var result : Integer) ~
+let
+	var i : Integer
+in begin
+	i := 0;
+	result := 1;
+	while i < m do begin
+		result := (result * n) // q;
+		inc(var i);
+	end;
+end;
+
+proc rehash(oldHash : Integer, cRemove : Char, cAdd : Char, n : Integer, var newHash : Integer) ~
+let	
+	var x : Integer;
+	var y : Integer;
+	var res : Integer
+in begin
+	!putint(oldHash);put('<');put(cRemove);put(' ');put('>');put(cAdd);
+	res := oldHash;
+	charToInt(cRemove,var x);
+	!putint(x);puteol();
+	modpot(k,n-1,q,var y);
+	!putint(res);put('-');putint(x);put('*');putint(y);puteol();
+	res := ((res - ( (x * y) // q))*k);
+	while res < 0 do res := res + q;
+	!put('n');putint(res);puteol();
+	charToInt(cAdd, var x);
+	!put('x');putint(x);puteol();
+	newHash := (res + x) // q;
+	!putint(newHash);puteol();
+end;
+
+proc search(var b : Buffer, sCBuffer : CharBuffer, var sbCBuffer : CharBuffer, var i : Integer, sHash : Integer, sbHash : Integer, n : Integer) ~
+let
+	var ch : Char;
+	var cRemove : Char;
+	var cAdd : Char;
+	var hash : Integer;
+	var x : Integer;
+	var comp : Boolean;
+	var xi : Integer;
+	var testeol : Boolean;
+	var testeof : Boolean
+in
+begin	
+	hash := sbHash;
+	xi := 0;
+	get(var ch);
+	eol(var testeol);
+	eof(var testeof);
+	while \testeol /\ \testeof do begin
+		if( ((i+1) // maxint) = 0 ) then inc(var xi) else;
+		i := i+1 // maxint;
+		cRemove := b.content[b.first];
+		charToInt(cRemove, var x);
+		sbCBuffer[x] := sbCBuffer[x] -1;
+		cAdd := ch;
+		charToInt(cAdd, var x);
+		sbCBuffer[x] := sbCBuffer[x] +1;
+		b.first := b.first + 1 // 512;
+		b.content[b.last] := cAdd;
+		b.last := b.first + n // 512;
+		rehash(hash,cRemove,cAdd,n,var hash);
+		if(hash = sHash) then 
+		begin
+			compareBuffer(sCBuffer,sbCBuffer, var comp);
+			if comp then 
+			begin 
+				if(xi > 0) then 
+				begin putint(xi);put('*');putint(maxint);put('+');end else;
+				putint(i);put(',');
+			end else;
+		end else;
+		!putint(sHash);put(cRemove);put('<');put('>');put(cAdd);putint(hash);puteol();
+		get(var ch);
+		eol(var testeol);
+		eof(var testeof);
+	end;
+end;
+
+proc hash(var b : Buffer,var c : CharBuffer, n : Integer, var hash : Integer) ~
+let
+	var bla : array 2 of Integer;
+	var ch: Char;
+	var i : Integer;
+	var x : Integer;
+	var testeol : Boolean;
+	var testeof : Boolean
+in begin
+	i := 0;
+	hash :=0;
+	get(var ch);
+	eol(var testeol);
+	eof(var testeof);
+	while (\ testeol) /\ (\testeof) /\ (i < 512) /\ ( (n < 0)\/(i<=n))do begin
+		hash := ((hash * k) // q);
+		charToInt(ch,var x);
+		b.content[i] := ch;
+		if(x > 0) /\ (x <= 26) then c[x] := c[x] +1 else;
+		b.first := 0;
+		b.last := i+1;
+		hash := hash + x;
+		bla[i//2] := hash;
+		inc(var i);
+		if (n >= 0) /\ ( i > n) then else get(var ch);
+		eol(var testeol);
+		eof(var testeof);
+	end;
+	! stupid hack start
+	! loop body gets executed one time to much, because eol doesn't work quite right
+	if(n<0)then begin
+	b.last := b.last -1;
+	!hash := hash -x;
+	!hash := (((hash) / k) // q);
+	hash := bla[i//2];
+	end else;
+	! stupid hack end
+	hash := hash // q
+end;
+
+	var i : Integer;
+	var sHash : Integer;
+	var sCBuffer : CharBuffer;
+	var sbHash : Integer;
+	var sbCBuffer : CharBuffer;
+	var buffer : Buffer
+in begin
+	i := 0;
+	initBuffer(var sCBuffer);
+	initBuffer(var sbCBuffer);
+	hash(var buffer, var sCBuffer, 0-1, var sHash);
+	!putint(sHash);puteol();
+	hash(var buffer, var sbCBuffer, buffer.last-1,var sbHash);
+	!putint(sbHash);puteol();
+	if(sHash = sbHash) then begin putint(i);put(','); end else;
+	search(var buffer, sCBuffer, var sbCBuffer, var i, sHash, sbHash, buffer.last);
+end

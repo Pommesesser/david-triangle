@@ -1,0 +1,323 @@
+! Creates a simple 54x50 image and writes to stdout (it pgm format).
+! usage:
+! java TAM.Interpreter obj.tam | grep -v "\*" > out.pgm
+! xv out.pgm
+
+let
+
+  type PackedPixel ~ Integer; !three pixels packed into an int
+  type Byte ~ Integer; !one pixel
+
+  ! The Triangle code emitter is a bit strange: A single record
+  ! may not be larger than 255 words. Thus, if we would define
+  ! an Image record consisting of an Integer for width and
+  ! height and a data array, the data array could contain 254 elements
+  ! at most -- barely enough for a 15x15 image.
+  ! Because of this, the following records are needed to support
+  ! images with somewhat larger dimensions.
+  ! [For even larget images, some more records could be used (a Tile
+  ! is an array of Scanlines, an Image is an array of Tiles), but
+  ! the stupid Triangle interpreter has a maximal data store size of
+  ! 1024 words (!!) anyways and segfaults if our image data is larger
+  ! than that.]
+  ! To leave room for 32 local variables, the image data
+  ! size is maximal 4*225 = 900 bytes -- 30x30 pixels, not *that* much better...
+  ! (this has at least the benefit that we don't have to fear overflow
+  ! in expressions like y*width + x :-P )
+  ! A Triangle integer is 16 bit - because they are signed, using only
+  ! the lower 15 bits is easier (this way, they are always non-negative).
+  ! To increase the maximal image size a bit more, we store three 5bit pixels
+  ! in one Integer  (this gives us only 32 gray levels, but that's worth it).
+  ! This way we get 900*3 = 2700 pixels - a 54x50 image.
+
+  const BUFFERSIZE ~ 225;
+  const PIXSIZE ~ 3*BUFFERSIZE; !3 values in one "pixel"
+
+  type Buffer ~ record
+    ! size should match BUFFERSIZE (Triangle needs an integer literal,
+    ! I can't use BUFFERSIZE here :-( )
+    data : array 225 of PackedPixel
+  end;
+
+  type Image ~ record
+    ! grayscale image
+
+    buffer : array 4 of Buffer,
+    width : Integer,
+    height: Integer
+  end;
+
+  proc createImage(var image : Image, w : Integer, h : Integer) ~
+  begin
+    !check if it fits into mem, halt program if not
+    if w*h > (4*PIXSIZE) then
+    let
+      var bla : Integer
+    in begin
+      put('x'); puteol();
+      bla := 30000;
+      bla := 30000*bla; !integer overflow will halt program
+    end else ;
+
+    image.width := w;
+    image.height := h;
+  end;
+
+  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  !! bit fiddling stuff
+  func pow2(v : Integer) : Integer ~
+    if v = 0 then 1 else 2*pow2(v - 1);
+
+  ! g is 0, 1 or 2 to select one of the three pixels
+  func getGroup(p : PackedPixel, g : Integer) : Byte ~
+    (p / pow2(g*5)) // 32;
+
+  ! v has to be < 32
+  !func setGroup(p : Pixel, v : Byte, g : Integer) : Pixel ~
+  !  ! don't factor pow2(g*5) to prevent negative numbers
+  !  (p - getGroup(p, g)*pow2(g*5)) + v*pow2(g*5);
+
+  !for whatever reasons the above code gives an overflow all the time.
+  !it works with a local variable, though. Triangle rocks.
+
+  proc setGroup(var p : PackedPixel, v : Byte, g : Integer) ~
+  let
+    ! required to work around some Triangle bug...
+    var tmp : Integer
+  in begin
+    ! clear old bits
+    tmp := getGroup(p, g)*pow2(g*5);
+    p := p - tmp;
+
+    ! set new bits
+    if v < 31 then tmp := v else tmp := 31;
+    tmp := tmp*pow2(g*5);
+    p := p + tmp
+  end;
+
+
+  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  !! set/get a single pixel
+
+!  proc setPixel(var image : Image, x : Integer, y : Integer, value : Integer) ~
+!  let
+!    var address : Integer
+!  in begin
+!    address := y*image.width + x;
+!    image.buffer[address / BUFFERSIZE].data[address // BUFFERSIZE] := value;
+!  end;
+!
+!  func getPixel(image : Image, x : Integer, y : Integer) : Pixel ~
+!    image.buffer[ (y*image.width + x) / BUFFERSIZE ].
+!          data[ (y*image.width + x) // BUFFERSIZE ];
+
+  ! MIST: das da oben geht nicht, weil Triangle nicht will, das einzelne
+  ! Argumente groesser als 255 Woerter sind. Also so:
+
+  proc setPixel(x : Integer, y : Integer, w : Integer,
+                var buff0 : Buffer, var buff1 : Buffer,
+                var buff2 : Buffer, var buff3 : Buffer, value : Byte) ~
+  let
+    var address : Integer
+  in begin
+    address := y*w + x;
+    if address / PIXSIZE = 0 then
+      setGroup(var buff0.data[(address // PIXSIZE) / 3], value,
+               (address // PIXSIZE) // 3)
+    else if address / PIXSIZE = 1 then
+      setGroup(var buff1.data[(address // PIXSIZE) / 3], value,
+               (address // PIXSIZE) // 3)
+    else if address / PIXSIZE = 2 then
+      setGroup(var buff2.data[(address // PIXSIZE) / 3], value,
+               (address // PIXSIZE) // 3)
+    else if address / PIXSIZE = 3 then
+      setGroup(var buff3.data[(address // PIXSIZE) / 3], value,
+               (address // PIXSIZE) // 3)
+    else
+  end;
+
+  ! the buffn's aren't changed, but if we don't pass them by reference,
+  ! Triangle tries to copy them before passing them to the function.
+  ! This overflows the data store, so we pass by reference to avoid
+  ! the copy
+  func getPixel(x : Integer, y : Integer, w : Integer,
+                var buff0 : Buffer, var buff1 : Buffer,
+                var buff2 : Buffer, var buff3 : Buffer) : Byte ~
+    if (y*w + x) / PIXSIZE = 0 then
+      getGroup(buff0.data[((y*w + x) // PIXSIZE) / 3],
+               ((y*w + x) // PIXSIZE) // 3)
+    else if (y*w + x) / PIXSIZE = 1 then
+      getGroup(buff1.data[((y*w + x) // PIXSIZE) / 3],
+               ((y*w + x) // PIXSIZE) // 3)
+    else if (y*w + x) / PIXSIZE = 2 then
+      getGroup(buff2.data[((y*w + x) // PIXSIZE) / 3],
+               ((y*w + x) // PIXSIZE) // 3)
+    else if (y*w + x) / PIXSIZE = 3 then
+      getGroup(buff3.data[((y*w + x) // PIXSIZE) / 3],
+               ((y*w + x) // PIXSIZE) // 3)
+    else
+      0;
+
+  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  !! save image
+
+  proc writePbmAscii(w : Integer, h : Integer,
+                     var buff0 : Buffer, var buff1 : Buffer,
+                     var buff2 : Buffer, var buff3 : Buffer) ~
+  let
+    var x : Integer;
+    var y : Integer
+  in begin
+    !write header
+    put('P'); put('2'); puteol(); !format id
+    putint(w); put(' '); putint(h); puteol(); !size
+    putint(31); puteol(); !maximum gray value
+
+    !write data
+    y := 0;
+    while y < h do begin
+
+      x := 0;
+      while x < w do begin
+        putint(getPixel(x, y, w, var buff0, var buff1, var buff2, var buff3));
+        put(' ');
+        x := x + 1
+      end;
+
+      puteol();
+      y := y + 1
+    end;
+  end;
+
+
+  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  !! line drawing
+
+  proc incPixel(x : Integer, y : Integer, w : Integer,
+                var buff0 : Buffer, var buff1 : Buffer,
+                var buff2 : Buffer, var buff3 : Buffer) ~
+    setPixel(x, y, w, var buff0, var buff1, var buff2, var buff3,
+             getPixel(x, y, w, var buff0, var buff1, var buff2, var buff3) + 9);
+
+  ! draws a line with the bresenham algorithm. increments pixels drawn.
+  ! doesn't clip the line, so pass only valid coords!
+  ! start and end points are both inclusive.
+  proc drawLine(x1 : Integer, y1 : Integer, x2 : Integer, y2 : Integer,
+                w : Integer, var buff0 : Buffer, var buff1 : Buffer,
+                var buff2 : Buffer, var buff3 : Buffer) ~
+  let
+    var xLength : Integer;
+    var yLength : Integer;
+    var dx : Integer;
+    var dy : Integer;
+    var error : Integer;
+    var i : Integer;
+    var xCoord : Integer;
+    var yCoord : Integer
+  in begin
+
+    xCoord := x1;
+    yCoord := y1;
+    error := 0;
+    xLength := x2 - x1;
+    if xLength < 0 then
+    begin
+      xLength := 0 - xLength;
+      dx := 0 - 1;
+    end
+    else
+      dx := 1;
+
+    yLength := y2 - y1;
+    if yLength < 0 then
+    begin
+      yLength := 0 - yLength;
+      dy := 0 - 1;
+    end
+    else
+      dy := 1;
+
+    if xLength < yLength then    !m > 1
+    begin
+      i := 0;
+      while i <= yLength do
+      begin
+        incPixel(xCoord, yCoord, w, var buff0, var buff1, var buff2, var buff3);
+        yCoord := yCoord + dy;
+        error := error + xLength;
+        if error >= yLength then
+        begin
+         xCoord := xCoord + dx;
+         error := error - yLength;
+        end else;
+        i := i + 1
+      end;
+    end
+    else                           !m <= 1
+    begin
+      i := 0;
+      while i <= xLength do
+      begin
+        incPixel(xCoord, yCoord, w, var buff0, var buff1, var buff2, var buff3);
+        xCoord := xCoord + dx;
+        error := error + yLength;
+        if error >= xLength then
+        begin
+          yCoord := yCoord + dy;
+          error := error - xLength;
+        end else;
+        i := i + 1
+      end;
+    end;
+  end;
+
+  const STEPS ~ 10;
+  var image : Image;
+  var i : Integer;
+  var j : Integer
+
+in begin
+
+
+  ! draw a fancy image
+  createImage(var image, 54, 50);
+  i := 0;
+  while i < STEPS do begin
+    drawLine((i*image.width)/STEPS, 0,
+             0, image.height - 1 - ((i*image.height)/STEPS),
+             image.width,
+             var image.buffer[0], var image.buffer[1],
+             var image.buffer[2], var image.buffer[3]);
+    drawLine((i*image.width)/STEPS, 0,
+             image.width - 1, (i*image.height)/STEPS,
+             image.width,
+             var image.buffer[0], var image.buffer[1],
+             var image.buffer[2], var image.buffer[3]);
+
+    drawLine((i*image.width)/STEPS, image.height - 1,
+             image.width - 1, image.height - 1 - ((i*image.height)/STEPS),
+             image.width,
+             var image.buffer[0], var image.buffer[1],
+             var image.buffer[2], var image.buffer[3]);
+    drawLine((i*image.width)/STEPS, image.height - 1,
+             0, (i*image.height)/STEPS,
+             image.width,
+             var image.buffer[0], var image.buffer[1],
+             var image.buffer[2], var image.buffer[3]);
+    i := i + 1
+  end;
+
+  writePbmAscii(image.width, image.height,
+                var image.buffer[0], var image.buffer[1],
+                var image.buffer[2], var image.buffer[3])
+
+  ! testing code:
+  !setPixel(50, 48, image.width, var image.buffer[0], var image.buffer[1], var image.buffer[2], var image.buffer[3], 15);
+  !putint(getPixel(50, 48, image.width, var image.buffer[0], var image.buffer[1], var image.buffer[2], var image.buffer[3]));
+
+!  i := 30000;
+!  setGroup(var i, 31, 2);
+!  putint(getGroup(i, 2));
+
+end
+

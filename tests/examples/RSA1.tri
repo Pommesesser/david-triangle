@@ -1,0 +1,209 @@
+! Encrypts an Integer with the RSA Algorithm. Algorithm took from 
+! "J. Buchmann - Einfuerung in die Kryptographie"
+!
+! Input: an integer Smaller than n
+!
+!
+! Author: Clayton Hoss
+! Version: very very beta
+!
+
+let
+
+	const p ~ 13;		! prime 1
+	const q ~ 11;		! prime 2
+	const e ~ 23;		! public exponent, gcd((p-1)*(q-1), e) must be 1
+	const n ~ p * q;	! public modulo
+	
+	var d: Integer;		! private exponent: calculated with Xeuclid
+	
+	! Maxint is 32k!
+	! n must be smaller or equal to floor(sqrt(32k)) : 181
+	! p times q must be smaller or equal to floor(sqrt(181)) : 13
+	! otherwise the fast power function (power()) will not work
+	
+	proc putInput() ~
+	begin
+		put('N'); put('u'); put('m'); put('b'); put('e'); put('r'); 
+		put(' '); put('t'); put('o'); put(' '); put('e'); put('n'); 
+		put('c'); put('r'); put('y'); put('p'); put('t'); put(' '); 
+		put('('); put(' '); put('<'); put(' '); putint(n);put(' '); 
+		put(')'); put(' '); put(':'); put(' ');
+	end;
+	
+	proc putEncryptMsg() ~
+	begin
+		put('E'); put('n'); put('c'); put('r'); put('y'); put('p'); 
+		put('t'); put('e'); put('d'); put(' '); put('N'); put('u'); 
+		put('m'); put('b'); put('e'); put('r'); put(' '); put(':'); 
+		put(' ');
+	end;
+	
+	proc putDecrypt1() ~ 
+	begin
+		put('D'); put('e'); put('c'); put('r'); put('y'); put('p'); 
+		put('t'); put('e'); put('d'); put(' '); put('n'); put('o'); 
+		put('r'); put('m'); put('a'); put('l'); put('l'); put('y'); 
+		put(' '); put(':'); put(' ');
+	end;
+	
+	proc putDecrypt2() ~ 
+	begin
+		put('D'); put('e'); put('c'); put('r'); put('y'); put('p'); 
+		put('t'); put('e'); put('d'); put(' '); put('w'); put('i'); 
+		put('t'); put('h'); put(' '); put('C'); put('R'); put('T'); 
+		put(' '); put(':'); put(' ');
+	end;
+	
+	! base may not be bigger than 181 since base * base will produce an overflow
+	proc power(base: Integer, exponent: Integer, modulo: Integer, var result: Integer) ~ 
+	let
+		var lbase: Integer;
+		var lexponent: Integer;
+		var lresult: Integer
+	in begin
+		lbase := base // modulo;
+		lexponent := exponent;
+		lresult := 1;
+		while lexponent > 0 do
+			begin
+				if (1 = (lexponent // 2)) then begin 
+					lresult := ((lresult * lbase) // modulo);
+					lexponent := lexponent - 1;
+				end
+				else begin
+					lbase := ((lbase * lbase) // modulo);
+					lexponent := lexponent / 2;
+				end
+				
+			end;				
+	result := lresult
+	end;
+	
+	proc power2(base: Integer, exponent: Integer, modulo: Integer, var result: Integer) ~ 
+	let 
+		var i: Integer
+	in begin
+		result := 1;
+		i := 0;
+		while i < exponent do
+		begin
+			result := (result * base) // modulo;
+			i:= i + 1;
+		end;
+	end;
+	
+	
+	proc Xgcd(pa: Integer, pb: Integer, var gcd: Integer, var x:Integer, var y:Integer) ~
+	let
+		var a:Integer;
+		var b:Integer;
+		var q: Integer; 
+		var r:Integer; 
+		var xx: Integer; 
+		var yy: Integer; 
+		var sign: Integer;
+		var xs: array 2 of Integer;
+		var ys: array 2 of Integer
+	in begin
+		a := pa;
+		b := pb;
+		
+		xs[0] := 1; xs[1] := 0;
+		ys[0] := 0; ys[1] := 1;
+		sign := 1;
+		while b \= 0 do
+		begin
+			r := a // b;
+			q := a / b;
+			a := b;
+			b := r;
+			xx := xs[1];
+			yy := ys[1];
+			xs[1] := q * xs[1] + xs[0];
+			ys[1] := q * ys[1] + ys[0];
+			xs[0] := xx;
+			ys[0] := yy;
+			sign := sign * (0 - 1);
+			
+		end;
+		x := sign * xs[0];
+		y := (0 - sign) * ys[0];
+		
+		gcd := a;
+		
+	end; 
+	
+	
+	proc encrypt(m: Integer, var c: Integer)  ~
+	begin
+		power(m, e, n, var c);
+	end;
+	
+	
+	proc decrypt(c: Integer, var m: Integer) ~
+	begin
+		power2(c, d, n, var m);
+	end;
+	
+	
+	proc decryptWithCRT(c: Integer, var m: Integer) ~
+	let 
+		var mp: Integer;
+		var mq: Integer;
+		var tempd: Integer;
+		var gcd: Integer;
+		var yp: Integer;
+		var yq: Integer
+	in begin
+		tempd := (d // (p-1));
+		power2(c, d, p, var mp);
+		tempd := (d // (q-1));	
+		power(c, d, q, var mq);
+		
+		Xgcd(p, q, var gcd, var yp, var yq);
+
+		m := ((mp * yq * q) + (mq * yp * p)) // n;
+		
+		if m < 0 then begin
+			m := n + m;
+		end
+		else begin end;		  
+	end;
+	
+	
+	proc setDecryptionExponentViaXEuclid() ~
+	let 
+		var gcd:Integer;
+		var x: Integer;
+		var y: Integer
+	in begin
+		Xgcd((p-1)*(q-1), e, var gcd, var x, var y);
+		if y < 0 then begin
+			y := (p-1)*(q-1) + y;
+		end 
+		else begin end;
+		d := y;
+		
+	end;
+		
+	var i: Integer; ! Message Text
+	var k: Integer  ! Encrypted Text
+	
+in begin
+	setDecryptionExponentViaXEuclid();
+	putInput();	
+	getint(var i);
+	encrypt(i, var k);
+	putEncryptMsg();
+	putint(k);
+	puteol();
+	decrypt(k, var i);
+	putDecrypt1();
+	putint(i);
+	puteol();
+	decryptWithCRT(k, var i);
+	putDecrypt2();
+	putint(i);
+	puteol();
+end

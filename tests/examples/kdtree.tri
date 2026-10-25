@@ -1,0 +1,538 @@
+let
+
+const maxLeaveSize ~ 5;
+
+type Float ~ record
+	vorKomma : Integer,
+	nachKomma : Integer
+end;
+
+type Long  ~ record
+	hi : Integer,
+	lo : Integer
+end;
+
+
+type Vertex ~ record
+	position : array 3 of Long
+end;
+
+type KDTree ~ record
+	start : Integer,
+	stop : Integer,
+	splitAxis : Integer,
+	index : Integer
+end;
+
+
+var vertices : array 1000 of Vertex;
+var anzVert : Integer;
+var kdtree : array 511 of KDTree;
+
+
+proc inkrement(var counter : Integer) ~
+begin
+	counter := counter + 1
+end;
+
+
+!negiert eine Long Zahl
+proc negLong(var l1 : Long) ~
+begin	
+	l1.hi := (0 - 1) * l1.hi;
+	l1.lo := (0 - 1) * l1.lo
+end; !netLong
+
+func isNeg(l1 : Long) : Boolean ~
+	if l1.hi < 0 then 
+		true
+	else
+		if l1.lo < 0 then 
+			true
+		else
+			false;
+	
+
+
+func lt(l1 : Long, l2 : Long) : Boolean ~
+	if (l1.hi > l2.hi) then
+		false
+	else
+		
+		if (l1.hi < l2.hi)  then
+			true
+		else
+			if (l1.lo < l2.lo) then
+				true
+			else
+				false;
+		
+		
+func eq(l1 : Long, l2 : Long) : Boolean ~
+	if (l1.hi = l2.hi) /\ (l1.lo = l2.lo) then
+		true
+	else
+		false;
+
+
+proc magnitude(l1 : Long, var result : Long)  ~
+begin
+	result := l1;
+	if isNeg(l1) then
+		negLong(var result)
+	else;
+		
+end;
+
+
+proc addLong(l1 : Long, l2 : Long, var result : Long) ~
+let
+	var tmp : Integer;
+	var sign : Boolean
+in begin
+	if (isNeg(l2)  /\ \ isNeg(l1)) \/ ( \ isNeg(l2)  /\ isNeg(l1)) then begin
+		!sign wechsel
+		result.lo := l1.lo + l2.lo;
+		result.hi := l1.hi + l2.hi;
+			if (result.hi > 0) /\ (result.lo < 0) then 
+				begin
+					result.lo := maxint + result.lo;
+					result.hi := result.hi - 1
+				end
+				
+			else;
+			if (result.hi < 0) /\ (result.lo > 0) then 
+				begin
+					result.lo := (maxint * (0 - 1)) + result.lo;
+					result.hi := result.hi + 1
+				end
+			else;
+		end
+	else;
+
+	if (isNeg(l1) /\ isNeg(l2)) then
+		if (((0 - 1) * maxint) - l1.lo) > l2.lo then
+			!ueberlauf
+			begin
+			result.hi := l2.hi + l1.hi;
+			result.hi := result.hi - 1;
+			result.lo := maxint +  l1.lo  + l2.lo + 1
+			end
+		else
+			begin
+			result.hi := l2.hi + l1.hi;
+			result.lo := l2.lo + l1.lo
+			end
+	else;
+
+	if ( \ isNeg(l1)  /\ \ isNeg(l2)) then
+		if ( maxint - l1.lo) < l2.lo then
+			!ueberlauf
+			begin
+			result.hi := l2.hi + l1.hi;
+			result.hi := result.hi + 1;
+			result.lo :=  0 - maxint +  l1.lo  + l2.lo - 1
+			end
+		else
+			begin
+			result.hi := l2.hi + l1.hi;
+			result.lo := l2.lo + l1.lo
+			end
+	else;
+	
+end;	!addLong
+
+
+proc subLong(l1 : Long, l2 : Long, var result : Long) ~
+let
+	var negierung : Long
+in begin
+	negierung := l2;
+	!l2 negieren
+	negLong(var negierung);
+	addLong(l1, negierung, var result)
+end; !subLong
+
+proc addLongInt(long : Long, int : Integer, var result : Long) ~
+let
+	var tmp : Long
+in begin
+		
+	tmp.lo := int;
+	tmp.hi := 0;
+	addLong(long, tmp ,var result);
+
+end; !addLongInt
+
+
+proc mulLong(l1 : Long, l2 : Long, var result : Long) ~
+let
+	var neg1 : Long;
+	var neg2 : Long;
+	var betrag : Long;
+	var count : Long;
+
+	var tmp3 : Long
+in begin
+
+	neg1 := l1;
+	neg2 := l2;
+	result.lo := 0;
+	result.hi := 0;
+	negLong(var neg1);
+	negLong(var neg2);	
+	if (isNeg(l1) /\ isNeg(l2)) then
+		mulLong(neg1, neg2, var result)
+	else;
+	
+	if ( \ isNeg(l1) /\ \ isNeg(l2)) then
+		begin
+			if lt(l1, l2) then
+				begin
+					count := l1;
+					while ((count.hi > 0) \/ (count.lo > 0)) do begin
+						addLongInt(count, 0 - 1, var count);
+						addLong(result, l2, var result)
+					end
+				end
+			else
+				begin
+					count := l2;
+					while ((count.hi > 0) \/ (count.lo > 0)) do begin
+						addLongInt(count, 0 - 1, var count);
+						addLong(result, l1, var result)
+
+					end				
+				end;
+		end
+		
+	else;
+	
+	if (isNeg(l2)  /\ \ isNeg(l1)) \/ ( \ isNeg(l2)  /\ isNeg(l1)) then 
+		begin
+			if isNeg(l1) then 
+				begin
+					magnitude(l1, var betrag);
+					if lt(betrag, l2) then 
+						begin
+							count := neg1;
+							while ((count.hi > 0) \/ (count.lo > 0)) do begin
+								addLongInt(count, 0 - 1, var count);
+								addLong(result, neg2, var result)
+
+							end
+						end
+					else
+						begin
+							count := l2;
+							while ((count.hi > 0) \/ (count.lo > 0)) do begin
+								addLongInt(count, 0 - 1, var count);
+								addLong(result, l1, var result)
+
+							end
+						end
+					
+				end
+			else 
+				begin
+					magnitude(l2, var betrag);
+					if lt(betrag, l1) then 
+						begin
+							count := neg2;
+							while ((count.hi > 0) \/ (count.lo > 0)) do begin
+								addLongInt(count, 0 - 1, var count);
+								addLong(result, neg1, var result)
+
+							end
+						
+						end
+					else
+			
+						begin
+							count := l1;
+							while ((count.hi > 0) \/ (count.lo > 0)) do begin
+								addLongInt(count, 0 - 1, var count);
+								addLong(result, l2, var result)
+							end
+
+						end
+				end
+		end
+	else;
+end; !mulLong
+
+proc mulLongInt(long : Long, int : Integer, var result : Long) ~
+let
+	var tmp : Long
+in begin
+		
+	tmp.lo := int;
+	tmp.hi := 0;
+	mulLong(long, tmp ,var result);
+
+end; !mulLongInt
+
+
+
+
+!Teilt ein Long durch ein Integer und liefert ein Long als Ergebnis
+!proc divLong(d1: Long, d2: Integer, var result: Long) ~
+!begin
+!	result.neg := false;
+!	result.hi := d1.hi / d2;
+!	result.lo := d1.lo / d2;
+!	if ((d1.neg) /\ (d2 > 0)) \/ ((\d1.neg) /\ (d2 < 0)) then
+!		result.neg := true
+!	else;
+!end;	!divLong
+
+
+
+proc showLong(zahl : Long) ~
+begin
+	putint(zahl.hi);
+	put(chr(27));
+	putint(zahl.lo)
+end; !showLong
+
+
+
+
+proc pow(bias : Integer, exp : Integer, var result : Integer)~
+let
+	var count : Integer
+in begin
+	count := exp;
+	result := 1;
+	while count > 0 do begin
+		result := result * bias;
+		count := count - 1
+	end
+end;
+
+
+proc getIntFromChar(ch : Char, var result : Integer) ~ 
+begin
+	if (ord(ch) > 47) /\ (ord(ch) < 58) then
+		result := ord(ch) - 48
+	else
+		result := 0 - 1;
+end;
+
+
+
+
+proc floatToLong(float : Float, var result : Long) ~
+begin
+
+	result.lo := float.vorKomma;
+	result.hi := 0;
+	
+	mulLongInt(result, 10000, var result);
+	if float.vorKomma < 0 then
+		addLongInt(result, 0 - float.nachKomma, var result)
+	else
+		addLongInt(result, float.nachKomma, var result);
+	
+	
+	
+
+end; !floatToLong
+
+
+
+
+proc readFloat(var result : Float) ~
+let
+	var ch : Char;
+	var foo : Integer;
+	var tmp : Integer;
+	var exp : Integer;
+	var count : Integer
+in begin
+	count := 4;
+	foo := 0;
+	tmp := 0;
+	getint(var result.vorKomma);
+	
+	if result.vorKomma < maxint then
+		begin
+			while (foo >= 0) /\ (count > 0) do begin
+				count := count - 1;
+				get(var ch);
+				getIntFromChar(ch, var foo);
+				if foo >= 0 then begin
+					pow(10, count, var exp);
+					tmp := tmp + (foo * exp)
+					end
+				else;
+			end
+		end
+	else;
+	
+	result.nachKomma := tmp;
+	!float fertig lesen
+	while (foo >= 0)  do begin
+		get(var ch);
+		getIntFromChar(ch, var foo)
+	end
+	
+end; !readFloat
+
+
+proc readVertex(var vert : Vertex) ~
+let
+	var f1 : Float;
+	var count : Integer;
+	var long : Long
+	
+in begin
+	count := 0;
+	while count < 3 do begin
+		readFloat(var f1);
+		floatToLong(f1, var long);
+		vert.position[count] := long;
+		inkrement(var count)
+	end
+end;
+
+proc showVertices() ~
+let
+	var count : Integer
+in begin
+	count := 0;
+	while count < anzVert do begin
+		showLong(vertices[count].position[0]);
+		put(' ');
+		put(' ');
+		put(' ');
+		put(' ');
+		put(' ');
+		showLong(vertices[count].position[1]);
+		put(' ');
+		put(' ');
+		put(' ');
+		put(' ');
+		put(' ');
+		showLong(vertices[count].position[2]);
+		puteol();
+		inkrement(var count)
+	end;
+end;
+
+proc readOffFile() ~
+let
+	var vert : Vertex;
+	var count : Integer;
+	var long: Long
+in begin
+	getint(var anzVert);
+	while count < anzVert do begin
+		readVertex(var vert);
+		vertices[count] := vert;
+		inkrement(var count)
+	end;
+		
+end; !readOffFile
+
+
+proc tauscheVertices(pos1 : Integer, pos2 : Integer) ~
+let 
+	var tmp : Vertex
+in begin
+	tmp := vertices[pos1];
+	vertices[pos1] := vertices[pos2];
+	vertices[pos2] := tmp
+end; !TAUSCHEVERTICES()
+
+
+proc findMedian(startPos : Integer, stopPos : Integer, rang : Integer, splitAxis : Integer) ~
+let
+	var tmp : Long;
+	var pMiddle : Integer;
+	var pBig : Integer;
+	var pNotyet : Integer;
+	var median : Long
+in begin
+	pMiddle := startPos;
+	pBig := startPos;
+	pNotyet := startPos;
+	median := vertices[startPos].position[splitAxis];
+
+	
+	while pNotyet <= stopPos do begin
+	
+		if lt(vertices[pNotyet].position[splitAxis], median) then
+			begin
+				tauscheVertices(pMiddle, pNotyet);
+				tauscheVertices(pBig, pNotyet);
+				inkrement(var pMiddle);
+				inkrement(var pBig)
+			end
+		else
+			
+			if eq(median, vertices[pNotyet].position[splitAxis]) then
+				begin
+					tauscheVertices(pBig, pNotyet);
+					inkrement(var pBig)
+				end
+			else;
+		pNotyet := pNotyet + 1;
+	end;
+	
+
+	
+	if (pBig - 1) < rang then begin
+		 findMedian(pBig, stopPos, rang, splitAxis);
+		 end
+	else
+
+		if pMiddle  > rang then
+			begin
+			findMedian(startPos, pMiddle - 1, rang, splitAxis)
+			end
+		else;
+	
+	
+end; !FINDMEDIAN()
+
+
+
+
+proc buildTree(start : Integer, stop : Integer, index : Integer, splitAxis : Integer) ~
+let 	
+	var median : Integer;
+	var tree : KDTree
+	
+in begin
+	tree.start := start;
+	tree.stop := stop;
+	tree.splitAxis := splitAxis // 3;
+	median := ((stop - start) / 2 ) + start;
+	
+		
+	if (stop - start) > maxLeaveSize then
+		!SPLITTEN
+		begin
+			findMedian(start, stop, median , tree.splitAxis);		
+			!LINKES KIND
+			buildTree(start, median, 2 * index + 1, tree.splitAxis + 1);
+			!RECHTES KIND
+			buildTree(median+1, stop, 2 * index + 2, tree.splitAxis + 1);
+		end
+	else
+		tree.splitAxis := 0-1;
+	
+	!BAUM IN ARRAY SPEICHERN
+	kdtree[index] := tree;
+	
+end
+	
+	
+in begin
+
+	readOffFile();
+	!showVertices();
+	buildTree(0, anzVert - 1, 0, 0);
+	showVertices();
+end;

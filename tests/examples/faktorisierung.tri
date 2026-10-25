@@ -1,0 +1,498 @@
+let
+
+	type BigInt ~ record
+		length: Integer,
+		zahl: array 30 of Integer
+	end;
+
+	! Realisierung einer Primzahlzerlegung
+	! length = Länge des Array
+	! prim: Array der die Primzahlen speichert
+	! exp: Der Exponent der Primzahlen
+	! Beispiel für 14625=3^2 * 5^3 * 13
+	! length = 3
+	! Index		0	1	2
+	! prim		3	5	13
+	! exp		2	3	1
+	type Fz ~ record
+		length: Integer,
+		zahl: BigInt,
+		rest: BigInt,
+		prim: array 80 of Integer,
+		exp: array 80 of Integer
+	end;
+	
+	
+
+
+	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	! max
+	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	! max(a: Integer,b: Integer): Integer gibt das Maximum von a oder b zurück
+	func max(a: Integer,b: Integer): Integer ~
+		if a>b
+			then a
+			else b;
+
+	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	! min
+	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	! min(a: Integer,b: Integer): Integer gibt das Minimum von a oder b zurück
+	func min(a: Integer,b: Integer): Integer ~
+		if a>b
+			then b
+			else a;
+
+
+	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	! convertBI
+	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	! convertBI(a: Integer, var  biga: BigInt)
+	 proc convertBI(a: Integer, var  biga: BigInt)~
+		let
+			var i: Integer;
+			var acopy: Integer
+		in begin
+			acopy:=a;
+			i:=0;
+			
+			while acopy > 0 do begin
+				biga.zahl[i]:=acopy//100;
+				acopy:=acopy/100;
+				i:=i+1;
+			end;														
+			biga.length:=i;
+			
+			while i<30 do begin
+				biga.zahl[i]:=0;
+				i:=i+1;
+			end
+		end; 
+	
+	
+	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	! convertBI
+	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	! convertBI(a: Integer, var  biga: BigInt)
+	 proc convertBI2(a: Integer, b: Integer, c: Integer, d: Integer, var  biga: BigInt)~
+		let
+			var i: Integer;
+			var lange: Integer;
+			var copy: Integer
+			
+		in begin
+			lange:=0;
+			copy:=d;
+			convertBI(0,var biga);
+			
+			biga.zahl[0]:=copy//100;
+			biga.zahl[1]:=(copy/100)//100;
+			copy:=c;
+			biga.zahl[2]:=copy//100;
+			biga.zahl[3]:=(copy/100)//100;
+			copy:=b;
+			biga.zahl[4]:=copy//100;
+			biga.zahl[5]:=(copy/100)//100;
+			copy:=a;
+			biga.zahl[6]:=copy//100;
+			biga.zahl[7]:=(copy/100)//100;
+			
+			i:=7;
+			while i>0 do begin
+				if biga.zahl[i-1]>0 
+					then begin
+						biga.length:=i;
+						i:=0
+					end
+					else i:=i-1
+			end
+		end;
+ 
+	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	! zeigeBI
+	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	! zeigeBI(a: BigInt)
+	proc zeigeBI(a: BigInt)~
+		let
+			var i: Integer;
+			var kleiner: Integer
+		in begin
+			i:=a.length;
+			if i=0
+				then putint(0)
+				else;
+			kleiner:=0;
+			while i>0 do begin
+				if (i//2)=0 /\ (i < a.length)
+					then put('.')
+					else;
+				if (a.zahl[i-1]<10) /\ (i < a.length)
+					then putint(0)
+					else;
+				putint(a.zahl[i-1]);
+				
+				i:=i-1
+			end;
+			puteol()
+		end;
+
+	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	! addBI
+	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	! addBI(a: BigInt, b: BigInt, erg: BigInt)
+	proc addBI(a: BigInt, b: BigInt,var erg: BigInt)~
+		let
+			var length: Integer;
+			var i: Integer
+		in begin
+			
+			length:=max(a.length,b.length);
+			
+			i:=0;
+			convertBI(0,var erg);
+			
+			while i<length do begin
+			
+				erg.zahl[i]:=((a.zahl[i]+b.zahl[i])//100)+erg.zahl[i];	
+
+				if i<29 then
+					erg.zahl[i+1]:=(a.zahl[i]+b.zahl[i])/100
+					else;	
+				i:=i+1
+			end;
+			if erg.zahl[i]>0 
+				then erg.length:=i+1
+				else erg.length:=i;
+			
+		end;
+
+	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	! minBI
+	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	! minBI(a: BigInt, b: BigInt, erg: BigInt)
+	proc minBI(a: BigInt, b: BigInt,var erg: BigInt)~
+		let
+			var length: Integer;
+			var i: Integer;
+			var uber: Integer
+		in begin
+			convertBI(0,var erg);
+			uber:=0;
+			
+			i:=0;
+			
+			if a.length < b.length 
+				then
+				else begin
+					while i<a.length do begin 
+				
+						if a.zahl[i] < (b.zahl[i]+uber) 
+							then begin
+								erg.zahl[i]:=100-b.zahl[i]-uber+a.zahl[i];
+								uber:=1;
+							end
+							else begin	
+								erg.zahl[i]:=a.zahl[i]-uber-b.zahl[i];
+								uber:=0;
+							end;
+						i:=i+1
+					end;
+					if uber=1
+						then convertBI(0, var erg)
+						else;
+						
+					i:=a.length;
+					while i>0 do begin
+						if erg.zahl[i-1]>0
+							then begin
+								erg.length:=i;
+								i:=0
+							end
+							else i:=i-1
+					end
+				end
+		end;
+
+
+
+	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	! copyBI
+	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	! copyBI(a: BigInt, b: BigInt, erg: BigInt)
+	proc copyBI(a: BigInt, var erg: BigInt)~
+		let
+			var i:Integer
+		in begin
+			i:=0;
+			erg.length:=a.length;
+			
+			while i<a.length do begin
+				erg.zahl[i]:=a.zahl[i];
+				i:=i+1
+			end;
+			
+		end;
+			
+
+	
+	
+	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	! modBI
+	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	! modBI(a: BigInt, mod: Integer, var erg: Integer) berechnet aus einem
+	proc modBI(a: BigInt, mod: Integer, var erg: Integer)~
+		let
+			var i: Integer;
+			var faktor: Integer;
+			var wert: Integer;
+			var j: Integer
+		in begin
+			i:=0;
+			erg:=0;
+			faktor:=1;
+		
+			while i<a.length do begin
+				j:=0;
+				faktor:=1;
+				while j<i do begin
+					faktor:=(faktor*100)//mod;
+					
+					j:=j+1;
+				end;
+				wert:=(a.zahl[i]*faktor)//mod;
+				erg:=(wert + erg)//mod;
+				i:=i+1
+			end
+		end;
+			
+	
+	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	! divBI
+	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	! divBI(a: BigInt, div: Integer, var erg: BigInt) berechnet aus einem
+	proc divBI(a: BigInt, div: Integer, var erg: BigInt)~
+		let
+			var i: Integer;
+			var divisor: Integer;
+			var rest: Integer;
+			var wert: Integer;
+			var j: Integer
+		in begin
+			i:=a.length;
+			convertBI(0,var erg);
+			divisor:=0;
+			while i>0 do begin
+				divisor:=(divisor*100)+a.zahl[i-1];
+				erg.zahl[i-1]:=divisor/div;
+				divisor:=divisor//div;
+				i:=i-1
+			end;
+			i:=a.length;
+			while i>0 do begin
+				if erg.zahl[i-1]>0
+					then begin
+						erg.length:=i;
+						i:=0
+					end
+					else	i:=i-1
+			end	
+		end;
+	
+	
+	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	! istPrim
+	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	!nach istprim(p:int,prim:int) prim=1	, falls p eine Primzahl ist
+	!nach istPrim(p:int,prim:int) prim=0	, falls p keine Primzahl ist
+	proc istPrim(x: Integer, var prim: Integer) ~
+	let
+		var i: Integer
+	in begin
+		i:=2;
+		prim:=1;
+		
+		while (i<x) /\ (prim=1) do begin
+			if x//i = 0
+				then prim:=0
+				else i:=i+1
+		end
+	end;
+
+	
+	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	! gibFZ
+	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	! gibFZ(p:BigInt,faktor:Fz) zerlegt den Integer p in seine Primfaktoren und
+	! speichert diese Zerlegung in Fz ab
+	
+	proc gibFZ(p: BigInt,var faktor:Fz)~
+		let
+			var zahl: Integer;
+			var prim: Integer;
+			var index: Integer;
+			var pcopy: BigInt;
+			var temp: BigInt;
+			var rest: Integer
+		
+		in begin
+			zahl:=2;
+			index:=0;
+			copyBI(p,var pcopy);
+			convertBI(0,var temp);
+			copyBI(p,var faktor.zahl);
+			
+			while ((pcopy.zahl[0] > 1) \/ (pcopy.length > 1)) /\ (zahl < 200)  do begin
+				
+				istPrim(zahl,var prim);
+				
+				if prim=1 
+					then begin
+						
+						modBI(pcopy,zahl,var rest);	
+						if rest = 0
+							then begin
+								faktor.prim[index]:=zahl;
+								faktor.exp[index]:=0;
+								
+						
+								while rest = 0 do begin
+									faktor.exp[index]:=faktor.exp[index]+1;
+									divBI(pcopy,zahl,var temp);
+									copyBI(temp,var pcopy);
+									modBI(pcopy,zahl,var rest);
+								end;
+								index:=index+1
+							end
+							else	zahl:=zahl+1
+					end
+					else zahl:=zahl+1
+			end;
+			faktor.length:=index;
+			if zahl=200
+				then copyBI(pcopy,var faktor.rest)
+				else convertBI(0,var faktor.rest)
+		end;
+	
+	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	! zeigeFZ
+	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	! zeigeFZ(faktor:Fz) zeigt die Faktorzelegung an prim*10000+exp
+	proc zeigeFZ(faktor: Fz) ~
+		let
+			var i: Integer;
+			var j: Integer;
+			var t: Integer;
+			var leer: Char
+		in begin
+			i:=0;
+			t:=faktor.length;
+			leer:=' ';
+			put('F');
+			put('a');
+			put('k');
+			put('t');
+			put('o');
+			put('r');
+			put('i');
+			put('s');
+			put('i');
+			put('e');
+			put('r');
+			put('u');
+			put('n');
+			put('g');
+			put(':');
+			puteol();
+			put('p');
+			put(leer);
+			put(leer);
+			put(leer);
+			put('e');
+			puteol();
+			while i<t do begin
+				putint(faktor.prim[i]);
+				put(leer);
+				put(leer);
+				put(leer);
+				putint(faktor.exp[i]);
+				puteol();
+				i:=i+1
+			end;
+			puteol();
+			puteol();
+			put('R');
+			put('e');
+			put('s');
+			put('t');
+			put('f');
+			put('a');
+			put('k');
+			put('t');
+			put('o');
+			put('r');
+			put(':');
+			puteol();
+			zeigeBI(faktor.rest);
+			puteol();
+			put('E');
+			put('i');
+			put('n');
+			put('g');
+			put('a');
+			put('b');
+			put('e');
+			put(':');
+			puteol();
+			zeigeBI(faktor.zahl);
+			puteol();
+			puteol();
+		end;
+	
+	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	! Variablen
+	!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+	var i: Integer;		!Hilfsvariable
+	var prim: Integer;	!Hilfsvariable
+	
+	var go: BigInt;
+
+	var biga: BigInt;
+	var a: Integer;
+	var b: Integer;
+	var c: Integer;
+	var d: Integer;
+	var faktor: Fz	
+	
+in begin
+	putint(1);
+	put('.');
+	put(':');
+	put(' ');
+	getint(var a);
+	putint(2);
+	put('.');
+	put(':');
+	put(' ');
+	getint(var b);
+	putint(3);
+	put('.');
+	put(':');
+	put(' ');
+	getint(var c);
+	putint(4);
+	put('.');
+	put(':');
+	put(' ');
+	getint(var d);
+	puteol();
+	puteol();
+	convertBI2(a,b,c,d,var biga);
+	gibFZ(biga,var faktor);
+	zeigeFZ(faktor);
+end
+	
+	
+	
+	
+	

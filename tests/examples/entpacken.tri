@@ -1,0 +1,191 @@
+let
+	var code : array 16 of Integer;
+	
+	var bits : array 8 of Boolean;
+	var bitP : Integer;
+	var iseof : Boolean;
+	var i : Integer;
+	var tmpbool : Boolean;
+	var tmpchar : Char;
+	var tmpcode : array 16 of Integer;
+
+	! Realisiert das bitweise Einlesen von der Eingabe.
+	! Hierzu wird immer ein Char gelesen, dieses als Integer dargestellt
+	! und schließlich in die Bitdarstellung übeführt und im Boolean-Array Bits abgelegt.
+	! Nacheinander wird nun ein Bit gelesen, bis der Pointer nicht mehr im Bits-Array steht.
+	! Nun wird das nächste Char von der Eingabe gelesen.
+	! Wird das Dateinde erreicht wird das mittels iseof markiert.
+	proc getBit(var b : Boolean) ~
+	let
+		var tmpchar : Char;
+		var tmpint : Integer;
+		var j : Integer
+	in begin
+!put('g');
+		if bitP = 8 then
+		begin
+			get(var tmpchar);
+			tmpint := ord(tmpchar);
+			
+			if tmpint = (0 - 1) then iseof := true
+			else begin
+				j := 0;
+				while j < 8
+				do begin
+					if tmpint // 2 = 1 then
+					begin
+						bits[7 - j] := true;
+						tmpint := tmpint - 1;
+					end else
+						bits[7 - j] := false;
+					tmpint := tmpint / 8;
+					j := j + 1;
+				end;
+			end;
+			bitP := 0;
+		end
+		else ;
+		
+		b := bits[bitP];
+		bitP := bitP + 1
+	end;
+	
+	! Realisiert das Schreiben von 4-Bit-Wörtern in die Ausgabe.
+	! Wurden 2 4-Bit-Wörter geschrieben, wird beides als 8-Bit-Char ausgegeben.
+	var writeHigh : Boolean;
+	var writeByte : Integer;
+	proc write(x : Integer) ~
+	begin
+!put('w');
+		if writeHigh = true then
+		begin
+			writeByte := x * 16;
+			writeHigh := false;
+		end
+		else begin
+			writeByte := writeByte + x;
+			put(chr(writeByte));
+			writeByte := 0;
+			writeHigh := true;
+		end;
+	end
+	
+in begin
+	! Initalisierungen
+	bitP := 8;
+	writeHigh := true;
+	writeByte := 0;
+	
+	! Zunächst die Codierung einlesen
+	i := 0;
+	while i < 16
+	do begin
+		get(var tmpchar);
+		tmpcode[i] := ord(tmpchar);
+!putint(tmpcode[i]);
+!put(',');
+		i := i + 1;
+	end;
+	
+	! Nun Code richtig rum sortieren
+	i := 0;
+	while i < 16
+	do begin
+		code[tmpcode[i]] := i;
+		i := i + 1
+	end;
+
+	
+	getBit(var tmpbool);
+
+	while \iseof
+	do begin
+!put('a');
+
+		! Fallunterscheidungen für Codierung
+		
+		if tmpbool = true then !1
+		begin
+			getBit(var tmpbool);
+			if tmpbool = true then !11
+			begin
+				getBit(var tmpbool);
+				if tmpbool = true then !111
+				begin
+					getBit(var tmpbool);
+					if tmpbool = true then !1111
+					begin
+						getBit(var tmpbool);
+						if tmpbool = true then !11111
+						begin
+							getBit(var tmpbool);
+							if tmpbool = true then !111111
+							begin
+								getBit(var tmpbool);
+								if tmpbool = true then !1111111
+									i := 0
+								else !1111110
+									i := 1
+							end else !111110
+								i := 2
+						end else !11110
+							i := 7
+					end else !1110
+						i := 12
+				end else !110
+				begin
+					getBit(var tmpbool);
+					if tmpbool = true then !1101
+						i := 10
+					else !1100
+						i := 11
+				end
+			end else !10
+			begin
+				getBit(var tmpbool);
+				if tmpbool = true then !101
+				begin
+					getBit(var tmpbool);
+					if tmpbool = true then !1011
+					begin
+						getBit(var tmpbool);
+						if tmpbool = true then !10111
+							i := 5
+						else !10110
+							i := 6
+					end else !1010
+						i := 9
+				end else !100
+					i := 14
+			end
+		end else !0
+		begin
+			getBit(var tmpbool);
+			if tmpbool = true then !01
+			begin
+				getBit(var tmpbool);
+				if tmpbool = true then !010
+					i := 13
+				else !011
+				begin
+					getBit(var tmpbool);
+					if tmpbool = true then !0110
+						i := 8
+					else !0111
+					begin
+						getBit(var tmpbool);
+						if tmpbool = true then !01110
+							i := 4
+						else !01111
+							i := 3
+					end
+
+				end
+			end else !00
+				i := 15
+		end;
+		
+		write(code[i]);
+		getBit(var tmpbool);
+	end
+end

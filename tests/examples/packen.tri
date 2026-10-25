@@ -1,0 +1,306 @@
+let
+	! Array, in dem der aktuelle Eingabeblock gespeichert wird
+	var input : array 245 of Char; 
+	! Gibt den Füllstand des Eingabeblocks an. Besonders wichtig für den letzten Block, der das Array nicht vollständig ausfüllt.
+	var iSize : Integer;
+	! Eine Zeigervariable, die auf die aktuelle Position in input zeigt.
+	var iP : Integer;
+	
+	! Diverse temporäre Variablen
+	var tmpchar : Char;
+	var tmpint : Integer;
+	var i : Integer;
+	var j : Integer;
+	
+	! Code wird benutzt um die Anzahl der Codewörter zu zählen.
+	! Mittels Vertauschung in sortiert wird die Abbildung von Huffmann-Code auf Code-Wort erzeugt
+	! und schließlich wird mittels sortiert ein Code-Wort auf den Huffmann-Code abgebildet.
+	var code : array 16 of Integer;
+	var sortiert : array 16 of Integer;
+	
+	! Liefert die unteren 4 Bits einer Integerzahl als Integer-Wert
+	! z.B. 37 wird binär zu 0010.0101 unc low liefert dann integer(0101) = 5
+	proc low(c : Integer, var l : Integer) ~
+		l := c // 16;
+		
+	! Analog zu low, nur dass die oberen 4 Bit als Integer-Wert zurück gegeben werden
+	proc high(c : Integer, var h : Integer) ~
+	begin
+		h := c;
+		i := 0;
+		while i < 4
+		do begin
+			if (h // 2) = 1 then
+				h := h - 1
+			else ;
+			h := h / 2;
+			i := i + 1;
+		end;
+	end;
+	
+	
+	! Um die Häufigkeiten der Code-Wörter zu sortieren benutze ich Bubble-Sort.
+	! Dies ist die Tauschefunktion, die in dem Array die Werte der Position x und x + 1 vertauscht.
+	proc tausche(var a : array 16 of Integer, x : Integer) ~
+	let
+		var t : Integer
+	in begin
+		t := a[x];
+		a[x] := a[x + 1];
+		a[x + 1] := t;
+	end;
+	
+	
+	! Es ist ein Bitweises schreiben nötig. Um dies zu realisieren müssen solange Bits
+	! zwischengespeichert werden, bis 8 Bits geschrieben wurden. Diese können dann
+	! mit put auf die Ausgabe gelegt werde.
+	
+	! Speichert die bisher geschriebenen Bits
+	var bitBuffer : Integer;
+	! Gibt an, wie viel Bits schon geschrieben wurden
+	var bitBufP : Integer;
+	
+	! Sammelt die zu schreibenden Bits in bitBuffer (mittels Shift-Operationen)
+	! und schreibt schließlich das char (wenn 8 Bits gesammelt)
+	proc putBit(b : Boolean) ~
+	begin
+		! Um eine Stelle nach links shiften
+		bitBuffer := bitBuffer * 2;
+
+		! Mit einer 1 rechts auffüllen, falls true geschrieben werden soll
+		if b = true then
+			bitBuffer := bitBuffer + 1
+		else ;
+		
+		! Füllstand im BitBuffer anpassen
+		bitBufP := bitBufP + 1;
+		
+		! Wenn der BitBuffer voll ist, mittels put Zeichen schreiben und Buffer zurücksetzen
+		if bitBufP = 8 then
+		begin
+			put(chr(bitBuffer));
+			bitBufP := 0;
+			bitBuffer := 0;
+		end else;
+	end;
+	
+	! BitBuffer flushen, also char schreiben, auch wenn noch nicht 8 Bits gesammelt sind.
+	proc flushbitBuffer() ~
+	begin
+		while bitBufP < 8 do
+			bitBuffer := bitBuffer * 2;
+		put(chr(bitBuffer));
+		bitBufP := 0;
+		bitBuffer := 0;
+	end;
+	
+	
+	! hcode ist die Darstellung eines einzelnen Huffmann-Code-Worts
+	type hcode ~ record
+		! Gibt von links nach rechts die Bits an
+		bits : array 7 of Boolean,
+		! Gibt an, wie viele Bits das H-Code-Wort hat.
+		valid : Integer
+	end;
+	
+	! Alle 16 möglichen H-Code-Wörter werden in diesem Array gespeichert.
+	var huffmann : array 16 of hcode;
+	
+	
+	
+	! HuffmannCode mit dem Index hc in Ausgabe (mittels BitBuffer) schreiben
+	proc writeBits(hc : Integer) ~
+	let
+		var k : Integer
+	in begin
+		k := 0;
+		! So lange Bit schreiben, bis alle gültigen Bits eines HF-Code-Worts geschrieben wurden
+		while k < huffmann[hc].valid
+		do begin
+			putBit(huffmann[hc].bits[k]);
+			k := k + 1;
+		end;
+	end;
+	
+	! Gibt an, ob es sich um den ersten gelesenen Block handelt oder nicht. Wird nach dem ersten Durchlauf auf true gesetzt.
+	var firstRun : Boolean;
+	
+	! Die Ermittlte Zuordnung Code-Wort -> Huffmann-Code wird in die Ausgabe geschrieben.
+	proc writeCodierung() ~
+	begin
+		i := 0;
+		while i < 16
+		do begin
+			put(chr(code[i]));
+			i := i + 1;
+		end
+	end;
+
+	var testeof : Boolean
+
+in begin
+	! Initalisierungen
+	iSize := 0;
+	iP := 0;
+	
+	bitBuffer := 0;
+	bitBufP := 0;
+	
+	firstRun := false;
+	
+	! Array sortiert vorbereiten, um Permutation zu erreichen
+	i := 0;
+	while i < 16
+	do begin
+		sortiert[i] := i;
+		i := i + 1;
+	end;
+	
+	! Darstellung des verwendetetn statischen Huffmann-Code
+	! Aus Beispieldokumenten habe ich folgende Häufigkeiten erhalten:
+	! 0: 128, 1: 62, 2: 236, 3: 153, 4: 214, 5: 144, 6: 372, 7: 195, 8: 27, 9: 54, 10: 33, 11: 19, 12: 95, 13: 63, 14: 77, 15: 88
+	! Aus diesen Werte habe ich diese Codierung erzeugt (nach Huffmann)
+	! In diesem Array steht die Codierung nach Häufigkeit der Code-Wörter aufsteigend sortiert.
+	huffmann := [
+		{ bits ~ [true,true,true,true,true,true,true], valid ~ 7},	! CodeWort für 11
+		{ bits ~ [true,true,true,true,true,true,false], valid ~ 7},	! CodeWort für 8
+		{ bits ~ [true,true,true,true,true,false,false], valid ~ 6},	! CodeWort für 10
+		{ bits ~ [false,true,true,true,true,false,false], valid ~ 5},	! CodeWort für 9
+		{ bits ~ [false,true,true,true,false,false,false], valid ~ 5},	! CodeWort für 1
+		{ bits ~ [true,false,true,true,true,false,false], valid ~ 5},	! CodeWort für 13
+		{ bits ~ [true,false,true,true,false,false,false], valid ~ 5},	! CodeWort für 14
+		{ bits ~ [true,true,true,true,false,false,false], valid ~ 5},	! CodeWort für 15
+		{ bits ~ [false,true,true,false,false,false,false], valid ~ 4},	! CodeWort für 12
+		{ bits ~ [true,false,true,false,false,false,false], valid ~ 4},	! CodeWort für 0
+		{ bits ~ [true,true,false,true,false,false,false], valid ~ 4},	! CodeWort für 5
+		{ bits ~ [true,true,false,false,false,false,false], valid ~ 4},	! CodeWort für 3
+		{ bits ~ [true,true,true,false,false,false,false], valid ~ 4},	! CodeWort für 7
+		{ bits ~ [false,true,false,false,false,false,false], valid ~ 3},! CodeWort für 4
+		{ bits ~ [true,false,false,false,false,false,false], valid ~ 3},! CodeWort für 2
+		{ bits ~ [false,false,true,false,false,false,false], valid ~ 2} ! CodeWort für 6
+		];
+
+	
+	! Solange weitermachen, bis Dateiende erreicht wurde
+	eof(var testeof);
+	while \testeof
+	do begin
+		! Der Eingabeblock wird gelesen und in input gespeichert
+		iP := 0;
+		eof(var testeof);
+		while (iP < 245) /\ \testeof
+		do begin
+			get(var input[iP]);
+			iP := iP + 1;
+			eof(var testeof);
+		end;
+
+		! Füllmenge des Buffers setzen
+		iSize := iP;
+
+		! Dieser Teil wird nur beim ersten Block ausgeführt
+		! Es wird die Häufigkeit der einzelnen Code-Wörter gezählt und aufsteigend sortiert
+		! Es entsteht dadurch eine Zuordnung von aktuellem Code-Wort zu dem obigen Huffman-Code
+		! Ich versuche so einen optimalen Huffman-Code zu approximieren.
+		if \firstRun then
+		begin
+			! Codeanzahl zählen und in code speichern
+			iP := 0;
+			tmpint := 0;
+			while iP < iSize
+			do begin
+				low(ord(input[iP]),var tmpint);
+				code[tmpint] := code[tmpint] + 1;
+				high(ord(input[iP]),var tmpint);
+				code[tmpint] := code[tmpint] + 1;
+				iP := iP + 1;
+			end;
+
+			! Codeanzahlen ausgeben
+!			i := 0;
+!			while i < 16
+!			do begin
+!				puteol();
+!				putint(i);
+!				put(':');
+!				putint(code[i]);
+!				i := i + 1;
+!			end;
+!			puteol();
+		
+			! Code-Array sortieren mit Bubblesort
+			i := 0;
+			while i < 16
+			do begin
+				j := 0;
+				while j < 15
+				do begin
+					if code[j] > code[j+1] then
+					begin
+						tausche(var code, j);
+						tausche(var sortiert, j);
+					end
+						else;
+					j := j + 1;
+				end;
+				i := i + 1;
+			end;
+
+
+			! Abbildung: Code Wort in Quelltext -> Huffman-Codewort erstellen (Abbildungsrichtung von sortiert wird umgedreht)
+			i := 0;
+			while i < 16
+			do begin
+				code[sortiert[i]] := i;
+				i := i + 1
+			end;
+
+			! Sortierten Code ausgeben (z.B. für Debugging)
+!			i := 0;
+!			while i < 16
+!			do begin
+!				puteol();
+!				put('c');
+!				putint(i);
+!				put(':');
+!				putint(code[i]);
+!				i := i + 1
+!			end;
+
+			writeCodierung();
+			
+			! Den vorangegangenen Teil für die nächsten Blöcke nicht mehr ausführen
+			firstRun := true;
+		end else ;
+
+		! Ausgabe schreiben, indem für jedes Char im  input-Array zunächst
+		! high ermittelt wird und mittels writeBits der zugehörige H-Code geschrieben wird
+		! und das gleiche für low getan wird.
+		iP := 0;
+		while iP < iSize
+		do begin
+			high(ord(input[iP]), var tmpint);
+! Debugging-Ausgaben
+!puteol();
+!put('h');
+!putint(ord(input[iP]));
+!put(',');
+!putint(tmpint);
+!put(',');
+!putint(code[tmpint]);
+			writeBits(code[tmpint]);
+			low(ord(input[iP]), var tmpint);
+! Debugging-Ausgaben
+!put(',');
+!put('l');
+!putint(ord(input[iP]));
+!put(',');
+!putint(tmpint);
+!put(',');
+!putint(code[tmpint]);
+			writeBits(code[tmpint]);
+			iP := iP + 1;
+		end;
+		eof(var testeof);
+	end;
+end;

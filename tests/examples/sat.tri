@@ -1,0 +1,161 @@
+let
+	proc inc(var x : Integer) ~
+		x:=x+1;
+		
+	func abs(a : Integer) : Integer ~
+		if a<0 then 0-a else a;
+		
+	type Clause ~
+		record
+			length : Integer,
+			content : array 4 of Integer
+		end;
+	
+	type CList ~
+		record
+			length : Integer,
+			content : array 550 of Clause
+		end;
+	
+	type asgn ~ array 105 of Char; ! can be _T_rue, _F_alse, _U_ndefined or X=free
+	
+	var numvars : Integer;
+	var A : asgn;
+	var P : CList;
+	var state : Char; !can be _R_unning, _D_one or _C_onflict
+	
+	proc printit (Asn: asgn) ~
+	let var i:Integer
+	in begin
+		i:=1;
+		while i<=numvars do
+		begin
+			putint(i);put('=');put(Asn[i]);put(' ');puteol();
+			inc(var i)
+		end
+	end;
+	
+	proc initA() ~
+	let var i : Integer
+	in begin
+		getint(var numvars);
+		while i<105 do
+		begin
+			if(i<=numvars) then
+				A[i]:='X'
+			else
+				A[i]:='U';
+			inc(var i)
+		end
+	end;
+
+	! reads one clause
+	proc readclause() ~
+	let var literal : Integer
+	in begin
+		getint(var literal);
+		while \ (literal = 0) do
+			begin
+				P.content[P.length].content[P.content[P.length].length] := literal; ! buffer overflow here !!!
+				inc(var P.content[P.length].length);
+				getint(var literal)
+			end
+	end;
+
+	! boolean clause propagation, finds implied values of variables or conflicts
+	proc bcpi(var A : asgn) ~
+	let var i : Integer; var j:Integer; var sat : Boolean;
+		var ind: Integer;var aind:Integer;
+		var cl : Clause; var numfree : Integer
+	in begin
+		i:=0;
+		while (state='R') /\ (i<P.length) do
+		begin
+			j:=0; sat:=false;
+			cl := P.content[i];
+			numfree:=0;
+			while j < cl.length do
+			begin
+				ind := cl.content[j];
+				aind := abs(ind);
+				if A[aind]='X' then inc(var numfree) else;
+				if ((ind<0) /\ (A[aind]='F')) \/ ((ind>0) /\ (A[aind]='T')) then
+					sat:=true
+					else;
+				inc(var j)
+			end;
+			if numfree=1 /\ (\sat) then begin
+				!putint(6666);put(' ');putint(i);puteol();
+				j:=0;
+				while j < cl.length do
+				begin
+					ind := cl.content[j];
+					aind := abs(ind);
+					if (A[aind]='X') /\ (ind>0) then A[aind]:='T' else;
+					if (A[aind]='X') /\ (ind<0) then A[aind]:='F' else;
+					inc(var j)
+				end;
+			end else;
+			if (numfree=0) /\ (\sat) then
+			begin
+				!putint(7777); put(' ');putint(i);puteol();
+				state:='C' end 
+			else;
+			inc(var i)
+		end
+	end;
+
+	! lets set some variables to some values and look what happens ;)
+	! backtrack if conflicts arise
+	proc deci(var A :asgn, i : Integer) ~
+	let proc decir(var A : asgn, i : Integer) ~
+		let var pa : asgn
+		in begin
+			!putint(8800); putint(i); puteol();
+			if i=(numvars+1) then begin 
+			put('s');put('o');put('l');put('u');put('t');put('i');put('o');put('n');put(':'); puteol();
+			printit(A); state:='D' end
+			else begin
+				!putint(8810); putint(i); puteol();
+				pa := A;
+				state:='R';
+				pa[i]:='T'; bcpi(var pa);
+				if state='R' then deci(var pa,i+1) else;
+				if \(state='D') then begin
+					!putint(8820); putint(i); puteol();
+					pa := A;
+					state:='R';
+					pa[i]:='F'; bcpi(var pa);
+					if state='R' then deci(var pa,i+1) else
+					end
+				else
+			end
+		end
+	in begin
+		put('T');put('e');put('s');put('t');put('i');put('n');put('g'); put(' '); putint(i); puteol();
+		if \(state='D') then
+			if (\(A[i]='X')) /\ (i<=numvars) then deci(var A,i+1)
+			else decir(var A,i)
+		else;
+	end;
+
+	proc solveit () ~
+	begin 
+		state:='R';
+		deci(var A,1);
+	end;
+
+	var testeof : Boolean
+in
+	begin
+		initA();
+		eof(var testeof);
+		while \ testeof do
+		begin
+			readclause();
+			inc(var P.length);
+			eof(var testeof);
+		end;
+		putint(P.length);put(' ');put('c');put('l');put('a');put('u');put('s');put('e');put('s');puteol();
+		solveit();
+	end

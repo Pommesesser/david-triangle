@@ -1,0 +1,210 @@
+!
+! Implementation of a simple calculator in Triangle by
+! - Alexander Constantin constant@rbg.informatik.tu-darmstadt.de
+! - Nico Rottstädt rottstae@rbg.informatik.tu-darmstadt.de
+!
+! This is an excercise from A. Koch's Lecture "Optimierende Compiler",
+! summer term 2006 at TU Darmstadt / Germany, course homepage (German):
+! http://www.esa.informatik.tu-darmstadt.de/twiki/bin/view/Lectures/OptimierendeCompilerDe.html
+!
+
+let
+
+	! --------------
+	! String support
+	! --------------
+
+	type String ~ record 
+		Str: array 80 of Char
+	end;
+
+	! Fill a string
+	proc readstring(var strg: String) ~
+		let
+			var chint: Char;
+			var length: Integer;
+			var testeol : Boolean;
+			var testeof : Boolean
+		in begin
+				length := 0;
+				eol(var testeol);
+				eof(var testeof);
+				while \ testeol /\ \ testeof do begin
+					get(var chint);
+					strg.Str[length] := chint;
+					length := length + 1;
+					eol(var testeol);
+					eof(var testeof);
+				end;
+				
+				strg.Str[length-2] := '\';
+		end;
+
+	! Print a string
+	proc putstring(var strg: String) ~
+		let
+			var i: Integer
+		in begin
+				i := 0;
+				while \ (strg.Str[i] = '\') do begin
+					put(strg.Str[i]);
+					i := i + 1;
+				end;
+		end;
+		
+	! Eliminate spaces in a string
+	proc removeSpacesFromString(var strg: String) ~
+		let
+			var counter : Integer;
+			var tmpArray : array 80 of Char;
+			var tmpCounter : Integer
+		in begin
+			counter := 0;
+			tmpCounter := 0;
+			
+			while (strg.Str[counter] \= '\') do begin
+				if (strg.Str[counter] \= ' ') then
+					begin
+						tmpArray[tmpCounter] := strg.Str[counter];
+						tmpCounter := tmpCounter + 1;
+					end
+				else;
+				counter := counter + 1;
+			end;
+			tmpArray[tmpCounter] := strg.Str[counter]; ! copy \      
+			strg.Str := tmpArray
+		end;
+		
+	! ---------------
+	! Integer support
+	! ---------------
+
+	func isDigit(c:Char) : Boolean ~
+		(c = '0') \/ (c = '1') \/ (c = '2') \/ (c = '3') \/ (c = '4') \/ 
+		(c = '5') \/ (c = '6') \/ (c = '7') \/ (c = '8') \/ (c = '9');
+		
+	! ord('0') = 48
+	! ...
+	! ord('9') = 57
+	func convertCharToInt(c:Char) : Integer ~
+		ord(c) - 48;
+
+	! maxInt = 32767
+	! bei char arrays die einen geoesseren Wert darstellen kommt es zum overflow
+	proc readInteger(term: array 80 of Char, var i: Integer, var result: Integer) ~
+		let
+			var isNegative : Boolean
+		in begin
+			result := 0;
+
+			isNegative := false;
+			if (term[i] = '-') then
+				begin
+					isNegative := true;
+					i := i + 1;
+				end
+			else;
+			
+			while (isDigit(term[i])) do begin
+				result := result * 10;
+				result := result + convertCharToInt(term[i]);
+				i := i + 1;
+			end;
+
+			if (isNegative) then
+				result := 0 - result
+			else
+				
+		end;
+
+	! ----------------
+	! Calculator stuff
+	! ----------------
+
+	! allowed two digit operations: +, -, *, /
+	func doOperation(op1 : Integer, op2 : Integer, operator : Char) : Integer ~
+		if operator = '+' then
+			op1 + op2
+		else if operator = '-' then
+			op1 - op2
+		else if operator = '*' then
+			op1 * op2
+		else if operator = '/' then
+			op1 / op2
+		else
+			0;
+
+	! rekursives Parsen
+	proc parse(term: array 80 of Char, var i: Integer, var result: Integer) ~
+		let
+			var operand1: Integer;
+			var operand2: Integer;
+			var operator: Char
+		in begin
+			if (term[i] = '(') then
+				begin
+
+					i := i + 1;
+					parse(term, var i, var operand1);
+										
+					operator := term[i];
+					
+					i := i + 1;
+					parse(term, var i, var operand2);
+					
+					if (term[i] \= ')') then
+						begin
+							put('E');
+							put('R');
+							put('R');
+							put('O');
+							put('R');
+							puteol()
+						end
+					else
+						! do operation here
+						i := i + 1;
+						result := doOperation(operand1, operand2, operator);
+				end
+			else
+				begin
+					readInteger(term, var i, var result)
+				end;
+		end;
+
+
+	! Main Program - "Calculator"
+	! ---------------------------
+
+	var term : String;
+	var result : Integer;
+	var i : Integer
+	
+in begin
+		i := 0;
+		
+		! Prompt ausgeben
+		put('T');	
+		put('e');	
+		put('r');	
+		put('m');	
+		put(':');	
+		put(' ');
+		
+		! Einlesen des Terms
+		readstring(var term);
+		removeSpacesFromString(var term);
+
+		! start parsing
+		parse(term.Str, var i, var result);
+		
+		! output result
+		puteol();
+		putstring(var term);
+		put(' ');
+		put('=');		
+		put(' ');
+		putint(result);
+
+		puteol()
+end

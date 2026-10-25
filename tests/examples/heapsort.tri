@@ -1,0 +1,263 @@
+! Dieses Programm implementiert einen Heapsort-Algorithmus.
+! Dieser wird auch einem Array ausgeführt, welches wegen 
+! mangelnder Ressourcen nur 16 breit sein kann.
+! Diese Implementierung des sortieralgorithmus ist so geschrieben,
+! dass diese mit minimalen Änderungen jegliche "Objekte" sortieren 
+! kann (Im beispiel wird ein String Nach dem ersten Buchstaben 
+! sortiert).
+! Es müssen folgende Felder und Methoden angepaßt werden:
+!
+! Arrayfeld des SortObj-type: Anstatt String den gewünschten Typ
+!							  einsetzen
+! Funktion getCompValue: 	  muß einen Integer-Wert zurückgeben, anhand
+!						 	  verglichen werden kann
+! Prozedur exchange:		  Temp-Varible "t" muß den entsprechenden
+!							  Typ bekommen
+!
+! Der Sortiert-Algorithmus wird über die Methode sort() angestoßen.
+! Ihr muss eine Variable vom Typ SortObj übergeben werden, in welcher
+! die zu sortierenden Elemente abgelegt sind.
+!
+!
+! Das beispielprogramm Arbeitet mit Strings.
+! Zu beginn werden bis zu 16 Strings abgefragt, welche anschliessend
+! Sortiert und ausgegeben werden. Die Eingabe kann durch wiederholtes
+! "Eingabe" drücken abgebrochen werden.
+
+let
+	! Zu Sortierender Typ
+	type String ~ record
+		c: array 12 of Char,
+		length: Integer
+	end;
+
+	! Zu Sortierendes Array
+	! (enthält zu sortierende Typen)
+	type SortObj ~ record
+		c: array 16 of String,
+		length: Integer
+	end;
+	
+	! Gobale Variable, auf der Sortiert wird
+	var sortObj: SortObj;
+	
+	! Gibt einen Vergleichswert zurück, anhand sortiert wird
+	!
+	! i: Position der zu Vergleichenden Objektes
+	! return Vergleichswert
+	func getCompValue(i: Integer): Integer~
+		ord(sortObj.c[i].c[0]);
+	
+	! Tauscht zwei Werte innerhalb des zu Sortierenden Arrays
+	!
+	! i: erster Wert
+	! j: zweiter Wert-> wird mit erstem wert getauscht
+	proc exchange(i: Integer, j: Integer) ~
+	let
+		var t: String
+	in begin
+		t := sortObj.c[i];
+		sortObj.c[i] := sortObj.c[j];
+		sortObj.c[j] := t;
+	end;
+	
+	! Korrigiert die Groesse des zu sortierenden Arrays.
+	! Damit der Heap-Algorithmus richtig funktioniert,
+	! muss die Größe einem vollständigem Baum entsprechen:
+	! Groesse: 2^n+1
+	!
+	! sO: zu korrigierendes Sortier-Array
+	proc setCorrectSize(var sO: SortObj) ~
+		if sO.length <= 2 then
+			sO.length := 2
+		else
+		if sO.length <= 4 then
+			sO.length := 4
+		else
+		if sO.length <= 8 then
+			sO.length := 8
+		else
+		if sO.length <= 16 then
+			sO.length := 16
+		else
+			sO.length := 32;
+	
+	proc nop() ~
+	begin
+	end;
+
+	! Stellt die Heap-Eigenschaft des Teilbaumes her 
+	!
+	! v: Semi-Heap mit Wurzel v
+	proc downheap(v: Integer) ~
+	let
+		var w: Integer;
+		var x: Integer;
+		var break: Boolean
+	in begin
+		break := false;
+		x := v;
+		w := 2 * x + 1;
+		while w < sortObj.length /\ \ break do begin
+			if w + 1 < sortObj.length then
+				if getCompValue(w+1) > getCompValue(w) then
+					w := w + 1
+				else 
+					nop()
+			else
+				nop();
+			if getCompValue(x) >= getCompValue(w) then
+				break := true
+			else begin
+				exchange(x, w);
+				x := w;
+				w := 2 * x + 1;
+			end;
+		end;
+	end;
+	
+	! stellt mittels downHeap im Bottom-up-verfahren Heaps her
+	proc buildheap() ~
+	let
+		var v: Integer
+	in begin
+		v := (sortObj.length/2)-1;
+		while v >= 0 do begin
+			downheap(v);
+			v := v - 1;
+		end;
+	end;
+	
+	! Der eingentliche Heap-Sortier-Algorithmus
+	proc heapsort() ~
+	let
+		var length: Integer
+	in begin
+		buildheap();
+		length := sortObj.length;
+		while sortObj.length > 1 do begin
+			sortObj.length := sortObj.length - 1;
+			exchange(0, sortObj.length);
+			downheap(0);
+		end;
+		sortObj.length := length - 1;
+	end;
+		
+	! Startert den Sortier-Algorithmus
+	!
+	! sO: Zu sortierendes Array
+	proc sort(var sO: SortObj) ~
+	begin
+		sortObj := sO;
+		putint(sortObj.length);
+		setCorrectSize(var sortObj);
+		putint(sortObj.length);
+		heapsort();
+		sO := sortObj;
+	end;
+
+!----------------------------------------------------------
+! Ab Hier ist das Beispiel-programm implementiert, welches den
+! Heapsort nutzt.
+
+	proc printInText() ~
+	begin
+		put('B'); put('i'); put('t'); put('t'); put('e'); put(' '); put('z');
+		put('u'); put(' '); put('s'); put('o'); put('r'); put('t'); put('i');
+		put('e'); put('r'); put('e'); put('n'); put('d'); put('e'); put(' ');
+		put('S'); put('t'); put('r'); put('i'); put('n'); put('g'); put('s');
+		put(' '); put('e'); put('i'); put('n'); put('g'); put('e'); put('b');
+		put('e'); put('n'); put(' '); put('('); put('E'); put('n'); put('d');
+		put('e'); put(' '); put('m'); put('i'); put('t'); put(' ');
+		put('e'); put('i'); put('n'); put('g'); put('a'); put('b'); put('e');
+		put('!'); put(')'); puteol();
+	end;
+
+	proc printOutText() ~
+	begin
+		puteol();
+		put('S'); put('o'); put('r'); put('t'); put('i'); put('e'); put('r');
+		put('t'); put('e'); put(' '); put('S'); put('t'); put('r'); put('i');
+		put('n'); put('g'); put('s'); put(':'); puteol();
+	end;
+		
+
+	! message: "stored!"
+	proc printInputInfo() ~
+	begin
+		put('s'); put('t'); put('o'); put('r'); put('e'); put('d'); put('!'); puteol();
+	end;
+	
+	! Gibt einen Übergebenen String auf die konsole aus
+	!
+	! s: Auszugebender String
+	proc print(s: String) ~
+	let
+		var i: Integer
+	in begin
+		i := 0;
+		while i < s.length do begin
+			put(s.c[i]);
+			i := i + 1;
+		end;
+	end;
+	
+	! Liesst die Strings von der Konsole ein und speichert
+	! sie in dem übergebenen Feld data
+	!
+	! data: Feld, in welchem die eingelesenen Strings abgelegt werden
+	proc getData(var data: SortObj) ~
+	let
+		var ch: Char;
+		var i: Integer;
+		var line: String;
+		var testeof : Boolean;
+		var testeol : Boolean
+	in begin
+		printInText();
+		i := 0;
+		line.length := 2;
+		while line.length > 1 do begin
+			line.length := 0;
+			get(var ch);
+			eol(var testeol);
+			eof(var testeof);
+			while \ testeol /\ \ testeof do begin
+				line.c[line.length] := ch;
+				line.length := line.length + 1;
+				get(var ch);
+				eol(var testeol);
+				eof(var testeof);
+			end;
+			printInputInfo();
+			data.c[i] := line;
+			i := i + 1;
+		end;
+		data.length := i;
+	end;
+	
+	! Gibt die Strings aus dem Sortier-Objekt auf die Konsole aus
+	!
+	! data: auszugebende Daten
+	proc printData(data: SortObj)~
+	let
+		var i: Integer
+	in begin
+		printOutText();
+		i := 0;
+		while i < data.length do begin
+			print(data.c[i]);
+			i := i + 1;
+		end;
+	end;
+	
+	
+	var data: SortObj
+
+! Programm liesst Strings ein, sortiert diese und gibt sie wieder aus
+in begin
+	getData(var data);
+	sort(var data);
+	printData(data);
+end;
+		

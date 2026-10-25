@@ -1,0 +1,22 @@
+let 
+  var x : Integer;
+
+  proc bar (n : Integer ) ~
+    let
+      var o : Integer
+    in begin
+		  ! XXX
+      o := n * x;
+      putint(o)
+    end;
+	
+  proc foo ( k : Integer, l : Integer) ~
+    let 
+      const m ~ k + l
+    in
+      bar(m)
+
+in begin
+  x := 42;
+  foo(x, x+1)
+end

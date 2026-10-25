@@ -1,0 +1,13 @@
+let
+  var f : Integer;
+  var g : Integer;
+  var n : Integer;
+  proc p() ~ begin f := 2*g; g := g+1 end
+in begin
+   n := 1; f := 2; g := 3;
+   while n < 10 do begin
+     p();
+     n := n + 1
+   end;
+   putint(f); puteol(); putint(g)
+end

@@ -1,0 +1,178 @@
+! Acht-Damen-Problem
+! Peer Rexroth
+! Deterministische Lösung des Acht-Damen-Problems
+! Eine Beschreibung des Problems befindet sich unter:
+! http://de.wikipedia.org/wiki/Acht-Damen-Problem
+
+let
+    var position: array 8 of Integer;
+    var anzahl: Integer;
+    var topic: Boolean;
+
+
+! Ausgabe des Schachfeldes. "X" stellt eine Dame dar, "-" ein leeres Feld 
+proc drucke() ~ 
+    let 
+        var i: Integer;
+        var j: Integer
+    in 
+    begin
+        puteol();
+        if (topic = true)
+        then
+            begin
+                put('A'); 
+                put('C');
+                put('H');
+                put('T');
+                put('-');
+                put('D');
+                put('A');
+                put('M');
+                put('E');
+                put('N');
+                puteol();
+            end
+        else 
+           begin
+                anzahl := anzahl + 1;
+                put('L');
+                put('o');
+                put('e');
+                put('s');   
+                put('u');
+                put('n');
+                put('g');
+                put(':');
+                put(' ');
+                put('N');
+                put('r');      
+                put('.');
+                putint(anzahl);
+                puteol();
+            end;
+        i := 0;
+        while i < 8 
+        do 
+        begin
+            j := 0;
+            while j < position[i]
+            do
+            begin        
+                put('-');
+                j := j + 1
+            end;
+            put('X');
+            j := position[i] + 1;
+            while j < 8 
+            do
+            begin
+                put('-');
+                j := j + 1 
+            end;           
+            puteol();     
+            i := i + 1;    
+        end
+    end;
+    
+
+! Pruefe ob die zu setzende Dame von den bereits gesetzten Damen 
+! geschlagen wird       
+proc schlaegt(zeile: Integer, spalte: Integer, var stat: Boolean) ~
+    let
+        var i: Integer
+    in 
+    begin
+        i := 0;
+        stat := false;
+        while ((i < zeile) /\ (stat = false))
+        do
+        begin
+            if ((spalte = position[i]) \/ ((spalte - zeile) = (position[i] - i)) \/ ((spalte + zeile) = (position[i] + i)))
+                then 
+                    begin
+                        stat := true
+                    end
+                else
+                    begin 
+                        stat := false
+                    end;
+            i := i + 1
+        end;
+    end;
+    
+
+! Setze die Damen
+proc platziere(zeile: Integer) ~
+    let
+        var i: Integer;
+        var moeglich: array 8 of Boolean;
+        var status: Boolean
+    in
+    begin
+        i := 0;
+        while i < 8
+        do
+        begin
+            moeglich[i] := false;
+            i := i + 1
+        end;
+        i := 0;
+        while i < 8
+        do
+        begin
+            schlaegt(zeile, i, var status);
+            if (status = false)
+            then
+                begin
+                    moeglich[i] := true;
+                end 
+            else
+                begin
+                end;
+            i := i + 1
+        end;
+        
+        i := 0;
+        while i < 8
+            do
+            begin
+                if (moeglich[i] = true)
+                then
+                    begin
+                        position[zeile] := i;
+                        if (zeile <= 6)
+                        then 
+                            begin
+                                platziere(zeile + 1)
+                            end
+                        else
+                            begin
+                                drucke();
+                            end
+                    end
+                else
+                    begin
+                    end;
+            i := i + 1;
+            end;
+    end;
+    
+
+proc loeseDeterm() ~
+    let 
+        var i: Integer
+    in
+    begin
+        platziere(0)
+    end
+    
+        
+in 
+begin
+    topic := true;
+    drucke();
+    topic := false;
+    anzahl := 0;
+    loeseDeterm();
+end

@@ -1,0 +1,16 @@
+let
+	const MAX ~ 10;
+	const MIN ~ 4;
+	var n: Integer;
+	var m: Integer
+in begin
+	n := 2 * MAX;
+	let
+		var q: Integer;
+    const MIN ~ MIN - 1
+	in 
+		q := 3 * n;
+	putint(n);
+	putint(MAX);
+	putint(MIN);
+end

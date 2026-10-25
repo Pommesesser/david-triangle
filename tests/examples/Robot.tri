@@ -1,0 +1,386 @@
+!Folgende Änderung sind notwendig, damit das Programm läuft
+!(maximale Anzahl der Operationen)
+!TAM.Machine
+!Zeile 59: new Instruction[1024] -> new Instruction[2048]
+!Zeile 66: PB = 1024, -> PB = 2048,
+!Zeile 67: PT = 1052; -> PT = 2076;
+
+!Roboter-Simulation
+!in dem Programm wird ein Roboter simuliert, der Hütchen aufstellen und wegnehmen kann
+!Wände / Hindernisse werden durch x markiert und können nicht überlaufen werden
+!Ein Hütchen wird durch o markiert
+!Der Roboter wird durch R markiert
+!Steht der Roboter auf einem Hütchen, wird das mit B markiert
+
+!Befehle:
+!i beenden
+!Roboter-Befehle
+!	w: nach Norden bewegen
+!	s: nach Süden bewegen
+!	a: nach Westen bewegen
+!	d: nach Osten bewegen
+!	q: Hütchen aufnehmen
+!	e: Hütchen setzen
+!globale Befehle
+!	m: Wand / Hinernis setzen
+!	n: Hütchen setzen
+
+!Die globalen Befehle sind überschreibend, d.h. dass man eine Wand mit einem Hütchen überschreiben kann etc.
+!Die Außenbegrenzung bzw. -wand kann nicht überschrieben werden.
+!Es kann immer nur ein Hütchen auf einer Stelle sein, doppeltes Belegen wird aber nicht als Fehler ausgegeben.
+!Der Roboter kann unendlich viele Hütchen setzen und aufnehmen.
+
+!Der Befehl kann eingegeben werden, wenn man Command: sieht.
+!Sollte man dies nicht sehen, einfach ENTER drücken, bis es kommt
+!(hängt wohl der der Konsole / Betribssystem ab)
+
+
+let
+
+!Deklaration der Variable errorOccurred
+	var errorOccurred : Boolean;
+
+!Gibt den Fehler mit der Kennung x aus
+	proc printError (x : Integer) ~
+	begin
+		if (x = 0) !World too small
+		then begin
+			put('W'); put('o'); put('r'); put('l'); put('d'); put(' ');
+			put('t'); put('o'); put('o'); put(' ');
+			put('s'); put('m'); put('a'); put('l'); put('l');
+		end
+		else if (x = 1) !World too big
+		then begin
+			put('W'); put('o'); put('r'); put('l'); put('d'); put(' ');
+			put('t'); put('o'); put('o'); put(' ');
+			put('b'); put('i'); put('g');
+		end
+		else if (x = 2) !Koord. out of World
+		then begin
+			put('K'); put('o'); put('o'); put('r'); put('d'); put(' ');
+			put('o'); put('u'); put('t'); put(' ');
+			put('o'); put('f'); put(' ');
+			put('W'); put('o'); put('r'); put('l'); put('d');
+		end
+		else if (x = 3) !Koord. in Wall
+		then begin
+			put('K'); put('o'); put('o'); put('r'); put('d'); put(' ');
+			put('i'); put('n'); put(' ');
+			put('W'); put('a'); put('l'); put('l');
+		end
+		else if (x = 4) !Error(s) occurred EXITING!!
+		then begin
+			put('E'); put('r'); put('r'); put('o'); put('r'); put(' ');
+			put('o'); put('c'); put('c'); put('u'); put('r'); put('r'); put('e'); put('d'); put(' ');
+			put('E'); put('X'); put('I'); put('T'); put('I'); put('N'); put('G');
+		end
+		else if (x = 5) !Wrong Direction
+		then begin
+			put('W'); put('r'); put('o'); put('n'); put('g'); put(' ');
+			put('D'); put('i'); put('r'); put('e'); put('c'); put('t'); put('i'); put('o'); put('n');
+		end
+		else if (x = 6) !Unknown Command
+		then begin
+			put('U'); put('n'); put('k'); put('n'); put('o'); put('w'); put('n'); put(' ');
+			put('C'); put('o'); put('m'); put('m'); put('a'); put('n'); put('d');
+		end
+		else if (x = 7) !No Cone at curr. Pos.
+		then begin
+			put('N'); put('o'); put(' ');
+			put('C'); put('o'); put('n'); put('e'); put(' ');
+			put('a'); put('t'); put(' ');
+			put('c'); put('u'); put('r'); put('r'); put(' ');
+			put('P'); put('o'); put('s');
+		end
+		else
+		begin
+		end;
+		
+		put('!');
+		puteol();
+		errorOccurred := true;
+	end;
+
+
+!Deklaration des Typs World
+	type Row ~ record
+		y : array 16 of Char,
+		length : Integer
+	end;
+	type World ~ record
+		x : array 16 of Row,
+		length : Integer
+	end;
+
+!Deklaration des Typs Robot
+	type Robot ~ record
+		cones : Integer,
+		x : Integer,
+		y : Integer
+	end;
+		
+
+!Deklaration der benötigten Variablen
+	var size : Integer;
+	var world : World;
+	var robot : Robot;
+	var befehl : Char;
+	var counter : Integer;
+	var inX : Integer;
+	var inY : Integer;
+
+!Initialisierung der Welt
+!Am Rand werden Mauern / Hindernisse gesetzt
+	proc initWorld () ~
+	let
+		var x : Integer;
+		var y : Integer
+	in begin
+		x := 0;
+		while (x < size) do
+		begin
+			y := 0;
+			while (y < size) do
+			begin
+				if((x = (size - 1)) \/ (x = 0) \/ (y = (size - 1)) \/ (y = 0))
+				then
+					world.x[x].y[y] := 'x'
+				else
+					world.x[x].y[y] := ' ';
+				y := y + 1;
+			end;
+			x := x + 1;
+		end;
+	end;
+
+!Initialisierung des Roboters
+!Die Position des Roboters wird mit 1/1 initialisiert
+	proc initRobot () ~
+	begin
+		robot.cones := 0;
+		robot.x := 1;
+		robot.y := 1;
+	end;
+
+!Ausgabe der Welt
+!Roboter: R
+!Wand / Hinderniss: x
+!Hütchen: o
+!Roboter + Hütchen: B
+	proc printWorld () ~
+	let
+		var x : Integer;
+		var y : Integer
+	in begin
+		x := 0;
+		while(x < size) do
+		begin
+			y := 0;
+			while(y < size) do
+			begin
+				if ((robot.x = x) /\ (robot.y = y))
+				then
+					if (world.x[x].y[y] = 'o')
+					then
+						put('B')
+					else
+						put('R')
+				else
+					put(world.x[x].y[y]);
+				put(' ');
+				y := y + 1;
+			end;
+			puteol();
+			x := x + 1;
+		end;
+		puteol();
+	end;
+
+!Setze ein Hütchen
+	proc putCone (x : Integer, y : Integer) ~
+	begin
+		if((x >= size) \/ (x <= 0) \/ (y >= size) \/ (y <= 0))
+			then
+				printError(2)
+			else
+				if(world.x[x].y[y] = 'x')
+					then
+						printError(3)
+					else
+						world.x[x].y[y] := 'o';
+	end;
+
+!Setze Wand / Hinderniss
+	proc putWall (x : Integer, y : Integer) ~
+	begin
+		if((x >= (size - 1)) \/ (x <= 0) \/ (y >= (size - 1)) \/ (y <= 0))
+			then
+				printError(2)
+			else
+				world.x[x].y[y] := 'x';
+	end;
+
+!Roboter setzt ein Hütchen an seiner Position
+	proc putConeRobot () ~
+	begin
+		world.x[robot.x].y[robot.y] := 'o';
+!		put('R'); put('o'); put('b'); put('o'); put('t'); put(':'); put(' ');
+		put('S'); put('e'); put('t'); put(' '); put('C');
+		put('o'); put('n'); put('e'); put(' ');
+		put('a');put('t');put(' ');putint(robot.x);put('/');putint(robot.y);puteol();
+	end;
+
+!Roboter nimmt ein Hütchen an seiner Position auf
+	proc pickUpCone () ~
+	begin
+		if(world.x[robot.x].y[robot.y] = 'o')
+		then
+		begin
+			world.x[robot.x].y[robot.y] := ' ';
+!			put('R');put('o');put('b');put('o');put('t');put(':');put(' ');
+			put('P');put('i');put('c');put('k');put(' ');put('u');put('p');put(' ');put('C');put('o');put('n');put('e');put(' ');
+			put('a');put('t');put(' ');putint(robot.x);put('/');putint(robot.y);puteol();
+		end
+		else
+			printError(7);
+	end;
+
+!Bewege Roboter
+	proc moveRobot (c : Char) ~
+	let
+		var newX : Integer;
+		var newY : Integer
+	in begin
+		newX := robot.x;
+		newY := robot.y;
+		if (c = 'w')
+		then
+			newX := newX - 1
+		else if (c = 's')
+		then
+			newX := newX + 1
+		else if (c = 'a')
+		then
+			newY := newY - 1
+		else if (c = 'd')
+		then
+			newY := newY + 1
+		else
+		begin
+			printError(5)
+		end;
+		if(world.x[newX].y[newY] = 'x')
+		then
+			printError(3)
+		else
+			begin
+				robot.x := newX;
+				robot.y := newY;
+!				put('R');put('o');put('b');put('o');put('t');put(':');put(' ');
+				put('M'); put('o'); put('v'); put('e'); put(':'); put(' '); put(c);
+				put(' ');put('t');put('o');put(' ');putint(robot.x);put('/'); putint(robot.y); puteol()
+			end;
+	end
+	
+in begin
+	errorOccurred := false;
+	put('W'); put('o'); put('r'); put('l'); put('d'); put('-'); put('S'); put('i'); put('z'); put('e'); put(':'); put(' ');
+	getint(var size);
+	puteol();
+	if(size <= 2)
+	then
+		printError(0)
+	else if(size > 16)
+	then
+		printError(1)
+	else
+	begin
+		initWorld();
+		initRobot();
+		printWorld()
+	end;
+	
+	if(errorOccurred)
+	then
+		printError(4)
+	else
+	begin
+		befehl := ' ';
+		counter := 0;
+		while(befehl \= 'i') do
+		begin
+			if (counter = 1)
+			then begin
+				put('C'); put('o'); put('m'); put('m'); put('a'); put('n'); put('d'); put(':'); put(' ');
+			end
+			else begin end;
+			
+			get(var befehl);
+			
+			if (counter = 1)
+			then
+				begin
+					puteol(); puteol(); puteol();
+					put('B'); put('e'); put('f'); put('e'); put('h'); put('l'); put(':'); put(' '); put('"');
+					put(befehl); put('"');
+					puteol();
+					
+					if ((befehl = 'w') \/ (befehl = 'a') \/ (befehl = 's') \/ (befehl = 'd')) !R: bewegen
+					then
+						begin
+							moveRobot(befehl);
+							printWorld();
+						end
+					else if (befehl = 'q') !R: aufnehmen
+					then
+						begin
+							pickUpCone();
+							printWorld();
+						end
+					else if (befehl = 'e') !R: setzen
+					then
+						begin
+							putConeRobot();
+							printWorld();
+						end
+					else if (befehl = 'n') !hütchen setzen
+					then
+						begin
+							put('C'); put('o'); put('n'); put('e'); put(' '); put('X'); put(':'); put(' ');
+							getint(var inX);
+							put('C'); put('o'); put('n'); put('e'); put(' '); put('Y'); put(':'); put(' ');
+							getint(var inY);
+							putCone(inX, inY);
+							printWorld();
+						end
+					else if (befehl = 'm') !wand setzen
+					then
+						begin
+							put('W'); put('a'); put('l'); put('l'); put(' '); put('X'); put(':'); put(' ');
+							getint(var inX);
+							put('W'); put('a'); put('l'); put('l'); put(' '); put('Y'); put(':'); put(' ');
+							getint(var inY);
+							putWall(inX, inY);
+							printWorld();
+						end
+					else if (befehl = 'i')
+					then
+						begin
+							put('T'); put('s'); put('c'); put('h'); put('u'); put('e'); put('s'); put('s');
+							put('.'); put('.'); put('.'); put('.');
+							puteol();
+						end
+					else
+						begin
+							printError(6);
+						end;
+					
+				end
+			else
+				begin
+				end;
+			
+			counter := (counter + 1) // 2;
+		end;
+	end;
+end
