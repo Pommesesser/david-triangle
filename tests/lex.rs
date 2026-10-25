@@ -5,8 +5,6 @@ use david_triangle::syntactic_analyzer::scanner::Scanner;
 use david_triangle::syntactic_analyzer::source_stream::SourceStream;
 use david_triangle::syntactic_analyzer::token_kind::TokenKind;
 
-/// Lexes `source` in memory and renders it like the Java reference prints it:
-/// one `test_repr` line per token, up to and including EOF.
 fn lex(source: &[u8]) -> String {
     let mut scanner = Scanner::new(SourceStream::new(source));
     let mut output = String::new();
@@ -20,14 +18,13 @@ fn lex(source: &[u8]) -> String {
     }
 }
 
-/// Describes the first line where two outputs disagree.
 fn first_difference(actual: &str, expected: &str) -> String {
     let mut actual_lines = actual.lines();
     let mut expected_lines = expected.lines();
     for line_number in 1.. {
         match (actual_lines.next(), expected_lines.next()) {
             (None, None) => return "same lines, different line endings".to_string(),
-            (a, e) if a != e => return format!("line {line_number}: ours {a:?}, java {e:?}"),
+            (a, e) if a != e => return format!("line {line_number}: me {a:?}, java {e:?}"),
             _ => {}
         }
     }
