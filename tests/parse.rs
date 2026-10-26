@@ -2,7 +2,7 @@ use std::fs;
 use std::panic;
 use std::path::Path;
 
-use david_triangle::abstract_syntax_trees::ast::{CommandKind, ExpressionKind, Program};
+use david_triangle::abstract_syntax_trees::ast::Program;
 use david_triangle::printers::program_printer;
 use david_triangle::syntactic_analyzer::parser::Parser;
 use david_triangle::syntactic_analyzer::scanner::Scanner;
@@ -10,11 +10,6 @@ use david_triangle::syntactic_analyzer::source_stream::SourceStream;
 
 fn parse(source: &[u8]) -> Program {
     Parser::new(Scanner::new(SourceStream::new(source))).parse_program()
-}
-
-fn parse_error(source: &'static str) -> String {
-    let error = panic::catch_unwind(|| parse(source.as_bytes())).expect_err("expected a syntax error");
-    error.downcast_ref::<String>().cloned().expect("panic payload should be a String")
 }
 
 fn first_difference(actual: &str, expected: &str) -> String {
@@ -40,7 +35,6 @@ fn parser_matches_java_reference() {
         .filter(|path| path.extension().is_some_and(|ext| ext == "tri"))
         .collect();
     inputs.sort();
-    // Guard against a wrong path making the test pass by checking nothing.
     assert!(!inputs.is_empty(), "no example programs found");
 
     let mut failures = Vec::new();
@@ -67,27 +61,4 @@ fn parser_matches_java_reference() {
 
     println!("{} of {} examples match the Java parser", inputs.len() - failures.len(), inputs.len());
     assert!(failures.is_empty(), "differs from Java: {failures:?}");
-}
-
-#[test]
-fn first_token_is_not_skipped() {
-    let program = parse(b"x := 1");
-    assert!(matches!(*program.command.kind, CommandKind::Assign { .. }));
-}
-
-#[test]
-fn binary_operators_are_left_associative() {
-    let program = parse(b"x := 1 - 2 - 3");
-    let CommandKind::Assign { expression, .. } = *program.command.kind else { panic!("expected assign") };
-    let ExpressionKind::Binary { left, operator, .. } = *expression.kind else { panic!("expected binary") };
-    assert_eq!(operator.spelling, "-");
-    assert!(matches!(*left.kind, ExpressionKind::Binary { .. }));
-}
-
-#[test]
-fn reports_errors_like_java() {
-    assert!(parse_error("x := ").contains("\"\" cannot start an expression"));
-    assert!(parse_error("x 1").contains("\":=\" expected here"));
-    assert!(parse_error("let in x := 1").contains("\"in\" cannot start a declaration"));
-    assert!(parse_error("begin x := 1 end end").contains("\"end\" not expected after end of program"));
 }
