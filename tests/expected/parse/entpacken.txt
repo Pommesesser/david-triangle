@@ -1,0 +1,779 @@
+Program 191..191
+  LetCommand 1..191
+    SequentialDeclaration 2..72
+      SequentialDeclaration 2..72
+        SequentialDeclaration 2..72
+          SequentialDeclaration 2..72
+            SequentialDeclaration 2..72
+              SequentialDeclaration 2..72
+                SequentialDeclaration 2..72
+                  SequentialDeclaration 2..72
+                    SequentialDeclaration 2..72
+                      SequentialDeclaration 2..72
+                        SequentialDeclaration 2..72
+                          VarDeclaration 2..2
+                            Identifier "code" 2..2
+                            ArrayTypeDenoter 2..2
+                              IntegerLiteral "16" 2..2
+                              SimpleTypeDenoter 2..2
+                                Identifier "Integer" 2..2
+                          VarDeclaration 4..4
+                            Identifier "bits" 4..4
+                            ArrayTypeDenoter 4..4
+                              IntegerLiteral "8" 4..4
+                              SimpleTypeDenoter 4..4
+                                Identifier "Boolean" 4..4
+                        VarDeclaration 5..5
+                          Identifier "bitP" 5..5
+                          SimpleTypeDenoter 5..5
+                            Identifier "Integer" 5..5
+                      VarDeclaration 6..6
+                        Identifier "iseof" 6..6
+                        SimpleTypeDenoter 6..6
+                          Identifier "Boolean" 6..6
+                    VarDeclaration 7..7
+                      Identifier "i" 7..7
+                      SimpleTypeDenoter 7..7
+                        Identifier "Integer" 7..7
+                  VarDeclaration 8..8
+                    Identifier "tmpbool" 8..8
+                    SimpleTypeDenoter 8..8
+                      Identifier "Boolean" 8..8
+                VarDeclaration 9..9
+                  Identifier "tmpchar" 9..9
+                  SimpleTypeDenoter 9..9
+                    Identifier "Char" 9..9
+              VarDeclaration 10..10
+                Identifier "tmpcode" 10..10
+                ArrayTypeDenoter 10..10
+                  IntegerLiteral "16" 10..10
+                  SimpleTypeDenoter 10..10
+                    Identifier "Integer" 10..10
+            ProcDeclaration 18..51
+              Identifier "getBit" 18..18
+              SingleFormalParameterSequence 18..18
+                VarFormalParameter 18..18
+                  Identifier "b" 18..18
+                  SimpleTypeDenoter 18..18
+                    Identifier "Boolean" 18..18
+              LetCommand 19..51
+                SequentialDeclaration 20..23
+                  SequentialDeclaration 20..23
+                    VarDeclaration 20..20
+                      Identifier "tmpchar" 20..20
+                      SimpleTypeDenoter 20..20
+                        Identifier "Char" 20..20
+                    VarDeclaration 21..21
+                      Identifier "tmpint" 21..21
+                      SimpleTypeDenoter 21..21
+                        Identifier "Integer" 21..21
+                  VarDeclaration 22..23
+                    Identifier "j" 22..22
+                    SimpleTypeDenoter 22..23
+                      Identifier "Integer" 22..23
+                SequentialCommand 25..51
+                  SequentialCommand 25..51
+                    IfCommand 25..47
+                      BinaryExpression 25..0
+                        VnameExpression 25..25
+                          SimpleVname 25..25
+                            Identifier "bitP" 25..25
+                        Operator "=" 25..25
+                        IntegerExpression 25..25
+                          IntegerLiteral "8" 25..25
+                      SequentialCommand 27..46
+                        SequentialCommand 27..46
+                          SequentialCommand 27..46
+                            SequentialCommand 27..46
+                              CallCommand 27..27
+                                Identifier "get" 27..27
+                                SingleActualParameterSequence 27..27
+                                  VarActualParameter 27..27
+                                    SimpleVname 27..27
+                                      Identifier "tmpchar" 27..27
+                              AssignCommand 28..28
+                                SimpleVname 28..28
+                                  Identifier "tmpint" 28..28
+                                CallExpression 28..28
+                                  Identifier "ord" 28..28
+                                  SingleActualParameterSequence 28..28
+                                    ConstActualParameter 28..28
+                                      VnameExpression 28..28
+                                        SimpleVname 28..28
+                                          Identifier "tmpchar" 28..28
+                            IfCommand 30..44
+                              BinaryExpression 30..0
+                                VnameExpression 30..30
+                                  SimpleVname 30..30
+                                    Identifier "tmpint" 30..30
+                                Operator "=" 30..30
+                                BinaryExpression 30..0
+                                  IntegerExpression 30..30
+                                    IntegerLiteral "0" 30..30
+                                  Operator "-" 30..30
+                                  IntegerExpression 30..30
+                                    IntegerLiteral "1" 30..30
+                              AssignCommand 30..31
+                                SimpleVname 30..30
+                                  Identifier "iseof" 30..30
+                                VnameExpression 30..31
+                                  SimpleVname 30..31
+                                    Identifier "true" 30..31
+                              SequentialCommand 32..44
+                                SequentialCommand 32..44
+                                  AssignCommand 32..32
+                                    SimpleVname 32..32
+                                      Identifier "j" 32..32
+                                    IntegerExpression 32..32
+                                      IntegerLiteral "0" 32..32
+                                  WhileCommand 33..43
+                                    BinaryExpression 33..0
+                                      VnameExpression 33..33
+                                        SimpleVname 33..33
+                                          Identifier "j" 33..33
+                                      Operator "<" 33..33
+                                      IntegerExpression 33..34
+                                        IntegerLiteral "8" 33..34
+                                    SequentialCommand 35..43
+                                      SequentialCommand 35..43
+                                        SequentialCommand 35..43
+                                          IfCommand 35..40
+                                            BinaryExpression 35..0
+                                              BinaryExpression 35..0
+                                                VnameExpression 35..35
+                                                  SimpleVname 35..35
+                                                    Identifier "tmpint" 35..35
+                                                Operator "//" 35..35
+                                                IntegerExpression 35..35
+                                                  IntegerLiteral "2" 35..35
+                                              Operator "=" 35..35
+                                              IntegerExpression 35..35
+                                                IntegerLiteral "1" 35..35
+                                            SequentialCommand 37..39
+                                              SequentialCommand 37..39
+                                                AssignCommand 37..37
+                                                  SubscriptVname 37..37
+                                                    SimpleVname 37..37
+                                                      Identifier "bits" 37..37
+                                                    BinaryExpression 37..0
+                                                      IntegerExpression 37..37
+                                                        IntegerLiteral "7" 37..37
+                                                      Operator "-" 37..37
+                                                      VnameExpression 37..37
+                                                        SimpleVname 37..37
+                                                          Identifier "j" 37..37
+                                                  VnameExpression 37..37
+                                                    SimpleVname 37..37
+                                                      Identifier "true" 37..37
+                                                AssignCommand 38..38
+                                                  SimpleVname 38..38
+                                                    Identifier "tmpint" 38..38
+                                                  BinaryExpression 38..0
+                                                    VnameExpression 38..38
+                                                      SimpleVname 38..38
+                                                        Identifier "tmpint" 38..38
+                                                    Operator "-" 38..38
+                                                    IntegerExpression 38..38
+                                                      IntegerLiteral "1" 38..38
+                                              EmptyCommand 39..39
+                                            AssignCommand 40..40
+                                              SubscriptVname 40..40
+                                                SimpleVname 40..40
+                                                  Identifier "bits" 40..40
+                                                BinaryExpression 40..0
+                                                  IntegerExpression 40..40
+                                                    IntegerLiteral "7" 40..40
+                                                  Operator "-" 40..40
+                                                  VnameExpression 40..40
+                                                    SimpleVname 40..40
+                                                      Identifier "j" 40..40
+                                              VnameExpression 40..40
+                                                SimpleVname 40..40
+                                                  Identifier "false" 40..40
+                                          AssignCommand 41..41
+                                            SimpleVname 41..41
+                                              Identifier "tmpint" 41..41
+                                            BinaryExpression 41..0
+                                              VnameExpression 41..41
+                                                SimpleVname 41..41
+                                                  Identifier "tmpint" 41..41
+                                              Operator "/" 41..41
+                                              IntegerExpression 41..41
+                                                IntegerLiteral "8" 41..41
+                                        AssignCommand 42..42
+                                          SimpleVname 42..42
+                                            Identifier "j" 42..42
+                                          BinaryExpression 42..0
+                                            VnameExpression 42..42
+                                              SimpleVname 42..42
+                                                Identifier "j" 42..42
+                                            Operator "+" 42..42
+                                            IntegerExpression 42..42
+                                              IntegerLiteral "1" 42..42
+                                      EmptyCommand 43..43
+                                EmptyCommand 44..44
+                          AssignCommand 45..45
+                            SimpleVname 45..45
+                              Identifier "bitP" 45..45
+                            IntegerExpression 45..45
+                              IntegerLiteral "0" 45..45
+                        EmptyCommand 46..46
+                      EmptyCommand 47..47
+                    AssignCommand 49..49
+                      SimpleVname 49..49
+                        Identifier "b" 49..49
+                      VnameExpression 49..49
+                        SubscriptVname 49..49
+                          SimpleVname 49..49
+                            Identifier "bits" 49..49
+                          VnameExpression 49..49
+                            SimpleVname 49..49
+                              Identifier "bitP" 49..49
+                  AssignCommand 50..51
+                    SimpleVname 50..50
+                      Identifier "bitP" 50..50
+                    BinaryExpression 50..0
+                      VnameExpression 50..50
+                        SimpleVname 50..50
+                          Identifier "bitP" 50..50
+                      Operator "+" 50..50
+                      IntegerExpression 50..51
+                        IntegerLiteral "1" 50..51
+          VarDeclaration 55..55
+            Identifier "writeHigh" 55..55
+            SimpleTypeDenoter 55..55
+              Identifier "Boolean" 55..55
+        VarDeclaration 56..56
+          Identifier "writeByte" 56..56
+          SimpleTypeDenoter 56..56
+            Identifier "Integer" 56..56
+      ProcDeclaration 57..72
+        Identifier "write" 57..57
+        SingleFormalParameterSequence 57..57
+          ConstFormalParameter 57..57
+            Identifier "x" 57..57
+            SimpleTypeDenoter 57..57
+              Identifier "Integer" 57..57
+        SequentialCommand 60..71
+          IfCommand 60..70
+            BinaryExpression 60..0
+              VnameExpression 60..60
+                SimpleVname 60..60
+                  Identifier "writeHigh" 60..60
+              Operator "=" 60..60
+              VnameExpression 60..60
+                SimpleVname 60..60
+                  Identifier "true" 60..60
+            SequentialCommand 62..64
+              SequentialCommand 62..64
+                AssignCommand 62..62
+                  SimpleVname 62..62
+                    Identifier "writeByte" 62..62
+                  BinaryExpression 62..0
+                    VnameExpression 62..62
+                      SimpleVname 62..62
+                        Identifier "x" 62..62
+                    Operator "*" 62..62
+                    IntegerExpression 62..62
+                      IntegerLiteral "16" 62..62
+                AssignCommand 63..63
+                  SimpleVname 63..63
+                    Identifier "writeHigh" 63..63
+                  VnameExpression 63..63
+                    SimpleVname 63..63
+                      Identifier "false" 63..63
+              EmptyCommand 64..64
+            SequentialCommand 66..70
+              SequentialCommand 66..70
+                SequentialCommand 66..70
+                  SequentialCommand 66..70
+                    AssignCommand 66..66
+                      SimpleVname 66..66
+                        Identifier "writeByte" 66..66
+                      BinaryExpression 66..0
+                        VnameExpression 66..66
+                          SimpleVname 66..66
+                            Identifier "writeByte" 66..66
+                        Operator "+" 66..66
+                        VnameExpression 66..66
+                          SimpleVname 66..66
+                            Identifier "x" 66..66
+                    CallCommand 67..67
+                      Identifier "put" 67..67
+                      SingleActualParameterSequence 67..67
+                        ConstActualParameter 67..67
+                          CallExpression 67..67
+                            Identifier "chr" 67..67
+                            SingleActualParameterSequence 67..67
+                              ConstActualParameter 67..67
+                                VnameExpression 67..67
+                                  SimpleVname 67..67
+                                    Identifier "writeByte" 67..67
+                  AssignCommand 68..68
+                    SimpleVname 68..68
+                      Identifier "writeByte" 68..68
+                    IntegerExpression 68..68
+                      IntegerLiteral "0" 68..68
+                AssignCommand 69..69
+                  SimpleVname 69..69
+                    Identifier "writeHigh" 69..69
+                  VnameExpression 69..69
+                    SimpleVname 69..69
+                      Identifier "true" 69..69
+              EmptyCommand 70..70
+          EmptyCommand 71..71
+    SequentialCommand 75..191
+      SequentialCommand 75..191
+        SequentialCommand 75..191
+          SequentialCommand 75..191
+            SequentialCommand 75..191
+              SequentialCommand 75..191
+                SequentialCommand 75..191
+                  SequentialCommand 75..191
+                    AssignCommand 75..75
+                      SimpleVname 75..75
+                        Identifier "bitP" 75..75
+                      IntegerExpression 75..75
+                        IntegerLiteral "8" 75..75
+                    AssignCommand 76..76
+                      SimpleVname 76..76
+                        Identifier "writeHigh" 76..76
+                      VnameExpression 76..76
+                        SimpleVname 76..76
+                          Identifier "true" 76..76
+                  AssignCommand 77..77
+                    SimpleVname 77..77
+                      Identifier "writeByte" 77..77
+                    IntegerExpression 77..77
+                      IntegerLiteral "0" 77..77
+                AssignCommand 80..80
+                  SimpleVname 80..80
+                    Identifier "i" 80..80
+                  IntegerExpression 80..80
+                    IntegerLiteral "0" 80..80
+              WhileCommand 81..88
+                BinaryExpression 81..0
+                  VnameExpression 81..81
+                    SimpleVname 81..81
+                      Identifier "i" 81..81
+                  Operator "<" 81..81
+                  IntegerExpression 81..82
+                    IntegerLiteral "16" 81..82
+                SequentialCommand 83..88
+                  SequentialCommand 83..88
+                    SequentialCommand 83..88
+                      CallCommand 83..83
+                        Identifier "get" 83..83
+                        SingleActualParameterSequence 83..83
+                          VarActualParameter 83..83
+                            SimpleVname 83..83
+                              Identifier "tmpchar" 83..83
+                      AssignCommand 84..84
+                        SubscriptVname 84..84
+                          SimpleVname 84..84
+                            Identifier "tmpcode" 84..84
+                          VnameExpression 84..84
+                            SimpleVname 84..84
+                              Identifier "i" 84..84
+                        CallExpression 84..84
+                          Identifier "ord" 84..84
+                          SingleActualParameterSequence 84..84
+                            ConstActualParameter 84..84
+                              VnameExpression 84..84
+                                SimpleVname 84..84
+                                  Identifier "tmpchar" 84..84
+                    AssignCommand 87..87
+                      SimpleVname 87..87
+                        Identifier "i" 87..87
+                      BinaryExpression 87..0
+                        VnameExpression 87..87
+                          SimpleVname 87..87
+                            Identifier "i" 87..87
+                        Operator "+" 87..87
+                        IntegerExpression 87..87
+                          IntegerLiteral "1" 87..87
+                  EmptyCommand 88..88
+            AssignCommand 91..91
+              SimpleVname 91..91
+                Identifier "i" 91..91
+              IntegerExpression 91..91
+                IntegerLiteral "0" 91..91
+          WhileCommand 92..96
+            BinaryExpression 92..0
+              VnameExpression 92..92
+                SimpleVname 92..92
+                  Identifier "i" 92..92
+              Operator "<" 92..92
+              IntegerExpression 92..93
+                IntegerLiteral "16" 92..93
+            SequentialCommand 94..96
+              AssignCommand 94..94
+                SubscriptVname 94..94
+                  SimpleVname 94..94
+                    Identifier "code" 94..94
+                  VnameExpression 94..94
+                    SubscriptVname 94..94
+                      SimpleVname 94..94
+                        Identifier "tmpcode" 94..94
+                      VnameExpression 94..94
+                        SimpleVname 94..94
+                          Identifier "i" 94..94
+                VnameExpression 94..94
+                  SimpleVname 94..94
+                    Identifier "i" 94..94
+              AssignCommand 95..96
+                SimpleVname 95..95
+                  Identifier "i" 95..95
+                BinaryExpression 95..0
+                  VnameExpression 95..95
+                    SimpleVname 95..95
+                      Identifier "i" 95..95
+                  Operator "+" 95..95
+                  IntegerExpression 95..96
+                    IntegerLiteral "1" 95..96
+        CallCommand 99..99
+          Identifier "getBit" 99..99
+          SingleActualParameterSequence 99..99
+            VarActualParameter 99..99
+              SimpleVname 99..99
+                Identifier "tmpbool" 99..99
+      WhileCommand 101..191
+        UnaryExpression 101..102
+          Operator "\" 101..101
+          VnameExpression 101..102
+            SimpleVname 101..102
+              Identifier "iseof" 101..102
+        SequentialCommand 107..190
+          SequentialCommand 107..190
+            SequentialCommand 107..190
+              IfCommand 107..186
+                BinaryExpression 107..0
+                  VnameExpression 107..107
+                    SimpleVname 107..107
+                      Identifier "tmpbool" 107..107
+                  Operator "=" 107..107
+                  VnameExpression 107..107
+                    SimpleVname 107..107
+                      Identifier "true" 107..107
+                SequentialCommand 109..161
+                  CallCommand 109..109
+                    Identifier "getBit" 109..109
+                    SingleActualParameterSequence 109..109
+                      VarActualParameter 109..109
+                        SimpleVname 109..109
+                          Identifier "tmpbool" 109..109
+                  IfCommand 110..161
+                    BinaryExpression 110..0
+                      VnameExpression 110..110
+                        SimpleVname 110..110
+                          Identifier "tmpbool" 110..110
+                      Operator "=" 110..110
+                      VnameExpression 110..110
+                        SimpleVname 110..110
+                          Identifier "true" 110..110
+                    SequentialCommand 112..143
+                      CallCommand 112..112
+                        Identifier "getBit" 112..112
+                        SingleActualParameterSequence 112..112
+                          VarActualParameter 112..112
+                            SimpleVname 112..112
+                              Identifier "tmpbool" 112..112
+                      IfCommand 113..143
+                        BinaryExpression 113..0
+                          VnameExpression 113..113
+                            SimpleVname 113..113
+                              Identifier "tmpbool" 113..113
+                          Operator "=" 113..113
+                          VnameExpression 113..113
+                            SimpleVname 113..113
+                              Identifier "true" 113..113
+                        SequentialCommand 115..135
+                          CallCommand 115..115
+                            Identifier "getBit" 115..115
+                            SingleActualParameterSequence 115..115
+                              VarActualParameter 115..115
+                                SimpleVname 115..115
+                                  Identifier "tmpbool" 115..115
+                          IfCommand 116..135
+                            BinaryExpression 116..0
+                              VnameExpression 116..116
+                                SimpleVname 116..116
+                                  Identifier "tmpbool" 116..116
+                              Operator "=" 116..116
+                              VnameExpression 116..116
+                                SimpleVname 116..116
+                                  Identifier "true" 116..116
+                            SequentialCommand 118..133
+                              CallCommand 118..118
+                                Identifier "getBit" 118..118
+                                SingleActualParameterSequence 118..118
+                                  VarActualParameter 118..118
+                                    SimpleVname 118..118
+                                      Identifier "tmpbool" 118..118
+                              IfCommand 119..133
+                                BinaryExpression 119..0
+                                  VnameExpression 119..119
+                                    SimpleVname 119..119
+                                      Identifier "tmpbool" 119..119
+                                  Operator "=" 119..119
+                                  VnameExpression 119..119
+                                    SimpleVname 119..119
+                                      Identifier "true" 119..119
+                                SequentialCommand 121..131
+                                  CallCommand 121..121
+                                    Identifier "getBit" 121..121
+                                    SingleActualParameterSequence 121..121
+                                      VarActualParameter 121..121
+                                        SimpleVname 121..121
+                                          Identifier "tmpbool" 121..121
+                                  IfCommand 122..131
+                                    BinaryExpression 122..0
+                                      VnameExpression 122..122
+                                        SimpleVname 122..122
+                                          Identifier "tmpbool" 122..122
+                                      Operator "=" 122..122
+                                      VnameExpression 122..122
+                                        SimpleVname 122..122
+                                          Identifier "true" 122..122
+                                    SequentialCommand 124..129
+                                      CallCommand 124..124
+                                        Identifier "getBit" 124..124
+                                        SingleActualParameterSequence 124..124
+                                          VarActualParameter 124..124
+                                            SimpleVname 124..124
+                                              Identifier "tmpbool" 124..124
+                                      IfCommand 125..129
+                                        BinaryExpression 125..0
+                                          VnameExpression 125..125
+                                            SimpleVname 125..125
+                                              Identifier "tmpbool" 125..125
+                                          Operator "=" 125..125
+                                          VnameExpression 125..125
+                                            SimpleVname 125..125
+                                              Identifier "true" 125..125
+                                        AssignCommand 126..127
+                                          SimpleVname 126..126
+                                            Identifier "i" 126..126
+                                          IntegerExpression 126..127
+                                            IntegerLiteral "0" 126..127
+                                        AssignCommand 128..129
+                                          SimpleVname 128..128
+                                            Identifier "i" 128..128
+                                          IntegerExpression 128..129
+                                            IntegerLiteral "1" 128..129
+                                    AssignCommand 130..131
+                                      SimpleVname 130..130
+                                        Identifier "i" 130..130
+                                      IntegerExpression 130..131
+                                        IntegerLiteral "2" 130..131
+                                AssignCommand 132..133
+                                  SimpleVname 132..132
+                                    Identifier "i" 132..132
+                                  IntegerExpression 132..133
+                                    IntegerLiteral "7" 132..133
+                            AssignCommand 134..135
+                              SimpleVname 134..134
+                                Identifier "i" 134..134
+                              IntegerExpression 134..135
+                                IntegerLiteral "12" 134..135
+                        SequentialCommand 137..142
+                          CallCommand 137..137
+                            Identifier "getBit" 137..137
+                            SingleActualParameterSequence 137..137
+                              VarActualParameter 137..137
+                                SimpleVname 137..137
+                                  Identifier "tmpbool" 137..137
+                          IfCommand 138..142
+                            BinaryExpression 138..0
+                              VnameExpression 138..138
+                                SimpleVname 138..138
+                                  Identifier "tmpbool" 138..138
+                              Operator "=" 138..138
+                              VnameExpression 138..138
+                                SimpleVname 138..138
+                                  Identifier "true" 138..138
+                            AssignCommand 139..140
+                              SimpleVname 139..139
+                                Identifier "i" 139..139
+                              IntegerExpression 139..140
+                                IntegerLiteral "10" 139..140
+                            AssignCommand 141..142
+                              SimpleVname 141..141
+                                Identifier "i" 141..141
+                              IntegerExpression 141..142
+                                IntegerLiteral "11" 141..142
+                    SequentialCommand 145..160
+                      CallCommand 145..145
+                        Identifier "getBit" 145..145
+                        SingleActualParameterSequence 145..145
+                          VarActualParameter 145..145
+                            SimpleVname 145..145
+                              Identifier "tmpbool" 145..145
+                      IfCommand 146..160
+                        BinaryExpression 146..0
+                          VnameExpression 146..146
+                            SimpleVname 146..146
+                              Identifier "tmpbool" 146..146
+                          Operator "=" 146..146
+                          VnameExpression 146..146
+                            SimpleVname 146..146
+                              Identifier "true" 146..146
+                        SequentialCommand 148..158
+                          CallCommand 148..148
+                            Identifier "getBit" 148..148
+                            SingleActualParameterSequence 148..148
+                              VarActualParameter 148..148
+                                SimpleVname 148..148
+                                  Identifier "tmpbool" 148..148
+                          IfCommand 149..158
+                            BinaryExpression 149..0
+                              VnameExpression 149..149
+                                SimpleVname 149..149
+                                  Identifier "tmpbool" 149..149
+                              Operator "=" 149..149
+                              VnameExpression 149..149
+                                SimpleVname 149..149
+                                  Identifier "true" 149..149
+                            SequentialCommand 151..156
+                              CallCommand 151..151
+                                Identifier "getBit" 151..151
+                                SingleActualParameterSequence 151..151
+                                  VarActualParameter 151..151
+                                    SimpleVname 151..151
+                                      Identifier "tmpbool" 151..151
+                              IfCommand 152..156
+                                BinaryExpression 152..0
+                                  VnameExpression 152..152
+                                    SimpleVname 152..152
+                                      Identifier "tmpbool" 152..152
+                                  Operator "=" 152..152
+                                  VnameExpression 152..152
+                                    SimpleVname 152..152
+                                      Identifier "true" 152..152
+                                AssignCommand 153..154
+                                  SimpleVname 153..153
+                                    Identifier "i" 153..153
+                                  IntegerExpression 153..154
+                                    IntegerLiteral "5" 153..154
+                                AssignCommand 155..156
+                                  SimpleVname 155..155
+                                    Identifier "i" 155..155
+                                  IntegerExpression 155..156
+                                    IntegerLiteral "6" 155..156
+                            AssignCommand 157..158
+                              SimpleVname 157..157
+                                Identifier "i" 157..157
+                              IntegerExpression 157..158
+                                IntegerLiteral "9" 157..158
+                        AssignCommand 159..160
+                          SimpleVname 159..159
+                            Identifier "i" 159..159
+                          IntegerExpression 159..160
+                            IntegerLiteral "14" 159..160
+                SequentialCommand 163..186
+                  CallCommand 163..163
+                    Identifier "getBit" 163..163
+                    SingleActualParameterSequence 163..163
+                      VarActualParameter 163..163
+                        SimpleVname 163..163
+                          Identifier "tmpbool" 163..163
+                  IfCommand 164..186
+                    BinaryExpression 164..0
+                      VnameExpression 164..164
+                        SimpleVname 164..164
+                          Identifier "tmpbool" 164..164
+                      Operator "=" 164..164
+                      VnameExpression 164..164
+                        SimpleVname 164..164
+                          Identifier "true" 164..164
+                    SequentialCommand 166..184
+                      CallCommand 166..166
+                        Identifier "getBit" 166..166
+                        SingleActualParameterSequence 166..166
+                          VarActualParameter 166..166
+                            SimpleVname 166..166
+                              Identifier "tmpbool" 166..166
+                      IfCommand 167..184
+                        BinaryExpression 167..0
+                          VnameExpression 167..167
+                            SimpleVname 167..167
+                              Identifier "tmpbool" 167..167
+                          Operator "=" 167..167
+                          VnameExpression 167..167
+                            SimpleVname 167..167
+                              Identifier "true" 167..167
+                        AssignCommand 168..169
+                          SimpleVname 168..168
+                            Identifier "i" 168..168
+                          IntegerExpression 168..169
+                            IntegerLiteral "13" 168..169
+                        SequentialCommand 171..182
+                          CallCommand 171..171
+                            Identifier "getBit" 171..171
+                            SingleActualParameterSequence 171..171
+                              VarActualParameter 171..171
+                                SimpleVname 171..171
+                                  Identifier "tmpbool" 171..171
+                          IfCommand 172..182
+                            BinaryExpression 172..0
+                              VnameExpression 172..172
+                                SimpleVname 172..172
+                                  Identifier "tmpbool" 172..172
+                              Operator "=" 172..172
+                              VnameExpression 172..172
+                                SimpleVname 172..172
+                                  Identifier "true" 172..172
+                            AssignCommand 173..174
+                              SimpleVname 173..173
+                                Identifier "i" 173..173
+                              IntegerExpression 173..174
+                                IntegerLiteral "8" 173..174
+                            SequentialCommand 176..181
+                              CallCommand 176..176
+                                Identifier "getBit" 176..176
+                                SingleActualParameterSequence 176..176
+                                  VarActualParameter 176..176
+                                    SimpleVname 176..176
+                                      Identifier "tmpbool" 176..176
+                              IfCommand 177..181
+                                BinaryExpression 177..0
+                                  VnameExpression 177..177
+                                    SimpleVname 177..177
+                                      Identifier "tmpbool" 177..177
+                                  Operator "=" 177..177
+                                  VnameExpression 177..177
+                                    SimpleVname 177..177
+                                      Identifier "true" 177..177
+                                AssignCommand 178..179
+                                  SimpleVname 178..178
+                                    Identifier "i" 178..178
+                                  IntegerExpression 178..179
+                                    IntegerLiteral "4" 178..179
+                                AssignCommand 180..181
+                                  SimpleVname 180..180
+                                    Identifier "i" 180..180
+                                  IntegerExpression 180..181
+                                    IntegerLiteral "3" 180..181
+                    AssignCommand 185..186
+                      SimpleVname 185..185
+                        Identifier "i" 185..185
+                      IntegerExpression 185..186
+                        IntegerLiteral "15" 185..186
+              CallCommand 188..188
+                Identifier "write" 188..188
+                SingleActualParameterSequence 188..188
+                  ConstActualParameter 188..188
+                    VnameExpression 188..188
+                      SubscriptVname 188..188
+                        SimpleVname 188..188
+                          Identifier "code" 188..188
+                        VnameExpression 188..188
+                          SimpleVname 188..188
+                            Identifier "i" 188..188
+            CallCommand 189..189
+              Identifier "getBit" 189..189
+              SingleActualParameterSequence 189..189
+                VarActualParameter 189..189
+                  SimpleVname 189..189
+                    Identifier "tmpbool" 189..189
+          EmptyCommand 190..190

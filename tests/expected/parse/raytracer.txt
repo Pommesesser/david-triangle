@@ -1,0 +1,1536 @@
+Program 235..236
+  LetCommand 1..236
+    SequentialDeclaration 2..131
+      SequentialDeclaration 2..131
+        SequentialDeclaration 2..131
+          SequentialDeclaration 2..131
+            SequentialDeclaration 2..131
+              SequentialDeclaration 2..131
+                SequentialDeclaration 2..131
+                  SequentialDeclaration 2..131
+                    SequentialDeclaration 2..131
+                      SequentialDeclaration 2..131
+                        SequentialDeclaration 2..131
+                          SequentialDeclaration 2..131
+                            SequentialDeclaration 2..131
+                              SequentialDeclaration 2..131
+                                SequentialDeclaration 2..131
+                                  SequentialDeclaration 2..131
+                                    SequentialDeclaration 2..131
+                                      SequentialDeclaration 2..131
+                                        SequentialDeclaration 2..131
+                                          TypeDeclaration 2..6
+                                            Identifier "Vektor" 2..2
+                                            RecordTypeDenoter 2..6
+                                              MultipleFieldTypeDenoter 3..6
+                                                Identifier "x" 3..3
+                                                SimpleTypeDenoter 3..3
+                                                  Identifier "Integer" 3..3
+                                                MultipleFieldTypeDenoter 4..6
+                                                  Identifier "y" 4..4
+                                                  SimpleTypeDenoter 4..4
+                                                    Identifier "Integer" 4..4
+                                                  SingleFieldTypeDenoter 5..6
+                                                    Identifier "z" 5..5
+                                                    SimpleTypeDenoter 5..6
+                                                      Identifier "Integer" 5..6
+                                          TypeDeclaration 11..14
+                                            Identifier "Kugel" 11..11
+                                            RecordTypeDenoter 11..14
+                                              MultipleFieldTypeDenoter 12..13
+                                                Identifier "m" 12..12
+                                                SimpleTypeDenoter 12..12
+                                                  Identifier "Vektor" 12..12
+                                                SingleFieldTypeDenoter 13..13
+                                                  Identifier "r" 13..13
+                                                  SimpleTypeDenoter 13..13
+                                                    Identifier "Integer" 13..13
+                                        TypeDeclaration 19..23
+                                          Identifier "Gerade" 19..19
+                                          RecordTypeDenoter 19..23
+                                            MultipleFieldTypeDenoter 20..21
+                                              Identifier "o" 20..20
+                                              SimpleTypeDenoter 20..20
+                                                Identifier "Vektor" 20..20
+                                              SingleFieldTypeDenoter 21..21
+                                                Identifier "p" 21..21
+                                                SimpleTypeDenoter 21..21
+                                                  Identifier "Vektor" 21..21
+                                      ProcDeclaration 26..31
+                                        Identifier "sub" 26..26
+                                        MultipleFormalParameterSequence 26..26
+                                          ConstFormalParameter 26..26
+                                            Identifier "a" 26..26
+                                            SimpleTypeDenoter 26..26
+                                              Identifier "Vektor" 26..26
+                                          MultipleFormalParameterSequence 26..26
+                                            ConstFormalParameter 26..26
+                                              Identifier "b" 26..26
+                                              SimpleTypeDenoter 26..26
+                                                Identifier "Vektor" 26..26
+                                            SingleFormalParameterSequence 26..26
+                                              VarFormalParameter 26..26
+                                                Identifier "ret" 26..26
+                                                SimpleTypeDenoter 26..26
+                                                  Identifier "Vektor" 26..26
+                                        SequentialCommand 28..31
+                                          SequentialCommand 28..31
+                                            SequentialCommand 28..31
+                                              AssignCommand 28..28
+                                                DotVname 28..28
+                                                  SimpleVname 28..28
+                                                    Identifier "ret" 28..28
+                                                  Identifier "x" 28..28
+                                                BinaryExpression 28..0
+                                                  VnameExpression 28..28
+                                                    DotVname 28..28
+                                                      SimpleVname 28..28
+                                                        Identifier "a" 28..28
+                                                      Identifier "x" 28..28
+                                                  Operator "-" 28..28
+                                                  VnameExpression 28..28
+                                                    DotVname 28..28
+                                                      SimpleVname 28..28
+                                                        Identifier "b" 28..28
+                                                      Identifier "x" 28..28
+                                              AssignCommand 29..29
+                                                DotVname 29..29
+                                                  SimpleVname 29..29
+                                                    Identifier "ret" 29..29
+                                                  Identifier "y" 29..29
+                                                BinaryExpression 29..0
+                                                  VnameExpression 29..29
+                                                    DotVname 29..29
+                                                      SimpleVname 29..29
+                                                        Identifier "a" 29..29
+                                                      Identifier "y" 29..29
+                                                  Operator "-" 29..29
+                                                  VnameExpression 29..29
+                                                    DotVname 29..29
+                                                      SimpleVname 29..29
+                                                        Identifier "b" 29..29
+                                                      Identifier "y" 29..29
+                                            AssignCommand 30..30
+                                              DotVname 30..30
+                                                SimpleVname 30..30
+                                                  Identifier "ret" 30..30
+                                                Identifier "z" 30..30
+                                              BinaryExpression 30..0
+                                                VnameExpression 30..30
+                                                  DotVname 30..30
+                                                    SimpleVname 30..30
+                                                      Identifier "a" 30..30
+                                                    Identifier "z" 30..30
+                                                Operator "-" 30..30
+                                                VnameExpression 30..30
+                                                  DotVname 30..30
+                                                    SimpleVname 30..30
+                                                      Identifier "b" 30..30
+                                                    Identifier "z" 30..30
+                                          EmptyCommand 31..31
+                                    ProcDeclaration 34..47
+                                      Identifier "geradeEinsetzen" 34..34
+                                      MultipleFormalParameterSequence 34..34
+                                        ConstFormalParameter 34..34
+                                          Identifier "g" 34..34
+                                          SimpleTypeDenoter 34..34
+                                            Identifier "Gerade" 34..34
+                                        MultipleFormalParameterSequence 34..34
+                                          ConstFormalParameter 34..34
+                                            Identifier "lambda" 34..34
+                                            ArrayTypeDenoter 34..34
+                                              IntegerLiteral "2" 34..34
+                                              SimpleTypeDenoter 34..34
+                                                Identifier "Integer" 34..34
+                                          SingleFormalParameterSequence 34..34
+                                            VarFormalParameter 34..34
+                                              Identifier "ret" 34..34
+                                              ArrayTypeDenoter 34..34
+                                                IntegerLiteral "2" 34..34
+                                                SimpleTypeDenoter 34..34
+                                                  Identifier "Vektor" 34..34
+                                      LetCommand 35..47
+                                        VarDeclaration 36..37
+                                          Identifier "i" 36..36
+                                          SimpleTypeDenoter 36..37
+                                            Identifier "Integer" 36..37
+                                        SequentialCommand 39..47
+                                          AssignCommand 39..39
+                                            SimpleVname 39..39
+                                              Identifier "i" 39..39
+                                            IntegerExpression 39..39
+                                              IntegerLiteral "0" 39..39
+                                          WhileCommand 40..47
+                                            BinaryExpression 40..0
+                                              VnameExpression 40..40
+                                                SimpleVname 40..40
+                                                  Identifier "i" 40..40
+                                              Operator "<" 40..40
+                                              IntegerExpression 40..40
+                                                IntegerLiteral "2" 40..40
+                                            SequentialCommand 42..46
+                                              SequentialCommand 42..46
+                                                SequentialCommand 42..46
+                                                  SequentialCommand 42..46
+                                                    AssignCommand 42..42
+                                                      DotVname 42..42
+                                                        SubscriptVname 42..42
+                                                          SimpleVname 42..42
+                                                            Identifier "ret" 42..42
+                                                          VnameExpression 42..42
+                                                            SimpleVname 42..42
+                                                              Identifier "i" 42..42
+                                                        Identifier "x" 42..42
+                                                      BinaryExpression 42..0
+                                                        VnameExpression 42..42
+                                                          DotVname 42..42
+                                                            DotVname 42..42
+                                                              SimpleVname 42..42
+                                                                Identifier "g" 42..42
+                                                              Identifier "o" 42..42
+                                                            Identifier "x" 42..42
+                                                        Operator "+" 42..42
+                                                        BinaryExpression 42..0
+                                                          VnameExpression 42..42
+                                                            SubscriptVname 42..42
+                                                              SimpleVname 42..42
+                                                                Identifier "lambda" 42..42
+                                                              VnameExpression 42..42
+                                                                SimpleVname 42..42
+                                                                  Identifier "i" 42..42
+                                                          Operator "*" 42..42
+                                                          VnameExpression 42..42
+                                                            DotVname 42..42
+                                                              DotVname 42..42
+                                                                SimpleVname 42..42
+                                                                  Identifier "g" 42..42
+                                                                Identifier "p" 42..42
+                                                              Identifier "x" 42..42
+                                                    AssignCommand 43..43
+                                                      DotVname 43..43
+                                                        SubscriptVname 43..43
+                                                          SimpleVname 43..43
+                                                            Identifier "ret" 43..43
+                                                          VnameExpression 43..43
+                                                            SimpleVname 43..43
+                                                              Identifier "i" 43..43
+                                                        Identifier "y" 43..43
+                                                      BinaryExpression 43..0
+                                                        VnameExpression 43..43
+                                                          DotVname 43..43
+                                                            DotVname 43..43
+                                                              SimpleVname 43..43
+                                                                Identifier "g" 43..43
+                                                              Identifier "o" 43..43
+                                                            Identifier "y" 43..43
+                                                        Operator "+" 43..43
+                                                        BinaryExpression 43..0
+                                                          VnameExpression 43..43
+                                                            SubscriptVname 43..43
+                                                              SimpleVname 43..43
+                                                                Identifier "lambda" 43..43
+                                                              VnameExpression 43..43
+                                                                SimpleVname 43..43
+                                                                  Identifier "i" 43..43
+                                                          Operator "*" 43..43
+                                                          VnameExpression 43..43
+                                                            DotVname 43..43
+                                                              DotVname 43..43
+                                                                SimpleVname 43..43
+                                                                  Identifier "g" 43..43
+                                                                Identifier "p" 43..43
+                                                              Identifier "y" 43..43
+                                                  AssignCommand 44..44
+                                                    DotVname 44..44
+                                                      SubscriptVname 44..44
+                                                        SimpleVname 44..44
+                                                          Identifier "ret" 44..44
+                                                        VnameExpression 44..44
+                                                          SimpleVname 44..44
+                                                            Identifier "i" 44..44
+                                                      Identifier "z" 44..44
+                                                    BinaryExpression 44..0
+                                                      VnameExpression 44..44
+                                                        DotVname 44..44
+                                                          DotVname 44..44
+                                                            SimpleVname 44..44
+                                                              Identifier "g" 44..44
+                                                            Identifier "o" 44..44
+                                                          Identifier "z" 44..44
+                                                      Operator "+" 44..44
+                                                      BinaryExpression 44..0
+                                                        VnameExpression 44..44
+                                                          SubscriptVname 44..44
+                                                            SimpleVname 44..44
+                                                              Identifier "lambda" 44..44
+                                                            VnameExpression 44..44
+                                                              SimpleVname 44..44
+                                                                Identifier "i" 44..44
+                                                        Operator "*" 44..44
+                                                        VnameExpression 44..44
+                                                          DotVname 44..44
+                                                            DotVname 44..44
+                                                              SimpleVname 44..44
+                                                                Identifier "g" 44..44
+                                                              Identifier "p" 44..44
+                                                            Identifier "z" 44..44
+                                                AssignCommand 45..45
+                                                  SimpleVname 45..45
+                                                    Identifier "i" 45..45
+                                                  BinaryExpression 45..0
+                                                    VnameExpression 45..45
+                                                      SimpleVname 45..45
+                                                        Identifier "i" 45..45
+                                                    Operator "+" 45..45
+                                                    IntegerExpression 45..45
+                                                      IntegerLiteral "1" 45..45
+                                              EmptyCommand 46..46
+                                  ProcDeclaration 50..61
+                                    Identifier "putintPadded" 50..50
+                                    SingleFormalParameterSequence 50..50
+                                      ConstFormalParameter 50..50
+                                        Identifier "value" 50..50
+                                        SimpleTypeDenoter 50..50
+                                          Identifier "Integer" 50..50
+                                    SequentialCommand 56..61
+                                      SequentialCommand 56..61
+                                        IfCommand 56..59
+                                          BinaryExpression 56..0
+                                            VnameExpression 56..56
+                                              SimpleVname 56..56
+                                                Identifier "value" 56..56
+                                            Operator "<=" 56..56
+                                            IntegerExpression 56..56
+                                              IntegerLiteral "9" 56..56
+                                          CallCommand 57..58
+                                            Identifier "putint" 57..57
+                                            SingleActualParameterSequence 57..57
+                                              ConstActualParameter 57..57
+                                                IntegerExpression 57..57
+                                                  IntegerLiteral "0" 57..57
+                                          EmptyCommand 59..59
+                                        CallCommand 60..60
+                                          Identifier "putint" 60..60
+                                          SingleActualParameterSequence 60..60
+                                            ConstActualParameter 60..60
+                                              VnameExpression 60..60
+                                                SimpleVname 60..60
+                                                  Identifier "value" 60..60
+                                      EmptyCommand 61..61
+                                ProcDeclaration 64..76
+                                  Identifier "sqrt" 64..64
+                                  MultipleFormalParameterSequence 64..64
+                                    ConstFormalParameter 64..64
+                                      Identifier "x" 64..64
+                                      SimpleTypeDenoter 64..64
+                                        Identifier "Integer" 64..64
+                                    SingleFormalParameterSequence 64..64
+                                      VarFormalParameter 64..64
+                                        Identifier "ret" 64..64
+                                        SimpleTypeDenoter 64..64
+                                          Identifier "Integer" 64..64
+                                  LetCommand 65..76
+                                    VarDeclaration 66..67
+                                      Identifier "tmp" 66..66
+                                      SimpleTypeDenoter 66..67
+                                        Identifier "Integer" 66..67
+                                    SequentialCommand 69..76
+                                      SequentialCommand 69..76
+                                        AssignCommand 69..69
+                                          SimpleVname 69..69
+                                            Identifier "tmp" 69..69
+                                          BinaryExpression 69..0
+                                            BinaryExpression 69..0
+                                              VnameExpression 69..69
+                                                SimpleVname 69..69
+                                                  Identifier "x" 69..69
+                                              Operator "+" 69..69
+                                              IntegerExpression 69..69
+                                                IntegerLiteral "1" 69..69
+                                            Operator "/" 69..69
+                                            IntegerExpression 69..69
+                                              IntegerLiteral "2" 69..69
+                                        AssignCommand 70..70
+                                          SimpleVname 70..70
+                                            Identifier "ret" 70..70
+                                          IntegerExpression 70..70
+                                            IntegerLiteral "0" 70..70
+                                      WhileCommand 71..76
+                                        BinaryExpression 71..0
+                                          VnameExpression 71..71
+                                            SimpleVname 71..71
+                                              Identifier "tmp" 71..71
+                                          Operator ">" 71..71
+                                          VnameExpression 71..71
+                                            SimpleVname 71..71
+                                              Identifier "ret" 71..71
+                                        SequentialCommand 73..75
+                                          AssignCommand 73..73
+                                            SimpleVname 73..73
+                                              Identifier "tmp" 73..73
+                                            BinaryExpression 73..0
+                                              VnameExpression 73..73
+                                                SimpleVname 73..73
+                                                  Identifier "tmp" 73..73
+                                              Operator "-" 73..73
+                                              VnameExpression 73..73
+                                                SimpleVname 73..73
+                                                  Identifier "ret" 73..73
+                                          AssignCommand 74..75
+                                            SimpleVname 74..74
+                                              Identifier "ret" 74..74
+                                            BinaryExpression 74..0
+                                              VnameExpression 74..74
+                                                SimpleVname 74..74
+                                                  Identifier "ret" 74..74
+                                              Operator "+" 74..74
+                                              IntegerExpression 74..75
+                                                IntegerLiteral "1" 74..75
+                              ProcDeclaration 80..106
+                                Identifier "solvesq" 80..80
+                                MultipleFormalParameterSequence 80..80
+                                  ConstFormalParameter 80..80
+                                    Identifier "a" 80..80
+                                    SimpleTypeDenoter 80..80
+                                      Identifier "Integer" 80..80
+                                  MultipleFormalParameterSequence 80..80
+                                    ConstFormalParameter 80..80
+                                      Identifier "b" 80..80
+                                      SimpleTypeDenoter 80..80
+                                        Identifier "Integer" 80..80
+                                    MultipleFormalParameterSequence 80..80
+                                      ConstFormalParameter 80..80
+                                        Identifier "c" 80..80
+                                        SimpleTypeDenoter 80..80
+                                          Identifier "Integer" 80..80
+                                      MultipleFormalParameterSequence 80..80
+                                        VarFormalParameter 80..80
+                                          Identifier "ret" 80..80
+                                          ArrayTypeDenoter 80..80
+                                            IntegerLiteral "2" 80..80
+                                            SimpleTypeDenoter 80..80
+                                              Identifier "Integer" 80..80
+                                        SingleFormalParameterSequence 80..80
+                                          VarFormalParameter 80..80
+                                            Identifier "success" 80..80
+                                            SimpleTypeDenoter 80..80
+                                              Identifier "Boolean" 80..80
+                                LetCommand 81..106
+                                  SequentialDeclaration 82..85
+                                    SequentialDeclaration 82..85
+                                      VarDeclaration 82..82
+                                        Identifier "p" 82..82
+                                        SimpleTypeDenoter 82..82
+                                          Identifier "Integer" 82..82
+                                      VarDeclaration 83..83
+                                        Identifier "q" 83..83
+                                        SimpleTypeDenoter 83..83
+                                          Identifier "Integer" 83..83
+                                    VarDeclaration 84..85
+                                      Identifier "d" 84..84
+                                      SimpleTypeDenoter 84..85
+                                        Identifier "Integer" 84..85
+                                  SequentialCommand 87..106
+                                    SequentialCommand 87..106
+                                      SequentialCommand 87..106
+                                        AssignCommand 87..87
+                                          SimpleVname 87..87
+                                            Identifier "p" 87..87
+                                          BinaryExpression 87..0
+                                            VnameExpression 87..87
+                                              SimpleVname 87..87
+                                                Identifier "b" 87..87
+                                            Operator "/" 87..87
+                                            VnameExpression 87..87
+                                              SimpleVname 87..87
+                                                Identifier "a" 87..87
+                                        AssignCommand 88..88
+                                          SimpleVname 88..88
+                                            Identifier "q" 88..88
+                                          BinaryExpression 88..0
+                                            VnameExpression 88..88
+                                              SimpleVname 88..88
+                                                Identifier "c" 88..88
+                                            Operator "/" 88..88
+                                            VnameExpression 88..88
+                                              SimpleVname 88..88
+                                                Identifier "a" 88..88
+                                      IfCommand 90..105
+                                        BinaryExpression 90..0
+                                          BinaryExpression 90..0
+                                            BinaryExpression 90..0
+                                              BinaryExpression 90..0
+                                                VnameExpression 90..90
+                                                  SimpleVname 90..90
+                                                    Identifier "p" 90..90
+                                                Operator "/" 90..90
+                                                IntegerExpression 90..90
+                                                  IntegerLiteral "2" 90..90
+                                              Operator "*" 90..90
+                                              BinaryExpression 90..0
+                                                VnameExpression 90..90
+                                                  SimpleVname 90..90
+                                                    Identifier "p" 90..90
+                                                Operator "/" 90..90
+                                                IntegerExpression 90..90
+                                                  IntegerLiteral "2" 90..90
+                                            Operator "-" 90..90
+                                            VnameExpression 90..90
+                                              SimpleVname 90..90
+                                                Identifier "q" 90..90
+                                          Operator "<" 90..90
+                                          IntegerExpression 90..90
+                                            IntegerLiteral "0" 90..90
+                                        AssignCommand 91..92
+                                          SimpleVname 91..91
+                                            Identifier "success" 91..91
+                                          VnameExpression 91..92
+                                            SimpleVname 91..92
+                                              Identifier "false" 91..92
+                                        SequentialCommand 94..98
+                                          SequentialCommand 94..98
+                                            SequentialCommand 94..98
+                                              SequentialCommand 94..98
+                                                AssignCommand 94..94
+                                                  SimpleVname 94..94
+                                                    Identifier "success" 94..94
+                                                  VnameExpression 94..94
+                                                    SimpleVname 94..94
+                                                      Identifier "true" 94..94
+                                                CallCommand 95..95
+                                                  Identifier "sqrt" 95..95
+                                                  MultipleActualParameterSequence 95..95
+                                                    ConstActualParameter 95..95
+                                                      BinaryExpression 95..0
+                                                        BinaryExpression 95..0
+                                                          BinaryExpression 95..0
+                                                            VnameExpression 95..95
+                                                              SimpleVname 95..95
+                                                                Identifier "p" 95..95
+                                                            Operator "/" 95..95
+                                                            IntegerExpression 95..95
+                                                              IntegerLiteral "2" 95..95
+                                                          Operator "*" 95..95
+                                                          BinaryExpression 95..0
+                                                            VnameExpression 95..95
+                                                              SimpleVname 95..95
+                                                                Identifier "p" 95..95
+                                                            Operator "/" 95..95
+                                                            IntegerExpression 95..95
+                                                              IntegerLiteral "2" 95..95
+                                                        Operator "-" 95..95
+                                                        VnameExpression 95..95
+                                                          SimpleVname 95..95
+                                                            Identifier "q" 95..95
+                                                    SingleActualParameterSequence 95..95
+                                                      VarActualParameter 95..95
+                                                        SimpleVname 95..95
+                                                          Identifier "d" 95..95
+                                              AssignCommand 96..96
+                                                SubscriptVname 96..96
+                                                  SimpleVname 96..96
+                                                    Identifier "ret" 96..96
+                                                  IntegerExpression 96..96
+                                                    IntegerLiteral "0" 96..96
+                                                BinaryExpression 96..0
+                                                  BinaryExpression 96..0
+                                                    IntegerExpression 96..96
+                                                      IntegerLiteral "0" 96..96
+                                                    Operator "-" 96..96
+                                                    BinaryExpression 96..0
+                                                      VnameExpression 96..96
+                                                        SimpleVname 96..96
+                                                          Identifier "p" 96..96
+                                                      Operator "/" 96..96
+                                                      IntegerExpression 96..96
+                                                        IntegerLiteral "2" 96..96
+                                                  Operator "-" 96..96
+                                                  VnameExpression 96..96
+                                                    SimpleVname 96..96
+                                                      Identifier "d" 96..96
+                                            AssignCommand 97..97
+                                              SubscriptVname 97..97
+                                                SimpleVname 97..97
+                                                  Identifier "ret" 97..97
+                                                IntegerExpression 97..97
+                                                  IntegerLiteral "1" 97..97
+                                              BinaryExpression 97..0
+                                                BinaryExpression 97..0
+                                                  IntegerExpression 97..97
+                                                    IntegerLiteral "0" 97..97
+                                                  Operator "-" 97..97
+                                                  BinaryExpression 97..0
+                                                    VnameExpression 97..97
+                                                      SimpleVname 97..97
+                                                        Identifier "p" 97..97
+                                                    Operator "/" 97..97
+                                                    IntegerExpression 97..97
+                                                      IntegerLiteral "2" 97..97
+                                                Operator "+" 97..97
+                                                VnameExpression 97..97
+                                                  SimpleVname 97..97
+                                                    Identifier "d" 97..97
+                                          EmptyCommand 104..98
+                                    EmptyCommand 106..106
+                            VarDeclaration 108..108
+                              Identifier "a" 108..108
+                              SimpleTypeDenoter 108..108
+                                Identifier "Integer" 108..108
+                          VarDeclaration 109..109
+                            Identifier "b" 109..109
+                            SimpleTypeDenoter 109..109
+                              Identifier "Integer" 109..109
+                        VarDeclaration 110..110
+                          Identifier "c" 110..110
+                          SimpleTypeDenoter 110..110
+                            Identifier "Integer" 110..110
+                      VarDeclaration 112..112
+                        Identifier "tmp" 112..112
+                        SimpleTypeDenoter 112..112
+                          Identifier "Vektor" 112..112
+                    VarDeclaration 113..113
+                      Identifier "success" 113..113
+                      SimpleTypeDenoter 113..113
+                        Identifier "Boolean" 113..113
+                  VarDeclaration 114..114
+                    Identifier "lambda" 114..114
+                    ArrayTypeDenoter 114..114
+                      IntegerLiteral "2" 114..114
+                      SimpleTypeDenoter 114..114
+                        Identifier "Integer" 114..114
+                VarDeclaration 115..115
+                  Identifier "schnittpunkte" 115..115
+                  ArrayTypeDenoter 115..115
+                    IntegerLiteral "2" 115..115
+                    SimpleTypeDenoter 115..115
+                      Identifier "Vektor" 115..115
+              ConstDeclaration 124..124
+                Identifier "WIDTH" 124..124
+                IntegerExpression 124..124
+                  IntegerLiteral "15" 124..124
+            ConstDeclaration 125..125
+              Identifier "HEIGHT" 125..125
+              IntegerExpression 125..125
+                IntegerLiteral "15" 125..125
+          VarDeclaration 127..127
+            Identifier "k" 127..127
+            SimpleTypeDenoter 127..127
+              Identifier "Kugel" 127..127
+        VarDeclaration 128..128
+          Identifier "g" 128..128
+          SimpleTypeDenoter 128..128
+            Identifier "Gerade" 128..128
+      VarDeclaration 130..131
+        Identifier "frame" 130..130
+        SimpleTypeDenoter 130..131
+          Identifier "Integer" 130..131
+    SequentialCommand 133..235
+      AssignCommand 133..133
+        SimpleVname 133..133
+          Identifier "frame" 133..133
+        IntegerExpression 133..133
+          IntegerLiteral "0" 133..133
+      WhileCommand 134..235
+        BinaryExpression 134..0
+          VnameExpression 134..134
+            SimpleVname 134..134
+              Identifier "frame" 134..134
+          Operator "<" 134..134
+          IntegerExpression 134..134
+            IntegerLiteral "7" 134..134
+        SequentialCommand 136..234
+          SequentialCommand 136..234
+            SequentialCommand 136..234
+              SequentialCommand 136..234
+                SequentialCommand 136..234
+                  SequentialCommand 136..234
+                    SequentialCommand 136..234
+                      SequentialCommand 136..234
+                        SequentialCommand 136..234
+                          SequentialCommand 136..234
+                            SequentialCommand 136..234
+                              AssignCommand 136..136
+                                SimpleVname 136..136
+                                  Identifier "frame" 136..136
+                                BinaryExpression 136..0
+                                  VnameExpression 136..136
+                                    SimpleVname 136..136
+                                      Identifier "frame" 136..136
+                                  Operator "+" 136..136
+                                  IntegerExpression 136..136
+                                    IntegerLiteral "1" 136..136
+                              AssignCommand 138..138
+                                DotVname 138..138
+                                  DotVname 138..138
+                                    SimpleVname 138..138
+                                      Identifier "k" 138..138
+                                    Identifier "m" 138..138
+                                  Identifier "x" 138..138
+                                IntegerExpression 138..138
+                                  IntegerLiteral "0" 138..138
+                            AssignCommand 139..139
+                              DotVname 139..139
+                                DotVname 139..139
+                                  SimpleVname 139..139
+                                    Identifier "k" 139..139
+                                  Identifier "m" 139..139
+                                Identifier "y" 139..139
+                              IntegerExpression 139..139
+                                IntegerLiteral "0" 139..139
+                          AssignCommand 141..141
+                            DotVname 141..141
+                              DotVname 141..141
+                                SimpleVname 141..141
+                                  Identifier "g" 141..141
+                                Identifier "o" 141..141
+                              Identifier "x" 141..141
+                            IntegerExpression 141..141
+                              IntegerLiteral "0" 141..141
+                        AssignCommand 142..142
+                          DotVname 142..142
+                            DotVname 142..142
+                              SimpleVname 142..142
+                                Identifier "g" 142..142
+                              Identifier "o" 142..142
+                            Identifier "y" 142..142
+                          IntegerExpression 142..142
+                            IntegerLiteral "0" 142..142
+                      AssignCommand 144..144
+                        DotVname 144..144
+                          SimpleVname 144..144
+                            Identifier "k" 144..144
+                          Identifier "r" 144..144
+                        IntegerExpression 144..144
+                          IntegerLiteral "75" 144..144
+                    AssignCommand 146..146
+                      DotVname 146..146
+                        DotVname 146..146
+                          SimpleVname 146..146
+                            Identifier "k" 146..146
+                          Identifier "m" 146..146
+                        Identifier "z" 146..146
+                      IntegerExpression 146..146
+                        IntegerLiteral "150" 146..146
+                  AssignCommand 147..147
+                    DotVname 147..147
+                      SimpleVname 147..147
+                        Identifier "tmp" 147..147
+                      Identifier "z" 147..147
+                    VnameExpression 147..147
+                      SimpleVname 147..147
+                        Identifier "frame" 147..147
+                AssignCommand 148..148
+                  DotVname 148..148
+                    DotVname 148..148
+                      SimpleVname 148..148
+                        Identifier "g" 148..148
+                      Identifier "o" 148..148
+                    Identifier "z" 148..148
+                  IntegerExpression 148..148
+                    IntegerLiteral "0" 148..148
+              AssignCommand 160..160
+                DotVname 160..160
+                  SimpleVname 160..160
+                    Identifier "tmp" 160..160
+                  Identifier "y" 160..160
+                BinaryExpression 160..0
+                  BinaryExpression 160..0
+                    VnameExpression 160..160
+                      SimpleVname 160..160
+                        Identifier "HEIGHT" 160..160
+                    Operator "/" 160..160
+                    IntegerExpression 160..160
+                      IntegerLiteral "2" 160..160
+                  Operator "+" 160..160
+                  IntegerExpression 160..160
+                    IntegerLiteral "1" 160..160
+            WhileCommand 161..233
+              BinaryExpression 161..0
+                VnameExpression 161..161
+                  DotVname 161..161
+                    SimpleVname 161..161
+                      Identifier "tmp" 161..161
+                    Identifier "y" 161..161
+                Operator ">" 161..161
+                BinaryExpression 161..0
+                  IntegerExpression 161..161
+                    IntegerLiteral "0" 161..161
+                  Operator "-" 161..161
+                  BinaryExpression 161..0
+                    VnameExpression 161..161
+                      SimpleVname 161..161
+                        Identifier "HEIGHT" 161..161
+                    Operator "/" 161..161
+                    IntegerExpression 161..161
+                      IntegerLiteral "2" 161..161
+              SequentialCommand 162..233
+                SequentialCommand 162..233
+                  SequentialCommand 162..233
+                    SequentialCommand 162..233
+                      AssignCommand 162..162
+                        DotVname 162..162
+                          SimpleVname 162..162
+                            Identifier "tmp" 162..162
+                          Identifier "x" 162..162
+                        BinaryExpression 162..0
+                          IntegerExpression 162..162
+                            IntegerLiteral "0" 162..162
+                          Operator "-" 162..162
+                          BinaryExpression 162..0
+                            VnameExpression 162..162
+                              SimpleVname 162..162
+                                Identifier "WIDTH" 162..162
+                            Operator "/" 162..162
+                            IntegerExpression 162..162
+                              IntegerLiteral "2" 162..162
+                      WhileCommand 163..228
+                        BinaryExpression 163..0
+                          VnameExpression 163..163
+                            DotVname 163..163
+                              SimpleVname 163..163
+                                Identifier "tmp" 163..163
+                              Identifier "x" 163..163
+                          Operator "<" 163..163
+                          BinaryExpression 163..0
+                            BinaryExpression 163..0
+                              VnameExpression 163..163
+                                SimpleVname 163..163
+                                  Identifier "WIDTH" 163..163
+                              Operator "/" 163..163
+                              IntegerExpression 163..163
+                                IntegerLiteral "2" 163..163
+                            Operator "+" 163..163
+                            IntegerExpression 163..163
+                              IntegerLiteral "1" 163..163
+                        SequentialCommand 165..228
+                          SequentialCommand 165..228
+                            SequentialCommand 165..228
+                              SequentialCommand 165..228
+                                SequentialCommand 165..228
+                                  SequentialCommand 165..228
+                                    SequentialCommand 165..228
+                                      SequentialCommand 165..228
+                                        SequentialCommand 165..228
+                                          CallCommand 165..165
+                                            Identifier "sub" 165..165
+                                            MultipleActualParameterSequence 165..165
+                                              ConstActualParameter 165..165
+                                                VnameExpression 165..165
+                                                  SimpleVname 165..165
+                                                    Identifier "tmp" 165..165
+                                              MultipleActualParameterSequence 165..165
+                                                ConstActualParameter 165..165
+                                                  VnameExpression 165..165
+                                                    DotVname 165..165
+                                                      SimpleVname 165..165
+                                                        Identifier "g" 165..165
+                                                      Identifier "o" 165..165
+                                                SingleActualParameterSequence 165..165
+                                                  VarActualParameter 165..165
+                                                    DotVname 165..165
+                                                      SimpleVname 165..165
+                                                        Identifier "g" 165..165
+                                                      Identifier "p" 165..165
+                                          AssignCommand 168..170
+                                            SimpleVname 168..168
+                                              Identifier "a" 168..168
+                                            BinaryExpression 168..0
+                                              BinaryExpression 168..0
+                                                BinaryExpression 168..0
+                                                  VnameExpression 168..168
+                                                    DotVname 168..168
+                                                      DotVname 168..168
+                                                        SimpleVname 168..168
+                                                          Identifier "g" 168..168
+                                                        Identifier "p" 168..168
+                                                      Identifier "x" 168..168
+                                                  Operator "*" 168..168
+                                                  VnameExpression 168..168
+                                                    DotVname 168..168
+                                                      DotVname 168..168
+                                                        SimpleVname 168..168
+                                                          Identifier "g" 168..168
+                                                        Identifier "p" 168..168
+                                                      Identifier "x" 168..168
+                                                Operator "+" 168..169
+                                                BinaryExpression 169..0
+                                                  VnameExpression 169..169
+                                                    DotVname 169..169
+                                                      DotVname 169..169
+                                                        SimpleVname 169..169
+                                                          Identifier "g" 169..169
+                                                        Identifier "p" 169..169
+                                                      Identifier "y" 169..169
+                                                  Operator "*" 169..169
+                                                  VnameExpression 169..169
+                                                    DotVname 169..169
+                                                      DotVname 169..169
+                                                        SimpleVname 169..169
+                                                          Identifier "g" 169..169
+                                                        Identifier "p" 169..169
+                                                      Identifier "y" 169..169
+                                              Operator "+" 169..170
+                                              BinaryExpression 170..0
+                                                VnameExpression 170..170
+                                                  DotVname 170..170
+                                                    DotVname 170..170
+                                                      SimpleVname 170..170
+                                                        Identifier "g" 170..170
+                                                      Identifier "p" 170..170
+                                                    Identifier "z" 170..170
+                                                Operator "*" 170..170
+                                                VnameExpression 170..170
+                                                  DotVname 170..170
+                                                    DotVname 170..170
+                                                      SimpleVname 170..170
+                                                        Identifier "g" 170..170
+                                                      Identifier "p" 170..170
+                                                    Identifier "z" 170..170
+                                        AssignCommand 172..174
+                                          SimpleVname 172..172
+                                            Identifier "b" 172..172
+                                          BinaryExpression 172..0
+                                            BinaryExpression 172..0
+                                              BinaryExpression 172..0
+                                                BinaryExpression 172..0
+                                                  BinaryExpression 172..0
+                                                    VnameExpression 172..172
+                                                      DotVname 172..172
+                                                        DotVname 172..172
+                                                          SimpleVname 172..172
+                                                            Identifier "g" 172..172
+                                                          Identifier "o" 172..172
+                                                        Identifier "x" 172..172
+                                                    Operator "+" 172..172
+                                                    BinaryExpression 172..0
+                                                      IntegerExpression 172..172
+                                                        IntegerLiteral "0" 172..172
+                                                      Operator "-" 172..172
+                                                      VnameExpression 172..172
+                                                        DotVname 172..172
+                                                          DotVname 172..172
+                                                            SimpleVname 172..172
+                                                              Identifier "k" 172..172
+                                                            Identifier "m" 172..172
+                                                          Identifier "x" 172..172
+                                                  Operator "*" 172..172
+                                                  IntegerExpression 172..172
+                                                    IntegerLiteral "2" 172..172
+                                                Operator "*" 172..172
+                                                VnameExpression 172..172
+                                                  DotVname 172..172
+                                                    DotVname 172..172
+                                                      SimpleVname 172..172
+                                                        Identifier "g" 172..172
+                                                      Identifier "p" 172..172
+                                                    Identifier "x" 172..172
+                                              Operator "+" 172..173
+                                              BinaryExpression 173..0
+                                                BinaryExpression 173..0
+                                                  BinaryExpression 173..0
+                                                    VnameExpression 173..173
+                                                      DotVname 173..173
+                                                        DotVname 173..173
+                                                          SimpleVname 173..173
+                                                            Identifier "g" 173..173
+                                                          Identifier "o" 173..173
+                                                        Identifier "y" 173..173
+                                                    Operator "+" 173..173
+                                                    BinaryExpression 173..0
+                                                      IntegerExpression 173..173
+                                                        IntegerLiteral "0" 173..173
+                                                      Operator "-" 173..173
+                                                      VnameExpression 173..173
+                                                        DotVname 173..173
+                                                          DotVname 173..173
+                                                            SimpleVname 173..173
+                                                              Identifier "k" 173..173
+                                                            Identifier "m" 173..173
+                                                          Identifier "y" 173..173
+                                                  Operator "*" 173..173
+                                                  IntegerExpression 173..173
+                                                    IntegerLiteral "2" 173..173
+                                                Operator "*" 173..173
+                                                VnameExpression 173..173
+                                                  DotVname 173..173
+                                                    DotVname 173..173
+                                                      SimpleVname 173..173
+                                                        Identifier "g" 173..173
+                                                      Identifier "p" 173..173
+                                                    Identifier "y" 173..173
+                                            Operator "+" 173..174
+                                            BinaryExpression 174..0
+                                              BinaryExpression 174..0
+                                                BinaryExpression 174..0
+                                                  VnameExpression 174..174
+                                                    DotVname 174..174
+                                                      DotVname 174..174
+                                                        SimpleVname 174..174
+                                                          Identifier "g" 174..174
+                                                        Identifier "o" 174..174
+                                                      Identifier "z" 174..174
+                                                  Operator "+" 174..174
+                                                  BinaryExpression 174..0
+                                                    IntegerExpression 174..174
+                                                      IntegerLiteral "0" 174..174
+                                                    Operator "-" 174..174
+                                                    VnameExpression 174..174
+                                                      DotVname 174..174
+                                                        DotVname 174..174
+                                                          SimpleVname 174..174
+                                                            Identifier "k" 174..174
+                                                          Identifier "m" 174..174
+                                                        Identifier "z" 174..174
+                                                Operator "*" 174..174
+                                                IntegerExpression 174..174
+                                                  IntegerLiteral "2" 174..174
+                                              Operator "*" 174..174
+                                              VnameExpression 174..174
+                                                DotVname 174..174
+                                                  DotVname 174..174
+                                                    SimpleVname 174..174
+                                                      Identifier "g" 174..174
+                                                    Identifier "p" 174..174
+                                                  Identifier "z" 174..174
+                                      AssignCommand 176..191
+                                        SimpleVname 176..176
+                                          Identifier "c" 176..176
+                                        BinaryExpression 176..0
+                                          BinaryExpression 176..0
+                                            BinaryExpression 176..0
+                                              BinaryExpression 176..0
+                                                BinaryExpression 176..0
+                                                  BinaryExpression 176..0
+                                                    BinaryExpression 176..0
+                                                      BinaryExpression 176..0
+                                                        BinaryExpression 176..0
+                                                          BinaryExpression 176..0
+                                                            BinaryExpression 176..0
+                                                              BinaryExpression 176..0
+                                                                BinaryExpression 176..0
+                                                                  VnameExpression 176..176
+                                                                    DotVname 176..176
+                                                                      DotVname 176..176
+                                                                        SimpleVname 176..176
+                                                                          Identifier "g" 176..176
+                                                                        Identifier "o" 176..176
+                                                                      Identifier "x" 176..176
+                                                                  Operator "*" 176..176
+                                                                  VnameExpression 176..176
+                                                                    DotVname 176..176
+                                                                      DotVname 176..176
+                                                                        SimpleVname 176..176
+                                                                          Identifier "g" 176..176
+                                                                        Identifier "o" 176..176
+                                                                      Identifier "x" 176..176
+                                                                Operator "+" 176..177
+                                                                BinaryExpression 177..0
+                                                                  VnameExpression 177..177
+                                                                    DotVname 177..177
+                                                                      DotVname 177..177
+                                                                        SimpleVname 177..177
+                                                                          Identifier "g" 177..177
+                                                                        Identifier "o" 177..177
+                                                                      Identifier "x" 177..177
+                                                                  Operator "*" 177..177
+                                                                  BinaryExpression 177..0
+                                                                    IntegerExpression 177..177
+                                                                      IntegerLiteral "0" 177..177
+                                                                    Operator "-" 177..177
+                                                                    VnameExpression 177..177
+                                                                      DotVname 177..177
+                                                                        DotVname 177..177
+                                                                          SimpleVname 177..177
+                                                                            Identifier "k" 177..177
+                                                                          Identifier "m" 177..177
+                                                                        Identifier "x" 177..177
+                                                              Operator "+" 177..178
+                                                              BinaryExpression 178..0
+                                                                VnameExpression 178..178
+                                                                  DotVname 178..178
+                                                                    DotVname 178..178
+                                                                      SimpleVname 178..178
+                                                                        Identifier "g" 178..178
+                                                                      Identifier "o" 178..178
+                                                                    Identifier "x" 178..178
+                                                                Operator "*" 178..178
+                                                                BinaryExpression 178..0
+                                                                  IntegerExpression 178..178
+                                                                    IntegerLiteral "0" 178..178
+                                                                  Operator "-" 178..178
+                                                                  VnameExpression 178..178
+                                                                    DotVname 178..178
+                                                                      DotVname 178..178
+                                                                        SimpleVname 178..178
+                                                                          Identifier "k" 178..178
+                                                                        Identifier "m" 178..178
+                                                                      Identifier "x" 178..178
+                                                            Operator "+" 178..179
+                                                            BinaryExpression 179..0
+                                                              BinaryExpression 179..0
+                                                                IntegerExpression 179..179
+                                                                  IntegerLiteral "0" 179..179
+                                                                Operator "-" 179..179
+                                                                VnameExpression 179..179
+                                                                  DotVname 179..179
+                                                                    DotVname 179..179
+                                                                      SimpleVname 179..179
+                                                                        Identifier "k" 179..179
+                                                                      Identifier "m" 179..179
+                                                                    Identifier "x" 179..179
+                                                              Operator "*" 179..179
+                                                              BinaryExpression 179..0
+                                                                IntegerExpression 179..179
+                                                                  IntegerLiteral "0" 179..179
+                                                                Operator "-" 179..179
+                                                                VnameExpression 179..179
+                                                                  DotVname 179..179
+                                                                    DotVname 179..179
+                                                                      SimpleVname 179..179
+                                                                        Identifier "k" 179..179
+                                                                      Identifier "m" 179..179
+                                                                    Identifier "x" 179..179
+                                                          Operator "+" 179..180
+                                                          BinaryExpression 181..0
+                                                            VnameExpression 181..181
+                                                              DotVname 181..181
+                                                                DotVname 181..181
+                                                                  SimpleVname 181..181
+                                                                    Identifier "g" 181..181
+                                                                  Identifier "o" 181..181
+                                                                Identifier "y" 181..181
+                                                            Operator "*" 181..181
+                                                            VnameExpression 181..181
+                                                              DotVname 181..181
+                                                                DotVname 181..181
+                                                                  SimpleVname 181..181
+                                                                    Identifier "g" 181..181
+                                                                  Identifier "o" 181..181
+                                                                Identifier "y" 181..181
+                                                        Operator "+" 181..182
+                                                        BinaryExpression 182..0
+                                                          VnameExpression 182..182
+                                                            DotVname 182..182
+                                                              DotVname 182..182
+                                                                SimpleVname 182..182
+                                                                  Identifier "g" 182..182
+                                                                Identifier "o" 182..182
+                                                              Identifier "y" 182..182
+                                                          Operator "*" 182..182
+                                                          BinaryExpression 182..0
+                                                            IntegerExpression 182..182
+                                                              IntegerLiteral "0" 182..182
+                                                            Operator "-" 182..182
+                                                            VnameExpression 182..182
+                                                              DotVname 182..182
+                                                                DotVname 182..182
+                                                                  SimpleVname 182..182
+                                                                    Identifier "k" 182..182
+                                                                  Identifier "m" 182..182
+                                                                Identifier "y" 182..182
+                                                      Operator "+" 182..183
+                                                      BinaryExpression 183..0
+                                                        VnameExpression 183..183
+                                                          DotVname 183..183
+                                                            DotVname 183..183
+                                                              SimpleVname 183..183
+                                                                Identifier "g" 183..183
+                                                              Identifier "o" 183..183
+                                                            Identifier "y" 183..183
+                                                        Operator "*" 183..183
+                                                        BinaryExpression 183..0
+                                                          IntegerExpression 183..183
+                                                            IntegerLiteral "0" 183..183
+                                                          Operator "-" 183..183
+                                                          VnameExpression 183..183
+                                                            DotVname 183..183
+                                                              DotVname 183..183
+                                                                SimpleVname 183..183
+                                                                  Identifier "k" 183..183
+                                                                Identifier "m" 183..183
+                                                              Identifier "y" 183..183
+                                                    Operator "+" 183..184
+                                                    BinaryExpression 184..0
+                                                      BinaryExpression 184..0
+                                                        IntegerExpression 184..184
+                                                          IntegerLiteral "0" 184..184
+                                                        Operator "-" 184..184
+                                                        VnameExpression 184..184
+                                                          DotVname 184..184
+                                                            DotVname 184..184
+                                                              SimpleVname 184..184
+                                                                Identifier "k" 184..184
+                                                              Identifier "m" 184..184
+                                                            Identifier "y" 184..184
+                                                      Operator "*" 184..184
+                                                      BinaryExpression 184..0
+                                                        IntegerExpression 184..184
+                                                          IntegerLiteral "0" 184..184
+                                                        Operator "-" 184..184
+                                                        VnameExpression 184..184
+                                                          DotVname 184..184
+                                                            DotVname 184..184
+                                                              SimpleVname 184..184
+                                                                Identifier "k" 184..184
+                                                              Identifier "m" 184..184
+                                                            Identifier "y" 184..184
+                                                  Operator "+" 184..185
+                                                  BinaryExpression 186..0
+                                                    VnameExpression 186..186
+                                                      DotVname 186..186
+                                                        DotVname 186..186
+                                                          SimpleVname 186..186
+                                                            Identifier "g" 186..186
+                                                          Identifier "o" 186..186
+                                                        Identifier "z" 186..186
+                                                    Operator "*" 186..186
+                                                    VnameExpression 186..186
+                                                      DotVname 186..186
+                                                        DotVname 186..186
+                                                          SimpleVname 186..186
+                                                            Identifier "g" 186..186
+                                                          Identifier "o" 186..186
+                                                        Identifier "z" 186..186
+                                                Operator "+" 186..187
+                                                BinaryExpression 187..0
+                                                  VnameExpression 187..187
+                                                    DotVname 187..187
+                                                      DotVname 187..187
+                                                        SimpleVname 187..187
+                                                          Identifier "g" 187..187
+                                                        Identifier "o" 187..187
+                                                      Identifier "z" 187..187
+                                                  Operator "*" 187..187
+                                                  BinaryExpression 187..0
+                                                    IntegerExpression 187..187
+                                                      IntegerLiteral "0" 187..187
+                                                    Operator "-" 187..187
+                                                    VnameExpression 187..187
+                                                      DotVname 187..187
+                                                        DotVname 187..187
+                                                          SimpleVname 187..187
+                                                            Identifier "k" 187..187
+                                                          Identifier "m" 187..187
+                                                        Identifier "z" 187..187
+                                              Operator "+" 187..188
+                                              BinaryExpression 188..0
+                                                VnameExpression 188..188
+                                                  DotVname 188..188
+                                                    DotVname 188..188
+                                                      SimpleVname 188..188
+                                                        Identifier "g" 188..188
+                                                      Identifier "o" 188..188
+                                                    Identifier "z" 188..188
+                                                Operator "*" 188..188
+                                                BinaryExpression 188..0
+                                                  IntegerExpression 188..188
+                                                    IntegerLiteral "0" 188..188
+                                                  Operator "-" 188..188
+                                                  VnameExpression 188..188
+                                                    DotVname 188..188
+                                                      DotVname 188..188
+                                                        SimpleVname 188..188
+                                                          Identifier "k" 188..188
+                                                        Identifier "m" 188..188
+                                                      Identifier "z" 188..188
+                                            Operator "+" 188..189
+                                            BinaryExpression 189..0
+                                              BinaryExpression 189..0
+                                                IntegerExpression 189..189
+                                                  IntegerLiteral "0" 189..189
+                                                Operator "-" 189..189
+                                                VnameExpression 189..189
+                                                  DotVname 189..189
+                                                    DotVname 189..189
+                                                      SimpleVname 189..189
+                                                        Identifier "k" 189..189
+                                                      Identifier "m" 189..189
+                                                    Identifier "z" 189..189
+                                              Operator "*" 189..189
+                                              BinaryExpression 189..0
+                                                IntegerExpression 189..189
+                                                  IntegerLiteral "0" 189..189
+                                                Operator "-" 189..189
+                                                VnameExpression 189..189
+                                                  DotVname 189..189
+                                                    DotVname 189..189
+                                                      SimpleVname 189..189
+                                                        Identifier "k" 189..189
+                                                      Identifier "m" 189..189
+                                                    Identifier "z" 189..189
+                                          Operator "-" 189..190
+                                          BinaryExpression 191..0
+                                            VnameExpression 191..191
+                                              DotVname 191..191
+                                                SimpleVname 191..191
+                                                  Identifier "k" 191..191
+                                                Identifier "r" 191..191
+                                            Operator "*" 191..191
+                                            VnameExpression 191..191
+                                              DotVname 191..191
+                                                SimpleVname 191..191
+                                                  Identifier "k" 191..191
+                                                Identifier "r" 191..191
+                                    CallCommand 193..193
+                                      Identifier "solvesq" 193..193
+                                      MultipleActualParameterSequence 193..193
+                                        ConstActualParameter 193..193
+                                          VnameExpression 193..193
+                                            SimpleVname 193..193
+                                              Identifier "a" 193..193
+                                        MultipleActualParameterSequence 193..193
+                                          ConstActualParameter 193..193
+                                            VnameExpression 193..193
+                                              SimpleVname 193..193
+                                                Identifier "b" 193..193
+                                          MultipleActualParameterSequence 193..193
+                                            ConstActualParameter 193..193
+                                              VnameExpression 193..193
+                                                SimpleVname 193..193
+                                                  Identifier "c" 193..193
+                                            MultipleActualParameterSequence 193..193
+                                              VarActualParameter 193..193
+                                                SimpleVname 193..193
+                                                  Identifier "lambda" 193..193
+                                              SingleActualParameterSequence 193..193
+                                                VarActualParameter 193..193
+                                                  SimpleVname 193..193
+                                                    Identifier "success" 193..193
+                                  CallCommand 194..194
+                                    Identifier "geradeEinsetzen" 194..194
+                                    MultipleActualParameterSequence 194..194
+                                      ConstActualParameter 194..194
+                                        VnameExpression 194..194
+                                          SimpleVname 194..194
+                                            Identifier "g" 194..194
+                                      MultipleActualParameterSequence 194..194
+                                        ConstActualParameter 194..194
+                                          VnameExpression 194..194
+                                            SimpleVname 194..194
+                                              Identifier "lambda" 194..194
+                                        SingleActualParameterSequence 194..194
+                                          VarActualParameter 194..194
+                                            SimpleVname 194..194
+                                              Identifier "schnittpunkte" 194..194
+                                IfCommand 198..224
+                                  VnameExpression 198..198
+                                    SimpleVname 198..198
+                                      Identifier "success" 198..198
+                                  IfCommand 199..218
+                                    BinaryExpression 199..0
+                                      BinaryExpression 199..0
+                                        VnameExpression 199..199
+                                          DotVname 199..199
+                                            SubscriptVname 199..199
+                                              SimpleVname 199..199
+                                                Identifier "schnittpunkte" 199..199
+                                              IntegerExpression 199..199
+                                                IntegerLiteral "0" 199..199
+                                            Identifier "z" 199..199
+                                        Operator ">" 199..199
+                                        VnameExpression 199..199
+                                          DotVname 199..199
+                                            SimpleVname 199..199
+                                              Identifier "tmp" 199..199
+                                            Identifier "z" 199..199
+                                      Operator "/\" 199..200
+                                      BinaryExpression 200..0
+                                        VnameExpression 200..200
+                                          DotVname 200..200
+                                            SubscriptVname 200..200
+                                              SimpleVname 200..200
+                                                Identifier "schnittpunkte" 200..200
+                                              IntegerExpression 200..200
+                                                IntegerLiteral "1" 200..200
+                                            Identifier "z" 200..200
+                                        Operator ">" 200..200
+                                        VnameExpression 200..200
+                                          DotVname 200..200
+                                            SimpleVname 200..200
+                                              Identifier "tmp" 200..200
+                                            Identifier "z" 200..200
+                                    IfCommand 201..206
+                                      BinaryExpression 201..0
+                                        VnameExpression 201..201
+                                          DotVname 201..201
+                                            SubscriptVname 201..201
+                                              SimpleVname 201..201
+                                                Identifier "schnittpunkte" 201..201
+                                              IntegerExpression 201..201
+                                                IntegerLiteral "0" 201..201
+                                            Identifier "z" 201..201
+                                        Operator "<" 201..202
+                                        VnameExpression 202..202
+                                          DotVname 202..202
+                                            SubscriptVname 202..202
+                                              SimpleVname 202..202
+                                                Identifier "schnittpunkte" 202..202
+                                              IntegerExpression 202..202
+                                                IntegerLiteral "1" 202..202
+                                            Identifier "z" 202..202
+                                      CallCommand 203..204
+                                        Identifier "putintPadded" 203..203
+                                        SingleActualParameterSequence 203..203
+                                          ConstActualParameter 203..203
+                                            BinaryExpression 203..0
+                                              VnameExpression 203..203
+                                                DotVname 203..203
+                                                  SubscriptVname 203..203
+                                                    SimpleVname 203..203
+                                                      Identifier "schnittpunkte" 203..203
+                                                    IntegerExpression 203..203
+                                                      IntegerLiteral "0" 203..203
+                                                  Identifier "z" 203..203
+                                              Operator "/" 203..203
+                                              IntegerExpression 203..203
+                                                IntegerLiteral "10" 203..203
+                                      CallCommand 205..206
+                                        Identifier "putintPadded" 205..205
+                                        SingleActualParameterSequence 205..205
+                                          ConstActualParameter 205..205
+                                            BinaryExpression 205..0
+                                              VnameExpression 205..205
+                                                DotVname 205..205
+                                                  SubscriptVname 205..205
+                                                    SimpleVname 205..205
+                                                      Identifier "schnittpunkte" 205..205
+                                                    IntegerExpression 205..205
+                                                      IntegerLiteral "1" 205..205
+                                                  Identifier "z" 205..205
+                                              Operator "/" 205..205
+                                              IntegerExpression 205..205
+                                                IntegerLiteral "10" 205..205
+                                    IfCommand 207..218
+                                      BinaryExpression 207..0
+                                        VnameExpression 207..207
+                                          DotVname 207..207
+                                            SubscriptVname 207..207
+                                              SimpleVname 207..207
+                                                Identifier "schnittpunkte" 207..207
+                                              IntegerExpression 207..207
+                                                IntegerLiteral "0" 207..207
+                                            Identifier "z" 207..207
+                                        Operator ">" 207..207
+                                        VnameExpression 207..207
+                                          DotVname 207..207
+                                            SimpleVname 207..207
+                                              Identifier "tmp" 207..207
+                                            Identifier "z" 207..207
+                                      CallCommand 208..209
+                                        Identifier "putintPadded" 208..208
+                                        SingleActualParameterSequence 208..208
+                                          ConstActualParameter 208..208
+                                            BinaryExpression 208..0
+                                              VnameExpression 208..208
+                                                DotVname 208..208
+                                                  SubscriptVname 208..208
+                                                    SimpleVname 208..208
+                                                      Identifier "schnittpunkte" 208..208
+                                                    IntegerExpression 208..208
+                                                      IntegerLiteral "0" 208..208
+                                                  Identifier "z" 208..208
+                                              Operator "/" 208..208
+                                              IntegerExpression 208..208
+                                                IntegerLiteral "10" 208..208
+                                      IfCommand 210..218
+                                        BinaryExpression 210..0
+                                          VnameExpression 210..210
+                                            DotVname 210..210
+                                              SubscriptVname 210..210
+                                                SimpleVname 210..210
+                                                  Identifier "schnittpunkte" 210..210
+                                                IntegerExpression 210..210
+                                                  IntegerLiteral "1" 210..210
+                                              Identifier "z" 210..210
+                                          Operator ">" 210..210
+                                          VnameExpression 210..210
+                                            DotVname 210..210
+                                              SimpleVname 210..210
+                                                Identifier "tmp" 210..210
+                                              Identifier "z" 210..210
+                                        CallCommand 211..212
+                                          Identifier "putintPadded" 211..211
+                                          SingleActualParameterSequence 211..211
+                                            ConstActualParameter 211..211
+                                              BinaryExpression 211..0
+                                                VnameExpression 211..211
+                                                  DotVname 211..211
+                                                    SubscriptVname 211..211
+                                                      SimpleVname 211..211
+                                                        Identifier "schnittpunkte" 211..211
+                                                      IntegerExpression 211..211
+                                                        IntegerLiteral "1" 211..211
+                                                    Identifier "z" 211..211
+                                                Operator "/" 211..211
+                                                IntegerExpression 211..211
+                                                  IntegerLiteral "10" 211..211
+                                        SequentialCommand 214..216
+                                          SequentialCommand 214..216
+                                            CallCommand 214..214
+                                              Identifier "put" 214..214
+                                              SingleActualParameterSequence 214..214
+                                                ConstActualParameter 214..214
+                                                  CharacterExpression 214..214
+                                                    CharacterLiteral "' '" 214..214
+                                            CallCommand 215..215
+                                              Identifier "put" 215..215
+                                              SingleActualParameterSequence 215..215
+                                                ConstActualParameter 215..215
+                                                  CharacterExpression 215..215
+                                                    CharacterLiteral "' '" 215..215
+                                          EmptyCommand 217..216
+                                  SequentialCommand 220..222
+                                    SequentialCommand 220..222
+                                      CallCommand 220..220
+                                        Identifier "put" 220..220
+                                        SingleActualParameterSequence 220..220
+                                          ConstActualParameter 220..220
+                                            CharacterExpression 220..220
+                                              CharacterLiteral "' '" 220..220
+                                      CallCommand 221..221
+                                        Identifier "put" 221..221
+                                        SingleActualParameterSequence 221..221
+                                          ConstActualParameter 221..221
+                                            CharacterExpression 221..221
+                                              CharacterLiteral "' '" 221..221
+                                    EmptyCommand 223..222
+                              CallCommand 226..226
+                                Identifier "put" 226..226
+                                SingleActualParameterSequence 226..226
+                                  ConstActualParameter 226..226
+                                    CharacterExpression 226..226
+                                      CharacterLiteral "' '" 226..226
+                            AssignCommand 227..227
+                              DotVname 227..227
+                                SimpleVname 227..227
+                                  Identifier "tmp" 227..227
+                                Identifier "x" 227..227
+                              BinaryExpression 227..0
+                                VnameExpression 227..227
+                                  DotVname 227..227
+                                    SimpleVname 227..227
+                                      Identifier "tmp" 227..227
+                                    Identifier "x" 227..227
+                                Operator "+" 227..227
+                                IntegerExpression 227..227
+                                  IntegerLiteral "1" 227..227
+                          EmptyCommand 228..228
+                    CallCommand 231..231
+                      Identifier "puteol" 231..231
+                      EmptyActualParameterSequence 231..231
+                  AssignCommand 232..232
+                    DotVname 232..232
+                      SimpleVname 232..232
+                        Identifier "tmp" 232..232
+                      Identifier "y" 232..232
+                    BinaryExpression 232..0
+                      VnameExpression 232..232
+                        DotVname 232..232
+                          SimpleVname 232..232
+                            Identifier "tmp" 232..232
+                          Identifier "y" 232..232
+                      Operator "-" 232..232
+                      IntegerExpression 232..232
+                        IntegerLiteral "1" 232..232
+                EmptyCommand 233..233
+          EmptyCommand 234..234

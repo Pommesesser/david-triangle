@@ -1,0 +1,2368 @@
+Program 371..371
+  LetCommand 4..371
+    SequentialDeclaration 6..362
+      SequentialDeclaration 6..362
+        SequentialDeclaration 6..362
+          SequentialDeclaration 6..362
+            SequentialDeclaration 6..362
+              SequentialDeclaration 6..362
+                SequentialDeclaration 6..362
+                  SequentialDeclaration 6..362
+                    SequentialDeclaration 6..362
+                      SequentialDeclaration 6..362
+                        SequentialDeclaration 6..362
+                          SequentialDeclaration 6..362
+                            SequentialDeclaration 6..362
+                              SequentialDeclaration 6..362
+                                SequentialDeclaration 6..362
+                                  SequentialDeclaration 6..362
+                                    SequentialDeclaration 6..362
+                                      SequentialDeclaration 6..362
+                                        SequentialDeclaration 6..362
+                                          SequentialDeclaration 6..362
+                                            SequentialDeclaration 6..362
+                                              SequentialDeclaration 6..362
+                                                SequentialDeclaration 6..362
+                                                  ConstDeclaration 6..6
+                                                    Identifier "INVALID" 6..6
+                                                    IntegerExpression 6..6
+                                                      IntegerLiteral "2" 6..6
+                                                  ConstDeclaration 7..7
+                                                    Identifier "OCCUPIED" 7..7
+                                                    IntegerExpression 7..7
+                                                      IntegerLiteral "1" 7..7
+                                                ConstDeclaration 8..8
+                                                  Identifier "FREE" 8..8
+                                                  IntegerExpression 8..8
+                                                    IntegerLiteral "0" 8..8
+                                              ConstDeclaration 9..9
+                                                Identifier "free" 9..9
+                                                CharacterExpression 9..9
+                                                  CharacterLiteral "' '" 9..9
+                                            ConstDeclaration 10..10
+                                              Identifier "occupied" 10..10
+                                              CharacterExpression 10..10
+                                                CharacterLiteral "'O'" 10..10
+                                          ConstDeclaration 11..11
+                                            Identifier "invalid" 11..11
+                                            CharacterExpression 11..11
+                                              CharacterLiteral "'X'" 11..11
+                                        ConstDeclaration 13..13
+                                          Identifier "NORTH" 13..13
+                                          IntegerExpression 13..13
+                                            IntegerLiteral "0" 13..13
+                                      ConstDeclaration 14..14
+                                        Identifier "EAST" 14..14
+                                        IntegerExpression 14..14
+                                          IntegerLiteral "1" 14..14
+                                    ConstDeclaration 15..15
+                                      Identifier "SOUTH" 15..15
+                                      IntegerExpression 15..15
+                                        IntegerLiteral "2" 15..15
+                                  ConstDeclaration 16..16
+                                    Identifier "WEST" 16..16
+                                    IntegerExpression 16..16
+                                      IntegerLiteral "3" 16..16
+                                TypeDeclaration 18..21
+                                  Identifier "row" 18..18
+                                  RecordTypeDenoter 18..21
+                                    MultipleFieldTypeDenoter 19..21
+                                      Identifier "column" 19..19
+                                      ArrayTypeDenoter 19..19
+                                        IntegerLiteral "11" 19..19
+                                        SimpleTypeDenoter 19..19
+                                          Identifier "Integer" 19..19
+                                      SingleFieldTypeDenoter 20..21
+                                        Identifier "length" 20..20
+                                        SimpleTypeDenoter 20..21
+                                          Identifier "Integer" 20..21
+                              VarDeclaration 22..22
+                                Identifier "table" 22..22
+                                ArrayTypeDenoter 22..22
+                                  IntegerLiteral "11" 22..22
+                                  SimpleTypeDenoter 22..22
+                                    Identifier "row" 22..22
+                            VarDeclaration 23..23
+                              Identifier "foundSolution" 23..23
+                              SimpleTypeDenoter 23..23
+                                Identifier "Boolean" 23..23
+                          TypeDeclaration 27..30
+                            Identifier "step" 27..27
+                            RecordTypeDenoter 27..30
+                              MultipleFieldTypeDenoter 28..30
+                                Identifier "column" 28..28
+                                ArrayTypeDenoter 28..28
+                                  IntegerLiteral "3" 28..28
+                                  SimpleTypeDenoter 28..28
+                                    Identifier "Integer" 28..28
+                                SingleFieldTypeDenoter 29..30
+                                  Identifier "length" 29..29
+                                  SimpleTypeDenoter 29..30
+                                    Identifier "Integer" 29..30
+                        VarDeclaration 31..31
+                          Identifier "solution" 31..31
+                          ArrayTypeDenoter 31..31
+                            IntegerLiteral "32" 31..31
+                            SimpleTypeDenoter 31..31
+                              Identifier "row" 31..31
+                      ProcDeclaration 34..65
+                        Identifier "initTable" 34..34
+                        EmptyFormalParameterSequence 34..34
+                        LetCommand 35..65
+                          SequentialDeclaration 36..38
+                            VarDeclaration 36..36
+                              Identifier "x" 36..36
+                              SimpleTypeDenoter 36..36
+                                Identifier "Integer" 36..36
+                            VarDeclaration 37..38
+                              Identifier "y" 37..37
+                              SimpleTypeDenoter 37..38
+                                Identifier "Integer" 37..38
+                          SequentialCommand 39..65
+                            SequentialCommand 39..65
+                              SequentialCommand 39..65
+                                SequentialCommand 39..65
+                                  SequentialCommand 39..65
+                                    AssignCommand 39..39
+                                      SimpleVname 39..39
+                                        Identifier "x" 39..39
+                                      IntegerExpression 39..39
+                                        IntegerLiteral "0" 39..39
+                                    WhileCommand 40..51
+                                      BinaryExpression 40..0
+                                        VnameExpression 40..40
+                                          SimpleVname 40..40
+                                            Identifier "x" 40..40
+                                        Operator "<" 40..40
+                                        IntegerExpression 40..40
+                                          IntegerLiteral "11" 40..40
+                                      SequentialCommand 43..51
+                                        SequentialCommand 43..51
+                                          SequentialCommand 43..51
+                                            AssignCommand 43..43
+                                              SimpleVname 43..43
+                                                Identifier "y" 43..43
+                                              IntegerExpression 43..43
+                                                IntegerLiteral "0" 43..43
+                                            WhileCommand 44..49
+                                              BinaryExpression 44..0
+                                                VnameExpression 44..44
+                                                  SimpleVname 44..44
+                                                    Identifier "y" 44..44
+                                                Operator "<" 44..44
+                                                IntegerExpression 44..44
+                                                  IntegerLiteral "11" 44..44
+                                              SequentialCommand 47..49
+                                                AssignCommand 47..47
+                                                  SubscriptVname 47..47
+                                                    DotVname 47..47
+                                                      SubscriptVname 47..47
+                                                        SimpleVname 47..47
+                                                          Identifier "table" 47..47
+                                                        VnameExpression 47..47
+                                                          SimpleVname 47..47
+                                                            Identifier "y" 47..47
+                                                      Identifier "column" 47..47
+                                                    VnameExpression 47..47
+                                                      SimpleVname 47..47
+                                                        Identifier "x" 47..47
+                                                  VnameExpression 47..47
+                                                    SimpleVname 47..47
+                                                      Identifier "INVALID" 47..47
+                                                AssignCommand 48..49
+                                                  SimpleVname 48..48
+                                                    Identifier "y" 48..48
+                                                  BinaryExpression 48..0
+                                                    VnameExpression 48..48
+                                                      SimpleVname 48..48
+                                                        Identifier "y" 48..48
+                                                    Operator "+" 48..48
+                                                    IntegerExpression 48..49
+                                                      IntegerLiteral "1" 48..49
+                                          AssignCommand 50..50
+                                            SimpleVname 50..50
+                                              Identifier "x" 50..50
+                                            BinaryExpression 50..0
+                                              VnameExpression 50..50
+                                                SimpleVname 50..50
+                                                  Identifier "x" 50..50
+                                              Operator "+" 50..50
+                                              IntegerExpression 50..50
+                                                IntegerLiteral "1" 50..50
+                                        EmptyCommand 51..51
+                                  AssignCommand 53..53
+                                    SimpleVname 53..53
+                                      Identifier "x" 53..53
+                                    IntegerExpression 53..53
+                                      IntegerLiteral "2" 53..53
+                                WhileCommand 54..63
+                                  BinaryExpression 54..0
+                                    VnameExpression 54..54
+                                      SimpleVname 54..54
+                                        Identifier "x" 54..54
+                                    Operator "<" 54..54
+                                    IntegerExpression 54..54
+                                      IntegerLiteral "9" 54..54
+                                  SequentialCommand 56..63
+                                    SequentialCommand 56..63
+                                      SequentialCommand 56..63
+                                        SequentialCommand 56..63
+                                          SequentialCommand 56..63
+                                            SequentialCommand 56..63
+                                              SequentialCommand 56..63
+                                                AssignCommand 56..56
+                                                  SubscriptVname 56..56
+                                                    DotVname 56..56
+                                                      SubscriptVname 56..56
+                                                        SimpleVname 56..56
+                                                          Identifier "table" 56..56
+                                                        IntegerExpression 56..56
+                                                          IntegerLiteral "4" 56..56
+                                                      Identifier "column" 56..56
+                                                    VnameExpression 56..56
+                                                      SimpleVname 56..56
+                                                        Identifier "x" 56..56
+                                                  VnameExpression 56..56
+                                                    SimpleVname 56..56
+                                                      Identifier "OCCUPIED" 56..56
+                                                AssignCommand 57..57
+                                                  SubscriptVname 57..57
+                                                    DotVname 57..57
+                                                      SubscriptVname 57..57
+                                                        SimpleVname 57..57
+                                                          Identifier "table" 57..57
+                                                        IntegerExpression 57..57
+                                                          IntegerLiteral "5" 57..57
+                                                      Identifier "column" 57..57
+                                                    VnameExpression 57..57
+                                                      SimpleVname 57..57
+                                                        Identifier "x" 57..57
+                                                  VnameExpression 57..57
+                                                    SimpleVname 57..57
+                                                      Identifier "OCCUPIED" 57..57
+                                              AssignCommand 58..58
+                                                SubscriptVname 58..58
+                                                  DotVname 58..58
+                                                    SubscriptVname 58..58
+                                                      SimpleVname 58..58
+                                                        Identifier "table" 58..58
+                                                      IntegerExpression 58..58
+                                                        IntegerLiteral "6" 58..58
+                                                    Identifier "column" 58..58
+                                                  VnameExpression 58..58
+                                                    SimpleVname 58..58
+                                                      Identifier "x" 58..58
+                                                VnameExpression 58..58
+                                                  SimpleVname 58..58
+                                                    Identifier "OCCUPIED" 58..58
+                                            AssignCommand 59..59
+                                              SubscriptVname 59..59
+                                                DotVname 59..59
+                                                  SubscriptVname 59..59
+                                                    SimpleVname 59..59
+                                                      Identifier "table" 59..59
+                                                    VnameExpression 59..59
+                                                      SimpleVname 59..59
+                                                        Identifier "x" 59..59
+                                                  Identifier "column" 59..59
+                                                IntegerExpression 59..59
+                                                  IntegerLiteral "4" 59..59
+                                              VnameExpression 59..59
+                                                SimpleVname 59..59
+                                                  Identifier "OCCUPIED" 59..59
+                                          AssignCommand 60..60
+                                            SubscriptVname 60..60
+                                              DotVname 60..60
+                                                SubscriptVname 60..60
+                                                  SimpleVname 60..60
+                                                    Identifier "table" 60..60
+                                                  VnameExpression 60..60
+                                                    SimpleVname 60..60
+                                                      Identifier "x" 60..60
+                                                Identifier "column" 60..60
+                                              IntegerExpression 60..60
+                                                IntegerLiteral "5" 60..60
+                                            VnameExpression 60..60
+                                              SimpleVname 60..60
+                                                Identifier "OCCUPIED" 60..60
+                                        AssignCommand 61..61
+                                          SubscriptVname 61..61
+                                            DotVname 61..61
+                                              SubscriptVname 61..61
+                                                SimpleVname 61..61
+                                                  Identifier "table" 61..61
+                                                VnameExpression 61..61
+                                                  SimpleVname 61..61
+                                                    Identifier "x" 61..61
+                                              Identifier "column" 61..61
+                                            IntegerExpression 61..61
+                                              IntegerLiteral "6" 61..61
+                                          VnameExpression 61..61
+                                            SimpleVname 61..61
+                                              Identifier "OCCUPIED" 61..61
+                                      AssignCommand 62..62
+                                        SimpleVname 62..62
+                                          Identifier "x" 62..62
+                                        BinaryExpression 62..0
+                                          VnameExpression 62..62
+                                            SimpleVname 62..62
+                                              Identifier "x" 62..62
+                                          Operator "+" 62..62
+                                          IntegerExpression 62..62
+                                            IntegerLiteral "1" 62..62
+                                    EmptyCommand 63..63
+                              AssignCommand 64..64
+                                SubscriptVname 64..64
+                                  DotVname 64..64
+                                    SubscriptVname 64..64
+                                      SimpleVname 64..64
+                                        Identifier "table" 64..64
+                                      IntegerExpression 64..64
+                                        IntegerLiteral "5" 64..64
+                                    Identifier "column" 64..64
+                                  IntegerExpression 64..64
+                                    IntegerLiteral "5" 64..64
+                                VnameExpression 64..64
+                                  SimpleVname 64..64
+                                    Identifier "FREE" 64..64
+                            EmptyCommand 65..65
+                    ProcDeclaration 68..85
+                      Identifier "initSolution" 68..68
+                      EmptyFormalParameterSequence 68..68
+                      LetCommand 69..85
+                        SequentialDeclaration 70..72
+                          VarDeclaration 70..70
+                            Identifier "x" 70..70
+                            SimpleTypeDenoter 70..70
+                              Identifier "Integer" 70..70
+                          VarDeclaration 71..72
+                            Identifier "y" 71..71
+                            SimpleTypeDenoter 71..72
+                              Identifier "Integer" 71..72
+                        SequentialCommand 73..85
+                          SequentialCommand 73..85
+                            SequentialCommand 73..85
+                              AssignCommand 73..73
+                                SimpleVname 73..73
+                                  Identifier "x" 73..73
+                                IntegerExpression 73..73
+                                  IntegerLiteral "0" 73..73
+                              AssignCommand 74..74
+                                SimpleVname 74..74
+                                  Identifier "y" 74..74
+                                IntegerExpression 74..74
+                                  IntegerLiteral "0" 74..74
+                            WhileCommand 75..84
+                              BinaryExpression 75..0
+                                VnameExpression 75..75
+                                  SimpleVname 75..75
+                                    Identifier "x" 75..75
+                                Operator "<" 75..75
+                                IntegerExpression 75..75
+                                  IntegerLiteral "32" 75..75
+                              SequentialCommand 77..84
+                                SequentialCommand 77..84
+                                  SequentialCommand 77..84
+                                    AssignCommand 77..77
+                                      SimpleVname 77..77
+                                        Identifier "y" 77..77
+                                      IntegerExpression 77..77
+                                        IntegerLiteral "0" 77..77
+                                    WhileCommand 78..82
+                                      BinaryExpression 78..0
+                                        VnameExpression 78..78
+                                          SimpleVname 78..78
+                                            Identifier "y" 78..78
+                                        Operator "<" 78..78
+                                        IntegerExpression 78..78
+                                          IntegerLiteral "3" 78..78
+                                      SequentialCommand 80..82
+                                        AssignCommand 80..80
+                                          SubscriptVname 80..80
+                                            DotVname 80..80
+                                              SubscriptVname 80..80
+                                                SimpleVname 80..80
+                                                  Identifier "solution" 80..80
+                                                VnameExpression 80..80
+                                                  SimpleVname 80..80
+                                                    Identifier "x" 80..80
+                                              Identifier "column" 80..80
+                                            VnameExpression 80..80
+                                              SimpleVname 80..80
+                                                Identifier "y" 80..80
+                                          IntegerExpression 80..80
+                                            IntegerLiteral "0" 80..80
+                                        AssignCommand 81..82
+                                          SimpleVname 81..81
+                                            Identifier "y" 81..81
+                                          BinaryExpression 81..0
+                                            VnameExpression 81..81
+                                              SimpleVname 81..81
+                                                Identifier "y" 81..81
+                                            Operator "+" 81..81
+                                            IntegerExpression 81..82
+                                              IntegerLiteral "1" 81..82
+                                  AssignCommand 83..83
+                                    SimpleVname 83..83
+                                      Identifier "x" 83..83
+                                    BinaryExpression 83..0
+                                      VnameExpression 83..83
+                                        SimpleVname 83..83
+                                          Identifier "x" 83..83
+                                      Operator "+" 83..83
+                                      IntegerExpression 83..83
+                                        IntegerLiteral "1" 83..83
+                                EmptyCommand 84..84
+                          EmptyCommand 85..85
+                  ProcDeclaration 88..114
+                    Identifier "printTable" 88..88
+                    EmptyFormalParameterSequence 88..88
+                    LetCommand 89..114
+                      SequentialDeclaration 90..92
+                        VarDeclaration 90..90
+                          Identifier "x" 90..90
+                          SimpleTypeDenoter 90..90
+                            Identifier "Integer" 90..90
+                        VarDeclaration 91..92
+                          Identifier "y" 91..91
+                          SimpleTypeDenoter 91..92
+                            Identifier "Integer" 91..92
+                      SequentialCommand 93..113
+                        SequentialCommand 93..113
+                          SequentialCommand 93..113
+                            AssignCommand 93..93
+                              SimpleVname 93..93
+                                Identifier "y" 93..93
+                              IntegerExpression 93..93
+                                IntegerLiteral "10" 93..93
+                            WhileCommand 94..111
+                              BinaryExpression 94..0
+                                VnameExpression 94..94
+                                  SimpleVname 94..94
+                                    Identifier "y" 94..94
+                                Operator ">=" 94..94
+                                IntegerExpression 94..94
+                                  IntegerLiteral "0" 94..94
+                              SequentialCommand 96..111
+                                SequentialCommand 96..111
+                                  SequentialCommand 96..111
+                                    SequentialCommand 96..111
+                                      AssignCommand 96..96
+                                        SimpleVname 96..96
+                                          Identifier "x" 96..96
+                                        IntegerExpression 96..96
+                                          IntegerLiteral "0" 96..96
+                                      WhileCommand 97..108
+                                        BinaryExpression 97..0
+                                          VnameExpression 97..97
+                                            SimpleVname 97..97
+                                              Identifier "x" 97..97
+                                          Operator "<" 97..97
+                                          IntegerExpression 97..97
+                                            IntegerLiteral "11" 97..97
+                                        SequentialCommand 99..108
+                                          SequentialCommand 99..108
+                                            IfCommand 99..105
+                                              BinaryExpression 99..0
+                                                VnameExpression 99..99
+                                                  SubscriptVname 99..99
+                                                    DotVname 99..99
+                                                      SubscriptVname 99..99
+                                                        SimpleVname 99..99
+                                                          Identifier "table" 99..99
+                                                        VnameExpression 99..99
+                                                          SimpleVname 99..99
+                                                            Identifier "y" 99..99
+                                                      Identifier "column" 99..99
+                                                    VnameExpression 99..99
+                                                      SimpleVname 99..99
+                                                        Identifier "x" 99..99
+                                                Operator "=" 99..99
+                                                VnameExpression 99..99
+                                                  SimpleVname 99..99
+                                                    Identifier "INVALID" 99..99
+                                              CallCommand 100..101
+                                                Identifier "put" 100..100
+                                                SingleActualParameterSequence 100..100
+                                                  ConstActualParameter 100..100
+                                                    VnameExpression 100..100
+                                                      SimpleVname 100..100
+                                                        Identifier "invalid" 100..100
+                                              IfCommand 102..105
+                                                BinaryExpression 102..0
+                                                  VnameExpression 102..102
+                                                    SubscriptVname 102..102
+                                                      DotVname 102..102
+                                                        SubscriptVname 102..102
+                                                          SimpleVname 102..102
+                                                            Identifier "table" 102..102
+                                                          VnameExpression 102..102
+                                                            SimpleVname 102..102
+                                                              Identifier "y" 102..102
+                                                        Identifier "column" 102..102
+                                                      VnameExpression 102..102
+                                                        SimpleVname 102..102
+                                                          Identifier "x" 102..102
+                                                  Operator "=" 102..102
+                                                  VnameExpression 102..102
+                                                    SimpleVname 102..102
+                                                      Identifier "FREE" 102..102
+                                                CallCommand 103..104
+                                                  Identifier "put" 103..103
+                                                  SingleActualParameterSequence 103..103
+                                                    ConstActualParameter 103..103
+                                                      VnameExpression 103..103
+                                                        SimpleVname 103..103
+                                                          Identifier "free" 103..103
+                                                CallCommand 105..105
+                                                  Identifier "put" 105..105
+                                                  SingleActualParameterSequence 105..105
+                                                    ConstActualParameter 105..105
+                                                      VnameExpression 105..105
+                                                        SimpleVname 105..105
+                                                          Identifier "occupied" 105..105
+                                            AssignCommand 107..107
+                                              SimpleVname 107..107
+                                                Identifier "x" 107..107
+                                              BinaryExpression 107..0
+                                                VnameExpression 107..107
+                                                  SimpleVname 107..107
+                                                    Identifier "x" 107..107
+                                                Operator "+" 107..107
+                                                IntegerExpression 107..107
+                                                  IntegerLiteral "1" 107..107
+                                          EmptyCommand 108..108
+                                    CallCommand 109..109
+                                      Identifier "puteol" 109..109
+                                      EmptyActualParameterSequence 109..109
+                                  AssignCommand 110..110
+                                    SimpleVname 110..110
+                                      Identifier "y" 110..110
+                                    BinaryExpression 110..0
+                                      VnameExpression 110..110
+                                        SimpleVname 110..110
+                                          Identifier "y" 110..110
+                                      Operator "-" 110..110
+                                      IntegerExpression 110..110
+                                        IntegerLiteral "1" 110..110
+                                EmptyCommand 111..111
+                          CallCommand 112..112
+                            Identifier "puteol" 112..112
+                            EmptyActualParameterSequence 112..112
+                        EmptyCommand 114..113
+                ProcDeclaration 117..155
+                  Identifier "makeMove" 117..117
+                  MultipleFormalParameterSequence 117..117
+                    ConstFormalParameter 117..117
+                      Identifier "x" 117..117
+                      SimpleTypeDenoter 117..117
+                        Identifier "Integer" 117..117
+                    MultipleFormalParameterSequence 117..117
+                      ConstFormalParameter 117..117
+                        Identifier "y" 117..117
+                        SimpleTypeDenoter 117..117
+                          Identifier "Integer" 117..117
+                      SingleFormalParameterSequence 117..117
+                        ConstFormalParameter 117..117
+                          Identifier "dir" 117..117
+                          SimpleTypeDenoter 117..117
+                            Identifier "Integer" 117..117
+                  SequentialCommand 119..155
+                    IfCommand 119..154
+                      BinaryExpression 119..0
+                        VnameExpression 119..119
+                          SimpleVname 119..119
+                            Identifier "dir" 119..119
+                        Operator "=" 119..119
+                        VnameExpression 119..119
+                          SimpleVname 119..119
+                            Identifier "NORTH" 119..119
+                      SequentialCommand 121..124
+                        SequentialCommand 121..124
+                          SequentialCommand 121..124
+                            AssignCommand 121..121
+                              SubscriptVname 121..121
+                                DotVname 121..121
+                                  SubscriptVname 121..121
+                                    SimpleVname 121..121
+                                      Identifier "table" 121..121
+                                    VnameExpression 121..121
+                                      SimpleVname 121..121
+                                        Identifier "y" 121..121
+                                  Identifier "column" 121..121
+                                VnameExpression 121..121
+                                  SimpleVname 121..121
+                                    Identifier "x" 121..121
+                              VnameExpression 121..121
+                                SimpleVname 121..121
+                                  Identifier "FREE" 121..121
+                            AssignCommand 122..122
+                              SubscriptVname 122..122
+                                DotVname 122..122
+                                  SubscriptVname 122..122
+                                    SimpleVname 122..122
+                                      Identifier "table" 122..122
+                                    BinaryExpression 122..0
+                                      VnameExpression 122..122
+                                        SimpleVname 122..122
+                                          Identifier "y" 122..122
+                                      Operator "+" 122..122
+                                      IntegerExpression 122..122
+                                        IntegerLiteral "1" 122..122
+                                  Identifier "column" 122..122
+                                VnameExpression 122..122
+                                  SimpleVname 122..122
+                                    Identifier "x" 122..122
+                              VnameExpression 122..122
+                                SimpleVname 122..122
+                                  Identifier "FREE" 122..122
+                          AssignCommand 123..123
+                            SubscriptVname 123..123
+                              DotVname 123..123
+                                SubscriptVname 123..123
+                                  SimpleVname 123..123
+                                    Identifier "table" 123..123
+                                  BinaryExpression 123..0
+                                    VnameExpression 123..123
+                                      SimpleVname 123..123
+                                        Identifier "y" 123..123
+                                    Operator "+" 123..123
+                                    IntegerExpression 123..123
+                                      IntegerLiteral "2" 123..123
+                                Identifier "column" 123..123
+                              VnameExpression 123..123
+                                SimpleVname 123..123
+                                  Identifier "x" 123..123
+                            VnameExpression 123..123
+                              SimpleVname 123..123
+                                Identifier "OCCUPIED" 123..123
+                        EmptyCommand 124..124
+                      IfCommand 127..153
+                        BinaryExpression 127..0
+                          VnameExpression 127..127
+                            SimpleVname 127..127
+                              Identifier "dir" 127..127
+                          Operator "=" 127..127
+                          VnameExpression 127..127
+                            SimpleVname 127..127
+                              Identifier "EAST" 127..127
+                        SequentialCommand 129..132
+                          SequentialCommand 129..132
+                            SequentialCommand 129..132
+                              AssignCommand 129..129
+                                SubscriptVname 129..129
+                                  DotVname 129..129
+                                    SubscriptVname 129..129
+                                      SimpleVname 129..129
+                                        Identifier "table" 129..129
+                                      VnameExpression 129..129
+                                        SimpleVname 129..129
+                                          Identifier "y" 129..129
+                                    Identifier "column" 129..129
+                                  VnameExpression 129..129
+                                    SimpleVname 129..129
+                                      Identifier "x" 129..129
+                                VnameExpression 129..129
+                                  SimpleVname 129..129
+                                    Identifier "FREE" 129..129
+                              AssignCommand 130..130
+                                SubscriptVname 130..130
+                                  DotVname 130..130
+                                    SubscriptVname 130..130
+                                      SimpleVname 130..130
+                                        Identifier "table" 130..130
+                                      VnameExpression 130..130
+                                        SimpleVname 130..130
+                                          Identifier "y" 130..130
+                                    Identifier "column" 130..130
+                                  BinaryExpression 130..0
+                                    VnameExpression 130..130
+                                      SimpleVname 130..130
+                                        Identifier "x" 130..130
+                                    Operator "+" 130..130
+                                    IntegerExpression 130..130
+                                      IntegerLiteral "1" 130..130
+                                VnameExpression 130..130
+                                  SimpleVname 130..130
+                                    Identifier "FREE" 130..130
+                            AssignCommand 131..131
+                              SubscriptVname 131..131
+                                DotVname 131..131
+                                  SubscriptVname 131..131
+                                    SimpleVname 131..131
+                                      Identifier "table" 131..131
+                                    VnameExpression 131..131
+                                      SimpleVname 131..131
+                                        Identifier "y" 131..131
+                                  Identifier "column" 131..131
+                                BinaryExpression 131..0
+                                  VnameExpression 131..131
+                                    SimpleVname 131..131
+                                      Identifier "x" 131..131
+                                  Operator "+" 131..131
+                                  IntegerExpression 131..131
+                                    IntegerLiteral "2" 131..131
+                              VnameExpression 131..131
+                                SimpleVname 131..131
+                                  Identifier "OCCUPIED" 131..131
+                          EmptyCommand 132..132
+                        IfCommand 135..153
+                          BinaryExpression 135..0
+                            VnameExpression 135..135
+                              SimpleVname 135..135
+                                Identifier "dir" 135..135
+                            Operator "=" 135..135
+                            VnameExpression 135..135
+                              SimpleVname 135..135
+                                Identifier "SOUTH" 135..135
+                          SequentialCommand 137..140
+                            SequentialCommand 137..140
+                              SequentialCommand 137..140
+                                AssignCommand 137..137
+                                  SubscriptVname 137..137
+                                    DotVname 137..137
+                                      SubscriptVname 137..137
+                                        SimpleVname 137..137
+                                          Identifier "table" 137..137
+                                        VnameExpression 137..137
+                                          SimpleVname 137..137
+                                            Identifier "y" 137..137
+                                      Identifier "column" 137..137
+                                    VnameExpression 137..137
+                                      SimpleVname 137..137
+                                        Identifier "x" 137..137
+                                  VnameExpression 137..137
+                                    SimpleVname 137..137
+                                      Identifier "FREE" 137..137
+                                AssignCommand 138..138
+                                  SubscriptVname 138..138
+                                    DotVname 138..138
+                                      SubscriptVname 138..138
+                                        SimpleVname 138..138
+                                          Identifier "table" 138..138
+                                        BinaryExpression 138..0
+                                          VnameExpression 138..138
+                                            SimpleVname 138..138
+                                              Identifier "y" 138..138
+                                          Operator "-" 138..138
+                                          IntegerExpression 138..138
+                                            IntegerLiteral "1" 138..138
+                                      Identifier "column" 138..138
+                                    VnameExpression 138..138
+                                      SimpleVname 138..138
+                                        Identifier "x" 138..138
+                                  VnameExpression 138..138
+                                    SimpleVname 138..138
+                                      Identifier "FREE" 138..138
+                              AssignCommand 139..139
+                                SubscriptVname 139..139
+                                  DotVname 139..139
+                                    SubscriptVname 139..139
+                                      SimpleVname 139..139
+                                        Identifier "table" 139..139
+                                      BinaryExpression 139..0
+                                        VnameExpression 139..139
+                                          SimpleVname 139..139
+                                            Identifier "y" 139..139
+                                        Operator "-" 139..139
+                                        IntegerExpression 139..139
+                                          IntegerLiteral "2" 139..139
+                                    Identifier "column" 139..139
+                                  VnameExpression 139..139
+                                    SimpleVname 139..139
+                                      Identifier "x" 139..139
+                                VnameExpression 139..139
+                                  SimpleVname 139..139
+                                    Identifier "OCCUPIED" 139..139
+                            EmptyCommand 140..140
+                          IfCommand 143..152
+                            BinaryExpression 143..0
+                              VnameExpression 143..143
+                                SimpleVname 143..143
+                                  Identifier "dir" 143..143
+                              Operator "=" 143..143
+                              VnameExpression 143..143
+                                SimpleVname 143..143
+                                  Identifier "WEST" 143..143
+                            SequentialCommand 145..148
+                              SequentialCommand 145..148
+                                SequentialCommand 145..148
+                                  AssignCommand 145..145
+                                    SubscriptVname 145..145
+                                      DotVname 145..145
+                                        SubscriptVname 145..145
+                                          SimpleVname 145..145
+                                            Identifier "table" 145..145
+                                          VnameExpression 145..145
+                                            SimpleVname 145..145
+                                              Identifier "y" 145..145
+                                        Identifier "column" 145..145
+                                      VnameExpression 145..145
+                                        SimpleVname 145..145
+                                          Identifier "x" 145..145
+                                    VnameExpression 145..145
+                                      SimpleVname 145..145
+                                        Identifier "FREE" 145..145
+                                  AssignCommand 146..146
+                                    SubscriptVname 146..146
+                                      DotVname 146..146
+                                        SubscriptVname 146..146
+                                          SimpleVname 146..146
+                                            Identifier "table" 146..146
+                                          VnameExpression 146..146
+                                            SimpleVname 146..146
+                                              Identifier "y" 146..146
+                                        Identifier "column" 146..146
+                                      BinaryExpression 146..0
+                                        VnameExpression 146..146
+                                          SimpleVname 146..146
+                                            Identifier "x" 146..146
+                                        Operator "-" 146..146
+                                        IntegerExpression 146..146
+                                          IntegerLiteral "1" 146..146
+                                    VnameExpression 146..146
+                                      SimpleVname 146..146
+                                        Identifier "FREE" 146..146
+                                AssignCommand 147..147
+                                  SubscriptVname 147..147
+                                    DotVname 147..147
+                                      SubscriptVname 147..147
+                                        SimpleVname 147..147
+                                          Identifier "table" 147..147
+                                        VnameExpression 147..147
+                                          SimpleVname 147..147
+                                            Identifier "y" 147..147
+                                      Identifier "column" 147..147
+                                    BinaryExpression 147..0
+                                      VnameExpression 147..147
+                                        SimpleVname 147..147
+                                          Identifier "x" 147..147
+                                      Operator "-" 147..147
+                                      IntegerExpression 147..147
+                                        IntegerLiteral "2" 147..147
+                                  VnameExpression 147..147
+                                    SimpleVname 147..147
+                                      Identifier "OCCUPIED" 147..147
+                              EmptyCommand 148..148
+                            EmptyCommand 151..151
+                    EmptyCommand 155..155
+              ProcDeclaration 158..196
+                Identifier "undoMove" 158..158
+                MultipleFormalParameterSequence 158..158
+                  ConstFormalParameter 158..158
+                    Identifier "x" 158..158
+                    SimpleTypeDenoter 158..158
+                      Identifier "Integer" 158..158
+                  MultipleFormalParameterSequence 158..158
+                    ConstFormalParameter 158..158
+                      Identifier "y" 158..158
+                      SimpleTypeDenoter 158..158
+                        Identifier "Integer" 158..158
+                    SingleFormalParameterSequence 158..158
+                      ConstFormalParameter 158..158
+                        Identifier "dir" 158..158
+                        SimpleTypeDenoter 158..158
+                          Identifier "Integer" 158..158
+                IfCommand 160..196
+                  BinaryExpression 160..0
+                    VnameExpression 160..160
+                      SimpleVname 160..160
+                        Identifier "dir" 160..160
+                    Operator "=" 160..160
+                    VnameExpression 160..160
+                      SimpleVname 160..160
+                        Identifier "NORTH" 160..160
+                  SequentialCommand 162..165
+                    SequentialCommand 162..165
+                      SequentialCommand 162..165
+                        AssignCommand 162..162
+                          SubscriptVname 162..162
+                            DotVname 162..162
+                              SubscriptVname 162..162
+                                SimpleVname 162..162
+                                  Identifier "table" 162..162
+                                VnameExpression 162..162
+                                  SimpleVname 162..162
+                                    Identifier "y" 162..162
+                              Identifier "column" 162..162
+                            VnameExpression 162..162
+                              SimpleVname 162..162
+                                Identifier "x" 162..162
+                          VnameExpression 162..162
+                            SimpleVname 162..162
+                              Identifier "OCCUPIED" 162..162
+                        AssignCommand 163..163
+                          SubscriptVname 163..163
+                            DotVname 163..163
+                              SubscriptVname 163..163
+                                SimpleVname 163..163
+                                  Identifier "table" 163..163
+                                BinaryExpression 163..0
+                                  VnameExpression 163..163
+                                    SimpleVname 163..163
+                                      Identifier "y" 163..163
+                                  Operator "+" 163..163
+                                  IntegerExpression 163..163
+                                    IntegerLiteral "1" 163..163
+                              Identifier "column" 163..163
+                            VnameExpression 163..163
+                              SimpleVname 163..163
+                                Identifier "x" 163..163
+                          VnameExpression 163..163
+                            SimpleVname 163..163
+                              Identifier "OCCUPIED" 163..163
+                      AssignCommand 164..164
+                        SubscriptVname 164..164
+                          DotVname 164..164
+                            SubscriptVname 164..164
+                              SimpleVname 164..164
+                                Identifier "table" 164..164
+                              BinaryExpression 164..0
+                                VnameExpression 164..164
+                                  SimpleVname 164..164
+                                    Identifier "y" 164..164
+                                Operator "+" 164..164
+                                IntegerExpression 164..164
+                                  IntegerLiteral "2" 164..164
+                            Identifier "column" 164..164
+                          VnameExpression 164..164
+                            SimpleVname 164..164
+                              Identifier "x" 164..164
+                        VnameExpression 164..164
+                          SimpleVname 164..164
+                            Identifier "FREE" 164..164
+                    EmptyCommand 165..165
+                  IfCommand 168..195
+                    BinaryExpression 168..0
+                      VnameExpression 168..168
+                        SimpleVname 168..168
+                          Identifier "dir" 168..168
+                      Operator "=" 168..168
+                      VnameExpression 168..168
+                        SimpleVname 168..168
+                          Identifier "EAST" 168..168
+                    SequentialCommand 170..173
+                      SequentialCommand 170..173
+                        SequentialCommand 170..173
+                          AssignCommand 170..170
+                            SubscriptVname 170..170
+                              DotVname 170..170
+                                SubscriptVname 170..170
+                                  SimpleVname 170..170
+                                    Identifier "table" 170..170
+                                  VnameExpression 170..170
+                                    SimpleVname 170..170
+                                      Identifier "y" 170..170
+                                Identifier "column" 170..170
+                              VnameExpression 170..170
+                                SimpleVname 170..170
+                                  Identifier "x" 170..170
+                            VnameExpression 170..170
+                              SimpleVname 170..170
+                                Identifier "OCCUPIED" 170..170
+                          AssignCommand 171..171
+                            SubscriptVname 171..171
+                              DotVname 171..171
+                                SubscriptVname 171..171
+                                  SimpleVname 171..171
+                                    Identifier "table" 171..171
+                                  VnameExpression 171..171
+                                    SimpleVname 171..171
+                                      Identifier "y" 171..171
+                                Identifier "column" 171..171
+                              BinaryExpression 171..0
+                                VnameExpression 171..171
+                                  SimpleVname 171..171
+                                    Identifier "x" 171..171
+                                Operator "+" 171..171
+                                IntegerExpression 171..171
+                                  IntegerLiteral "1" 171..171
+                            VnameExpression 171..171
+                              SimpleVname 171..171
+                                Identifier "OCCUPIED" 171..171
+                        AssignCommand 172..172
+                          SubscriptVname 172..172
+                            DotVname 172..172
+                              SubscriptVname 172..172
+                                SimpleVname 172..172
+                                  Identifier "table" 172..172
+                                VnameExpression 172..172
+                                  SimpleVname 172..172
+                                    Identifier "y" 172..172
+                              Identifier "column" 172..172
+                            BinaryExpression 172..0
+                              VnameExpression 172..172
+                                SimpleVname 172..172
+                                  Identifier "x" 172..172
+                              Operator "+" 172..172
+                              IntegerExpression 172..172
+                                IntegerLiteral "2" 172..172
+                          VnameExpression 172..172
+                            SimpleVname 172..172
+                              Identifier "FREE" 172..172
+                      EmptyCommand 173..173
+                    IfCommand 176..194
+                      BinaryExpression 176..0
+                        VnameExpression 176..176
+                          SimpleVname 176..176
+                            Identifier "dir" 176..176
+                        Operator "=" 176..176
+                        VnameExpression 176..176
+                          SimpleVname 176..176
+                            Identifier "SOUTH" 176..176
+                      SequentialCommand 178..181
+                        SequentialCommand 178..181
+                          SequentialCommand 178..181
+                            AssignCommand 178..178
+                              SubscriptVname 178..178
+                                DotVname 178..178
+                                  SubscriptVname 178..178
+                                    SimpleVname 178..178
+                                      Identifier "table" 178..178
+                                    VnameExpression 178..178
+                                      SimpleVname 178..178
+                                        Identifier "y" 178..178
+                                  Identifier "column" 178..178
+                                VnameExpression 178..178
+                                  SimpleVname 178..178
+                                    Identifier "x" 178..178
+                              VnameExpression 178..178
+                                SimpleVname 178..178
+                                  Identifier "OCCUPIED" 178..178
+                            AssignCommand 179..179
+                              SubscriptVname 179..179
+                                DotVname 179..179
+                                  SubscriptVname 179..179
+                                    SimpleVname 179..179
+                                      Identifier "table" 179..179
+                                    BinaryExpression 179..0
+                                      VnameExpression 179..179
+                                        SimpleVname 179..179
+                                          Identifier "y" 179..179
+                                      Operator "-" 179..179
+                                      IntegerExpression 179..179
+                                        IntegerLiteral "1" 179..179
+                                  Identifier "column" 179..179
+                                VnameExpression 179..179
+                                  SimpleVname 179..179
+                                    Identifier "x" 179..179
+                              VnameExpression 179..179
+                                SimpleVname 179..179
+                                  Identifier "OCCUPIED" 179..179
+                          AssignCommand 180..180
+                            SubscriptVname 180..180
+                              DotVname 180..180
+                                SubscriptVname 180..180
+                                  SimpleVname 180..180
+                                    Identifier "table" 180..180
+                                  BinaryExpression 180..0
+                                    VnameExpression 180..180
+                                      SimpleVname 180..180
+                                        Identifier "y" 180..180
+                                    Operator "-" 180..180
+                                    IntegerExpression 180..180
+                                      IntegerLiteral "2" 180..180
+                                Identifier "column" 180..180
+                              VnameExpression 180..180
+                                SimpleVname 180..180
+                                  Identifier "x" 180..180
+                            VnameExpression 180..180
+                              SimpleVname 180..180
+                                Identifier "FREE" 180..180
+                        EmptyCommand 181..181
+                      IfCommand 184..193
+                        BinaryExpression 184..0
+                          VnameExpression 184..184
+                            SimpleVname 184..184
+                              Identifier "dir" 184..184
+                          Operator "=" 184..184
+                          VnameExpression 184..184
+                            SimpleVname 184..184
+                              Identifier "WEST" 184..184
+                        SequentialCommand 186..189
+                          SequentialCommand 186..189
+                            SequentialCommand 186..189
+                              AssignCommand 186..186
+                                SubscriptVname 186..186
+                                  DotVname 186..186
+                                    SubscriptVname 186..186
+                                      SimpleVname 186..186
+                                        Identifier "table" 186..186
+                                      VnameExpression 186..186
+                                        SimpleVname 186..186
+                                          Identifier "y" 186..186
+                                    Identifier "column" 186..186
+                                  VnameExpression 186..186
+                                    SimpleVname 186..186
+                                      Identifier "x" 186..186
+                                VnameExpression 186..186
+                                  SimpleVname 186..186
+                                    Identifier "OCCUPIED" 186..186
+                              AssignCommand 187..187
+                                SubscriptVname 187..187
+                                  DotVname 187..187
+                                    SubscriptVname 187..187
+                                      SimpleVname 187..187
+                                        Identifier "table" 187..187
+                                      VnameExpression 187..187
+                                        SimpleVname 187..187
+                                          Identifier "y" 187..187
+                                    Identifier "column" 187..187
+                                  BinaryExpression 187..0
+                                    VnameExpression 187..187
+                                      SimpleVname 187..187
+                                        Identifier "x" 187..187
+                                    Operator "-" 187..187
+                                    IntegerExpression 187..187
+                                      IntegerLiteral "1" 187..187
+                                VnameExpression 187..187
+                                  SimpleVname 187..187
+                                    Identifier "OCCUPIED" 187..187
+                            AssignCommand 188..188
+                              SubscriptVname 188..188
+                                DotVname 188..188
+                                  SubscriptVname 188..188
+                                    SimpleVname 188..188
+                                      Identifier "table" 188..188
+                                    VnameExpression 188..188
+                                      SimpleVname 188..188
+                                        Identifier "y" 188..188
+                                  Identifier "column" 188..188
+                                BinaryExpression 188..0
+                                  VnameExpression 188..188
+                                    SimpleVname 188..188
+                                      Identifier "x" 188..188
+                                  Operator "-" 188..188
+                                  IntegerExpression 188..188
+                                    IntegerLiteral "2" 188..188
+                              VnameExpression 188..188
+                                SimpleVname 188..188
+                                  Identifier "FREE" 188..188
+                          EmptyCommand 189..189
+                        EmptyCommand 192..192
+            ProcDeclaration 199..204
+              Identifier "saveSolution" 199..199
+              MultipleFormalParameterSequence 199..199
+                ConstFormalParameter 199..199
+                  Identifier "stepNr" 199..199
+                  SimpleTypeDenoter 199..199
+                    Identifier "Integer" 199..199
+                MultipleFormalParameterSequence 199..199
+                  ConstFormalParameter 199..199
+                    Identifier "x" 199..199
+                    SimpleTypeDenoter 199..199
+                      Identifier "Integer" 199..199
+                  MultipleFormalParameterSequence 199..199
+                    ConstFormalParameter 199..199
+                      Identifier "y" 199..199
+                      SimpleTypeDenoter 199..199
+                        Identifier "Integer" 199..199
+                    SingleFormalParameterSequence 199..199
+                      ConstFormalParameter 199..199
+                        Identifier "dir" 199..199
+                        SimpleTypeDenoter 199..199
+                          Identifier "Integer" 199..199
+              SequentialCommand 201..204
+                SequentialCommand 201..204
+                  SequentialCommand 201..204
+                    AssignCommand 201..201
+                      SubscriptVname 201..201
+                        DotVname 201..201
+                          SubscriptVname 201..201
+                            SimpleVname 201..201
+                              Identifier "solution" 201..201
+                            VnameExpression 201..201
+                              SimpleVname 201..201
+                                Identifier "stepNr" 201..201
+                          Identifier "column" 201..201
+                        IntegerExpression 201..201
+                          IntegerLiteral "0" 201..201
+                      VnameExpression 201..201
+                        SimpleVname 201..201
+                          Identifier "x" 201..201
+                    AssignCommand 202..202
+                      SubscriptVname 202..202
+                        DotVname 202..202
+                          SubscriptVname 202..202
+                            SimpleVname 202..202
+                              Identifier "solution" 202..202
+                            VnameExpression 202..202
+                              SimpleVname 202..202
+                                Identifier "stepNr" 202..202
+                          Identifier "column" 202..202
+                        IntegerExpression 202..202
+                          IntegerLiteral "1" 202..202
+                      VnameExpression 202..202
+                        SimpleVname 202..202
+                          Identifier "y" 202..202
+                  AssignCommand 203..203
+                    SubscriptVname 203..203
+                      DotVname 203..203
+                        SubscriptVname 203..203
+                          SimpleVname 203..203
+                            Identifier "solution" 203..203
+                          VnameExpression 203..203
+                            SimpleVname 203..203
+                              Identifier "stepNr" 203..203
+                        Identifier "column" 203..203
+                      IntegerExpression 203..203
+                        IntegerLiteral "2" 203..203
+                    VnameExpression 203..203
+                      SimpleVname 203..203
+                        Identifier "dir" 203..203
+                EmptyCommand 204..204
+          ProcDeclaration 207..295
+            Identifier "calcSolution" 207..207
+            MultipleFormalParameterSequence 207..207
+              ConstFormalParameter 207..207
+                Identifier "stepNr" 207..207
+                SimpleTypeDenoter 207..207
+                  Identifier "Integer" 207..207
+              SingleFormalParameterSequence 207..207
+                VarFormalParameter 207..207
+                  Identifier "status" 207..207
+                  SimpleTypeDenoter 207..207
+                    Identifier "Boolean" 207..207
+            SequentialCommand 209..295
+              IfCommand 209..294
+                BinaryExpression 209..0
+                  BinaryExpression 209..0
+                    VnameExpression 209..209
+                      SimpleVname 209..209
+                        Identifier "stepNr" 209..209
+                    Operator "=" 209..209
+                    IntegerExpression 209..209
+                      IntegerLiteral "31" 209..209
+                  Operator "/\" 209..209
+                  BinaryExpression 209..0
+                    VnameExpression 209..209
+                      SubscriptVname 209..209
+                        DotVname 209..209
+                          SubscriptVname 209..209
+                            SimpleVname 209..209
+                              Identifier "table" 209..209
+                            IntegerExpression 209..209
+                              IntegerLiteral "5" 209..209
+                          Identifier "column" 209..209
+                        IntegerExpression 209..209
+                          IntegerLiteral "5" 209..209
+                    Operator "=" 209..209
+                    VnameExpression 209..209
+                      SimpleVname 209..209
+                        Identifier "OCCUPIED" 209..209
+                AssignCommand 210..211
+                  SimpleVname 210..210
+                    Identifier "status" 210..210
+                  VnameExpression 210..211
+                    SimpleVname 210..211
+                      Identifier "true" 210..211
+                LetCommand 212..294
+                  SequentialDeclaration 213..215
+                    VarDeclaration 213..213
+                      Identifier "x" 213..213
+                      SimpleTypeDenoter 213..213
+                        Identifier "Integer" 213..213
+                    VarDeclaration 214..215
+                      Identifier "y" 214..214
+                      SimpleTypeDenoter 214..215
+                        Identifier "Integer" 214..215
+                  SequentialCommand 216..294
+                    SequentialCommand 216..294
+                      AssignCommand 216..216
+                        SimpleVname 216..216
+                          Identifier "x" 216..216
+                        IntegerExpression 216..216
+                          IntegerLiteral "2" 216..216
+                      WhileCommand 217..293
+                        BinaryExpression 217..0
+                          VnameExpression 217..217
+                            SimpleVname 217..217
+                              Identifier "x" 217..217
+                          Operator "<" 217..217
+                          IntegerExpression 217..217
+                            IntegerLiteral "9" 217..217
+                        SequentialCommand 219..293
+                          SequentialCommand 219..293
+                            AssignCommand 219..219
+                              SimpleVname 219..219
+                                Identifier "y" 219..219
+                              IntegerExpression 219..219
+                                IntegerLiteral "2" 219..219
+                            WhileCommand 220..291
+                              BinaryExpression 220..0
+                                VnameExpression 220..220
+                                  SimpleVname 220..220
+                                    Identifier "y" 220..220
+                                Operator "<" 220..220
+                                IntegerExpression 220..220
+                                  IntegerLiteral "9" 220..220
+                              SequentialCommand 222..290
+                                SequentialCommand 222..290
+                                  SequentialCommand 222..290
+                                    SequentialCommand 222..290
+                                      IfCommand 222..237
+                                        BinaryExpression 222..0
+                                          BinaryExpression 222..0
+                                            BinaryExpression 222..0
+                                              BinaryExpression 222..0
+                                                VnameExpression 222..222
+                                                  SubscriptVname 222..222
+                                                    DotVname 222..222
+                                                      SubscriptVname 222..222
+                                                        SimpleVname 222..222
+                                                          Identifier "table" 222..222
+                                                        VnameExpression 222..222
+                                                          SimpleVname 222..222
+                                                            Identifier "y" 222..222
+                                                      Identifier "column" 222..222
+                                                    VnameExpression 222..222
+                                                      SimpleVname 222..222
+                                                        Identifier "x" 222..222
+                                                Operator "=" 222..222
+                                                VnameExpression 222..222
+                                                  SimpleVname 222..222
+                                                    Identifier "OCCUPIED" 222..222
+                                              Operator "/\" 222..222
+                                              BinaryExpression 222..0
+                                                VnameExpression 222..222
+                                                  SubscriptVname 222..222
+                                                    DotVname 222..222
+                                                      SubscriptVname 222..222
+                                                        SimpleVname 222..222
+                                                          Identifier "table" 222..222
+                                                        BinaryExpression 222..0
+                                                          VnameExpression 222..222
+                                                            SimpleVname 222..222
+                                                              Identifier "y" 222..222
+                                                          Operator "+" 222..222
+                                                          IntegerExpression 222..222
+                                                            IntegerLiteral "1" 222..222
+                                                      Identifier "column" 222..222
+                                                    VnameExpression 222..222
+                                                      SimpleVname 222..222
+                                                        Identifier "x" 222..222
+                                                Operator "=" 222..222
+                                                VnameExpression 222..222
+                                                  SimpleVname 222..222
+                                                    Identifier "OCCUPIED" 222..222
+                                            Operator "/\" 222..222
+                                            BinaryExpression 222..0
+                                              VnameExpression 222..222
+                                                SubscriptVname 222..222
+                                                  DotVname 222..222
+                                                    SubscriptVname 222..222
+                                                      SimpleVname 222..222
+                                                        Identifier "table" 222..222
+                                                      BinaryExpression 222..0
+                                                        VnameExpression 222..222
+                                                          SimpleVname 222..222
+                                                            Identifier "y" 222..222
+                                                        Operator "+" 222..222
+                                                        IntegerExpression 222..222
+                                                          IntegerLiteral "2" 222..222
+                                                    Identifier "column" 222..222
+                                                  VnameExpression 222..222
+                                                    SimpleVname 222..222
+                                                      Identifier "x" 222..222
+                                              Operator "=" 222..222
+                                              VnameExpression 222..222
+                                                SimpleVname 222..222
+                                                  Identifier "FREE" 222..222
+                                          Operator "/\" 222..222
+                                          UnaryExpression 222..222
+                                            Operator "\" 222..222
+                                            VnameExpression 222..222
+                                              SimpleVname 222..222
+                                                Identifier "status" 222..222
+                                        SequentialCommand 224..234
+                                          SequentialCommand 224..234
+                                            CallCommand 224..224
+                                              Identifier "makeMove" 224..224
+                                              MultipleActualParameterSequence 224..224
+                                                ConstActualParameter 224..224
+                                                  VnameExpression 224..224
+                                                    SimpleVname 224..224
+                                                      Identifier "x" 224..224
+                                                MultipleActualParameterSequence 224..224
+                                                  ConstActualParameter 224..224
+                                                    VnameExpression 224..224
+                                                      SimpleVname 224..224
+                                                        Identifier "y" 224..224
+                                                  SingleActualParameterSequence 224..224
+                                                    ConstActualParameter 224..224
+                                                      VnameExpression 224..224
+                                                        SimpleVname 224..224
+                                                          Identifier "NORTH" 224..224
+                                            CallCommand 225..225
+                                              Identifier "calcSolution" 225..225
+                                              MultipleActualParameterSequence 225..225
+                                                ConstActualParameter 225..225
+                                                  BinaryExpression 225..0
+                                                    VnameExpression 225..225
+                                                      SimpleVname 225..225
+                                                        Identifier "stepNr" 225..225
+                                                    Operator "+" 225..225
+                                                    IntegerExpression 225..225
+                                                      IntegerLiteral "1" 225..225
+                                                SingleActualParameterSequence 225..225
+                                                  VarActualParameter 225..225
+                                                    SimpleVname 225..225
+                                                      Identifier "status" 225..225
+                                          IfCommand 226..234
+                                            BinaryExpression 226..0
+                                              VnameExpression 226..226
+                                                SimpleVname 226..226
+                                                  Identifier "status" 226..226
+                                              Operator "=" 226..226
+                                              VnameExpression 226..226
+                                                SimpleVname 226..226
+                                                  Identifier "true" 226..226
+                                            SequentialCommand 228..229
+                                              CallCommand 228..228
+                                                Identifier "saveSolution" 228..228
+                                                MultipleActualParameterSequence 228..228
+                                                  ConstActualParameter 228..228
+                                                    VnameExpression 228..228
+                                                      SimpleVname 228..228
+                                                        Identifier "stepNr" 228..228
+                                                  MultipleActualParameterSequence 228..228
+                                                    ConstActualParameter 228..228
+                                                      VnameExpression 228..228
+                                                        SimpleVname 228..228
+                                                          Identifier "x" 228..228
+                                                    MultipleActualParameterSequence 228..228
+                                                      ConstActualParameter 228..228
+                                                        VnameExpression 228..228
+                                                          SimpleVname 228..228
+                                                            Identifier "y" 228..228
+                                                      SingleActualParameterSequence 228..228
+                                                        ConstActualParameter 228..228
+                                                          VnameExpression 228..228
+                                                            SimpleVname 228..228
+                                                              Identifier "NORTH" 228..228
+                                              EmptyCommand 229..229
+                                            SequentialCommand 232..233
+                                              CallCommand 232..232
+                                                Identifier "undoMove" 232..232
+                                                MultipleActualParameterSequence 232..232
+                                                  ConstActualParameter 232..232
+                                                    VnameExpression 232..232
+                                                      SimpleVname 232..232
+                                                        Identifier "x" 232..232
+                                                  MultipleActualParameterSequence 232..232
+                                                    ConstActualParameter 232..232
+                                                      VnameExpression 232..232
+                                                        SimpleVname 232..232
+                                                          Identifier "y" 232..232
+                                                    SingleActualParameterSequence 232..232
+                                                      ConstActualParameter 232..232
+                                                        VnameExpression 232..232
+                                                          SimpleVname 232..232
+                                                            Identifier "NORTH" 232..232
+                                              EmptyCommand 233..233
+                                        EmptyCommand 237..237
+                                      IfCommand 240..255
+                                        BinaryExpression 240..0
+                                          BinaryExpression 240..0
+                                            BinaryExpression 240..0
+                                              BinaryExpression 240..0
+                                                VnameExpression 240..240
+                                                  SubscriptVname 240..240
+                                                    DotVname 240..240
+                                                      SubscriptVname 240..240
+                                                        SimpleVname 240..240
+                                                          Identifier "table" 240..240
+                                                        VnameExpression 240..240
+                                                          SimpleVname 240..240
+                                                            Identifier "y" 240..240
+                                                      Identifier "column" 240..240
+                                                    VnameExpression 240..240
+                                                      SimpleVname 240..240
+                                                        Identifier "x" 240..240
+                                                Operator "=" 240..240
+                                                VnameExpression 240..240
+                                                  SimpleVname 240..240
+                                                    Identifier "OCCUPIED" 240..240
+                                              Operator "/\" 240..240
+                                              BinaryExpression 240..0
+                                                VnameExpression 240..240
+                                                  SubscriptVname 240..240
+                                                    DotVname 240..240
+                                                      SubscriptVname 240..240
+                                                        SimpleVname 240..240
+                                                          Identifier "table" 240..240
+                                                        BinaryExpression 240..0
+                                                          VnameExpression 240..240
+                                                            SimpleVname 240..240
+                                                              Identifier "y" 240..240
+                                                          Operator "-" 240..240
+                                                          IntegerExpression 240..240
+                                                            IntegerLiteral "1" 240..240
+                                                      Identifier "column" 240..240
+                                                    VnameExpression 240..240
+                                                      SimpleVname 240..240
+                                                        Identifier "x" 240..240
+                                                Operator "=" 240..240
+                                                VnameExpression 240..240
+                                                  SimpleVname 240..240
+                                                    Identifier "OCCUPIED" 240..240
+                                            Operator "/\" 240..240
+                                            BinaryExpression 240..0
+                                              VnameExpression 240..240
+                                                SubscriptVname 240..240
+                                                  DotVname 240..240
+                                                    SubscriptVname 240..240
+                                                      SimpleVname 240..240
+                                                        Identifier "table" 240..240
+                                                      BinaryExpression 240..0
+                                                        VnameExpression 240..240
+                                                          SimpleVname 240..240
+                                                            Identifier "y" 240..240
+                                                        Operator "-" 240..240
+                                                        IntegerExpression 240..240
+                                                          IntegerLiteral "2" 240..240
+                                                    Identifier "column" 240..240
+                                                  VnameExpression 240..240
+                                                    SimpleVname 240..240
+                                                      Identifier "x" 240..240
+                                              Operator "=" 240..240
+                                              VnameExpression 240..240
+                                                SimpleVname 240..240
+                                                  Identifier "FREE" 240..240
+                                          Operator "/\" 240..240
+                                          UnaryExpression 240..240
+                                            Operator "\" 240..240
+                                            VnameExpression 240..240
+                                              SimpleVname 240..240
+                                                Identifier "status" 240..240
+                                        SequentialCommand 242..252
+                                          SequentialCommand 242..252
+                                            CallCommand 242..242
+                                              Identifier "makeMove" 242..242
+                                              MultipleActualParameterSequence 242..242
+                                                ConstActualParameter 242..242
+                                                  VnameExpression 242..242
+                                                    SimpleVname 242..242
+                                                      Identifier "x" 242..242
+                                                MultipleActualParameterSequence 242..242
+                                                  ConstActualParameter 242..242
+                                                    VnameExpression 242..242
+                                                      SimpleVname 242..242
+                                                        Identifier "y" 242..242
+                                                  SingleActualParameterSequence 242..242
+                                                    ConstActualParameter 242..242
+                                                      VnameExpression 242..242
+                                                        SimpleVname 242..242
+                                                          Identifier "SOUTH" 242..242
+                                            CallCommand 243..243
+                                              Identifier "calcSolution" 243..243
+                                              MultipleActualParameterSequence 243..243
+                                                ConstActualParameter 243..243
+                                                  BinaryExpression 243..0
+                                                    VnameExpression 243..243
+                                                      SimpleVname 243..243
+                                                        Identifier "stepNr" 243..243
+                                                    Operator "+" 243..243
+                                                    IntegerExpression 243..243
+                                                      IntegerLiteral "1" 243..243
+                                                SingleActualParameterSequence 243..243
+                                                  VarActualParameter 243..243
+                                                    SimpleVname 243..243
+                                                      Identifier "status" 243..243
+                                          IfCommand 244..252
+                                            BinaryExpression 244..0
+                                              VnameExpression 244..244
+                                                SimpleVname 244..244
+                                                  Identifier "status" 244..244
+                                              Operator "=" 244..244
+                                              VnameExpression 244..244
+                                                SimpleVname 244..244
+                                                  Identifier "true" 244..244
+                                            SequentialCommand 246..247
+                                              CallCommand 246..246
+                                                Identifier "saveSolution" 246..246
+                                                MultipleActualParameterSequence 246..246
+                                                  ConstActualParameter 246..246
+                                                    VnameExpression 246..246
+                                                      SimpleVname 246..246
+                                                        Identifier "stepNr" 246..246
+                                                  MultipleActualParameterSequence 246..246
+                                                    ConstActualParameter 246..246
+                                                      VnameExpression 246..246
+                                                        SimpleVname 246..246
+                                                          Identifier "x" 246..246
+                                                    MultipleActualParameterSequence 246..246
+                                                      ConstActualParameter 246..246
+                                                        VnameExpression 246..246
+                                                          SimpleVname 246..246
+                                                            Identifier "y" 246..246
+                                                      SingleActualParameterSequence 246..246
+                                                        ConstActualParameter 246..246
+                                                          VnameExpression 246..246
+                                                            SimpleVname 246..246
+                                                              Identifier "SOUTH" 246..246
+                                              EmptyCommand 247..247
+                                            SequentialCommand 250..251
+                                              CallCommand 250..250
+                                                Identifier "undoMove" 250..250
+                                                MultipleActualParameterSequence 250..250
+                                                  ConstActualParameter 250..250
+                                                    VnameExpression 250..250
+                                                      SimpleVname 250..250
+                                                        Identifier "x" 250..250
+                                                  MultipleActualParameterSequence 250..250
+                                                    ConstActualParameter 250..250
+                                                      VnameExpression 250..250
+                                                        SimpleVname 250..250
+                                                          Identifier "y" 250..250
+                                                    SingleActualParameterSequence 250..250
+                                                      ConstActualParameter 250..250
+                                                        VnameExpression 250..250
+                                                          SimpleVname 250..250
+                                                            Identifier "SOUTH" 250..250
+                                              EmptyCommand 251..251
+                                        EmptyCommand 255..255
+                                    IfCommand 257..272
+                                      BinaryExpression 257..0
+                                        BinaryExpression 257..0
+                                          BinaryExpression 257..0
+                                            BinaryExpression 257..0
+                                              VnameExpression 257..257
+                                                SubscriptVname 257..257
+                                                  DotVname 257..257
+                                                    SubscriptVname 257..257
+                                                      SimpleVname 257..257
+                                                        Identifier "table" 257..257
+                                                      VnameExpression 257..257
+                                                        SimpleVname 257..257
+                                                          Identifier "y" 257..257
+                                                    Identifier "column" 257..257
+                                                  VnameExpression 257..257
+                                                    SimpleVname 257..257
+                                                      Identifier "x" 257..257
+                                              Operator "=" 257..257
+                                              VnameExpression 257..257
+                                                SimpleVname 257..257
+                                                  Identifier "OCCUPIED" 257..257
+                                            Operator "/\" 257..257
+                                            BinaryExpression 257..0
+                                              VnameExpression 257..257
+                                                SubscriptVname 257..257
+                                                  DotVname 257..257
+                                                    SubscriptVname 257..257
+                                                      SimpleVname 257..257
+                                                        Identifier "table" 257..257
+                                                      VnameExpression 257..257
+                                                        SimpleVname 257..257
+                                                          Identifier "y" 257..257
+                                                    Identifier "column" 257..257
+                                                  BinaryExpression 257..0
+                                                    VnameExpression 257..257
+                                                      SimpleVname 257..257
+                                                        Identifier "x" 257..257
+                                                    Operator "+" 257..257
+                                                    IntegerExpression 257..257
+                                                      IntegerLiteral "1" 257..257
+                                              Operator "=" 257..257
+                                              VnameExpression 257..257
+                                                SimpleVname 257..257
+                                                  Identifier "OCCUPIED" 257..257
+                                          Operator "/\" 257..257
+                                          BinaryExpression 257..0
+                                            VnameExpression 257..257
+                                              SubscriptVname 257..257
+                                                DotVname 257..257
+                                                  SubscriptVname 257..257
+                                                    SimpleVname 257..257
+                                                      Identifier "table" 257..257
+                                                    VnameExpression 257..257
+                                                      SimpleVname 257..257
+                                                        Identifier "y" 257..257
+                                                  Identifier "column" 257..257
+                                                BinaryExpression 257..0
+                                                  VnameExpression 257..257
+                                                    SimpleVname 257..257
+                                                      Identifier "x" 257..257
+                                                  Operator "+" 257..257
+                                                  IntegerExpression 257..257
+                                                    IntegerLiteral "2" 257..257
+                                            Operator "=" 257..257
+                                            VnameExpression 257..257
+                                              SimpleVname 257..257
+                                                Identifier "FREE" 257..257
+                                        Operator "/\" 257..257
+                                        UnaryExpression 257..257
+                                          Operator "\" 257..257
+                                          VnameExpression 257..257
+                                            SimpleVname 257..257
+                                              Identifier "status" 257..257
+                                      SequentialCommand 259..269
+                                        SequentialCommand 259..269
+                                          CallCommand 259..259
+                                            Identifier "makeMove" 259..259
+                                            MultipleActualParameterSequence 259..259
+                                              ConstActualParameter 259..259
+                                                VnameExpression 259..259
+                                                  SimpleVname 259..259
+                                                    Identifier "x" 259..259
+                                              MultipleActualParameterSequence 259..259
+                                                ConstActualParameter 259..259
+                                                  VnameExpression 259..259
+                                                    SimpleVname 259..259
+                                                      Identifier "y" 259..259
+                                                SingleActualParameterSequence 259..259
+                                                  ConstActualParameter 259..259
+                                                    VnameExpression 259..259
+                                                      SimpleVname 259..259
+                                                        Identifier "EAST" 259..259
+                                          CallCommand 260..260
+                                            Identifier "calcSolution" 260..260
+                                            MultipleActualParameterSequence 260..260
+                                              ConstActualParameter 260..260
+                                                BinaryExpression 260..0
+                                                  VnameExpression 260..260
+                                                    SimpleVname 260..260
+                                                      Identifier "stepNr" 260..260
+                                                  Operator "+" 260..260
+                                                  IntegerExpression 260..260
+                                                    IntegerLiteral "1" 260..260
+                                              SingleActualParameterSequence 260..260
+                                                VarActualParameter 260..260
+                                                  SimpleVname 260..260
+                                                    Identifier "status" 260..260
+                                        IfCommand 261..269
+                                          BinaryExpression 261..0
+                                            VnameExpression 261..261
+                                              SimpleVname 261..261
+                                                Identifier "status" 261..261
+                                            Operator "=" 261..261
+                                            VnameExpression 261..261
+                                              SimpleVname 261..261
+                                                Identifier "true" 261..261
+                                          SequentialCommand 263..264
+                                            CallCommand 263..263
+                                              Identifier "saveSolution" 263..263
+                                              MultipleActualParameterSequence 263..263
+                                                ConstActualParameter 263..263
+                                                  VnameExpression 263..263
+                                                    SimpleVname 263..263
+                                                      Identifier "stepNr" 263..263
+                                                MultipleActualParameterSequence 263..263
+                                                  ConstActualParameter 263..263
+                                                    VnameExpression 263..263
+                                                      SimpleVname 263..263
+                                                        Identifier "x" 263..263
+                                                  MultipleActualParameterSequence 263..263
+                                                    ConstActualParameter 263..263
+                                                      VnameExpression 263..263
+                                                        SimpleVname 263..263
+                                                          Identifier "y" 263..263
+                                                    SingleActualParameterSequence 263..263
+                                                      ConstActualParameter 263..263
+                                                        VnameExpression 263..263
+                                                          SimpleVname 263..263
+                                                            Identifier "EAST" 263..263
+                                            EmptyCommand 264..264
+                                          SequentialCommand 267..268
+                                            CallCommand 267..267
+                                              Identifier "undoMove" 267..267
+                                              MultipleActualParameterSequence 267..267
+                                                ConstActualParameter 267..267
+                                                  VnameExpression 267..267
+                                                    SimpleVname 267..267
+                                                      Identifier "x" 267..267
+                                                MultipleActualParameterSequence 267..267
+                                                  ConstActualParameter 267..267
+                                                    VnameExpression 267..267
+                                                      SimpleVname 267..267
+                                                        Identifier "y" 267..267
+                                                  SingleActualParameterSequence 267..267
+                                                    ConstActualParameter 267..267
+                                                      VnameExpression 267..267
+                                                        SimpleVname 267..267
+                                                          Identifier "EAST" 267..267
+                                            EmptyCommand 268..268
+                                      EmptyCommand 272..272
+                                  IfCommand 274..289
+                                    BinaryExpression 274..0
+                                      BinaryExpression 274..0
+                                        BinaryExpression 274..0
+                                          BinaryExpression 274..0
+                                            VnameExpression 274..274
+                                              SubscriptVname 274..274
+                                                DotVname 274..274
+                                                  SubscriptVname 274..274
+                                                    SimpleVname 274..274
+                                                      Identifier "table" 274..274
+                                                    VnameExpression 274..274
+                                                      SimpleVname 274..274
+                                                        Identifier "y" 274..274
+                                                  Identifier "column" 274..274
+                                                VnameExpression 274..274
+                                                  SimpleVname 274..274
+                                                    Identifier "x" 274..274
+                                            Operator "=" 274..274
+                                            VnameExpression 274..274
+                                              SimpleVname 274..274
+                                                Identifier "OCCUPIED" 274..274
+                                          Operator "/\" 274..274
+                                          BinaryExpression 274..0
+                                            VnameExpression 274..274
+                                              SubscriptVname 274..274
+                                                DotVname 274..274
+                                                  SubscriptVname 274..274
+                                                    SimpleVname 274..274
+                                                      Identifier "table" 274..274
+                                                    VnameExpression 274..274
+                                                      SimpleVname 274..274
+                                                        Identifier "y" 274..274
+                                                  Identifier "column" 274..274
+                                                BinaryExpression 274..0
+                                                  VnameExpression 274..274
+                                                    SimpleVname 274..274
+                                                      Identifier "x" 274..274
+                                                  Operator "-" 274..274
+                                                  IntegerExpression 274..274
+                                                    IntegerLiteral "1" 274..274
+                                            Operator "=" 274..274
+                                            VnameExpression 274..274
+                                              SimpleVname 274..274
+                                                Identifier "OCCUPIED" 274..274
+                                        Operator "/\" 274..274
+                                        BinaryExpression 274..0
+                                          VnameExpression 274..274
+                                            SubscriptVname 274..274
+                                              DotVname 274..274
+                                                SubscriptVname 274..274
+                                                  SimpleVname 274..274
+                                                    Identifier "table" 274..274
+                                                  VnameExpression 274..274
+                                                    SimpleVname 274..274
+                                                      Identifier "y" 274..274
+                                                Identifier "column" 274..274
+                                              BinaryExpression 274..0
+                                                VnameExpression 274..274
+                                                  SimpleVname 274..274
+                                                    Identifier "x" 274..274
+                                                Operator "-" 274..274
+                                                IntegerExpression 274..274
+                                                  IntegerLiteral "2" 274..274
+                                          Operator "=" 274..274
+                                          VnameExpression 274..274
+                                            SimpleVname 274..274
+                                              Identifier "FREE" 274..274
+                                      Operator "/\" 274..274
+                                      UnaryExpression 274..274
+                                        Operator "\" 274..274
+                                        VnameExpression 274..274
+                                          SimpleVname 274..274
+                                            Identifier "status" 274..274
+                                    SequentialCommand 276..286
+                                      SequentialCommand 276..286
+                                        CallCommand 276..276
+                                          Identifier "makeMove" 276..276
+                                          MultipleActualParameterSequence 276..276
+                                            ConstActualParameter 276..276
+                                              VnameExpression 276..276
+                                                SimpleVname 276..276
+                                                  Identifier "x" 276..276
+                                            MultipleActualParameterSequence 276..276
+                                              ConstActualParameter 276..276
+                                                VnameExpression 276..276
+                                                  SimpleVname 276..276
+                                                    Identifier "y" 276..276
+                                              SingleActualParameterSequence 276..276
+                                                ConstActualParameter 276..276
+                                                  VnameExpression 276..276
+                                                    SimpleVname 276..276
+                                                      Identifier "WEST" 276..276
+                                        CallCommand 277..277
+                                          Identifier "calcSolution" 277..277
+                                          MultipleActualParameterSequence 277..277
+                                            ConstActualParameter 277..277
+                                              BinaryExpression 277..0
+                                                VnameExpression 277..277
+                                                  SimpleVname 277..277
+                                                    Identifier "stepNr" 277..277
+                                                Operator "+" 277..277
+                                                IntegerExpression 277..277
+                                                  IntegerLiteral "1" 277..277
+                                            SingleActualParameterSequence 277..277
+                                              VarActualParameter 277..277
+                                                SimpleVname 277..277
+                                                  Identifier "status" 277..277
+                                      IfCommand 278..286
+                                        BinaryExpression 278..0
+                                          VnameExpression 278..278
+                                            SimpleVname 278..278
+                                              Identifier "status" 278..278
+                                          Operator "=" 278..278
+                                          VnameExpression 278..278
+                                            SimpleVname 278..278
+                                              Identifier "true" 278..278
+                                        SequentialCommand 280..281
+                                          CallCommand 280..280
+                                            Identifier "saveSolution" 280..280
+                                            MultipleActualParameterSequence 280..280
+                                              ConstActualParameter 280..280
+                                                VnameExpression 280..280
+                                                  SimpleVname 280..280
+                                                    Identifier "stepNr" 280..280
+                                              MultipleActualParameterSequence 280..280
+                                                ConstActualParameter 280..280
+                                                  VnameExpression 280..280
+                                                    SimpleVname 280..280
+                                                      Identifier "x" 280..280
+                                                MultipleActualParameterSequence 280..280
+                                                  ConstActualParameter 280..280
+                                                    VnameExpression 280..280
+                                                      SimpleVname 280..280
+                                                        Identifier "y" 280..280
+                                                  SingleActualParameterSequence 280..280
+                                                    ConstActualParameter 280..280
+                                                      VnameExpression 280..280
+                                                        SimpleVname 280..280
+                                                          Identifier "WEST" 280..280
+                                          EmptyCommand 281..281
+                                        SequentialCommand 284..285
+                                          CallCommand 284..284
+                                            Identifier "undoMove" 284..284
+                                            MultipleActualParameterSequence 284..284
+                                              ConstActualParameter 284..284
+                                                VnameExpression 284..284
+                                                  SimpleVname 284..284
+                                                    Identifier "x" 284..284
+                                              MultipleActualParameterSequence 284..284
+                                                ConstActualParameter 284..284
+                                                  VnameExpression 284..284
+                                                    SimpleVname 284..284
+                                                      Identifier "y" 284..284
+                                                SingleActualParameterSequence 284..284
+                                                  ConstActualParameter 284..284
+                                                    VnameExpression 284..284
+                                                      SimpleVname 284..284
+                                                        Identifier "WEST" 284..284
+                                          EmptyCommand 285..285
+                                    EmptyCommand 289..289
+                                AssignCommand 290..290
+                                  SimpleVname 290..290
+                                    Identifier "y" 290..290
+                                  BinaryExpression 290..0
+                                    VnameExpression 290..290
+                                      SimpleVname 290..290
+                                        Identifier "y" 290..290
+                                    Operator "+" 290..290
+                                    IntegerExpression 290..290
+                                      IntegerLiteral "1" 290..290
+                          AssignCommand 292..293
+                            SimpleVname 292..292
+                              Identifier "x" 292..292
+                            BinaryExpression 292..0
+                              VnameExpression 292..292
+                                SimpleVname 292..292
+                                  Identifier "x" 292..292
+                              Operator "+" 292..292
+                              IntegerExpression 292..293
+                                IntegerLiteral "1" 292..293
+                    EmptyCommand 294..294
+              EmptyCommand 295..295
+        ProcDeclaration 298..334
+          Identifier "writeDirection" 298..298
+          SingleFormalParameterSequence 298..298
+            ConstFormalParameter 298..298
+              Identifier "dir" 298..298
+              SimpleTypeDenoter 298..298
+                Identifier "Integer" 298..298
+          IfCommand 300..334
+            BinaryExpression 300..0
+              VnameExpression 300..300
+                SimpleVname 300..300
+                  Identifier "dir" 300..300
+              Operator "=" 300..300
+              VnameExpression 300..300
+                SimpleVname 300..300
+                  Identifier "NORTH" 300..300
+            SequentialCommand 302..307
+              SequentialCommand 302..307
+                SequentialCommand 302..307
+                  SequentialCommand 302..307
+                    SequentialCommand 302..307
+                      CallCommand 302..302
+                        Identifier "put" 302..302
+                        SingleActualParameterSequence 302..302
+                          ConstActualParameter 302..302
+                            CharacterExpression 302..302
+                              CharacterLiteral "'N'" 302..302
+                      CallCommand 303..303
+                        Identifier "put" 303..303
+                        SingleActualParameterSequence 303..303
+                          ConstActualParameter 303..303
+                            CharacterExpression 303..303
+                              CharacterLiteral "'O'" 303..303
+                    CallCommand 304..304
+                      Identifier "put" 304..304
+                      SingleActualParameterSequence 304..304
+                        ConstActualParameter 304..304
+                          CharacterExpression 304..304
+                            CharacterLiteral "'R'" 304..304
+                  CallCommand 305..305
+                    Identifier "put" 305..305
+                    SingleActualParameterSequence 305..305
+                      ConstActualParameter 305..305
+                        CharacterExpression 305..305
+                          CharacterLiteral "'T'" 305..305
+                CallCommand 306..306
+                  Identifier "put" 306..306
+                  SingleActualParameterSequence 306..306
+                    ConstActualParameter 306..306
+                      CharacterExpression 306..306
+                        CharacterLiteral "'H'" 306..306
+              EmptyCommand 307..307
+            IfCommand 309..334
+              BinaryExpression 309..0
+                VnameExpression 309..309
+                  SimpleVname 309..309
+                    Identifier "dir" 309..309
+                Operator "=" 309..309
+                VnameExpression 309..309
+                  SimpleVname 309..309
+                    Identifier "EAST" 309..309
+              SequentialCommand 311..315
+                SequentialCommand 311..315
+                  SequentialCommand 311..315
+                    SequentialCommand 311..315
+                      CallCommand 311..311
+                        Identifier "put" 311..311
+                        SingleActualParameterSequence 311..311
+                          ConstActualParameter 311..311
+                            CharacterExpression 311..311
+                              CharacterLiteral "'E'" 311..311
+                      CallCommand 312..312
+                        Identifier "put" 312..312
+                        SingleActualParameterSequence 312..312
+                          ConstActualParameter 312..312
+                            CharacterExpression 312..312
+                              CharacterLiteral "'A'" 312..312
+                    CallCommand 313..313
+                      Identifier "put" 313..313
+                      SingleActualParameterSequence 313..313
+                        ConstActualParameter 313..313
+                          CharacterExpression 313..313
+                            CharacterLiteral "'S'" 313..313
+                  CallCommand 314..314
+                    Identifier "put" 314..314
+                    SingleActualParameterSequence 314..314
+                      ConstActualParameter 314..314
+                        CharacterExpression 314..314
+                          CharacterLiteral "'T'" 314..314
+                EmptyCommand 315..315
+              IfCommand 317..334
+                BinaryExpression 317..0
+                  VnameExpression 317..317
+                    SimpleVname 317..317
+                      Identifier "dir" 317..317
+                  Operator "=" 317..317
+                  VnameExpression 317..317
+                    SimpleVname 317..317
+                      Identifier "SOUTH" 317..317
+                SequentialCommand 319..324
+                  SequentialCommand 319..324
+                    SequentialCommand 319..324
+                      SequentialCommand 319..324
+                        SequentialCommand 319..324
+                          CallCommand 319..319
+                            Identifier "put" 319..319
+                            SingleActualParameterSequence 319..319
+                              ConstActualParameter 319..319
+                                CharacterExpression 319..319
+                                  CharacterLiteral "'S'" 319..319
+                          CallCommand 320..320
+                            Identifier "put" 320..320
+                            SingleActualParameterSequence 320..320
+                              ConstActualParameter 320..320
+                                CharacterExpression 320..320
+                                  CharacterLiteral "'O'" 320..320
+                        CallCommand 321..321
+                          Identifier "put" 321..321
+                          SingleActualParameterSequence 321..321
+                            ConstActualParameter 321..321
+                              CharacterExpression 321..321
+                                CharacterLiteral "'U'" 321..321
+                      CallCommand 322..322
+                        Identifier "put" 322..322
+                        SingleActualParameterSequence 322..322
+                          ConstActualParameter 322..322
+                            CharacterExpression 322..322
+                              CharacterLiteral "'T'" 322..322
+                    CallCommand 323..323
+                      Identifier "put" 323..323
+                      SingleActualParameterSequence 323..323
+                        ConstActualParameter 323..323
+                          CharacterExpression 323..323
+                            CharacterLiteral "'H'" 323..323
+                  EmptyCommand 324..324
+                IfCommand 326..334
+                  BinaryExpression 326..0
+                    VnameExpression 326..326
+                      SimpleVname 326..326
+                        Identifier "dir" 326..326
+                    Operator "=" 326..326
+                    VnameExpression 326..326
+                      SimpleVname 326..326
+                        Identifier "WEST" 326..326
+                  SequentialCommand 328..332
+                    SequentialCommand 328..332
+                      SequentialCommand 328..332
+                        SequentialCommand 328..332
+                          CallCommand 328..328
+                            Identifier "put" 328..328
+                            SingleActualParameterSequence 328..328
+                              ConstActualParameter 328..328
+                                CharacterExpression 328..328
+                                  CharacterLiteral "'W'" 328..328
+                          CallCommand 329..329
+                            Identifier "put" 329..329
+                            SingleActualParameterSequence 329..329
+                              ConstActualParameter 329..329
+                                CharacterExpression 329..329
+                                  CharacterLiteral "'E'" 329..329
+                        CallCommand 330..330
+                          Identifier "put" 330..330
+                          SingleActualParameterSequence 330..330
+                            ConstActualParameter 330..330
+                              CharacterExpression 330..330
+                                CharacterLiteral "'S'" 330..330
+                      CallCommand 331..331
+                        Identifier "put" 331..331
+                        SingleActualParameterSequence 331..331
+                          ConstActualParameter 331..331
+                            CharacterExpression 331..331
+                              CharacterLiteral "'T'" 331..331
+                    EmptyCommand 332..332
+                  EmptyCommand 334..334
+      ProcDeclaration 337..362
+        Identifier "printSolution" 337..337
+        EmptyFormalParameterSequence 337..337
+        LetCommand 338..362
+          VarDeclaration 339..340
+            Identifier "count" 339..339
+            SimpleTypeDenoter 339..340
+              Identifier "Integer" 339..340
+          SequentialCommand 341..361
+            SequentialCommand 341..361
+              SequentialCommand 341..361
+                SequentialCommand 341..361
+                  CallCommand 341..341
+                    Identifier "initTable" 341..341
+                    EmptyActualParameterSequence 341..341
+                  CallCommand 342..342
+                    Identifier "puteol" 342..342
+                    EmptyActualParameterSequence 342..342
+                CallCommand 343..343
+                  Identifier "printTable" 343..343
+                  EmptyActualParameterSequence 343..343
+              AssignCommand 344..344
+                SimpleVname 344..344
+                  Identifier "count" 344..344
+                IntegerExpression 344..344
+                  IntegerLiteral "0" 344..344
+            WhileCommand 345..361
+              BinaryExpression 345..0
+                VnameExpression 345..345
+                  SimpleVname 345..345
+                    Identifier "count" 345..345
+                Operator "<" 345..345
+                IntegerExpression 345..345
+                  IntegerLiteral "31" 345..345
+              SequentialCommand 347..360
+                SequentialCommand 347..360
+                  SequentialCommand 347..360
+                    SequentialCommand 347..360
+                      SequentialCommand 347..360
+                        SequentialCommand 347..360
+                          SequentialCommand 347..360
+                            SequentialCommand 347..360
+                              SequentialCommand 347..360
+                                SequentialCommand 347..360
+                                  SequentialCommand 347..360
+                                    SequentialCommand 347..360
+                                      CallCommand 347..347
+                                        Identifier "putint" 347..347
+                                        SingleActualParameterSequence 347..347
+                                          ConstActualParameter 347..347
+                                            BinaryExpression 347..0
+                                              VnameExpression 347..347
+                                                SimpleVname 347..347
+                                                  Identifier "count" 347..347
+                                              Operator "+" 347..347
+                                              IntegerExpression 347..347
+                                                IntegerLiteral "1" 347..347
+                                      CallCommand 348..348
+                                        Identifier "put" 348..348
+                                        SingleActualParameterSequence 348..348
+                                          ConstActualParameter 348..348
+                                            CharacterExpression 348..348
+                                              CharacterLiteral "' '" 348..348
+                                    CallCommand 349..349
+                                      Identifier "put" 349..349
+                                      SingleActualParameterSequence 349..349
+                                        ConstActualParameter 349..349
+                                          CharacterExpression 349..349
+                                            CharacterLiteral "'['" 349..349
+                                  CallCommand 350..350
+                                    Identifier "putint" 350..350
+                                    SingleActualParameterSequence 350..350
+                                      ConstActualParameter 350..350
+                                        VnameExpression 350..350
+                                          SubscriptVname 350..350
+                                            DotVname 350..350
+                                              SubscriptVname 350..350
+                                                SimpleVname 350..350
+                                                  Identifier "solution" 350..350
+                                                VnameExpression 350..350
+                                                  SimpleVname 350..350
+                                                    Identifier "count" 350..350
+                                              Identifier "column" 350..350
+                                            IntegerExpression 350..350
+                                              IntegerLiteral "0" 350..350
+                                CallCommand 351..351
+                                  Identifier "put" 351..351
+                                  SingleActualParameterSequence 351..351
+                                    ConstActualParameter 351..351
+                                      CharacterExpression 351..351
+                                        CharacterLiteral "','" 351..351
+                              CallCommand 352..352
+                                Identifier "putint" 352..352
+                                SingleActualParameterSequence 352..352
+                                  ConstActualParameter 352..352
+                                    VnameExpression 352..352
+                                      SubscriptVname 352..352
+                                        DotVname 352..352
+                                          SubscriptVname 352..352
+                                            SimpleVname 352..352
+                                              Identifier "solution" 352..352
+                                            VnameExpression 352..352
+                                              SimpleVname 352..352
+                                                Identifier "count" 352..352
+                                          Identifier "column" 352..352
+                                        IntegerExpression 352..352
+                                          IntegerLiteral "1" 352..352
+                            CallCommand 353..353
+                              Identifier "put" 353..353
+                              SingleActualParameterSequence 353..353
+                                ConstActualParameter 353..353
+                                  CharacterExpression 353..353
+                                    CharacterLiteral "']'" 353..353
+                          CallCommand 354..354
+                            Identifier "put" 354..354
+                            SingleActualParameterSequence 354..354
+                              ConstActualParameter 354..354
+                                CharacterExpression 354..354
+                                  CharacterLiteral "' '" 354..354
+                        CallCommand 355..355
+                          Identifier "writeDirection" 355..355
+                          SingleActualParameterSequence 355..355
+                            ConstActualParameter 355..355
+                              VnameExpression 355..355
+                                SubscriptVname 355..355
+                                  DotVname 355..355
+                                    SubscriptVname 355..355
+                                      SimpleVname 355..355
+                                        Identifier "solution" 355..355
+                                      VnameExpression 355..355
+                                        SimpleVname 355..355
+                                          Identifier "count" 355..355
+                                    Identifier "column" 355..355
+                                  IntegerExpression 355..355
+                                    IntegerLiteral "2" 355..355
+                      CallCommand 356..356
+                        Identifier "puteol" 356..356
+                        EmptyActualParameterSequence 356..356
+                    CallCommand 357..357
+                      Identifier "makeMove" 357..357
+                      MultipleActualParameterSequence 357..357
+                        ConstActualParameter 357..357
+                          VnameExpression 357..357
+                            SubscriptVname 357..357
+                              DotVname 357..357
+                                SubscriptVname 357..357
+                                  SimpleVname 357..357
+                                    Identifier "solution" 357..357
+                                  VnameExpression 357..357
+                                    SimpleVname 357..357
+                                      Identifier "count" 357..357
+                                Identifier "column" 357..357
+                              IntegerExpression 357..357
+                                IntegerLiteral "0" 357..357
+                        MultipleActualParameterSequence 357..357
+                          ConstActualParameter 357..357
+                            VnameExpression 357..357
+                              SubscriptVname 357..357
+                                DotVname 357..357
+                                  SubscriptVname 357..357
+                                    SimpleVname 357..357
+                                      Identifier "solution" 357..357
+                                    VnameExpression 357..357
+                                      SimpleVname 357..357
+                                        Identifier "count" 357..357
+                                  Identifier "column" 357..357
+                                IntegerExpression 357..357
+                                  IntegerLiteral "1" 357..357
+                          SingleActualParameterSequence 357..357
+                            ConstActualParameter 357..357
+                              VnameExpression 357..357
+                                SubscriptVname 357..357
+                                  DotVname 357..357
+                                    SubscriptVname 357..357
+                                      SimpleVname 357..357
+                                        Identifier "solution" 357..357
+                                      VnameExpression 357..357
+                                        SimpleVname 357..357
+                                          Identifier "count" 357..357
+                                    Identifier "column" 357..357
+                                  IntegerExpression 357..357
+                                    IntegerLiteral "2" 357..357
+                  CallCommand 358..358
+                    Identifier "printTable" 358..358
+                    EmptyActualParameterSequence 358..358
+                AssignCommand 359..360
+                  SimpleVname 359..359
+                    Identifier "count" 359..359
+                  BinaryExpression 359..0
+                    VnameExpression 359..359
+                      SimpleVname 359..359
+                        Identifier "count" 359..359
+                    Operator "+" 359..359
+                    IntegerExpression 359..360
+                      IntegerLiteral "1" 359..360
+    SequentialCommand 365..370
+      SequentialCommand 365..370
+        SequentialCommand 365..370
+          SequentialCommand 365..370
+            SequentialCommand 365..370
+              AssignCommand 365..365
+                SimpleVname 365..365
+                  Identifier "foundSolution" 365..365
+                VnameExpression 365..365
+                  SimpleVname 365..365
+                    Identifier "false" 365..365
+              CallCommand 366..366
+                Identifier "initTable" 366..366
+                EmptyActualParameterSequence 366..366
+            CallCommand 367..367
+              Identifier "initSolution" 367..367
+              EmptyActualParameterSequence 367..367
+          CallCommand 368..368
+            Identifier "calcSolution" 368..368
+            MultipleActualParameterSequence 368..368
+              ConstActualParameter 368..368
+                IntegerExpression 368..368
+                  IntegerLiteral "0" 368..368
+              SingleActualParameterSequence 368..368
+                VarActualParameter 368..368
+                  SimpleVname 368..368
+                    Identifier "foundSolution" 368..368
+        CallCommand 369..369
+          Identifier "printSolution" 369..369
+          EmptyActualParameterSequence 369..369
+      EmptyCommand 371..370

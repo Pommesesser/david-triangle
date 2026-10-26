@@ -1,0 +1,1545 @@
+Program 262..263
+  SequentialCommand 27..263
+    LetCommand 27..262
+      SequentialDeclaration 29..256
+        SequentialDeclaration 29..256
+          SequentialDeclaration 29..256
+            SequentialDeclaration 29..256
+              SequentialDeclaration 29..256
+                SequentialDeclaration 29..256
+                  SequentialDeclaration 29..256
+                    SequentialDeclaration 29..256
+                      SequentialDeclaration 29..256
+                        SequentialDeclaration 29..256
+                          SequentialDeclaration 29..256
+                            SequentialDeclaration 29..256
+                              SequentialDeclaration 29..256
+                                SequentialDeclaration 29..256
+                                  SequentialDeclaration 29..256
+                                    SequentialDeclaration 29..256
+                                      SequentialDeclaration 29..256
+                                        TypeDeclaration 29..32
+                                          Identifier "String" 29..29
+                                          RecordTypeDenoter 29..32
+                                            MultipleFieldTypeDenoter 30..32
+                                              Identifier "c" 30..30
+                                              ArrayTypeDenoter 30..30
+                                                IntegerLiteral "12" 30..30
+                                                SimpleTypeDenoter 30..30
+                                                  Identifier "Char" 30..30
+                                              SingleFieldTypeDenoter 31..32
+                                                Identifier "length" 31..31
+                                                SimpleTypeDenoter 31..32
+                                                  Identifier "Integer" 31..32
+                                        TypeDeclaration 36..39
+                                          Identifier "SortObj" 36..36
+                                          RecordTypeDenoter 36..39
+                                            MultipleFieldTypeDenoter 37..39
+                                              Identifier "c" 37..37
+                                              ArrayTypeDenoter 37..37
+                                                IntegerLiteral "16" 37..37
+                                                SimpleTypeDenoter 37..37
+                                                  Identifier "String" 37..37
+                                              SingleFieldTypeDenoter 38..39
+                                                Identifier "length" 38..38
+                                                SimpleTypeDenoter 38..39
+                                                  Identifier "Integer" 38..39
+                                      VarDeclaration 42..42
+                                        Identifier "sortObj" 42..42
+                                        SimpleTypeDenoter 42..42
+                                          Identifier "SortObj" 42..42
+                                    FuncDeclaration 48..49
+                                      Identifier "getCompValue" 48..48
+                                      SingleFormalParameterSequence 48..48
+                                        ConstFormalParameter 48..48
+                                          Identifier "i" 48..48
+                                          SimpleTypeDenoter 48..48
+                                            Identifier "Integer" 48..48
+                                      SimpleTypeDenoter 48..48
+                                        Identifier "Integer" 48..48
+                                      CallExpression 49..49
+                                        Identifier "ord" 49..49
+                                        SingleActualParameterSequence 49..49
+                                          ConstActualParameter 49..49
+                                            VnameExpression 49..49
+                                              SubscriptVname 49..49
+                                                DotVname 49..49
+                                                  SubscriptVname 49..49
+                                                    DotVname 49..49
+                                                      SimpleVname 49..49
+                                                        Identifier "sortObj" 49..49
+                                                      Identifier "c" 49..49
+                                                    VnameExpression 49..49
+                                                      SimpleVname 49..49
+                                                        Identifier "i" 49..49
+                                                  Identifier "c" 49..49
+                                                IntegerExpression 49..49
+                                                  IntegerLiteral "0" 49..49
+                                  ProcDeclaration 55..62
+                                    Identifier "exchange" 55..55
+                                    MultipleFormalParameterSequence 55..55
+                                      ConstFormalParameter 55..55
+                                        Identifier "i" 55..55
+                                        SimpleTypeDenoter 55..55
+                                          Identifier "Integer" 55..55
+                                      SingleFormalParameterSequence 55..55
+                                        ConstFormalParameter 55..55
+                                          Identifier "j" 55..55
+                                          SimpleTypeDenoter 55..55
+                                            Identifier "Integer" 55..55
+                                    LetCommand 56..62
+                                      VarDeclaration 57..58
+                                        Identifier "t" 57..57
+                                        SimpleTypeDenoter 57..58
+                                          Identifier "String" 57..58
+                                      SequentialCommand 59..62
+                                        SequentialCommand 59..62
+                                          SequentialCommand 59..62
+                                            AssignCommand 59..59
+                                              SimpleVname 59..59
+                                                Identifier "t" 59..59
+                                              VnameExpression 59..59
+                                                SubscriptVname 59..59
+                                                  DotVname 59..59
+                                                    SimpleVname 59..59
+                                                      Identifier "sortObj" 59..59
+                                                    Identifier "c" 59..59
+                                                  VnameExpression 59..59
+                                                    SimpleVname 59..59
+                                                      Identifier "i" 59..59
+                                            AssignCommand 60..60
+                                              SubscriptVname 60..60
+                                                DotVname 60..60
+                                                  SimpleVname 60..60
+                                                    Identifier "sortObj" 60..60
+                                                  Identifier "c" 60..60
+                                                VnameExpression 60..60
+                                                  SimpleVname 60..60
+                                                    Identifier "i" 60..60
+                                              VnameExpression 60..60
+                                                SubscriptVname 60..60
+                                                  DotVname 60..60
+                                                    SimpleVname 60..60
+                                                      Identifier "sortObj" 60..60
+                                                    Identifier "c" 60..60
+                                                  VnameExpression 60..60
+                                                    SimpleVname 60..60
+                                                      Identifier "j" 60..60
+                                          AssignCommand 61..61
+                                            SubscriptVname 61..61
+                                              DotVname 61..61
+                                                SimpleVname 61..61
+                                                  Identifier "sortObj" 61..61
+                                                Identifier "c" 61..61
+                                              VnameExpression 61..61
+                                                SimpleVname 61..61
+                                                  Identifier "j" 61..61
+                                            VnameExpression 61..61
+                                              SimpleVname 61..61
+                                                Identifier "t" 61..61
+                                        EmptyCommand 62..62
+                                ProcDeclaration 70..83
+                                  Identifier "setCorrectSize" 70..70
+                                  SingleFormalParameterSequence 70..70
+                                    VarFormalParameter 70..70
+                                      Identifier "sO" 70..70
+                                      SimpleTypeDenoter 70..70
+                                        Identifier "SortObj" 70..70
+                                  IfCommand 71..83
+                                    BinaryExpression 71..0
+                                      VnameExpression 71..71
+                                        DotVname 71..71
+                                          SimpleVname 71..71
+                                            Identifier "sO" 71..71
+                                          Identifier "length" 71..71
+                                      Operator "<=" 71..71
+                                      IntegerExpression 71..71
+                                        IntegerLiteral "2" 71..71
+                                    AssignCommand 72..73
+                                      DotVname 72..72
+                                        SimpleVname 72..72
+                                          Identifier "sO" 72..72
+                                        Identifier "length" 72..72
+                                      IntegerExpression 72..73
+                                        IntegerLiteral "2" 72..73
+                                    IfCommand 74..83
+                                      BinaryExpression 74..0
+                                        VnameExpression 74..74
+                                          DotVname 74..74
+                                            SimpleVname 74..74
+                                              Identifier "sO" 74..74
+                                            Identifier "length" 74..74
+                                        Operator "<=" 74..74
+                                        IntegerExpression 74..74
+                                          IntegerLiteral "4" 74..74
+                                      AssignCommand 75..76
+                                        DotVname 75..75
+                                          SimpleVname 75..75
+                                            Identifier "sO" 75..75
+                                          Identifier "length" 75..75
+                                        IntegerExpression 75..76
+                                          IntegerLiteral "4" 75..76
+                                      IfCommand 77..83
+                                        BinaryExpression 77..0
+                                          VnameExpression 77..77
+                                            DotVname 77..77
+                                              SimpleVname 77..77
+                                                Identifier "sO" 77..77
+                                              Identifier "length" 77..77
+                                          Operator "<=" 77..77
+                                          IntegerExpression 77..77
+                                            IntegerLiteral "8" 77..77
+                                        AssignCommand 78..79
+                                          DotVname 78..78
+                                            SimpleVname 78..78
+                                              Identifier "sO" 78..78
+                                            Identifier "length" 78..78
+                                          IntegerExpression 78..79
+                                            IntegerLiteral "8" 78..79
+                                        IfCommand 80..83
+                                          BinaryExpression 80..0
+                                            VnameExpression 80..80
+                                              DotVname 80..80
+                                                SimpleVname 80..80
+                                                  Identifier "sO" 80..80
+                                                Identifier "length" 80..80
+                                            Operator "<=" 80..80
+                                            IntegerExpression 80..80
+                                              IntegerLiteral "16" 80..80
+                                          AssignCommand 81..82
+                                            DotVname 81..81
+                                              SimpleVname 81..81
+                                                Identifier "sO" 81..81
+                                              Identifier "length" 81..81
+                                            IntegerExpression 81..82
+                                              IntegerLiteral "16" 81..82
+                                          AssignCommand 83..83
+                                            DotVname 83..83
+                                              SimpleVname 83..83
+                                                Identifier "sO" 83..83
+                                              Identifier "length" 83..83
+                                            IntegerExpression 83..83
+                                              IntegerLiteral "32" 83..83
+                              ProcDeclaration 85..87
+                                Identifier "nop" 85..85
+                                EmptyFormalParameterSequence 85..85
+                                EmptyCommand 87..87
+                            ProcDeclaration 92..117
+                              Identifier "downheap" 92..92
+                              SingleFormalParameterSequence 92..92
+                                ConstFormalParameter 92..92
+                                  Identifier "v" 92..92
+                                  SimpleTypeDenoter 92..92
+                                    Identifier "Integer" 92..92
+                              LetCommand 93..117
+                                SequentialDeclaration 94..97
+                                  SequentialDeclaration 94..97
+                                    VarDeclaration 94..94
+                                      Identifier "w" 94..94
+                                      SimpleTypeDenoter 94..94
+                                        Identifier "Integer" 94..94
+                                    VarDeclaration 95..95
+                                      Identifier "x" 95..95
+                                      SimpleTypeDenoter 95..95
+                                        Identifier "Integer" 95..95
+                                  VarDeclaration 96..97
+                                    Identifier "break" 96..96
+                                    SimpleTypeDenoter 96..97
+                                      Identifier "Boolean" 96..97
+                                SequentialCommand 98..117
+                                  SequentialCommand 98..117
+                                    SequentialCommand 98..117
+                                      SequentialCommand 98..117
+                                        AssignCommand 98..98
+                                          SimpleVname 98..98
+                                            Identifier "break" 98..98
+                                          VnameExpression 98..98
+                                            SimpleVname 98..98
+                                              Identifier "false" 98..98
+                                        AssignCommand 99..99
+                                          SimpleVname 99..99
+                                            Identifier "x" 99..99
+                                          VnameExpression 99..99
+                                            SimpleVname 99..99
+                                              Identifier "v" 99..99
+                                      AssignCommand 100..100
+                                        SimpleVname 100..100
+                                          Identifier "w" 100..100
+                                        BinaryExpression 100..0
+                                          BinaryExpression 100..0
+                                            IntegerExpression 100..100
+                                              IntegerLiteral "2" 100..100
+                                            Operator "*" 100..100
+                                            VnameExpression 100..100
+                                              SimpleVname 100..100
+                                                Identifier "x" 100..100
+                                          Operator "+" 100..100
+                                          IntegerExpression 100..100
+                                            IntegerLiteral "1" 100..100
+                                    WhileCommand 101..116
+                                      BinaryExpression 101..0
+                                        BinaryExpression 101..0
+                                          VnameExpression 101..101
+                                            SimpleVname 101..101
+                                              Identifier "w" 101..101
+                                          Operator "<" 101..101
+                                          VnameExpression 101..101
+                                            DotVname 101..101
+                                              SimpleVname 101..101
+                                                Identifier "sortObj" 101..101
+                                              Identifier "length" 101..101
+                                        Operator "/\" 101..101
+                                        UnaryExpression 101..101
+                                          Operator "\" 101..101
+                                          VnameExpression 101..101
+                                            SimpleVname 101..101
+                                              Identifier "break" 101..101
+                                      SequentialCommand 102..116
+                                        SequentialCommand 102..116
+                                          IfCommand 102..108
+                                            BinaryExpression 102..0
+                                              BinaryExpression 102..0
+                                                VnameExpression 102..102
+                                                  SimpleVname 102..102
+                                                    Identifier "w" 102..102
+                                                Operator "+" 102..102
+                                                IntegerExpression 102..102
+                                                  IntegerLiteral "1" 102..102
+                                              Operator "<" 102..102
+                                              VnameExpression 102..102
+                                                DotVname 102..102
+                                                  SimpleVname 102..102
+                                                    Identifier "sortObj" 102..102
+                                                  Identifier "length" 102..102
+                                            IfCommand 103..107
+                                              BinaryExpression 103..0
+                                                CallExpression 103..103
+                                                  Identifier "getCompValue" 103..103
+                                                  SingleActualParameterSequence 103..103
+                                                    ConstActualParameter 103..103
+                                                      BinaryExpression 103..0
+                                                        VnameExpression 103..103
+                                                          SimpleVname 103..103
+                                                            Identifier "w" 103..103
+                                                        Operator "+" 103..103
+                                                        IntegerExpression 103..103
+                                                          IntegerLiteral "1" 103..103
+                                                Operator ">" 103..103
+                                                CallExpression 103..103
+                                                  Identifier "getCompValue" 103..103
+                                                  SingleActualParameterSequence 103..103
+                                                    ConstActualParameter 103..103
+                                                      VnameExpression 103..103
+                                                        SimpleVname 103..103
+                                                          Identifier "w" 103..103
+                                              AssignCommand 104..105
+                                                SimpleVname 104..104
+                                                  Identifier "w" 104..104
+                                                BinaryExpression 104..0
+                                                  VnameExpression 104..104
+                                                    SimpleVname 104..104
+                                                      Identifier "w" 104..104
+                                                  Operator "+" 104..104
+                                                  IntegerExpression 104..105
+                                                    IntegerLiteral "1" 104..105
+                                              CallCommand 106..107
+                                                Identifier "nop" 106..106
+                                                EmptyActualParameterSequence 106..106
+                                            CallCommand 108..108
+                                              Identifier "nop" 108..108
+                                              EmptyActualParameterSequence 108..108
+                                          IfCommand 109..115
+                                            BinaryExpression 109..0
+                                              CallExpression 109..109
+                                                Identifier "getCompValue" 109..109
+                                                SingleActualParameterSequence 109..109
+                                                  ConstActualParameter 109..109
+                                                    VnameExpression 109..109
+                                                      SimpleVname 109..109
+                                                        Identifier "x" 109..109
+                                              Operator ">=" 109..109
+                                              CallExpression 109..109
+                                                Identifier "getCompValue" 109..109
+                                                SingleActualParameterSequence 109..109
+                                                  ConstActualParameter 109..109
+                                                    VnameExpression 109..109
+                                                      SimpleVname 109..109
+                                                        Identifier "w" 109..109
+                                            AssignCommand 110..111
+                                              SimpleVname 110..110
+                                                Identifier "break" 110..110
+                                              VnameExpression 110..111
+                                                SimpleVname 110..111
+                                                  Identifier "true" 110..111
+                                            SequentialCommand 112..115
+                                              SequentialCommand 112..115
+                                                SequentialCommand 112..115
+                                                  CallCommand 112..112
+                                                    Identifier "exchange" 112..112
+                                                    MultipleActualParameterSequence 112..112
+                                                      ConstActualParameter 112..112
+                                                        VnameExpression 112..112
+                                                          SimpleVname 112..112
+                                                            Identifier "x" 112..112
+                                                      SingleActualParameterSequence 112..112
+                                                        ConstActualParameter 112..112
+                                                          VnameExpression 112..112
+                                                            SimpleVname 112..112
+                                                              Identifier "w" 112..112
+                                                  AssignCommand 113..113
+                                                    SimpleVname 113..113
+                                                      Identifier "x" 113..113
+                                                    VnameExpression 113..113
+                                                      SimpleVname 113..113
+                                                        Identifier "w" 113..113
+                                                AssignCommand 114..114
+                                                  SimpleVname 114..114
+                                                    Identifier "w" 114..114
+                                                  BinaryExpression 114..0
+                                                    BinaryExpression 114..0
+                                                      IntegerExpression 114..114
+                                                        IntegerLiteral "2" 114..114
+                                                      Operator "*" 114..114
+                                                      VnameExpression 114..114
+                                                        SimpleVname 114..114
+                                                          Identifier "x" 114..114
+                                                    Operator "+" 114..114
+                                                    IntegerExpression 114..114
+                                                      IntegerLiteral "1" 114..114
+                                              EmptyCommand 115..115
+                                        EmptyCommand 116..116
+                                  EmptyCommand 117..117
+                          ProcDeclaration 120..129
+                            Identifier "buildheap" 120..120
+                            EmptyFormalParameterSequence 120..120
+                            LetCommand 121..129
+                              VarDeclaration 122..123
+                                Identifier "v" 122..122
+                                SimpleTypeDenoter 122..123
+                                  Identifier "Integer" 122..123
+                              SequentialCommand 124..129
+                                SequentialCommand 124..129
+                                  AssignCommand 124..124
+                                    SimpleVname 124..124
+                                      Identifier "v" 124..124
+                                    BinaryExpression 124..0
+                                      BinaryExpression 124..0
+                                        VnameExpression 124..124
+                                          DotVname 124..124
+                                            SimpleVname 124..124
+                                              Identifier "sortObj" 124..124
+                                            Identifier "length" 124..124
+                                        Operator "/" 124..124
+                                        IntegerExpression 124..124
+                                          IntegerLiteral "2" 124..124
+                                      Operator "-" 124..124
+                                      IntegerExpression 124..124
+                                        IntegerLiteral "1" 124..124
+                                  WhileCommand 125..128
+                                    BinaryExpression 125..0
+                                      VnameExpression 125..125
+                                        SimpleVname 125..125
+                                          Identifier "v" 125..125
+                                      Operator ">=" 125..125
+                                      IntegerExpression 125..125
+                                        IntegerLiteral "0" 125..125
+                                    SequentialCommand 126..128
+                                      SequentialCommand 126..128
+                                        CallCommand 126..126
+                                          Identifier "downheap" 126..126
+                                          SingleActualParameterSequence 126..126
+                                            ConstActualParameter 126..126
+                                              VnameExpression 126..126
+                                                SimpleVname 126..126
+                                                  Identifier "v" 126..126
+                                        AssignCommand 127..127
+                                          SimpleVname 127..127
+                                            Identifier "v" 127..127
+                                          BinaryExpression 127..0
+                                            VnameExpression 127..127
+                                              SimpleVname 127..127
+                                                Identifier "v" 127..127
+                                            Operator "-" 127..127
+                                            IntegerExpression 127..127
+                                              IntegerLiteral "1" 127..127
+                                      EmptyCommand 128..128
+                                EmptyCommand 129..129
+                        ProcDeclaration 132..144
+                          Identifier "heapsort" 132..132
+                          EmptyFormalParameterSequence 132..132
+                          LetCommand 133..144
+                            VarDeclaration 134..135
+                              Identifier "length" 134..134
+                              SimpleTypeDenoter 134..135
+                                Identifier "Integer" 134..135
+                            SequentialCommand 136..144
+                              SequentialCommand 136..144
+                                SequentialCommand 136..144
+                                  SequentialCommand 136..144
+                                    CallCommand 136..136
+                                      Identifier "buildheap" 136..136
+                                      EmptyActualParameterSequence 136..136
+                                    AssignCommand 137..137
+                                      SimpleVname 137..137
+                                        Identifier "length" 137..137
+                                      VnameExpression 137..137
+                                        DotVname 137..137
+                                          SimpleVname 137..137
+                                            Identifier "sortObj" 137..137
+                                          Identifier "length" 137..137
+                                  WhileCommand 138..142
+                                    BinaryExpression 138..0
+                                      VnameExpression 138..138
+                                        DotVname 138..138
+                                          SimpleVname 138..138
+                                            Identifier "sortObj" 138..138
+                                          Identifier "length" 138..138
+                                      Operator ">" 138..138
+                                      IntegerExpression 138..138
+                                        IntegerLiteral "1" 138..138
+                                    SequentialCommand 139..142
+                                      SequentialCommand 139..142
+                                        SequentialCommand 139..142
+                                          AssignCommand 139..139
+                                            DotVname 139..139
+                                              SimpleVname 139..139
+                                                Identifier "sortObj" 139..139
+                                              Identifier "length" 139..139
+                                            BinaryExpression 139..0
+                                              VnameExpression 139..139
+                                                DotVname 139..139
+                                                  SimpleVname 139..139
+                                                    Identifier "sortObj" 139..139
+                                                  Identifier "length" 139..139
+                                              Operator "-" 139..139
+                                              IntegerExpression 139..139
+                                                IntegerLiteral "1" 139..139
+                                          CallCommand 140..140
+                                            Identifier "exchange" 140..140
+                                            MultipleActualParameterSequence 140..140
+                                              ConstActualParameter 140..140
+                                                IntegerExpression 140..140
+                                                  IntegerLiteral "0" 140..140
+                                              SingleActualParameterSequence 140..140
+                                                ConstActualParameter 140..140
+                                                  VnameExpression 140..140
+                                                    DotVname 140..140
+                                                      SimpleVname 140..140
+                                                        Identifier "sortObj" 140..140
+                                                      Identifier "length" 140..140
+                                        CallCommand 141..141
+                                          Identifier "downheap" 141..141
+                                          SingleActualParameterSequence 141..141
+                                            ConstActualParameter 141..141
+                                              IntegerExpression 141..141
+                                                IntegerLiteral "0" 141..141
+                                      EmptyCommand 142..142
+                                AssignCommand 143..143
+                                  DotVname 143..143
+                                    SimpleVname 143..143
+                                      Identifier "sortObj" 143..143
+                                    Identifier "length" 143..143
+                                  BinaryExpression 143..0
+                                    VnameExpression 143..143
+                                      SimpleVname 143..143
+                                        Identifier "length" 143..143
+                                    Operator "-" 143..143
+                                    IntegerExpression 143..143
+                                      IntegerLiteral "1" 143..143
+                              EmptyCommand 144..144
+                      ProcDeclaration 149..157
+                        Identifier "sort" 149..149
+                        SingleFormalParameterSequence 149..149
+                          VarFormalParameter 149..149
+                            Identifier "sO" 149..149
+                            SimpleTypeDenoter 149..149
+                              Identifier "SortObj" 149..149
+                        SequentialCommand 151..157
+                          SequentialCommand 151..157
+                            SequentialCommand 151..157
+                              SequentialCommand 151..157
+                                SequentialCommand 151..157
+                                  SequentialCommand 151..157
+                                    AssignCommand 151..151
+                                      SimpleVname 151..151
+                                        Identifier "sortObj" 151..151
+                                      VnameExpression 151..151
+                                        SimpleVname 151..151
+                                          Identifier "sO" 151..151
+                                    CallCommand 152..152
+                                      Identifier "putint" 152..152
+                                      SingleActualParameterSequence 152..152
+                                        ConstActualParameter 152..152
+                                          VnameExpression 152..152
+                                            DotVname 152..152
+                                              SimpleVname 152..152
+                                                Identifier "sortObj" 152..152
+                                              Identifier "length" 152..152
+                                  CallCommand 153..153
+                                    Identifier "setCorrectSize" 153..153
+                                    SingleActualParameterSequence 153..153
+                                      VarActualParameter 153..153
+                                        SimpleVname 153..153
+                                          Identifier "sortObj" 153..153
+                                CallCommand 154..154
+                                  Identifier "putint" 154..154
+                                  SingleActualParameterSequence 154..154
+                                    ConstActualParameter 154..154
+                                      VnameExpression 154..154
+                                        DotVname 154..154
+                                          SimpleVname 154..154
+                                            Identifier "sortObj" 154..154
+                                          Identifier "length" 154..154
+                              CallCommand 155..155
+                                Identifier "heapsort" 155..155
+                                EmptyActualParameterSequence 155..155
+                            AssignCommand 156..156
+                              SimpleVname 156..156
+                                Identifier "sO" 156..156
+                              VnameExpression 156..156
+                                SimpleVname 156..156
+                                  Identifier "sortObj" 156..156
+                          EmptyCommand 157..157
+                    ProcDeclaration 163..174
+                      Identifier "printInText" 163..163
+                      EmptyFormalParameterSequence 163..163
+                      SequentialCommand 165..174
+                        SequentialCommand 165..174
+                          SequentialCommand 165..174
+                            SequentialCommand 165..174
+                              SequentialCommand 165..174
+                                SequentialCommand 165..174
+                                  SequentialCommand 165..174
+                                    SequentialCommand 165..174
+                                      SequentialCommand 165..174
+                                        SequentialCommand 165..174
+                                          SequentialCommand 165..174
+                                            SequentialCommand 165..174
+                                              SequentialCommand 165..174
+                                                SequentialCommand 165..174
+                                                  SequentialCommand 165..174
+                                                    SequentialCommand 165..174
+                                                      SequentialCommand 165..174
+                                                        SequentialCommand 165..174
+                                                          SequentialCommand 165..174
+                                                            SequentialCommand 165..174
+                                                              SequentialCommand 165..174
+                                                                SequentialCommand 165..174
+                                                                  SequentialCommand 165..174
+                                                                    SequentialCommand 165..174
+                                                                      SequentialCommand 165..174
+                                                                        SequentialCommand 165..174
+                                                                          SequentialCommand 165..174
+                                                                            SequentialCommand 165..174
+                                                                              SequentialCommand 165..174
+                                                                                SequentialCommand 165..174
+                                                                                  SequentialCommand 165..174
+                                                                                    SequentialCommand 165..174
+                                                                                      SequentialCommand 165..174
+                                                                                        SequentialCommand 165..174
+                                                                                          SequentialCommand 165..174
+                                                                                            SequentialCommand 165..174
+                                                                                              SequentialCommand 165..174
+                                                                                                SequentialCommand 165..174
+                                                                                                  SequentialCommand 165..174
+                                                                                                    SequentialCommand 165..174
+                                                                                                      SequentialCommand 165..174
+                                                                                                        SequentialCommand 165..174
+                                                                                                          SequentialCommand 165..174
+                                                                                                            SequentialCommand 165..174
+                                                                                                              SequentialCommand 165..174
+                                                                                                                SequentialCommand 165..174
+                                                                                                                  SequentialCommand 165..174
+                                                                                                                    SequentialCommand 165..174
+                                                                                                                      SequentialCommand 165..174
+                                                                                                                        SequentialCommand 165..174
+                                                                                                                          SequentialCommand 165..174
+                                                                                                                            SequentialCommand 165..174
+                                                                                                                              SequentialCommand 165..174
+                                                                                                                                SequentialCommand 165..174
+                                                                                                                                  SequentialCommand 165..174
+                                                                                                                                    SequentialCommand 165..174
+                                                                                                                                      SequentialCommand 165..174
+                                                                                                                                        SequentialCommand 165..174
+                                                                                                                                          CallCommand 165..165
+                                                                                                                                            Identifier "put" 165..165
+                                                                                                                                            SingleActualParameterSequence 165..165
+                                                                                                                                              ConstActualParameter 165..165
+                                                                                                                                                CharacterExpression 165..165
+                                                                                                                                                  CharacterLiteral "'B'" 165..165
+                                                                                                                                          CallCommand 165..165
+                                                                                                                                            Identifier "put" 165..165
+                                                                                                                                            SingleActualParameterSequence 165..165
+                                                                                                                                              ConstActualParameter 165..165
+                                                                                                                                                CharacterExpression 165..165
+                                                                                                                                                  CharacterLiteral "'i'" 165..165
+                                                                                                                                        CallCommand 165..165
+                                                                                                                                          Identifier "put" 165..165
+                                                                                                                                          SingleActualParameterSequence 165..165
+                                                                                                                                            ConstActualParameter 165..165
+                                                                                                                                              CharacterExpression 165..165
+                                                                                                                                                CharacterLiteral "'t'" 165..165
+                                                                                                                                      CallCommand 165..165
+                                                                                                                                        Identifier "put" 165..165
+                                                                                                                                        SingleActualParameterSequence 165..165
+                                                                                                                                          ConstActualParameter 165..165
+                                                                                                                                            CharacterExpression 165..165
+                                                                                                                                              CharacterLiteral "'t'" 165..165
+                                                                                                                                    CallCommand 165..165
+                                                                                                                                      Identifier "put" 165..165
+                                                                                                                                      SingleActualParameterSequence 165..165
+                                                                                                                                        ConstActualParameter 165..165
+                                                                                                                                          CharacterExpression 165..165
+                                                                                                                                            CharacterLiteral "'e'" 165..165
+                                                                                                                                  CallCommand 165..165
+                                                                                                                                    Identifier "put" 165..165
+                                                                                                                                    SingleActualParameterSequence 165..165
+                                                                                                                                      ConstActualParameter 165..165
+                                                                                                                                        CharacterExpression 165..165
+                                                                                                                                          CharacterLiteral "' '" 165..165
+                                                                                                                                CallCommand 165..165
+                                                                                                                                  Identifier "put" 165..165
+                                                                                                                                  SingleActualParameterSequence 165..165
+                                                                                                                                    ConstActualParameter 165..165
+                                                                                                                                      CharacterExpression 165..165
+                                                                                                                                        CharacterLiteral "'z'" 165..165
+                                                                                                                              CallCommand 166..166
+                                                                                                                                Identifier "put" 166..166
+                                                                                                                                SingleActualParameterSequence 166..166
+                                                                                                                                  ConstActualParameter 166..166
+                                                                                                                                    CharacterExpression 166..166
+                                                                                                                                      CharacterLiteral "'u'" 166..166
+                                                                                                                            CallCommand 166..166
+                                                                                                                              Identifier "put" 166..166
+                                                                                                                              SingleActualParameterSequence 166..166
+                                                                                                                                ConstActualParameter 166..166
+                                                                                                                                  CharacterExpression 166..166
+                                                                                                                                    CharacterLiteral "' '" 166..166
+                                                                                                                          CallCommand 166..166
+                                                                                                                            Identifier "put" 166..166
+                                                                                                                            SingleActualParameterSequence 166..166
+                                                                                                                              ConstActualParameter 166..166
+                                                                                                                                CharacterExpression 166..166
+                                                                                                                                  CharacterLiteral "'s'" 166..166
+                                                                                                                        CallCommand 166..166
+                                                                                                                          Identifier "put" 166..166
+                                                                                                                          SingleActualParameterSequence 166..166
+                                                                                                                            ConstActualParameter 166..166
+                                                                                                                              CharacterExpression 166..166
+                                                                                                                                CharacterLiteral "'o'" 166..166
+                                                                                                                      CallCommand 166..166
+                                                                                                                        Identifier "put" 166..166
+                                                                                                                        SingleActualParameterSequence 166..166
+                                                                                                                          ConstActualParameter 166..166
+                                                                                                                            CharacterExpression 166..166
+                                                                                                                              CharacterLiteral "'r'" 166..166
+                                                                                                                    CallCommand 166..166
+                                                                                                                      Identifier "put" 166..166
+                                                                                                                      SingleActualParameterSequence 166..166
+                                                                                                                        ConstActualParameter 166..166
+                                                                                                                          CharacterExpression 166..166
+                                                                                                                            CharacterLiteral "'t'" 166..166
+                                                                                                                  CallCommand 166..166
+                                                                                                                    Identifier "put" 166..166
+                                                                                                                    SingleActualParameterSequence 166..166
+                                                                                                                      ConstActualParameter 166..166
+                                                                                                                        CharacterExpression 166..166
+                                                                                                                          CharacterLiteral "'i'" 166..166
+                                                                                                                CallCommand 167..167
+                                                                                                                  Identifier "put" 167..167
+                                                                                                                  SingleActualParameterSequence 167..167
+                                                                                                                    ConstActualParameter 167..167
+                                                                                                                      CharacterExpression 167..167
+                                                                                                                        CharacterLiteral "'e'" 167..167
+                                                                                                              CallCommand 167..167
+                                                                                                                Identifier "put" 167..167
+                                                                                                                SingleActualParameterSequence 167..167
+                                                                                                                  ConstActualParameter 167..167
+                                                                                                                    CharacterExpression 167..167
+                                                                                                                      CharacterLiteral "'r'" 167..167
+                                                                                                            CallCommand 167..167
+                                                                                                              Identifier "put" 167..167
+                                                                                                              SingleActualParameterSequence 167..167
+                                                                                                                ConstActualParameter 167..167
+                                                                                                                  CharacterExpression 167..167
+                                                                                                                    CharacterLiteral "'e'" 167..167
+                                                                                                          CallCommand 167..167
+                                                                                                            Identifier "put" 167..167
+                                                                                                            SingleActualParameterSequence 167..167
+                                                                                                              ConstActualParameter 167..167
+                                                                                                                CharacterExpression 167..167
+                                                                                                                  CharacterLiteral "'n'" 167..167
+                                                                                                        CallCommand 167..167
+                                                                                                          Identifier "put" 167..167
+                                                                                                          SingleActualParameterSequence 167..167
+                                                                                                            ConstActualParameter 167..167
+                                                                                                              CharacterExpression 167..167
+                                                                                                                CharacterLiteral "'d'" 167..167
+                                                                                                      CallCommand 167..167
+                                                                                                        Identifier "put" 167..167
+                                                                                                        SingleActualParameterSequence 167..167
+                                                                                                          ConstActualParameter 167..167
+                                                                                                            CharacterExpression 167..167
+                                                                                                              CharacterLiteral "'e'" 167..167
+                                                                                                    CallCommand 167..167
+                                                                                                      Identifier "put" 167..167
+                                                                                                      SingleActualParameterSequence 167..167
+                                                                                                        ConstActualParameter 167..167
+                                                                                                          CharacterExpression 167..167
+                                                                                                            CharacterLiteral "' '" 167..167
+                                                                                                  CallCommand 168..168
+                                                                                                    Identifier "put" 168..168
+                                                                                                    SingleActualParameterSequence 168..168
+                                                                                                      ConstActualParameter 168..168
+                                                                                                        CharacterExpression 168..168
+                                                                                                          CharacterLiteral "'S'" 168..168
+                                                                                                CallCommand 168..168
+                                                                                                  Identifier "put" 168..168
+                                                                                                  SingleActualParameterSequence 168..168
+                                                                                                    ConstActualParameter 168..168
+                                                                                                      CharacterExpression 168..168
+                                                                                                        CharacterLiteral "'t'" 168..168
+                                                                                              CallCommand 168..168
+                                                                                                Identifier "put" 168..168
+                                                                                                SingleActualParameterSequence 168..168
+                                                                                                  ConstActualParameter 168..168
+                                                                                                    CharacterExpression 168..168
+                                                                                                      CharacterLiteral "'r'" 168..168
+                                                                                            CallCommand 168..168
+                                                                                              Identifier "put" 168..168
+                                                                                              SingleActualParameterSequence 168..168
+                                                                                                ConstActualParameter 168..168
+                                                                                                  CharacterExpression 168..168
+                                                                                                    CharacterLiteral "'i'" 168..168
+                                                                                          CallCommand 168..168
+                                                                                            Identifier "put" 168..168
+                                                                                            SingleActualParameterSequence 168..168
+                                                                                              ConstActualParameter 168..168
+                                                                                                CharacterExpression 168..168
+                                                                                                  CharacterLiteral "'n'" 168..168
+                                                                                        CallCommand 168..168
+                                                                                          Identifier "put" 168..168
+                                                                                          SingleActualParameterSequence 168..168
+                                                                                            ConstActualParameter 168..168
+                                                                                              CharacterExpression 168..168
+                                                                                                CharacterLiteral "'g'" 168..168
+                                                                                      CallCommand 168..168
+                                                                                        Identifier "put" 168..168
+                                                                                        SingleActualParameterSequence 168..168
+                                                                                          ConstActualParameter 168..168
+                                                                                            CharacterExpression 168..168
+                                                                                              CharacterLiteral "'s'" 168..168
+                                                                                    CallCommand 169..169
+                                                                                      Identifier "put" 169..169
+                                                                                      SingleActualParameterSequence 169..169
+                                                                                        ConstActualParameter 169..169
+                                                                                          CharacterExpression 169..169
+                                                                                            CharacterLiteral "' '" 169..169
+                                                                                  CallCommand 169..169
+                                                                                    Identifier "put" 169..169
+                                                                                    SingleActualParameterSequence 169..169
+                                                                                      ConstActualParameter 169..169
+                                                                                        CharacterExpression 169..169
+                                                                                          CharacterLiteral "'e'" 169..169
+                                                                                CallCommand 169..169
+                                                                                  Identifier "put" 169..169
+                                                                                  SingleActualParameterSequence 169..169
+                                                                                    ConstActualParameter 169..169
+                                                                                      CharacterExpression 169..169
+                                                                                        CharacterLiteral "'i'" 169..169
+                                                                              CallCommand 169..169
+                                                                                Identifier "put" 169..169
+                                                                                SingleActualParameterSequence 169..169
+                                                                                  ConstActualParameter 169..169
+                                                                                    CharacterExpression 169..169
+                                                                                      CharacterLiteral "'n'" 169..169
+                                                                            CallCommand 169..169
+                                                                              Identifier "put" 169..169
+                                                                              SingleActualParameterSequence 169..169
+                                                                                ConstActualParameter 169..169
+                                                                                  CharacterExpression 169..169
+                                                                                    CharacterLiteral "'g'" 169..169
+                                                                          CallCommand 169..169
+                                                                            Identifier "put" 169..169
+                                                                            SingleActualParameterSequence 169..169
+                                                                              ConstActualParameter 169..169
+                                                                                CharacterExpression 169..169
+                                                                                  CharacterLiteral "'e'" 169..169
+                                                                        CallCommand 169..169
+                                                                          Identifier "put" 169..169
+                                                                          SingleActualParameterSequence 169..169
+                                                                            ConstActualParameter 169..169
+                                                                              CharacterExpression 169..169
+                                                                                CharacterLiteral "'b'" 169..169
+                                                                      CallCommand 170..170
+                                                                        Identifier "put" 170..170
+                                                                        SingleActualParameterSequence 170..170
+                                                                          ConstActualParameter 170..170
+                                                                            CharacterExpression 170..170
+                                                                              CharacterLiteral "'e'" 170..170
+                                                                    CallCommand 170..170
+                                                                      Identifier "put" 170..170
+                                                                      SingleActualParameterSequence 170..170
+                                                                        ConstActualParameter 170..170
+                                                                          CharacterExpression 170..170
+                                                                            CharacterLiteral "'n'" 170..170
+                                                                  CallCommand 170..170
+                                                                    Identifier "put" 170..170
+                                                                    SingleActualParameterSequence 170..170
+                                                                      ConstActualParameter 170..170
+                                                                        CharacterExpression 170..170
+                                                                          CharacterLiteral "' '" 170..170
+                                                                CallCommand 170..170
+                                                                  Identifier "put" 170..170
+                                                                  SingleActualParameterSequence 170..170
+                                                                    ConstActualParameter 170..170
+                                                                      CharacterExpression 170..170
+                                                                        CharacterLiteral "'('" 170..170
+                                                              CallCommand 170..170
+                                                                Identifier "put" 170..170
+                                                                SingleActualParameterSequence 170..170
+                                                                  ConstActualParameter 170..170
+                                                                    CharacterExpression 170..170
+                                                                      CharacterLiteral "'E'" 170..170
+                                                            CallCommand 170..170
+                                                              Identifier "put" 170..170
+                                                              SingleActualParameterSequence 170..170
+                                                                ConstActualParameter 170..170
+                                                                  CharacterExpression 170..170
+                                                                    CharacterLiteral "'n'" 170..170
+                                                          CallCommand 170..170
+                                                            Identifier "put" 170..170
+                                                            SingleActualParameterSequence 170..170
+                                                              ConstActualParameter 170..170
+                                                                CharacterExpression 170..170
+                                                                  CharacterLiteral "'d'" 170..170
+                                                        CallCommand 171..171
+                                                          Identifier "put" 171..171
+                                                          SingleActualParameterSequence 171..171
+                                                            ConstActualParameter 171..171
+                                                              CharacterExpression 171..171
+                                                                CharacterLiteral "'e'" 171..171
+                                                      CallCommand 171..171
+                                                        Identifier "put" 171..171
+                                                        SingleActualParameterSequence 171..171
+                                                          ConstActualParameter 171..171
+                                                            CharacterExpression 171..171
+                                                              CharacterLiteral "' '" 171..171
+                                                    CallCommand 171..171
+                                                      Identifier "put" 171..171
+                                                      SingleActualParameterSequence 171..171
+                                                        ConstActualParameter 171..171
+                                                          CharacterExpression 171..171
+                                                            CharacterLiteral "'m'" 171..171
+                                                  CallCommand 171..171
+                                                    Identifier "put" 171..171
+                                                    SingleActualParameterSequence 171..171
+                                                      ConstActualParameter 171..171
+                                                        CharacterExpression 171..171
+                                                          CharacterLiteral "'i'" 171..171
+                                                CallCommand 171..171
+                                                  Identifier "put" 171..171
+                                                  SingleActualParameterSequence 171..171
+                                                    ConstActualParameter 171..171
+                                                      CharacterExpression 171..171
+                                                        CharacterLiteral "'t'" 171..171
+                                              CallCommand 171..171
+                                                Identifier "put" 171..171
+                                                SingleActualParameterSequence 171..171
+                                                  ConstActualParameter 171..171
+                                                    CharacterExpression 171..171
+                                                      CharacterLiteral "' '" 171..171
+                                            CallCommand 172..172
+                                              Identifier "put" 172..172
+                                              SingleActualParameterSequence 172..172
+                                                ConstActualParameter 172..172
+                                                  CharacterExpression 172..172
+                                                    CharacterLiteral "'e'" 172..172
+                                          CallCommand 172..172
+                                            Identifier "put" 172..172
+                                            SingleActualParameterSequence 172..172
+                                              ConstActualParameter 172..172
+                                                CharacterExpression 172..172
+                                                  CharacterLiteral "'i'" 172..172
+                                        CallCommand 172..172
+                                          Identifier "put" 172..172
+                                          SingleActualParameterSequence 172..172
+                                            ConstActualParameter 172..172
+                                              CharacterExpression 172..172
+                                                CharacterLiteral "'n'" 172..172
+                                      CallCommand 172..172
+                                        Identifier "put" 172..172
+                                        SingleActualParameterSequence 172..172
+                                          ConstActualParameter 172..172
+                                            CharacterExpression 172..172
+                                              CharacterLiteral "'g'" 172..172
+                                    CallCommand 172..172
+                                      Identifier "put" 172..172
+                                      SingleActualParameterSequence 172..172
+                                        ConstActualParameter 172..172
+                                          CharacterExpression 172..172
+                                            CharacterLiteral "'a'" 172..172
+                                  CallCommand 172..172
+                                    Identifier "put" 172..172
+                                    SingleActualParameterSequence 172..172
+                                      ConstActualParameter 172..172
+                                        CharacterExpression 172..172
+                                          CharacterLiteral "'b'" 172..172
+                                CallCommand 172..172
+                                  Identifier "put" 172..172
+                                  SingleActualParameterSequence 172..172
+                                    ConstActualParameter 172..172
+                                      CharacterExpression 172..172
+                                        CharacterLiteral "'e'" 172..172
+                              CallCommand 173..173
+                                Identifier "put" 173..173
+                                SingleActualParameterSequence 173..173
+                                  ConstActualParameter 173..173
+                                    CharacterExpression 173..173
+                                      CharacterLiteral "'!'" 173..173
+                            CallCommand 173..173
+                              Identifier "put" 173..173
+                              SingleActualParameterSequence 173..173
+                                ConstActualParameter 173..173
+                                  CharacterExpression 173..173
+                                    CharacterLiteral "')'" 173..173
+                          CallCommand 173..173
+                            Identifier "puteol" 173..173
+                            EmptyActualParameterSequence 173..173
+                        EmptyCommand 174..174
+                  ProcDeclaration 176..182
+                    Identifier "printOutText" 176..176
+                    EmptyFormalParameterSequence 176..176
+                    SequentialCommand 178..182
+                      SequentialCommand 178..182
+                        SequentialCommand 178..182
+                          SequentialCommand 178..182
+                            SequentialCommand 178..182
+                              SequentialCommand 178..182
+                                SequentialCommand 178..182
+                                  SequentialCommand 178..182
+                                    SequentialCommand 178..182
+                                      SequentialCommand 178..182
+                                        SequentialCommand 178..182
+                                          SequentialCommand 178..182
+                                            SequentialCommand 178..182
+                                              SequentialCommand 178..182
+                                                SequentialCommand 178..182
+                                                  SequentialCommand 178..182
+                                                    SequentialCommand 178..182
+                                                      SequentialCommand 178..182
+                                                        SequentialCommand 178..182
+                                                          SequentialCommand 178..182
+                                                            CallCommand 178..178
+                                                              Identifier "puteol" 178..178
+                                                              EmptyActualParameterSequence 178..178
+                                                            CallCommand 179..179
+                                                              Identifier "put" 179..179
+                                                              SingleActualParameterSequence 179..179
+                                                                ConstActualParameter 179..179
+                                                                  CharacterExpression 179..179
+                                                                    CharacterLiteral "'S'" 179..179
+                                                          CallCommand 179..179
+                                                            Identifier "put" 179..179
+                                                            SingleActualParameterSequence 179..179
+                                                              ConstActualParameter 179..179
+                                                                CharacterExpression 179..179
+                                                                  CharacterLiteral "'o'" 179..179
+                                                        CallCommand 179..179
+                                                          Identifier "put" 179..179
+                                                          SingleActualParameterSequence 179..179
+                                                            ConstActualParameter 179..179
+                                                              CharacterExpression 179..179
+                                                                CharacterLiteral "'r'" 179..179
+                                                      CallCommand 179..179
+                                                        Identifier "put" 179..179
+                                                        SingleActualParameterSequence 179..179
+                                                          ConstActualParameter 179..179
+                                                            CharacterExpression 179..179
+                                                              CharacterLiteral "'t'" 179..179
+                                                    CallCommand 179..179
+                                                      Identifier "put" 179..179
+                                                      SingleActualParameterSequence 179..179
+                                                        ConstActualParameter 179..179
+                                                          CharacterExpression 179..179
+                                                            CharacterLiteral "'i'" 179..179
+                                                  CallCommand 179..179
+                                                    Identifier "put" 179..179
+                                                    SingleActualParameterSequence 179..179
+                                                      ConstActualParameter 179..179
+                                                        CharacterExpression 179..179
+                                                          CharacterLiteral "'e'" 179..179
+                                                CallCommand 179..179
+                                                  Identifier "put" 179..179
+                                                  SingleActualParameterSequence 179..179
+                                                    ConstActualParameter 179..179
+                                                      CharacterExpression 179..179
+                                                        CharacterLiteral "'r'" 179..179
+                                              CallCommand 180..180
+                                                Identifier "put" 180..180
+                                                SingleActualParameterSequence 180..180
+                                                  ConstActualParameter 180..180
+                                                    CharacterExpression 180..180
+                                                      CharacterLiteral "'t'" 180..180
+                                            CallCommand 180..180
+                                              Identifier "put" 180..180
+                                              SingleActualParameterSequence 180..180
+                                                ConstActualParameter 180..180
+                                                  CharacterExpression 180..180
+                                                    CharacterLiteral "'e'" 180..180
+                                          CallCommand 180..180
+                                            Identifier "put" 180..180
+                                            SingleActualParameterSequence 180..180
+                                              ConstActualParameter 180..180
+                                                CharacterExpression 180..180
+                                                  CharacterLiteral "' '" 180..180
+                                        CallCommand 180..180
+                                          Identifier "put" 180..180
+                                          SingleActualParameterSequence 180..180
+                                            ConstActualParameter 180..180
+                                              CharacterExpression 180..180
+                                                CharacterLiteral "'S'" 180..180
+                                      CallCommand 180..180
+                                        Identifier "put" 180..180
+                                        SingleActualParameterSequence 180..180
+                                          ConstActualParameter 180..180
+                                            CharacterExpression 180..180
+                                              CharacterLiteral "'t'" 180..180
+                                    CallCommand 180..180
+                                      Identifier "put" 180..180
+                                      SingleActualParameterSequence 180..180
+                                        ConstActualParameter 180..180
+                                          CharacterExpression 180..180
+                                            CharacterLiteral "'r'" 180..180
+                                  CallCommand 180..180
+                                    Identifier "put" 180..180
+                                    SingleActualParameterSequence 180..180
+                                      ConstActualParameter 180..180
+                                        CharacterExpression 180..180
+                                          CharacterLiteral "'i'" 180..180
+                                CallCommand 181..181
+                                  Identifier "put" 181..181
+                                  SingleActualParameterSequence 181..181
+                                    ConstActualParameter 181..181
+                                      CharacterExpression 181..181
+                                        CharacterLiteral "'n'" 181..181
+                              CallCommand 181..181
+                                Identifier "put" 181..181
+                                SingleActualParameterSequence 181..181
+                                  ConstActualParameter 181..181
+                                    CharacterExpression 181..181
+                                      CharacterLiteral "'g'" 181..181
+                            CallCommand 181..181
+                              Identifier "put" 181..181
+                              SingleActualParameterSequence 181..181
+                                ConstActualParameter 181..181
+                                  CharacterExpression 181..181
+                                    CharacterLiteral "'s'" 181..181
+                          CallCommand 181..181
+                            Identifier "put" 181..181
+                            SingleActualParameterSequence 181..181
+                              ConstActualParameter 181..181
+                                CharacterExpression 181..181
+                                  CharacterLiteral "':'" 181..181
+                        CallCommand 181..181
+                          Identifier "puteol" 181..181
+                          EmptyActualParameterSequence 181..181
+                      EmptyCommand 182..182
+                ProcDeclaration 186..189
+                  Identifier "printInputInfo" 186..186
+                  EmptyFormalParameterSequence 186..186
+                  SequentialCommand 188..189
+                    SequentialCommand 188..189
+                      SequentialCommand 188..189
+                        SequentialCommand 188..189
+                          SequentialCommand 188..189
+                            SequentialCommand 188..189
+                              SequentialCommand 188..189
+                                SequentialCommand 188..189
+                                  CallCommand 188..188
+                                    Identifier "put" 188..188
+                                    SingleActualParameterSequence 188..188
+                                      ConstActualParameter 188..188
+                                        CharacterExpression 188..188
+                                          CharacterLiteral "'s'" 188..188
+                                  CallCommand 188..188
+                                    Identifier "put" 188..188
+                                    SingleActualParameterSequence 188..188
+                                      ConstActualParameter 188..188
+                                        CharacterExpression 188..188
+                                          CharacterLiteral "'t'" 188..188
+                                CallCommand 188..188
+                                  Identifier "put" 188..188
+                                  SingleActualParameterSequence 188..188
+                                    ConstActualParameter 188..188
+                                      CharacterExpression 188..188
+                                        CharacterLiteral "'o'" 188..188
+                              CallCommand 188..188
+                                Identifier "put" 188..188
+                                SingleActualParameterSequence 188..188
+                                  ConstActualParameter 188..188
+                                    CharacterExpression 188..188
+                                      CharacterLiteral "'r'" 188..188
+                            CallCommand 188..188
+                              Identifier "put" 188..188
+                              SingleActualParameterSequence 188..188
+                                ConstActualParameter 188..188
+                                  CharacterExpression 188..188
+                                    CharacterLiteral "'e'" 188..188
+                          CallCommand 188..188
+                            Identifier "put" 188..188
+                            SingleActualParameterSequence 188..188
+                              ConstActualParameter 188..188
+                                CharacterExpression 188..188
+                                  CharacterLiteral "'d'" 188..188
+                        CallCommand 188..188
+                          Identifier "put" 188..188
+                          SingleActualParameterSequence 188..188
+                            ConstActualParameter 188..188
+                              CharacterExpression 188..188
+                                CharacterLiteral "'!'" 188..188
+                      CallCommand 188..188
+                        Identifier "puteol" 188..188
+                        EmptyActualParameterSequence 188..188
+                    EmptyCommand 189..189
+              ProcDeclaration 194..203
+                Identifier "print" 194..194
+                SingleFormalParameterSequence 194..194
+                  ConstFormalParameter 194..194
+                    Identifier "s" 194..194
+                    SimpleTypeDenoter 194..194
+                      Identifier "String" 194..194
+                LetCommand 195..203
+                  VarDeclaration 196..197
+                    Identifier "i" 196..196
+                    SimpleTypeDenoter 196..197
+                      Identifier "Integer" 196..197
+                  SequentialCommand 198..203
+                    SequentialCommand 198..203
+                      AssignCommand 198..198
+                        SimpleVname 198..198
+                          Identifier "i" 198..198
+                        IntegerExpression 198..198
+                          IntegerLiteral "0" 198..198
+                      WhileCommand 199..202
+                        BinaryExpression 199..0
+                          VnameExpression 199..199
+                            SimpleVname 199..199
+                              Identifier "i" 199..199
+                          Operator "<" 199..199
+                          VnameExpression 199..199
+                            DotVname 199..199
+                              SimpleVname 199..199
+                                Identifier "s" 199..199
+                              Identifier "length" 199..199
+                        SequentialCommand 200..202
+                          SequentialCommand 200..202
+                            CallCommand 200..200
+                              Identifier "put" 200..200
+                              SingleActualParameterSequence 200..200
+                                ConstActualParameter 200..200
+                                  VnameExpression 200..200
+                                    SubscriptVname 200..200
+                                      DotVname 200..200
+                                        SimpleVname 200..200
+                                          Identifier "s" 200..200
+                                        Identifier "c" 200..200
+                                      VnameExpression 200..200
+                                        SimpleVname 200..200
+                                          Identifier "i" 200..200
+                            AssignCommand 201..201
+                              SimpleVname 201..201
+                                Identifier "i" 201..201
+                              BinaryExpression 201..0
+                                VnameExpression 201..201
+                                  SimpleVname 201..201
+                                    Identifier "i" 201..201
+                                Operator "+" 201..201
+                                IntegerExpression 201..201
+                                  IntegerLiteral "1" 201..201
+                          EmptyCommand 202..202
+                    EmptyCommand 203..203
+            ProcDeclaration 209..237
+              Identifier "getData" 209..209
+              SingleFormalParameterSequence 209..209
+                VarFormalParameter 209..209
+                  Identifier "data" 209..209
+                  SimpleTypeDenoter 209..209
+                    Identifier "SortObj" 209..209
+              LetCommand 210..237
+                SequentialDeclaration 211..216
+                  SequentialDeclaration 211..216
+                    SequentialDeclaration 211..216
+                      SequentialDeclaration 211..216
+                        VarDeclaration 211..211
+                          Identifier "ch" 211..211
+                          SimpleTypeDenoter 211..211
+                            Identifier "Char" 211..211
+                        VarDeclaration 212..212
+                          Identifier "i" 212..212
+                          SimpleTypeDenoter 212..212
+                            Identifier "Integer" 212..212
+                      VarDeclaration 213..213
+                        Identifier "line" 213..213
+                        SimpleTypeDenoter 213..213
+                          Identifier "String" 213..213
+                    VarDeclaration 214..214
+                      Identifier "testeof" 214..214
+                      SimpleTypeDenoter 214..214
+                        Identifier "Boolean" 214..214
+                  VarDeclaration 215..216
+                    Identifier "testeol" 215..215
+                    SimpleTypeDenoter 215..216
+                      Identifier "Boolean" 215..216
+                SequentialCommand 217..237
+                  SequentialCommand 217..237
+                    SequentialCommand 217..237
+                      SequentialCommand 217..237
+                        SequentialCommand 217..237
+                          CallCommand 217..217
+                            Identifier "printInText" 217..217
+                            EmptyActualParameterSequence 217..217
+                          AssignCommand 218..218
+                            SimpleVname 218..218
+                              Identifier "i" 218..218
+                            IntegerExpression 218..218
+                              IntegerLiteral "0" 218..218
+                        AssignCommand 219..219
+                          DotVname 219..219
+                            SimpleVname 219..219
+                              Identifier "line" 219..219
+                            Identifier "length" 219..219
+                          IntegerExpression 219..219
+                            IntegerLiteral "2" 219..219
+                      WhileCommand 220..235
+                        BinaryExpression 220..0
+                          VnameExpression 220..220
+                            DotVname 220..220
+                              SimpleVname 220..220
+                                Identifier "line" 220..220
+                              Identifier "length" 220..220
+                          Operator ">" 220..220
+                          IntegerExpression 220..220
+                            IntegerLiteral "1" 220..220
+                        SequentialCommand 221..235
+                          SequentialCommand 221..235
+                            SequentialCommand 221..235
+                              SequentialCommand 221..235
+                                SequentialCommand 221..235
+                                  SequentialCommand 221..235
+                                    SequentialCommand 221..235
+                                      SequentialCommand 221..235
+                                        AssignCommand 221..221
+                                          DotVname 221..221
+                                            SimpleVname 221..221
+                                              Identifier "line" 221..221
+                                            Identifier "length" 221..221
+                                          IntegerExpression 221..221
+                                            IntegerLiteral "0" 221..221
+                                        CallCommand 222..222
+                                          Identifier "get" 222..222
+                                          SingleActualParameterSequence 222..222
+                                            VarActualParameter 222..222
+                                              SimpleVname 222..222
+                                                Identifier "ch" 222..222
+                                      CallCommand 223..223
+                                        Identifier "eol" 223..223
+                                        SingleActualParameterSequence 223..223
+                                          VarActualParameter 223..223
+                                            SimpleVname 223..223
+                                              Identifier "testeol" 223..223
+                                    CallCommand 224..224
+                                      Identifier "eof" 224..224
+                                      SingleActualParameterSequence 224..224
+                                        VarActualParameter 224..224
+                                          SimpleVname 224..224
+                                            Identifier "testeof" 224..224
+                                  WhileCommand 225..231
+                                    BinaryExpression 225..0
+                                      UnaryExpression 225..225
+                                        Operator "\" 225..225
+                                        VnameExpression 225..225
+                                          SimpleVname 225..225
+                                            Identifier "testeol" 225..225
+                                      Operator "/\" 225..225
+                                      UnaryExpression 225..225
+                                        Operator "\" 225..225
+                                        VnameExpression 225..225
+                                          SimpleVname 225..225
+                                            Identifier "testeof" 225..225
+                                    SequentialCommand 226..231
+                                      SequentialCommand 226..231
+                                        SequentialCommand 226..231
+                                          SequentialCommand 226..231
+                                            SequentialCommand 226..231
+                                              AssignCommand 226..226
+                                                SubscriptVname 226..226
+                                                  DotVname 226..226
+                                                    SimpleVname 226..226
+                                                      Identifier "line" 226..226
+                                                    Identifier "c" 226..226
+                                                  VnameExpression 226..226
+                                                    DotVname 226..226
+                                                      SimpleVname 226..226
+                                                        Identifier "line" 226..226
+                                                      Identifier "length" 226..226
+                                                VnameExpression 226..226
+                                                  SimpleVname 226..226
+                                                    Identifier "ch" 226..226
+                                              AssignCommand 227..227
+                                                DotVname 227..227
+                                                  SimpleVname 227..227
+                                                    Identifier "line" 227..227
+                                                  Identifier "length" 227..227
+                                                BinaryExpression 227..0
+                                                  VnameExpression 227..227
+                                                    DotVname 227..227
+                                                      SimpleVname 227..227
+                                                        Identifier "line" 227..227
+                                                      Identifier "length" 227..227
+                                                  Operator "+" 227..227
+                                                  IntegerExpression 227..227
+                                                    IntegerLiteral "1" 227..227
+                                            CallCommand 228..228
+                                              Identifier "get" 228..228
+                                              SingleActualParameterSequence 228..228
+                                                VarActualParameter 228..228
+                                                  SimpleVname 228..228
+                                                    Identifier "ch" 228..228
+                                          CallCommand 229..229
+                                            Identifier "eol" 229..229
+                                            SingleActualParameterSequence 229..229
+                                              VarActualParameter 229..229
+                                                SimpleVname 229..229
+                                                  Identifier "testeol" 229..229
+                                        CallCommand 230..230
+                                          Identifier "eof" 230..230
+                                          SingleActualParameterSequence 230..230
+                                            VarActualParameter 230..230
+                                              SimpleVname 230..230
+                                                Identifier "testeof" 230..230
+                                      EmptyCommand 231..231
+                                CallCommand 232..232
+                                  Identifier "printInputInfo" 232..232
+                                  EmptyActualParameterSequence 232..232
+                              AssignCommand 233..233
+                                SubscriptVname 233..233
+                                  DotVname 233..233
+                                    SimpleVname 233..233
+                                      Identifier "data" 233..233
+                                    Identifier "c" 233..233
+                                  VnameExpression 233..233
+                                    SimpleVname 233..233
+                                      Identifier "i" 233..233
+                                VnameExpression 233..233
+                                  SimpleVname 233..233
+                                    Identifier "line" 233..233
+                            AssignCommand 234..234
+                              SimpleVname 234..234
+                                Identifier "i" 234..234
+                              BinaryExpression 234..0
+                                VnameExpression 234..234
+                                  SimpleVname 234..234
+                                    Identifier "i" 234..234
+                                Operator "+" 234..234
+                                IntegerExpression 234..234
+                                  IntegerLiteral "1" 234..234
+                          EmptyCommand 235..235
+                    AssignCommand 236..236
+                      DotVname 236..236
+                        SimpleVname 236..236
+                          Identifier "data" 236..236
+                        Identifier "length" 236..236
+                      VnameExpression 236..236
+                        SimpleVname 236..236
+                          Identifier "i" 236..236
+                  EmptyCommand 237..237
+          ProcDeclaration 242..252
+            Identifier "printData" 242..242
+            SingleFormalParameterSequence 242..242
+              ConstFormalParameter 242..242
+                Identifier "data" 242..242
+                SimpleTypeDenoter 242..242
+                  Identifier "SortObj" 242..242
+            LetCommand 243..252
+              VarDeclaration 244..245
+                Identifier "i" 244..244
+                SimpleTypeDenoter 244..245
+                  Identifier "Integer" 244..245
+              SequentialCommand 246..252
+                SequentialCommand 246..252
+                  SequentialCommand 246..252
+                    CallCommand 246..246
+                      Identifier "printOutText" 246..246
+                      EmptyActualParameterSequence 246..246
+                    AssignCommand 247..247
+                      SimpleVname 247..247
+                        Identifier "i" 247..247
+                      IntegerExpression 247..247
+                        IntegerLiteral "0" 247..247
+                  WhileCommand 248..251
+                    BinaryExpression 248..0
+                      VnameExpression 248..248
+                        SimpleVname 248..248
+                          Identifier "i" 248..248
+                      Operator "<" 248..248
+                      VnameExpression 248..248
+                        DotVname 248..248
+                          SimpleVname 248..248
+                            Identifier "data" 248..248
+                          Identifier "length" 248..248
+                    SequentialCommand 249..251
+                      SequentialCommand 249..251
+                        CallCommand 249..249
+                          Identifier "print" 249..249
+                          SingleActualParameterSequence 249..249
+                            ConstActualParameter 249..249
+                              VnameExpression 249..249
+                                SubscriptVname 249..249
+                                  DotVname 249..249
+                                    SimpleVname 249..249
+                                      Identifier "data" 249..249
+                                    Identifier "c" 249..249
+                                  VnameExpression 249..249
+                                    SimpleVname 249..249
+                                      Identifier "i" 249..249
+                        AssignCommand 250..250
+                          SimpleVname 250..250
+                            Identifier "i" 250..250
+                          BinaryExpression 250..0
+                            VnameExpression 250..250
+                              SimpleVname 250..250
+                                Identifier "i" 250..250
+                            Operator "+" 250..250
+                            IntegerExpression 250..250
+                              IntegerLiteral "1" 250..250
+                      EmptyCommand 251..251
+                EmptyCommand 252..252
+        VarDeclaration 255..256
+          Identifier "data" 255..255
+          SimpleTypeDenoter 255..256
+            Identifier "SortObj" 255..256
+      SequentialCommand 259..262
+        SequentialCommand 259..262
+          SequentialCommand 259..262
+            CallCommand 259..259
+              Identifier "getData" 259..259
+              SingleActualParameterSequence 259..259
+                VarActualParameter 259..259
+                  SimpleVname 259..259
+                    Identifier "data" 259..259
+            CallCommand 260..260
+              Identifier "sort" 260..260
+              SingleActualParameterSequence 260..260
+                VarActualParameter 260..260
+                  SimpleVname 260..260
+                    Identifier "data" 260..260
+          CallCommand 261..261
+            Identifier "printData" 261..261
+            SingleActualParameterSequence 261..261
+              ConstActualParameter 261..261
+                VnameExpression 261..261
+                  SimpleVname 261..261
+                    Identifier "data" 261..261
+        EmptyCommand 262..262
+    EmptyCommand 263..263

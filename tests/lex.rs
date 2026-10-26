@@ -1,6 +1,7 @@
 use std::fs;
 use std::path::Path;
 
+use david_triangle::printers::lexeme_printer;
 use david_triangle::syntactic_analyzer::scanner::Scanner;
 use david_triangle::syntactic_analyzer::source_stream::SourceStream;
 use david_triangle::syntactic_analyzer::token_kind::TokenKind;
@@ -10,7 +11,7 @@ fn lex(source: &[u8]) -> String {
     let mut output = String::new();
     loop {
         let token = scanner.scan();
-        output.push_str(&token.test_repr());
+        output.push_str(&lexeme_printer::print(&token));
         output.push('\n');
         if token.kind == TokenKind::Eof {
             return output;

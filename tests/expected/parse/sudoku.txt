@@ -1,0 +1,2023 @@
+Program 330..330
+  LetCommand 1..330
+    SequentialDeclaration 2..17
+      SequentialDeclaration 2..17
+        SequentialDeclaration 2..17
+          SequentialDeclaration 2..17
+            SequentialDeclaration 2..17
+              SequentialDeclaration 2..17
+                SequentialDeclaration 2..17
+                  SequentialDeclaration 2..17
+                    SequentialDeclaration 2..17
+                      SequentialDeclaration 2..17
+                        SequentialDeclaration 2..17
+                          SequentialDeclaration 2..17
+                            SequentialDeclaration 2..17
+                              SequentialDeclaration 2..17
+                                VarDeclaration 2..2
+                                  Identifier "matrix" 2..2
+                                  ArrayTypeDenoter 2..2
+                                    IntegerLiteral "9" 2..2
+                                    ArrayTypeDenoter 2..2
+                                      IntegerLiteral "9" 2..2
+                                      SimpleTypeDenoter 2..2
+                                        Identifier "Integer" 2..2
+                                VarDeclaration 3..3
+                                  Identifier "set" 3..3
+                                  ArrayTypeDenoter 3..3
+                                    IntegerLiteral "9" 3..3
+                                    ArrayTypeDenoter 3..3
+                                      IntegerLiteral "9" 3..3
+                                      ArrayTypeDenoter 3..3
+                                        IntegerLiteral "10" 3..3
+                                        SimpleTypeDenoter 3..3
+                                          Identifier "Boolean" 3..3
+                              VarDeclaration 4..4
+                                Identifier "ready" 4..4
+                                SimpleTypeDenoter 4..4
+                                  Identifier "Boolean" 4..4
+                            VarDeclaration 5..5
+                              Identifier "i" 5..5
+                              SimpleTypeDenoter 5..5
+                                Identifier "Integer" 5..5
+                          VarDeclaration 6..6
+                            Identifier "j" 6..6
+                            SimpleTypeDenoter 6..6
+                              Identifier "Integer" 6..6
+                        VarDeclaration 7..7
+                          Identifier "k" 7..7
+                          SimpleTypeDenoter 7..7
+                            Identifier "Integer" 7..7
+                      VarDeclaration 8..8
+                        Identifier "l" 8..8
+                        SimpleTypeDenoter 8..8
+                          Identifier "Integer" 8..8
+                    VarDeclaration 9..9
+                      Identifier "x" 9..9
+                      SimpleTypeDenoter 9..9
+                        Identifier "Integer" 9..9
+                  VarDeclaration 10..10
+                    Identifier "y" 10..10
+                    SimpleTypeDenoter 10..10
+                      Identifier "Integer" 10..10
+                VarDeclaration 11..11
+                  Identifier "z" 11..11
+                  SimpleTypeDenoter 11..11
+                    Identifier "Integer" 11..11
+              VarDeclaration 12..12
+                Identifier "tmp" 12..12
+                SimpleTypeDenoter 12..12
+                  Identifier "Integer" 12..12
+            VarDeclaration 13..13
+              Identifier "count" 13..13
+              SimpleTypeDenoter 13..13
+                Identifier "Integer" 13..13
+          VarDeclaration 14..14
+            Identifier "pos" 14..14
+            SimpleTypeDenoter 14..14
+              Identifier "Integer" 14..14
+        VarDeclaration 15..15
+          Identifier "pos1" 15..15
+          SimpleTypeDenoter 15..15
+            Identifier "Integer" 15..15
+      VarDeclaration 16..17
+        Identifier "pos2" 16..16
+        SimpleTypeDenoter 16..17
+          Identifier "Integer" 16..17
+    SequentialCommand 20..329
+      SequentialCommand 20..329
+        SequentialCommand 20..329
+          SequentialCommand 20..329
+            SequentialCommand 20..329
+              SequentialCommand 20..329
+                AssignCommand 20..30
+                  SimpleVname 20..20
+                    Identifier "matrix" 20..20
+                  ArrayExpression 20..30
+                    MultipleArrayAggregate 20..30
+                      ArrayExpression 20..20
+                        MultipleArrayAggregate 20..20
+                          IntegerExpression 20..20
+                            IntegerLiteral "0" 20..20
+                          MultipleArrayAggregate 20..20
+                            IntegerExpression 20..20
+                              IntegerLiteral "5" 20..20
+                            MultipleArrayAggregate 20..20
+                              IntegerExpression 20..20
+                                IntegerLiteral "7" 20..20
+                              MultipleArrayAggregate 20..20
+                                IntegerExpression 20..20
+                                  IntegerLiteral "0" 20..20
+                                MultipleArrayAggregate 20..20
+                                  IntegerExpression 20..20
+                                    IntegerLiteral "0" 20..20
+                                  MultipleArrayAggregate 20..20
+                                    IntegerExpression 20..20
+                                      IntegerLiteral "2" 20..20
+                                    MultipleArrayAggregate 20..20
+                                      IntegerExpression 20..20
+                                        IntegerLiteral "3" 20..20
+                                      MultipleArrayAggregate 20..20
+                                        IntegerExpression 20..20
+                                          IntegerLiteral "0" 20..20
+                                        SingleArrayAggregate 20..20
+                                          IntegerExpression 20..20
+                                            IntegerLiteral "6" 20..20
+                      MultipleArrayAggregate 21..30
+                        ArrayExpression 21..21
+                          MultipleArrayAggregate 21..21
+                            IntegerExpression 21..21
+                              IntegerLiteral "1" 21..21
+                            MultipleArrayAggregate 21..21
+                              IntegerExpression 21..21
+                                IntegerLiteral "0" 21..21
+                              MultipleArrayAggregate 21..21
+                                IntegerExpression 21..21
+                                  IntegerLiteral "2" 21..21
+                                MultipleArrayAggregate 21..21
+                                  IntegerExpression 21..21
+                                    IntegerLiteral "7" 21..21
+                                  MultipleArrayAggregate 21..21
+                                    IntegerExpression 21..21
+                                      IntegerLiteral "0" 21..21
+                                    MultipleArrayAggregate 21..21
+                                      IntegerExpression 21..21
+                                        IntegerLiteral "0" 21..21
+                                      MultipleArrayAggregate 21..21
+                                        IntegerExpression 21..21
+                                          IntegerLiteral "5" 21..21
+                                        MultipleArrayAggregate 21..21
+                                          IntegerExpression 21..21
+                                            IntegerLiteral "0" 21..21
+                                          SingleArrayAggregate 21..21
+                                            IntegerExpression 21..21
+                                              IntegerLiteral "8" 21..21
+                        MultipleArrayAggregate 22..30
+                          ArrayExpression 22..22
+                            MultipleArrayAggregate 22..22
+                              IntegerExpression 22..22
+                                IntegerLiteral "3" 22..22
+                              MultipleArrayAggregate 22..22
+                                IntegerExpression 22..22
+                                  IntegerLiteral "8" 22..22
+                                MultipleArrayAggregate 22..22
+                                  IntegerExpression 22..22
+                                    IntegerLiteral "0" 22..22
+                                  MultipleArrayAggregate 22..22
+                                    IntegerExpression 22..22
+                                      IntegerLiteral "5" 22..22
+                                    MultipleArrayAggregate 22..22
+                                      IntegerExpression 22..22
+                                        IntegerLiteral "0" 22..22
+                                      MultipleArrayAggregate 22..22
+                                        IntegerExpression 22..22
+                                          IntegerLiteral "9" 22..22
+                                        MultipleArrayAggregate 22..22
+                                          IntegerExpression 22..22
+                                            IntegerLiteral "7" 22..22
+                                          MultipleArrayAggregate 22..22
+                                            IntegerExpression 22..22
+                                              IntegerLiteral "0" 22..22
+                                            SingleArrayAggregate 22..22
+                                              IntegerExpression 22..22
+                                                IntegerLiteral "2" 22..22
+                          MultipleArrayAggregate 24..30
+                            ArrayExpression 24..24
+                              MultipleArrayAggregate 24..24
+                                IntegerExpression 24..24
+                                  IntegerLiteral "0" 24..24
+                                MultipleArrayAggregate 24..24
+                                  IntegerExpression 24..24
+                                    IntegerLiteral "0" 24..24
+                                  MultipleArrayAggregate 24..24
+                                    IntegerExpression 24..24
+                                      IntegerLiteral "5" 24..24
+                                    MultipleArrayAggregate 24..24
+                                      IntegerExpression 24..24
+                                        IntegerLiteral "1" 24..24
+                                      MultipleArrayAggregate 24..24
+                                        IntegerExpression 24..24
+                                          IntegerLiteral "0" 24..24
+                                        MultipleArrayAggregate 24..24
+                                          IntegerExpression 24..24
+                                            IntegerLiteral "0" 24..24
+                                          MultipleArrayAggregate 24..24
+                                            IntegerExpression 24..24
+                                              IntegerLiteral "8" 24..24
+                                            MultipleArrayAggregate 24..24
+                                              IntegerExpression 24..24
+                                                IntegerLiteral "0" 24..24
+                                              SingleArrayAggregate 24..24
+                                                IntegerExpression 24..24
+                                                  IntegerLiteral "4" 24..24
+                            MultipleArrayAggregate 25..30
+                              ArrayExpression 25..25
+                                MultipleArrayAggregate 25..25
+                                  IntegerExpression 25..25
+                                    IntegerLiteral "8" 25..25
+                                  MultipleArrayAggregate 25..25
+                                    IntegerExpression 25..25
+                                      IntegerLiteral "1" 25..25
+                                    MultipleArrayAggregate 25..25
+                                      IntegerExpression 25..25
+                                        IntegerLiteral "3" 25..25
+                                      MultipleArrayAggregate 25..25
+                                        IntegerExpression 25..25
+                                          IntegerLiteral "0" 25..25
+                                        MultipleArrayAggregate 25..25
+                                          IntegerExpression 25..25
+                                            IntegerLiteral "5" 25..25
+                                          MultipleArrayAggregate 25..25
+                                            IntegerExpression 25..25
+                                              IntegerLiteral "0" 25..25
+                                            MultipleArrayAggregate 25..25
+                                              IntegerExpression 25..25
+                                                IntegerLiteral "2" 25..25
+                                              MultipleArrayAggregate 25..25
+                                                IntegerExpression 25..25
+                                                  IntegerLiteral "0" 25..25
+                                                SingleArrayAggregate 25..25
+                                                  IntegerExpression 25..25
+                                                    IntegerLiteral "9" 25..25
+                              MultipleArrayAggregate 26..30
+                                ArrayExpression 26..26
+                                  MultipleArrayAggregate 26..26
+                                    IntegerExpression 26..26
+                                      IntegerLiteral "7" 26..26
+                                    MultipleArrayAggregate 26..26
+                                      IntegerExpression 26..26
+                                        IntegerLiteral "0" 26..26
+                                      MultipleArrayAggregate 26..26
+                                        IntegerExpression 26..26
+                                          IntegerLiteral "0" 26..26
+                                        MultipleArrayAggregate 26..26
+                                          IntegerExpression 26..26
+                                            IntegerLiteral "0" 26..26
+                                          MultipleArrayAggregate 26..26
+                                            IntegerExpression 26..26
+                                              IntegerLiteral "0" 26..26
+                                            MultipleArrayAggregate 26..26
+                                              IntegerExpression 26..26
+                                                IntegerLiteral "8" 26..26
+                                              MultipleArrayAggregate 26..26
+                                                IntegerExpression 26..26
+                                                  IntegerLiteral "1" 26..26
+                                                MultipleArrayAggregate 26..26
+                                                  IntegerExpression 26..26
+                                                    IntegerLiteral "0" 26..26
+                                                  SingleArrayAggregate 26..26
+                                                    IntegerExpression 26..26
+                                                      IntegerLiteral "5" 26..26
+                                MultipleArrayAggregate 28..30
+                                  ArrayExpression 28..28
+                                    MultipleArrayAggregate 28..28
+                                      IntegerExpression 28..28
+                                        IntegerLiteral "6" 28..28
+                                      MultipleArrayAggregate 28..28
+                                        IntegerExpression 28..28
+                                          IntegerLiteral "3" 28..28
+                                        MultipleArrayAggregate 28..28
+                                          IntegerExpression 28..28
+                                            IntegerLiteral "1" 28..28
+                                          MultipleArrayAggregate 28..28
+                                            IntegerExpression 28..28
+                                              IntegerLiteral "2" 28..28
+                                            MultipleArrayAggregate 28..28
+                                              IntegerExpression 28..28
+                                                IntegerLiteral "4" 28..28
+                                              MultipleArrayAggregate 28..28
+                                                IntegerExpression 28..28
+                                                  IntegerLiteral "5" 28..28
+                                                MultipleArrayAggregate 28..28
+                                                  IntegerExpression 28..28
+                                                    IntegerLiteral "9" 28..28
+                                                  MultipleArrayAggregate 28..28
+                                                    IntegerExpression 28..28
+                                                      IntegerLiteral "8" 28..28
+                                                    SingleArrayAggregate 28..28
+                                                      IntegerExpression 28..28
+                                                        IntegerLiteral "7" 28..28
+                                  MultipleArrayAggregate 29..30
+                                    ArrayExpression 29..29
+                                      MultipleArrayAggregate 29..29
+                                        IntegerExpression 29..29
+                                          IntegerLiteral "5" 29..29
+                                        MultipleArrayAggregate 29..29
+                                          IntegerExpression 29..29
+                                            IntegerLiteral "7" 29..29
+                                          MultipleArrayAggregate 29..29
+                                            IntegerExpression 29..29
+                                              IntegerLiteral "9" 29..29
+                                            MultipleArrayAggregate 29..29
+                                              IntegerExpression 29..29
+                                                IntegerLiteral "0" 29..29
+                                              MultipleArrayAggregate 29..29
+                                                IntegerExpression 29..29
+                                                  IntegerLiteral "0" 29..29
+                                                MultipleArrayAggregate 29..29
+                                                  IntegerExpression 29..29
+                                                    IntegerLiteral "6" 29..29
+                                                  MultipleArrayAggregate 29..29
+                                                    IntegerExpression 29..29
+                                                      IntegerLiteral "4" 29..29
+                                                    MultipleArrayAggregate 29..29
+                                                      IntegerExpression 29..29
+                                                        IntegerLiteral "2" 29..29
+                                                      SingleArrayAggregate 29..29
+                                                        IntegerExpression 29..29
+                                                          IntegerLiteral "1" 29..29
+                                    SingleArrayAggregate 30..30
+                                      ArrayExpression 30..30
+                                        MultipleArrayAggregate 30..30
+                                          IntegerExpression 30..30
+                                            IntegerLiteral "0" 30..30
+                                          MultipleArrayAggregate 30..30
+                                            IntegerExpression 30..30
+                                              IntegerLiteral "0" 30..30
+                                            MultipleArrayAggregate 30..30
+                                              IntegerExpression 30..30
+                                                IntegerLiteral "8" 30..30
+                                              MultipleArrayAggregate 30..30
+                                                IntegerExpression 30..30
+                                                  IntegerLiteral "9" 30..30
+                                                MultipleArrayAggregate 30..30
+                                                  IntegerExpression 30..30
+                                                    IntegerLiteral "7" 30..30
+                                                  MultipleArrayAggregate 30..30
+                                                    IntegerExpression 30..30
+                                                      IntegerLiteral "1" 30..30
+                                                    MultipleArrayAggregate 30..30
+                                                      IntegerExpression 30..30
+                                                        IntegerLiteral "6" 30..30
+                                                      MultipleArrayAggregate 30..30
+                                                        IntegerExpression 30..30
+                                                          IntegerLiteral "5" 30..30
+                                                        SingleArrayAggregate 30..30
+                                                          IntegerExpression 30..30
+                                                            IntegerLiteral "3" 30..30
+                AssignCommand 32..32
+                  SimpleVname 32..32
+                    Identifier "i" 32..32
+                  IntegerExpression 32..32
+                    IntegerLiteral "0" 32..32
+              WhileCommand 33..54
+                BinaryExpression 33..0
+                  VnameExpression 33..33
+                    SimpleVname 33..33
+                      Identifier "i" 33..33
+                  Operator "<" 33..33
+                  IntegerExpression 33..33
+                    IntegerLiteral "9" 33..33
+                SequentialCommand 35..54
+                  SequentialCommand 35..54
+                    SequentialCommand 35..54
+                      AssignCommand 35..35
+                        SimpleVname 35..35
+                          Identifier "j" 35..35
+                        IntegerExpression 35..35
+                          IntegerLiteral "0" 35..35
+                      WhileCommand 36..52
+                        BinaryExpression 36..0
+                          VnameExpression 36..36
+                            SimpleVname 36..36
+                              Identifier "j" 36..36
+                          Operator "<" 36..36
+                          IntegerExpression 36..36
+                            IntegerLiteral "9" 36..36
+                        SequentialCommand 38..52
+                          SequentialCommand 38..52
+                            SequentialCommand 38..52
+                              AssignCommand 38..38
+                                SimpleVname 38..38
+                                  Identifier "k" 38..38
+                                IntegerExpression 38..38
+                                  IntegerLiteral "1" 38..38
+                              WhileCommand 39..50
+                                BinaryExpression 39..0
+                                  VnameExpression 39..39
+                                    SimpleVname 39..39
+                                      Identifier "k" 39..39
+                                  Operator "<" 39..39
+                                  IntegerExpression 39..39
+                                    IntegerLiteral "10" 39..39
+                                SequentialCommand 41..50
+                                  SequentialCommand 41..50
+                                    IfCommand 41..46
+                                      BinaryExpression 41..0
+                                        VnameExpression 41..41
+                                          SubscriptVname 41..41
+                                            SubscriptVname 41..41
+                                              SimpleVname 41..41
+                                                Identifier "matrix" 41..41
+                                              VnameExpression 41..41
+                                                SimpleVname 41..41
+                                                  Identifier "i" 41..41
+                                            VnameExpression 41..41
+                                              SimpleVname 41..41
+                                                Identifier "j" 41..41
+                                        Operator "=" 41..41
+                                        IntegerExpression 41..41
+                                          IntegerLiteral "0" 41..41
+                                      AssignCommand 42..43
+                                        SubscriptVname 42..42
+                                          SubscriptVname 42..42
+                                            SubscriptVname 42..42
+                                              SimpleVname 42..42
+                                                Identifier "set" 42..42
+                                              VnameExpression 42..42
+                                                SimpleVname 42..42
+                                                  Identifier "i" 42..42
+                                            VnameExpression 42..42
+                                              SimpleVname 42..42
+                                                Identifier "j" 42..42
+                                          VnameExpression 42..42
+                                            SimpleVname 42..42
+                                              Identifier "k" 42..42
+                                        VnameExpression 42..43
+                                          SimpleVname 42..43
+                                            Identifier "true" 42..43
+                                      AssignCommand 46..46
+                                        SubscriptVname 46..46
+                                          SubscriptVname 46..46
+                                            SubscriptVname 46..46
+                                              SimpleVname 46..46
+                                                Identifier "set" 46..46
+                                              VnameExpression 46..46
+                                                SimpleVname 46..46
+                                                  Identifier "i" 46..46
+                                            VnameExpression 46..46
+                                              SimpleVname 46..46
+                                                Identifier "j" 46..46
+                                          VnameExpression 46..46
+                                            SimpleVname 46..46
+                                              Identifier "k" 46..46
+                                        VnameExpression 46..46
+                                          SimpleVname 46..46
+                                            Identifier "false" 46..46
+                                    AssignCommand 49..49
+                                      SimpleVname 49..49
+                                        Identifier "k" 49..49
+                                      BinaryExpression 49..0
+                                        VnameExpression 49..49
+                                          SimpleVname 49..49
+                                            Identifier "k" 49..49
+                                        Operator "+" 49..49
+                                        IntegerExpression 49..49
+                                          IntegerLiteral "1" 49..49
+                                  EmptyCommand 50..50
+                            AssignCommand 51..51
+                              SimpleVname 51..51
+                                Identifier "j" 51..51
+                              BinaryExpression 51..0
+                                VnameExpression 51..51
+                                  SimpleVname 51..51
+                                    Identifier "j" 51..51
+                                Operator "+" 51..51
+                                IntegerExpression 51..51
+                                  IntegerLiteral "1" 51..51
+                          EmptyCommand 52..52
+                    AssignCommand 53..53
+                      SimpleVname 53..53
+                        Identifier "i" 53..53
+                      BinaryExpression 53..0
+                        VnameExpression 53..53
+                          SimpleVname 53..53
+                            Identifier "i" 53..53
+                        Operator "+" 53..53
+                        IntegerExpression 53..53
+                          IntegerLiteral "1" 53..53
+                  EmptyCommand 54..54
+            WhileCommand 56..305
+              UnaryExpression 56..56
+                Operator "\" 56..56
+                VnameExpression 56..56
+                  SimpleVname 56..56
+                    Identifier "ready" 56..56
+              SequentialCommand 60..302
+                SequentialCommand 60..302
+                  SequentialCommand 60..302
+                    SequentialCommand 60..302
+                      SequentialCommand 60..302
+                        SequentialCommand 60..302
+                          SequentialCommand 60..302
+                            SequentialCommand 60..302
+                              SequentialCommand 60..302
+                                SequentialCommand 60..302
+                                  SequentialCommand 60..302
+                                    AssignCommand 60..60
+                                      SimpleVname 60..60
+                                        Identifier "ready" 60..60
+                                      VnameExpression 60..60
+                                        SimpleVname 60..60
+                                          Identifier "true" 60..60
+                                    AssignCommand 65..65
+                                      SimpleVname 65..65
+                                        Identifier "i" 65..65
+                                      IntegerExpression 65..65
+                                        IntegerLiteral "0" 65..65
+                                  WhileCommand 66..134
+                                    BinaryExpression 66..0
+                                      VnameExpression 66..66
+                                        SimpleVname 66..66
+                                          Identifier "i" 66..66
+                                      Operator "<" 66..66
+                                      IntegerExpression 66..66
+                                        IntegerLiteral "9" 66..66
+                                    SequentialCommand 70..134
+                                      SequentialCommand 70..134
+                                        SequentialCommand 70..134
+                                          AssignCommand 70..70
+                                            SimpleVname 70..70
+                                              Identifier "j" 70..70
+                                            IntegerExpression 70..70
+                                              IntegerLiteral "0" 70..70
+                                          WhileCommand 71..132
+                                            BinaryExpression 71..0
+                                              VnameExpression 71..71
+                                                SimpleVname 71..71
+                                                  Identifier "j" 71..71
+                                              Operator "<" 71..71
+                                              IntegerExpression 71..71
+                                                IntegerLiteral "9" 71..71
+                                            SequentialCommand 74..132
+                                              SequentialCommand 74..132
+                                                IfCommand 74..130
+                                                  BinaryExpression 74..0
+                                                    VnameExpression 74..74
+                                                      SubscriptVname 74..74
+                                                        SubscriptVname 74..74
+                                                          SimpleVname 74..74
+                                                            Identifier "matrix" 74..74
+                                                          VnameExpression 74..74
+                                                            SimpleVname 74..74
+                                                              Identifier "i" 74..74
+                                                        VnameExpression 74..74
+                                                          SimpleVname 74..74
+                                                            Identifier "j" 74..74
+                                                    Operator "=" 74..74
+                                                    IntegerExpression 74..74
+                                                      IntegerLiteral "0" 74..74
+                                                  SequentialCommand 78..119
+                                                    SequentialCommand 78..119
+                                                      SequentialCommand 78..119
+                                                        SequentialCommand 78..119
+                                                          SequentialCommand 78..119
+                                                            SequentialCommand 78..119
+                                                              AssignCommand 78..78
+                                                                SimpleVname 78..78
+                                                                  Identifier "k" 78..78
+                                                                IntegerExpression 78..78
+                                                                  IntegerLiteral "0" 78..78
+                                                              WhileCommand 79..91
+                                                                BinaryExpression 79..0
+                                                                  VnameExpression 79..79
+                                                                    SimpleVname 79..79
+                                                                      Identifier "k" 79..79
+                                                                  Operator "<" 79..79
+                                                                  IntegerExpression 79..79
+                                                                    IntegerLiteral "9" 79..79
+                                                                SequentialCommand 82..91
+                                                                  SequentialCommand 82..91
+                                                                    SequentialCommand 82..91
+                                                                      SequentialCommand 82..91
+                                                                        SequentialCommand 82..91
+                                                                          AssignCommand 82..82
+                                                                            SimpleVname 82..82
+                                                                              Identifier "tmp" 82..82
+                                                                            VnameExpression 82..82
+                                                                              SubscriptVname 82..82
+                                                                                SubscriptVname 82..82
+                                                                                  SimpleVname 82..82
+                                                                                    Identifier "matrix" 82..82
+                                                                                  VnameExpression 82..82
+                                                                                    SimpleVname 82..82
+                                                                                      Identifier "i" 82..82
+                                                                                VnameExpression 82..82
+                                                                                  SimpleVname 82..82
+                                                                                    Identifier "k" 82..82
+                                                                          IfCommand 83..85
+                                                                            BinaryExpression 83..0
+                                                                              VnameExpression 83..83
+                                                                                SimpleVname 83..83
+                                                                                  Identifier "tmp" 83..83
+                                                                              Operator "\=" 83..83
+                                                                              IntegerExpression 83..83
+                                                                                IntegerLiteral "0" 83..83
+                                                                            AssignCommand 84..85
+                                                                              SubscriptVname 84..84
+                                                                                SubscriptVname 84..84
+                                                                                  SubscriptVname 84..84
+                                                                                    SimpleVname 84..84
+                                                                                      Identifier "set" 84..84
+                                                                                    VnameExpression 84..84
+                                                                                      SimpleVname 84..84
+                                                                                        Identifier "i" 84..84
+                                                                                  VnameExpression 84..84
+                                                                                    SimpleVname 84..84
+                                                                                      Identifier "j" 84..84
+                                                                                VnameExpression 84..84
+                                                                                  SimpleVname 84..84
+                                                                                    Identifier "tmp" 84..84
+                                                                              VnameExpression 84..85
+                                                                                SimpleVname 84..85
+                                                                                  Identifier "false" 84..85
+                                                                            EmptyCommand 85..85
+                                                                        AssignCommand 86..86
+                                                                          SimpleVname 86..86
+                                                                            Identifier "tmp" 86..86
+                                                                          VnameExpression 86..86
+                                                                            SubscriptVname 86..86
+                                                                              SubscriptVname 86..86
+                                                                                SimpleVname 86..86
+                                                                                  Identifier "matrix" 86..86
+                                                                                VnameExpression 86..86
+                                                                                  SimpleVname 86..86
+                                                                                    Identifier "k" 86..86
+                                                                              VnameExpression 86..86
+                                                                                SimpleVname 86..86
+                                                                                  Identifier "j" 86..86
+                                                                      IfCommand 87..89
+                                                                        BinaryExpression 87..0
+                                                                          VnameExpression 87..87
+                                                                            SimpleVname 87..87
+                                                                              Identifier "tmp" 87..87
+                                                                          Operator "\=" 87..87
+                                                                          IntegerExpression 87..87
+                                                                            IntegerLiteral "0" 87..87
+                                                                        AssignCommand 88..89
+                                                                          SubscriptVname 88..88
+                                                                            SubscriptVname 88..88
+                                                                              SubscriptVname 88..88
+                                                                                SimpleVname 88..88
+                                                                                  Identifier "set" 88..88
+                                                                                VnameExpression 88..88
+                                                                                  SimpleVname 88..88
+                                                                                    Identifier "i" 88..88
+                                                                              VnameExpression 88..88
+                                                                                SimpleVname 88..88
+                                                                                  Identifier "j" 88..88
+                                                                            VnameExpression 88..88
+                                                                              SimpleVname 88..88
+                                                                                Identifier "tmp" 88..88
+                                                                          VnameExpression 88..89
+                                                                            SimpleVname 88..89
+                                                                              Identifier "false" 88..89
+                                                                        EmptyCommand 89..89
+                                                                    AssignCommand 90..90
+                                                                      SimpleVname 90..90
+                                                                        Identifier "k" 90..90
+                                                                      BinaryExpression 90..0
+                                                                        VnameExpression 90..90
+                                                                          SimpleVname 90..90
+                                                                            Identifier "k" 90..90
+                                                                        Operator "+" 90..90
+                                                                        IntegerExpression 90..90
+                                                                          IntegerLiteral "1" 90..90
+                                                                  EmptyCommand 91..91
+                                                            IfCommand 96..98
+                                                              BinaryExpression 96..0
+                                                                BinaryExpression 96..0
+                                                                  IntegerExpression 96..96
+                                                                    IntegerLiteral "0" 96..96
+                                                                  Operator "<=" 96..96
+                                                                  VnameExpression 96..96
+                                                                    SimpleVname 96..96
+                                                                      Identifier "i" 96..96
+                                                                Operator "/\" 96..96
+                                                                BinaryExpression 96..0
+                                                                  VnameExpression 96..96
+                                                                    SimpleVname 96..96
+                                                                      Identifier "i" 96..96
+                                                                  Operator "<=" 96..96
+                                                                  IntegerExpression 96..96
+                                                                    IntegerLiteral "2" 96..96
+                                                              AssignCommand 96..97
+                                                                SimpleVname 96..96
+                                                                  Identifier "x" 96..96
+                                                                IntegerExpression 96..97
+                                                                  IntegerLiteral "0" 96..97
+                                                              IfCommand 97..98
+                                                                BinaryExpression 97..0
+                                                                  BinaryExpression 97..0
+                                                                    IntegerExpression 97..97
+                                                                      IntegerLiteral "3" 97..97
+                                                                    Operator "<=" 97..97
+                                                                    VnameExpression 97..97
+                                                                      SimpleVname 97..97
+                                                                        Identifier "i" 97..97
+                                                                  Operator "/\" 97..97
+                                                                  BinaryExpression 97..0
+                                                                    VnameExpression 97..97
+                                                                      SimpleVname 97..97
+                                                                        Identifier "i" 97..97
+                                                                    Operator "<=" 97..97
+                                                                    IntegerExpression 97..97
+                                                                      IntegerLiteral "5" 97..97
+                                                                AssignCommand 97..98
+                                                                  SimpleVname 97..97
+                                                                    Identifier "x" 97..97
+                                                                  IntegerExpression 97..98
+                                                                    IntegerLiteral "1" 97..98
+                                                                IfCommand 98..98
+                                                                  BinaryExpression 98..0
+                                                                    BinaryExpression 98..0
+                                                                      IntegerExpression 98..98
+                                                                        IntegerLiteral "6" 98..98
+                                                                      Operator "<=" 98..98
+                                                                      VnameExpression 98..98
+                                                                        SimpleVname 98..98
+                                                                          Identifier "i" 98..98
+                                                                    Operator "/\" 98..98
+                                                                    BinaryExpression 98..0
+                                                                      VnameExpression 98..98
+                                                                        SimpleVname 98..98
+                                                                          Identifier "i" 98..98
+                                                                      Operator "<=" 98..98
+                                                                      IntegerExpression 98..98
+                                                                        IntegerLiteral "8" 98..98
+                                                                  AssignCommand 98..98
+                                                                    SimpleVname 98..98
+                                                                      Identifier "x" 98..98
+                                                                    IntegerExpression 98..98
+                                                                      IntegerLiteral "2" 98..98
+                                                                  EmptyCommand 98..98
+                                                          IfCommand 99..101
+                                                            BinaryExpression 99..0
+                                                              BinaryExpression 99..0
+                                                                IntegerExpression 99..99
+                                                                  IntegerLiteral "0" 99..99
+                                                                Operator "<=" 99..99
+                                                                VnameExpression 99..99
+                                                                  SimpleVname 99..99
+                                                                    Identifier "j" 99..99
+                                                              Operator "/\" 99..99
+                                                              BinaryExpression 99..0
+                                                                VnameExpression 99..99
+                                                                  SimpleVname 99..99
+                                                                    Identifier "j" 99..99
+                                                                Operator "<=" 99..99
+                                                                IntegerExpression 99..99
+                                                                  IntegerLiteral "2" 99..99
+                                                            AssignCommand 99..100
+                                                              SimpleVname 99..99
+                                                                Identifier "y" 99..99
+                                                              IntegerExpression 99..100
+                                                                IntegerLiteral "0" 99..100
+                                                            IfCommand 100..101
+                                                              BinaryExpression 100..0
+                                                                BinaryExpression 100..0
+                                                                  IntegerExpression 100..100
+                                                                    IntegerLiteral "3" 100..100
+                                                                  Operator "<=" 100..100
+                                                                  VnameExpression 100..100
+                                                                    SimpleVname 100..100
+                                                                      Identifier "j" 100..100
+                                                                Operator "/\" 100..100
+                                                                BinaryExpression 100..0
+                                                                  VnameExpression 100..100
+                                                                    SimpleVname 100..100
+                                                                      Identifier "j" 100..100
+                                                                  Operator "<=" 100..100
+                                                                  IntegerExpression 100..100
+                                                                    IntegerLiteral "5" 100..100
+                                                              AssignCommand 100..101
+                                                                SimpleVname 100..100
+                                                                  Identifier "y" 100..100
+                                                                IntegerExpression 100..101
+                                                                  IntegerLiteral "1" 100..101
+                                                              IfCommand 101..101
+                                                                BinaryExpression 101..0
+                                                                  BinaryExpression 101..0
+                                                                    IntegerExpression 101..101
+                                                                      IntegerLiteral "6" 101..101
+                                                                    Operator "<=" 101..101
+                                                                    VnameExpression 101..101
+                                                                      SimpleVname 101..101
+                                                                        Identifier "j" 101..101
+                                                                  Operator "/\" 101..101
+                                                                  BinaryExpression 101..0
+                                                                    VnameExpression 101..101
+                                                                      SimpleVname 101..101
+                                                                        Identifier "j" 101..101
+                                                                    Operator "<=" 101..101
+                                                                    IntegerExpression 101..101
+                                                                      IntegerLiteral "8" 101..101
+                                                                AssignCommand 101..101
+                                                                  SimpleVname 101..101
+                                                                    Identifier "y" 101..101
+                                                                  IntegerExpression 101..101
+                                                                    IntegerLiteral "2" 101..101
+                                                                EmptyCommand 101..101
+                                                        AssignCommand 103..103
+                                                          SimpleVname 103..103
+                                                            Identifier "k" 103..103
+                                                          IntegerExpression 103..103
+                                                            IntegerLiteral "0" 103..103
+                                                      AssignCommand 104..104
+                                                        SimpleVname 104..104
+                                                          Identifier "l" 104..104
+                                                        IntegerExpression 104..104
+                                                          IntegerLiteral "0" 104..104
+                                                    WhileCommand 105..119
+                                                      BinaryExpression 105..0
+                                                        VnameExpression 105..105
+                                                          SimpleVname 105..105
+                                                            Identifier "k" 105..105
+                                                        Operator "<" 105..105
+                                                        IntegerExpression 105..105
+                                                          IntegerLiteral "3" 105..105
+                                                      SequentialCommand 108..118
+                                                        SequentialCommand 108..118
+                                                          WhileCommand 108..116
+                                                            BinaryExpression 108..0
+                                                              VnameExpression 108..108
+                                                                SimpleVname 108..108
+                                                                  Identifier "l" 108..108
+                                                              Operator "<" 108..108
+                                                              IntegerExpression 108..108
+                                                                IntegerLiteral "3" 108..108
+                                                            SequentialCommand 111..116
+                                                              SequentialCommand 111..116
+                                                                SequentialCommand 111..116
+                                                                  AssignCommand 111..111
+                                                                    SimpleVname 111..111
+                                                                      Identifier "tmp" 111..111
+                                                                    VnameExpression 111..111
+                                                                      SubscriptVname 111..111
+                                                                        SubscriptVname 111..111
+                                                                          SimpleVname 111..111
+                                                                            Identifier "matrix" 111..111
+                                                                          BinaryExpression 111..0
+                                                                            VnameExpression 111..111
+                                                                              SimpleVname 111..111
+                                                                                Identifier "k" 111..111
+                                                                            Operator "+" 111..111
+                                                                            BinaryExpression 111..0
+                                                                              VnameExpression 111..111
+                                                                                SimpleVname 111..111
+                                                                                  Identifier "x" 111..111
+                                                                              Operator "*" 111..111
+                                                                              IntegerExpression 111..111
+                                                                                IntegerLiteral "3" 111..111
+                                                                        BinaryExpression 111..0
+                                                                          VnameExpression 111..111
+                                                                            SimpleVname 111..111
+                                                                              Identifier "l" 111..111
+                                                                          Operator "+" 111..111
+                                                                          BinaryExpression 111..0
+                                                                            VnameExpression 111..111
+                                                                              SimpleVname 111..111
+                                                                                Identifier "y" 111..111
+                                                                            Operator "*" 111..111
+                                                                            IntegerExpression 111..111
+                                                                              IntegerLiteral "3" 111..111
+                                                                  IfCommand 112..114
+                                                                    BinaryExpression 112..0
+                                                                      VnameExpression 112..112
+                                                                        SimpleVname 112..112
+                                                                          Identifier "tmp" 112..112
+                                                                      Operator "\=" 112..112
+                                                                      IntegerExpression 112..112
+                                                                        IntegerLiteral "0" 112..112
+                                                                    AssignCommand 113..114
+                                                                      SubscriptVname 113..113
+                                                                        SubscriptVname 113..113
+                                                                          SubscriptVname 113..113
+                                                                            SimpleVname 113..113
+                                                                              Identifier "set" 113..113
+                                                                            VnameExpression 113..113
+                                                                              SimpleVname 113..113
+                                                                                Identifier "i" 113..113
+                                                                          VnameExpression 113..113
+                                                                            SimpleVname 113..113
+                                                                              Identifier "j" 113..113
+                                                                        VnameExpression 113..113
+                                                                          SimpleVname 113..113
+                                                                            Identifier "tmp" 113..113
+                                                                      VnameExpression 113..114
+                                                                        SimpleVname 113..114
+                                                                          Identifier "false" 113..114
+                                                                    EmptyCommand 114..114
+                                                                AssignCommand 115..115
+                                                                  SimpleVname 115..115
+                                                                    Identifier "l" 115..115
+                                                                  BinaryExpression 115..0
+                                                                    VnameExpression 115..115
+                                                                      SimpleVname 115..115
+                                                                        Identifier "l" 115..115
+                                                                    Operator "+" 115..115
+                                                                    IntegerExpression 115..115
+                                                                      IntegerLiteral "1" 115..115
+                                                              EmptyCommand 116..116
+                                                          AssignCommand 117..117
+                                                            SimpleVname 117..117
+                                                              Identifier "k" 117..117
+                                                            BinaryExpression 117..0
+                                                              VnameExpression 117..117
+                                                                SimpleVname 117..117
+                                                                  Identifier "k" 117..117
+                                                              Operator "+" 117..117
+                                                              IntegerExpression 117..117
+                                                                IntegerLiteral "1" 117..117
+                                                        EmptyCommand 118..118
+                                                  SequentialCommand 121..130
+                                                    AssignCommand 121..121
+                                                      SimpleVname 121..121
+                                                        Identifier "k" 121..121
+                                                      IntegerExpression 121..121
+                                                        IntegerLiteral "1" 121..121
+                                                    WhileCommand 122..130
+                                                      BinaryExpression 122..0
+                                                        VnameExpression 122..122
+                                                          SimpleVname 122..122
+                                                            Identifier "k" 122..122
+                                                        Operator "<" 122..122
+                                                        IntegerExpression 122..122
+                                                          IntegerLiteral "10" 122..122
+                                                      SequentialCommand 127..129
+                                                        SequentialCommand 127..129
+                                                          AssignCommand 127..127
+                                                            SubscriptVname 127..127
+                                                              SubscriptVname 127..127
+                                                                SubscriptVname 127..127
+                                                                  SimpleVname 127..127
+                                                                    Identifier "set" 127..127
+                                                                  VnameExpression 127..127
+                                                                    SimpleVname 127..127
+                                                                      Identifier "i" 127..127
+                                                                VnameExpression 127..127
+                                                                  SimpleVname 127..127
+                                                                    Identifier "j" 127..127
+                                                              VnameExpression 127..127
+                                                                SimpleVname 127..127
+                                                                  Identifier "k" 127..127
+                                                            VnameExpression 127..127
+                                                              SimpleVname 127..127
+                                                                Identifier "false" 127..127
+                                                          AssignCommand 128..128
+                                                            SimpleVname 128..128
+                                                              Identifier "k" 128..128
+                                                            BinaryExpression 128..0
+                                                              VnameExpression 128..128
+                                                                SimpleVname 128..128
+                                                                  Identifier "k" 128..128
+                                                              Operator "+" 128..128
+                                                              IntegerExpression 128..128
+                                                                IntegerLiteral "1" 128..128
+                                                        EmptyCommand 129..129
+                                                AssignCommand 131..131
+                                                  SimpleVname 131..131
+                                                    Identifier "j" 131..131
+                                                  BinaryExpression 131..0
+                                                    VnameExpression 131..131
+                                                      SimpleVname 131..131
+                                                        Identifier "j" 131..131
+                                                    Operator "+" 131..131
+                                                    IntegerExpression 131..131
+                                                      IntegerLiteral "1" 131..131
+                                              EmptyCommand 132..132
+                                        AssignCommand 133..133
+                                          SimpleVname 133..133
+                                            Identifier "i" 133..133
+                                          BinaryExpression 133..0
+                                            VnameExpression 133..133
+                                              SimpleVname 133..133
+                                                Identifier "i" 133..133
+                                            Operator "+" 133..133
+                                            IntegerExpression 133..133
+                                              IntegerLiteral "1" 133..133
+                                      EmptyCommand 134..134
+                                AssignCommand 139..139
+                                  SimpleVname 139..139
+                                    Identifier "i" 139..139
+                                  IntegerExpression 139..139
+                                    IntegerLiteral "0" 139..139
+                              WhileCommand 140..170
+                                BinaryExpression 140..0
+                                  VnameExpression 140..140
+                                    SimpleVname 140..140
+                                      Identifier "i" 140..140
+                                  Operator "<" 140..140
+                                  IntegerExpression 140..140
+                                    IntegerLiteral "9" 140..140
+                                SequentialCommand 142..170
+                                  SequentialCommand 142..170
+                                    SequentialCommand 142..170
+                                      AssignCommand 142..142
+                                        SimpleVname 142..142
+                                          Identifier "j" 142..142
+                                        IntegerExpression 142..142
+                                          IntegerLiteral "0" 142..142
+                                      WhileCommand 143..168
+                                        BinaryExpression 143..0
+                                          VnameExpression 143..143
+                                            SimpleVname 143..143
+                                              Identifier "j" 143..143
+                                          Operator "<" 143..143
+                                          IntegerExpression 143..143
+                                            IntegerLiteral "9" 143..143
+                                        SequentialCommand 145..168
+                                          SequentialCommand 145..168
+                                            IfCommand 145..166
+                                              BinaryExpression 145..0
+                                                VnameExpression 145..145
+                                                  SubscriptVname 145..145
+                                                    SubscriptVname 145..145
+                                                      SimpleVname 145..145
+                                                        Identifier "matrix" 145..145
+                                                      VnameExpression 145..145
+                                                        SimpleVname 145..145
+                                                          Identifier "i" 145..145
+                                                    VnameExpression 145..145
+                                                      SimpleVname 145..145
+                                                        Identifier "j" 145..145
+                                                Operator "=" 145..145
+                                                IntegerExpression 145..145
+                                                  IntegerLiteral "0" 145..145
+                                              SequentialCommand 147..166
+                                                SequentialCommand 147..166
+                                                  SequentialCommand 147..166
+                                                    SequentialCommand 147..166
+                                                      AssignCommand 147..147
+                                                        SimpleVname 147..147
+                                                          Identifier "count" 147..147
+                                                        IntegerExpression 147..147
+                                                          IntegerLiteral "0" 147..147
+                                                      AssignCommand 148..148
+                                                        SimpleVname 148..148
+                                                          Identifier "k" 148..148
+                                                        IntegerExpression 148..148
+                                                          IntegerLiteral "1" 148..148
+                                                    WhileCommand 149..157
+                                                      BinaryExpression 149..0
+                                                        VnameExpression 149..149
+                                                          SimpleVname 149..149
+                                                            Identifier "k" 149..149
+                                                        Operator "<" 149..149
+                                                        IntegerExpression 149..149
+                                                          IntegerLiteral "10" 149..149
+                                                      SequentialCommand 151..157
+                                                        SequentialCommand 151..157
+                                                          IfCommand 151..155
+                                                            BinaryExpression 151..0
+                                                              VnameExpression 151..151
+                                                                SubscriptVname 151..151
+                                                                  SubscriptVname 151..151
+                                                                    SubscriptVname 151..151
+                                                                      SimpleVname 151..151
+                                                                        Identifier "set" 151..151
+                                                                      VnameExpression 151..151
+                                                                        SimpleVname 151..151
+                                                                          Identifier "i" 151..151
+                                                                    VnameExpression 151..151
+                                                                      SimpleVname 151..151
+                                                                        Identifier "j" 151..151
+                                                                  VnameExpression 151..151
+                                                                    SimpleVname 151..151
+                                                                      Identifier "k" 151..151
+                                                              Operator "=" 151..151
+                                                              VnameExpression 151..151
+                                                                SimpleVname 151..151
+                                                                  Identifier "true" 151..151
+                                                            SequentialCommand 153..155
+                                                              SequentialCommand 153..155
+                                                                AssignCommand 153..153
+                                                                  SimpleVname 153..153
+                                                                    Identifier "count" 153..153
+                                                                  BinaryExpression 153..0
+                                                                    VnameExpression 153..153
+                                                                      SimpleVname 153..153
+                                                                        Identifier "count" 153..153
+                                                                    Operator "+" 153..153
+                                                                    IntegerExpression 153..153
+                                                                      IntegerLiteral "1" 153..153
+                                                                AssignCommand 154..154
+                                                                  SimpleVname 154..154
+                                                                    Identifier "pos" 154..154
+                                                                  VnameExpression 154..154
+                                                                    SimpleVname 154..154
+                                                                      Identifier "k" 154..154
+                                                              EmptyCommand 155..155
+                                                            EmptyCommand 155..155
+                                                          AssignCommand 156..156
+                                                            SimpleVname 156..156
+                                                              Identifier "k" 156..156
+                                                            BinaryExpression 156..0
+                                                              VnameExpression 156..156
+                                                                SimpleVname 156..156
+                                                                  Identifier "k" 156..156
+                                                              Operator "+" 156..156
+                                                              IntegerExpression 156..156
+                                                                IntegerLiteral "1" 156..156
+                                                        EmptyCommand 157..157
+                                                  IfCommand 159..165
+                                                    BinaryExpression 159..0
+                                                      BinaryExpression 159..0
+                                                        VnameExpression 159..159
+                                                          SimpleVname 159..159
+                                                            Identifier "count" 159..159
+                                                        Operator "=" 159..159
+                                                        IntegerExpression 159..159
+                                                          IntegerLiteral "1" 159..159
+                                                      Operator "/\" 159..159
+                                                      BinaryExpression 159..0
+                                                        VnameExpression 159..159
+                                                          SubscriptVname 159..159
+                                                            SubscriptVname 159..159
+                                                              SimpleVname 159..159
+                                                                Identifier "matrix" 159..159
+                                                              VnameExpression 159..159
+                                                                SimpleVname 159..159
+                                                                  Identifier "i" 159..159
+                                                            VnameExpression 159..159
+                                                              SimpleVname 159..159
+                                                                Identifier "j" 159..159
+                                                        Operator "=" 159..159
+                                                        IntegerExpression 159..159
+                                                          IntegerLiteral "0" 159..159
+                                                    SequentialCommand 163..165
+                                                      SequentialCommand 163..165
+                                                        AssignCommand 163..163
+                                                          SubscriptVname 163..163
+                                                            SubscriptVname 163..163
+                                                              SimpleVname 163..163
+                                                                Identifier "matrix" 163..163
+                                                              VnameExpression 163..163
+                                                                SimpleVname 163..163
+                                                                  Identifier "i" 163..163
+                                                            VnameExpression 163..163
+                                                              SimpleVname 163..163
+                                                                Identifier "j" 163..163
+                                                          VnameExpression 163..163
+                                                            SimpleVname 163..163
+                                                              Identifier "pos" 163..163
+                                                        AssignCommand 164..164
+                                                          SimpleVname 164..164
+                                                            Identifier "ready" 164..164
+                                                          VnameExpression 164..164
+                                                            SimpleVname 164..164
+                                                              Identifier "false" 164..164
+                                                      EmptyCommand 165..165
+                                                    EmptyCommand 165..165
+                                                EmptyCommand 166..166
+                                              EmptyCommand 166..166
+                                            AssignCommand 167..167
+                                              SimpleVname 167..167
+                                                Identifier "j" 167..167
+                                              BinaryExpression 167..0
+                                                VnameExpression 167..167
+                                                  SimpleVname 167..167
+                                                    Identifier "j" 167..167
+                                                Operator "+" 167..167
+                                                IntegerExpression 167..167
+                                                  IntegerLiteral "1" 167..167
+                                          EmptyCommand 168..168
+                                    AssignCommand 169..169
+                                      SimpleVname 169..169
+                                        Identifier "i" 169..169
+                                      BinaryExpression 169..0
+                                        VnameExpression 169..169
+                                          SimpleVname 169..169
+                                            Identifier "i" 169..169
+                                        Operator "+" 169..169
+                                        IntegerExpression 169..169
+                                          IntegerLiteral "1" 169..169
+                                  EmptyCommand 170..170
+                            AssignCommand 174..174
+                              SimpleVname 174..174
+                                Identifier "z" 174..174
+                              IntegerExpression 174..174
+                                IntegerLiteral "1" 174..174
+                          WhileCommand 175..283
+                            BinaryExpression 175..0
+                              VnameExpression 175..175
+                                SimpleVname 175..175
+                                  Identifier "z" 175..175
+                              Operator "<" 175..175
+                              IntegerExpression 175..175
+                                IntegerLiteral "10" 175..175
+                            SequentialCommand 180..283
+                              SequentialCommand 180..283
+                                SequentialCommand 180..283
+                                  SequentialCommand 180..283
+                                    SequentialCommand 180..283
+                                      SequentialCommand 180..283
+                                        SequentialCommand 180..283
+                                          AssignCommand 180..180
+                                            SimpleVname 180..180
+                                              Identifier "i" 180..180
+                                            IntegerExpression 180..180
+                                              IntegerLiteral "0" 180..180
+                                          WhileCommand 181..208
+                                            BinaryExpression 181..0
+                                              VnameExpression 181..181
+                                                SimpleVname 181..181
+                                                  Identifier "i" 181..181
+                                              Operator "<" 181..181
+                                              IntegerExpression 181..181
+                                                IntegerLiteral "9" 181..181
+                                            SequentialCommand 184..208
+                                              SequentialCommand 184..208
+                                                SequentialCommand 184..208
+                                                  SequentialCommand 184..208
+                                                    SequentialCommand 184..208
+                                                      AssignCommand 184..184
+                                                        SimpleVname 184..184
+                                                          Identifier "count" 184..184
+                                                        IntegerExpression 184..184
+                                                          IntegerLiteral "0" 184..184
+                                                      AssignCommand 185..185
+                                                        SimpleVname 185..185
+                                                          Identifier "j" 185..185
+                                                        IntegerExpression 185..185
+                                                          IntegerLiteral "0" 185..185
+                                                    WhileCommand 186..195
+                                                      BinaryExpression 186..0
+                                                        VnameExpression 186..186
+                                                          SimpleVname 186..186
+                                                            Identifier "j" 186..186
+                                                        Operator "<" 186..186
+                                                        IntegerExpression 186..186
+                                                          IntegerLiteral "9" 186..186
+                                                      SequentialCommand 189..195
+                                                        SequentialCommand 189..195
+                                                          IfCommand 189..193
+                                                            BinaryExpression 189..0
+                                                              VnameExpression 189..189
+                                                                SubscriptVname 189..189
+                                                                  SubscriptVname 189..189
+                                                                    SubscriptVname 189..189
+                                                                      SimpleVname 189..189
+                                                                        Identifier "set" 189..189
+                                                                      VnameExpression 189..189
+                                                                        SimpleVname 189..189
+                                                                          Identifier "i" 189..189
+                                                                    VnameExpression 189..189
+                                                                      SimpleVname 189..189
+                                                                        Identifier "j" 189..189
+                                                                  VnameExpression 189..189
+                                                                    SimpleVname 189..189
+                                                                      Identifier "z" 189..189
+                                                              Operator "=" 189..189
+                                                              VnameExpression 189..189
+                                                                SimpleVname 189..189
+                                                                  Identifier "true" 189..189
+                                                            SequentialCommand 191..193
+                                                              SequentialCommand 191..193
+                                                                AssignCommand 191..191
+                                                                  SimpleVname 191..191
+                                                                    Identifier "count" 191..191
+                                                                  BinaryExpression 191..0
+                                                                    VnameExpression 191..191
+                                                                      SimpleVname 191..191
+                                                                        Identifier "count" 191..191
+                                                                    Operator "+" 191..191
+                                                                    IntegerExpression 191..191
+                                                                      IntegerLiteral "1" 191..191
+                                                                AssignCommand 192..192
+                                                                  SimpleVname 192..192
+                                                                    Identifier "pos" 192..192
+                                                                  VnameExpression 192..192
+                                                                    SimpleVname 192..192
+                                                                      Identifier "j" 192..192
+                                                              EmptyCommand 193..193
+                                                            EmptyCommand 193..193
+                                                          AssignCommand 194..194
+                                                            SimpleVname 194..194
+                                                              Identifier "j" 194..194
+                                                            BinaryExpression 194..0
+                                                              VnameExpression 194..194
+                                                                SimpleVname 194..194
+                                                                  Identifier "j" 194..194
+                                                              Operator "+" 194..194
+                                                              IntegerExpression 194..194
+                                                                IntegerLiteral "1" 194..194
+                                                        EmptyCommand 195..195
+                                                  IfCommand 197..205
+                                                    BinaryExpression 197..0
+                                                      BinaryExpression 197..0
+                                                        VnameExpression 197..197
+                                                          SimpleVname 197..197
+                                                            Identifier "count" 197..197
+                                                        Operator "=" 197..197
+                                                        IntegerExpression 197..197
+                                                          IntegerLiteral "1" 197..197
+                                                      Operator "/\" 197..197
+                                                      BinaryExpression 197..0
+                                                        VnameExpression 197..197
+                                                          SubscriptVname 197..197
+                                                            SubscriptVname 197..197
+                                                              SimpleVname 197..197
+                                                                Identifier "matrix" 197..197
+                                                              VnameExpression 197..197
+                                                                SimpleVname 197..197
+                                                                  Identifier "i" 197..197
+                                                            VnameExpression 197..197
+                                                              SimpleVname 197..197
+                                                                Identifier "pos" 197..197
+                                                        Operator "=" 197..197
+                                                        IntegerExpression 197..197
+                                                          IntegerLiteral "0" 197..197
+                                                    SequentialCommand 203..205
+                                                      SequentialCommand 203..205
+                                                        AssignCommand 203..203
+                                                          SubscriptVname 203..203
+                                                            SubscriptVname 203..203
+                                                              SimpleVname 203..203
+                                                                Identifier "matrix" 203..203
+                                                              VnameExpression 203..203
+                                                                SimpleVname 203..203
+                                                                  Identifier "i" 203..203
+                                                            VnameExpression 203..203
+                                                              SimpleVname 203..203
+                                                                Identifier "pos" 203..203
+                                                          VnameExpression 203..203
+                                                            SimpleVname 203..203
+                                                              Identifier "z" 203..203
+                                                        AssignCommand 204..204
+                                                          SimpleVname 204..204
+                                                            Identifier "ready" 204..204
+                                                          VnameExpression 204..204
+                                                            SimpleVname 204..204
+                                                              Identifier "false" 204..204
+                                                      EmptyCommand 205..205
+                                                    EmptyCommand 205..205
+                                                AssignCommand 207..207
+                                                  SimpleVname 207..207
+                                                    Identifier "i" 207..207
+                                                  BinaryExpression 207..0
+                                                    VnameExpression 207..207
+                                                      SimpleVname 207..207
+                                                        Identifier "i" 207..207
+                                                    Operator "+" 207..207
+                                                    IntegerExpression 207..207
+                                                      IntegerLiteral "1" 207..207
+                                              EmptyCommand 208..208
+                                        AssignCommand 211..211
+                                          SimpleVname 211..211
+                                            Identifier "j" 211..211
+                                          IntegerExpression 211..211
+                                            IntegerLiteral "0" 211..211
+                                      WhileCommand 212..237
+                                        BinaryExpression 212..0
+                                          VnameExpression 212..212
+                                            SimpleVname 212..212
+                                              Identifier "j" 212..212
+                                          Operator "<" 212..212
+                                          IntegerExpression 212..212
+                                            IntegerLiteral "9" 212..212
+                                        SequentialCommand 215..237
+                                          SequentialCommand 215..237
+                                            SequentialCommand 215..237
+                                              SequentialCommand 215..237
+                                                SequentialCommand 215..237
+                                                  AssignCommand 215..215
+                                                    SimpleVname 215..215
+                                                      Identifier "count" 215..215
+                                                    IntegerExpression 215..215
+                                                      IntegerLiteral "0" 215..215
+                                                  AssignCommand 216..216
+                                                    SimpleVname 216..216
+                                                      Identifier "i" 216..216
+                                                    IntegerExpression 216..216
+                                                      IntegerLiteral "0" 216..216
+                                                WhileCommand 217..225
+                                                  BinaryExpression 217..0
+                                                    VnameExpression 217..217
+                                                      SimpleVname 217..217
+                                                        Identifier "i" 217..217
+                                                    Operator "<" 217..217
+                                                    IntegerExpression 217..217
+                                                      IntegerLiteral "9" 217..217
+                                                  SequentialCommand 219..225
+                                                    SequentialCommand 219..225
+                                                      IfCommand 219..223
+                                                        BinaryExpression 219..0
+                                                          VnameExpression 219..219
+                                                            SubscriptVname 219..219
+                                                              SubscriptVname 219..219
+                                                                SubscriptVname 219..219
+                                                                  SimpleVname 219..219
+                                                                    Identifier "set" 219..219
+                                                                  VnameExpression 219..219
+                                                                    SimpleVname 219..219
+                                                                      Identifier "i" 219..219
+                                                                VnameExpression 219..219
+                                                                  SimpleVname 219..219
+                                                                    Identifier "j" 219..219
+                                                              VnameExpression 219..219
+                                                                SimpleVname 219..219
+                                                                  Identifier "z" 219..219
+                                                          Operator "=" 219..219
+                                                          VnameExpression 219..219
+                                                            SimpleVname 219..219
+                                                              Identifier "true" 219..219
+                                                        SequentialCommand 221..223
+                                                          SequentialCommand 221..223
+                                                            AssignCommand 221..221
+                                                              SimpleVname 221..221
+                                                                Identifier "count" 221..221
+                                                              BinaryExpression 221..0
+                                                                VnameExpression 221..221
+                                                                  SimpleVname 221..221
+                                                                    Identifier "count" 221..221
+                                                                Operator "+" 221..221
+                                                                IntegerExpression 221..221
+                                                                  IntegerLiteral "1" 221..221
+                                                            AssignCommand 222..222
+                                                              SimpleVname 222..222
+                                                                Identifier "pos" 222..222
+                                                              VnameExpression 222..222
+                                                                SimpleVname 222..222
+                                                                  Identifier "i" 222..222
+                                                          EmptyCommand 223..223
+                                                        EmptyCommand 223..223
+                                                      AssignCommand 224..224
+                                                        SimpleVname 224..224
+                                                          Identifier "i" 224..224
+                                                        BinaryExpression 224..0
+                                                          VnameExpression 224..224
+                                                            SimpleVname 224..224
+                                                              Identifier "i" 224..224
+                                                          Operator "+" 224..224
+                                                          IntegerExpression 224..224
+                                                            IntegerLiteral "1" 224..224
+                                                    EmptyCommand 225..225
+                                              IfCommand 227..234
+                                                BinaryExpression 227..0
+                                                  BinaryExpression 227..0
+                                                    VnameExpression 227..227
+                                                      SimpleVname 227..227
+                                                        Identifier "count" 227..227
+                                                    Operator "=" 227..227
+                                                    IntegerExpression 227..227
+                                                      IntegerLiteral "1" 227..227
+                                                  Operator "/\" 227..227
+                                                  BinaryExpression 227..0
+                                                    VnameExpression 227..227
+                                                      SubscriptVname 227..227
+                                                        SubscriptVname 227..227
+                                                          SimpleVname 227..227
+                                                            Identifier "matrix" 227..227
+                                                          VnameExpression 227..227
+                                                            SimpleVname 227..227
+                                                              Identifier "pos" 227..227
+                                                        VnameExpression 227..227
+                                                          SimpleVname 227..227
+                                                            Identifier "j" 227..227
+                                                    Operator "=" 227..227
+                                                    IntegerExpression 227..227
+                                                      IntegerLiteral "0" 227..227
+                                                SequentialCommand 232..234
+                                                  SequentialCommand 232..234
+                                                    AssignCommand 232..232
+                                                      SubscriptVname 232..232
+                                                        SubscriptVname 232..232
+                                                          SimpleVname 232..232
+                                                            Identifier "matrix" 232..232
+                                                          VnameExpression 232..232
+                                                            SimpleVname 232..232
+                                                              Identifier "pos" 232..232
+                                                        VnameExpression 232..232
+                                                          SimpleVname 232..232
+                                                            Identifier "j" 232..232
+                                                      VnameExpression 232..232
+                                                        SimpleVname 232..232
+                                                          Identifier "z" 232..232
+                                                    AssignCommand 233..233
+                                                      SimpleVname 233..233
+                                                        Identifier "ready" 233..233
+                                                      VnameExpression 233..233
+                                                        SimpleVname 233..233
+                                                          Identifier "false" 233..233
+                                                  EmptyCommand 234..234
+                                                EmptyCommand 234..234
+                                            AssignCommand 236..236
+                                              SimpleVname 236..236
+                                                Identifier "j" 236..236
+                                              BinaryExpression 236..0
+                                                VnameExpression 236..236
+                                                  SimpleVname 236..236
+                                                    Identifier "j" 236..236
+                                                Operator "+" 236..236
+                                                IntegerExpression 236..236
+                                                  IntegerLiteral "1" 236..236
+                                          EmptyCommand 237..237
+                                    AssignCommand 240..240
+                                      SimpleVname 240..240
+                                        Identifier "x" 240..240
+                                      IntegerExpression 240..240
+                                        IntegerLiteral "0" 240..240
+                                  WhileCommand 241..281
+                                    BinaryExpression 241..0
+                                      VnameExpression 241..241
+                                        SimpleVname 241..241
+                                          Identifier "x" 241..241
+                                      Operator "<" 241..241
+                                      IntegerExpression 241..241
+                                        IntegerLiteral "3" 241..241
+                                    SequentialCommand 244..281
+                                      SequentialCommand 244..281
+                                        SequentialCommand 244..281
+                                          AssignCommand 244..244
+                                            SimpleVname 244..244
+                                              Identifier "y" 244..244
+                                            IntegerExpression 244..244
+                                              IntegerLiteral "0" 244..244
+                                          WhileCommand 245..279
+                                            BinaryExpression 245..0
+                                              VnameExpression 245..245
+                                                SimpleVname 245..245
+                                                  Identifier "y" 245..245
+                                              Operator "<" 245..245
+                                              IntegerExpression 245..245
+                                                IntegerLiteral "3" 245..245
+                                            SequentialCommand 248..278
+                                              SequentialCommand 248..278
+                                                SequentialCommand 248..278
+                                                  SequentialCommand 248..278
+                                                    SequentialCommand 248..278
+                                                      SequentialCommand 248..278
+                                                        SequentialCommand 248..278
+                                                          AssignCommand 248..248
+                                                            SimpleVname 248..248
+                                                              Identifier "count" 248..248
+                                                            IntegerExpression 248..248
+                                                              IntegerLiteral "0" 248..248
+                                                          AssignCommand 249..249
+                                                            SimpleVname 249..249
+                                                              Identifier "i" 249..249
+                                                            IntegerExpression 249..249
+                                                              IntegerLiteral "0" 249..249
+                                                        WhileCommand 250..265
+                                                          BinaryExpression 250..0
+                                                            VnameExpression 250..250
+                                                              SimpleVname 250..250
+                                                                Identifier "i" 250..250
+                                                            Operator "<" 250..250
+                                                            IntegerExpression 250..250
+                                                              IntegerLiteral "3" 250..250
+                                                          SequentialCommand 253..265
+                                                            SequentialCommand 253..265
+                                                              SequentialCommand 253..265
+                                                                AssignCommand 253..253
+                                                                  SimpleVname 253..253
+                                                                    Identifier "j" 253..253
+                                                                  IntegerExpression 253..253
+                                                                    IntegerLiteral "0" 253..253
+                                                                WhileCommand 254..263
+                                                                  BinaryExpression 254..0
+                                                                    VnameExpression 254..254
+                                                                      SimpleVname 254..254
+                                                                        Identifier "j" 254..254
+                                                                    Operator "<" 254..254
+                                                                    IntegerExpression 254..254
+                                                                      IntegerLiteral "3" 254..254
+                                                                  SequentialCommand 256..263
+                                                                    SequentialCommand 256..263
+                                                                      IfCommand 256..261
+                                                                        BinaryExpression 256..0
+                                                                          VnameExpression 256..256
+                                                                            SubscriptVname 256..256
+                                                                              SubscriptVname 256..256
+                                                                                SubscriptVname 256..256
+                                                                                  SimpleVname 256..256
+                                                                                    Identifier "set" 256..256
+                                                                                  BinaryExpression 256..0
+                                                                                    VnameExpression 256..256
+                                                                                      SimpleVname 256..256
+                                                                                        Identifier "i" 256..256
+                                                                                    Operator "+" 256..256
+                                                                                    BinaryExpression 256..0
+                                                                                      VnameExpression 256..256
+                                                                                        SimpleVname 256..256
+                                                                                          Identifier "x" 256..256
+                                                                                      Operator "*" 256..256
+                                                                                      IntegerExpression 256..256
+                                                                                        IntegerLiteral "3" 256..256
+                                                                                BinaryExpression 256..0
+                                                                                  VnameExpression 256..256
+                                                                                    SimpleVname 256..256
+                                                                                      Identifier "j" 256..256
+                                                                                  Operator "+" 256..256
+                                                                                  BinaryExpression 256..0
+                                                                                    VnameExpression 256..256
+                                                                                      SimpleVname 256..256
+                                                                                        Identifier "y" 256..256
+                                                                                    Operator "*" 256..256
+                                                                                    IntegerExpression 256..256
+                                                                                      IntegerLiteral "3" 256..256
+                                                                              VnameExpression 256..256
+                                                                                SimpleVname 256..256
+                                                                                  Identifier "z" 256..256
+                                                                          Operator "=" 256..256
+                                                                          VnameExpression 256..256
+                                                                            SimpleVname 256..256
+                                                                              Identifier "true" 256..256
+                                                                        SequentialCommand 258..261
+                                                                          SequentialCommand 258..261
+                                                                            SequentialCommand 258..261
+                                                                              AssignCommand 258..258
+                                                                                SimpleVname 258..258
+                                                                                  Identifier "count" 258..258
+                                                                                BinaryExpression 258..0
+                                                                                  VnameExpression 258..258
+                                                                                    SimpleVname 258..258
+                                                                                      Identifier "count" 258..258
+                                                                                  Operator "+" 258..258
+                                                                                  IntegerExpression 258..258
+                                                                                    IntegerLiteral "1" 258..258
+                                                                              AssignCommand 259..259
+                                                                                SimpleVname 259..259
+                                                                                  Identifier "pos1" 259..259
+                                                                                VnameExpression 259..259
+                                                                                  SimpleVname 259..259
+                                                                                    Identifier "i" 259..259
+                                                                            AssignCommand 260..260
+                                                                              SimpleVname 260..260
+                                                                                Identifier "pos2" 260..260
+                                                                              VnameExpression 260..260
+                                                                                SimpleVname 260..260
+                                                                                  Identifier "j" 260..260
+                                                                          EmptyCommand 261..261
+                                                                        EmptyCommand 261..261
+                                                                      AssignCommand 262..262
+                                                                        SimpleVname 262..262
+                                                                          Identifier "j" 262..262
+                                                                        BinaryExpression 262..0
+                                                                          VnameExpression 262..262
+                                                                            SimpleVname 262..262
+                                                                              Identifier "j" 262..262
+                                                                          Operator "+" 262..262
+                                                                          IntegerExpression 262..262
+                                                                            IntegerLiteral "1" 262..262
+                                                                    EmptyCommand 263..263
+                                                              AssignCommand 264..264
+                                                                SimpleVname 264..264
+                                                                  Identifier "i" 264..264
+                                                                BinaryExpression 264..0
+                                                                  VnameExpression 264..264
+                                                                    SimpleVname 264..264
+                                                                      Identifier "i" 264..264
+                                                                  Operator "+" 264..264
+                                                                  IntegerExpression 264..264
+                                                                    IntegerLiteral "1" 264..264
+                                                            EmptyCommand 265..265
+                                                      AssignCommand 267..267
+                                                        SimpleVname 267..267
+                                                          Identifier "pos1" 267..267
+                                                        BinaryExpression 267..0
+                                                          VnameExpression 267..267
+                                                            SimpleVname 267..267
+                                                              Identifier "pos1" 267..267
+                                                          Operator "+" 267..267
+                                                          BinaryExpression 267..0
+                                                            VnameExpression 267..267
+                                                              SimpleVname 267..267
+                                                                Identifier "x" 267..267
+                                                            Operator "*" 267..267
+                                                            IntegerExpression 267..267
+                                                              IntegerLiteral "3" 267..267
+                                                    AssignCommand 268..268
+                                                      SimpleVname 268..268
+                                                        Identifier "pos2" 268..268
+                                                      BinaryExpression 268..0
+                                                        VnameExpression 268..268
+                                                          SimpleVname 268..268
+                                                            Identifier "pos2" 268..268
+                                                        Operator "+" 268..268
+                                                        BinaryExpression 268..0
+                                                          VnameExpression 268..268
+                                                            SimpleVname 268..268
+                                                              Identifier "y" 268..268
+                                                          Operator "*" 268..268
+                                                          IntegerExpression 268..268
+                                                            IntegerLiteral "3" 268..268
+                                                  IfCommand 270..276
+                                                    BinaryExpression 270..0
+                                                      BinaryExpression 270..0
+                                                        VnameExpression 270..270
+                                                          SimpleVname 270..270
+                                                            Identifier "count" 270..270
+                                                        Operator "=" 270..270
+                                                        IntegerExpression 270..270
+                                                          IntegerLiteral "1" 270..270
+                                                      Operator "/\" 270..270
+                                                      BinaryExpression 270..0
+                                                        VnameExpression 270..270
+                                                          SubscriptVname 270..270
+                                                            SubscriptVname 270..270
+                                                              SimpleVname 270..270
+                                                                Identifier "matrix" 270..270
+                                                              VnameExpression 270..270
+                                                                SimpleVname 270..270
+                                                                  Identifier "pos1" 270..270
+                                                            VnameExpression 270..270
+                                                              SimpleVname 270..270
+                                                                Identifier "pos2" 270..270
+                                                        Operator "=" 270..270
+                                                        IntegerExpression 270..270
+                                                          IntegerLiteral "0" 270..270
+                                                    SequentialCommand 274..276
+                                                      SequentialCommand 274..276
+                                                        AssignCommand 274..274
+                                                          SubscriptVname 274..274
+                                                            SubscriptVname 274..274
+                                                              SimpleVname 274..274
+                                                                Identifier "matrix" 274..274
+                                                              VnameExpression 274..274
+                                                                SimpleVname 274..274
+                                                                  Identifier "pos1" 274..274
+                                                            VnameExpression 274..274
+                                                              SimpleVname 274..274
+                                                                Identifier "pos2" 274..274
+                                                          VnameExpression 274..274
+                                                            SimpleVname 274..274
+                                                              Identifier "z" 274..274
+                                                        AssignCommand 275..275
+                                                          SimpleVname 275..275
+                                                            Identifier "ready" 275..275
+                                                          VnameExpression 275..275
+                                                            SimpleVname 275..275
+                                                              Identifier "false" 275..275
+                                                      EmptyCommand 276..276
+                                                    EmptyCommand 276..276
+                                                AssignCommand 277..277
+                                                  SimpleVname 277..277
+                                                    Identifier "y" 277..277
+                                                  BinaryExpression 277..0
+                                                    VnameExpression 277..277
+                                                      SimpleVname 277..277
+                                                        Identifier "y" 277..277
+                                                    Operator "+" 277..277
+                                                    IntegerExpression 277..277
+                                                      IntegerLiteral "1" 277..277
+                                              EmptyCommand 279..278
+                                        AssignCommand 280..280
+                                          SimpleVname 280..280
+                                            Identifier "x" 280..280
+                                          BinaryExpression 280..0
+                                            VnameExpression 280..280
+                                              SimpleVname 280..280
+                                                Identifier "x" 280..280
+                                            Operator "+" 280..280
+                                            IntegerExpression 280..280
+                                              IntegerLiteral "1" 280..280
+                                      EmptyCommand 281..281
+                                AssignCommand 282..282
+                                  SimpleVname 282..282
+                                    Identifier "z" 282..282
+                                  BinaryExpression 282..0
+                                    VnameExpression 282..282
+                                      SimpleVname 282..282
+                                        Identifier "z" 282..282
+                                    Operator "+" 282..282
+                                    IntegerExpression 282..282
+                                      IntegerLiteral "1" 282..282
+                              EmptyCommand 283..283
+                        CallCommand 287..287
+                          Identifier "puteol" 287..287
+                          EmptyActualParameterSequence 287..287
+                      AssignCommand 288..288
+                        SimpleVname 288..288
+                          Identifier "i" 288..288
+                        IntegerExpression 288..288
+                          IntegerLiteral "0" 288..288
+                    WhileCommand 289..300
+                      BinaryExpression 289..0
+                        VnameExpression 289..289
+                          SimpleVname 289..289
+                            Identifier "i" 289..289
+                        Operator "<" 289..289
+                        IntegerExpression 289..289
+                          IntegerLiteral "9" 289..289
+                      SequentialCommand 291..300
+                        SequentialCommand 291..300
+                          SequentialCommand 291..300
+                            SequentialCommand 291..300
+                              AssignCommand 291..291
+                                SimpleVname 291..291
+                                  Identifier "j" 291..291
+                                IntegerExpression 291..291
+                                  IntegerLiteral "0" 291..291
+                              WhileCommand 292..297
+                                BinaryExpression 292..0
+                                  VnameExpression 292..292
+                                    SimpleVname 292..292
+                                      Identifier "j" 292..292
+                                  Operator "<" 292..292
+                                  IntegerExpression 292..292
+                                    IntegerLiteral "9" 292..292
+                                SequentialCommand 294..297
+                                  SequentialCommand 294..297
+                                    SequentialCommand 294..297
+                                      CallCommand 294..294
+                                        Identifier "putint" 294..294
+                                        SingleActualParameterSequence 294..294
+                                          ConstActualParameter 294..294
+                                            VnameExpression 294..294
+                                              SubscriptVname 294..294
+                                                SubscriptVname 294..294
+                                                  SimpleVname 294..294
+                                                    Identifier "matrix" 294..294
+                                                  VnameExpression 294..294
+                                                    SimpleVname 294..294
+                                                      Identifier "i" 294..294
+                                                VnameExpression 294..294
+                                                  SimpleVname 294..294
+                                                    Identifier "j" 294..294
+                                      CallCommand 295..295
+                                        Identifier "put" 295..295
+                                        SingleActualParameterSequence 295..295
+                                          ConstActualParameter 295..295
+                                            CharacterExpression 295..295
+                                              CharacterLiteral "' '" 295..295
+                                    AssignCommand 296..296
+                                      SimpleVname 296..296
+                                        Identifier "j" 296..296
+                                      BinaryExpression 296..0
+                                        VnameExpression 296..296
+                                          SimpleVname 296..296
+                                            Identifier "j" 296..296
+                                        Operator "+" 296..296
+                                        IntegerExpression 296..296
+                                          IntegerLiteral "1" 296..296
+                                  EmptyCommand 297..297
+                            CallCommand 298..298
+                              Identifier "puteol" 298..298
+                              EmptyActualParameterSequence 298..298
+                          AssignCommand 299..299
+                            SimpleVname 299..299
+                              Identifier "i" 299..299
+                            BinaryExpression 299..0
+                              VnameExpression 299..299
+                                SimpleVname 299..299
+                                  Identifier "i" 299..299
+                              Operator "+" 299..299
+                              IntegerExpression 299..299
+                                IntegerLiteral "1" 299..299
+                        EmptyCommand 300..300
+                  CallCommand 301..301
+                    Identifier "puteol" 301..301
+                    EmptyActualParameterSequence 301..301
+                EmptyCommand 305..302
+          AssignCommand 308..308
+            SimpleVname 308..308
+              Identifier "i" 308..308
+            IntegerExpression 308..308
+              IntegerLiteral "0" 308..308
+        WhileCommand 309..328
+          BinaryExpression 309..0
+            VnameExpression 309..309
+              SimpleVname 309..309
+                Identifier "i" 309..309
+            Operator "<" 309..309
+            IntegerExpression 309..309
+              IntegerLiteral "9" 309..309
+          SequentialCommand 311..328
+            SequentialCommand 311..328
+              SequentialCommand 311..328
+                AssignCommand 311..311
+                  SimpleVname 311..311
+                    Identifier "j" 311..311
+                  IntegerExpression 311..311
+                    IntegerLiteral "0" 311..311
+                WhileCommand 312..326
+                  BinaryExpression 312..0
+                    VnameExpression 312..312
+                      SimpleVname 312..312
+                        Identifier "j" 312..312
+                    Operator "<" 312..312
+                    IntegerExpression 312..312
+                      IntegerLiteral "9" 312..312
+                  SequentialCommand 314..326
+                    SequentialCommand 314..326
+                      SequentialCommand 314..326
+                        SequentialCommand 314..326
+                          SequentialCommand 314..326
+                            SequentialCommand 314..326
+                              SequentialCommand 314..326
+                                SequentialCommand 314..326
+                                  SequentialCommand 314..326
+                                    CallCommand 314..314
+                                      Identifier "puteol" 314..314
+                                      EmptyActualParameterSequence 314..314
+                                    CallCommand 314..314
+                                      Identifier "putint" 314..314
+                                      SingleActualParameterSequence 314..314
+                                        ConstActualParameter 314..314
+                                          VnameExpression 314..314
+                                            SimpleVname 314..314
+                                              Identifier "i" 314..314
+                                  CallCommand 314..314
+                                    Identifier "put" 314..314
+                                    SingleActualParameterSequence 314..314
+                                      ConstActualParameter 314..314
+                                        CharacterExpression 314..314
+                                          CharacterLiteral "','" 314..314
+                                CallCommand 314..314
+                                  Identifier "putint" 314..314
+                                  SingleActualParameterSequence 314..314
+                                    ConstActualParameter 314..314
+                                      VnameExpression 314..314
+                                        SimpleVname 314..314
+                                          Identifier "j" 314..314
+                              CallCommand 314..314
+                                Identifier "put" 314..314
+                                SingleActualParameterSequence 314..314
+                                  ConstActualParameter 314..314
+                                    CharacterExpression 314..314
+                                      CharacterLiteral "':'" 314..314
+                            CallCommand 314..314
+                              Identifier "put" 314..314
+                              SingleActualParameterSequence 314..314
+                                ConstActualParameter 314..314
+                                  CharacterExpression 314..314
+                                    CharacterLiteral "' '" 314..314
+                          AssignCommand 315..315
+                            SimpleVname 315..315
+                              Identifier "k" 315..315
+                            IntegerExpression 315..315
+                              IntegerLiteral "1" 315..315
+                        WhileCommand 316..324
+                          BinaryExpression 316..0
+                            VnameExpression 316..316
+                              SimpleVname 316..316
+                                Identifier "k" 316..316
+                            Operator "<" 316..316
+                            IntegerExpression 316..316
+                              IntegerLiteral "10" 316..316
+                          SequentialCommand 318..324
+                            SequentialCommand 318..324
+                              IfCommand 318..322
+                                BinaryExpression 318..0
+                                  VnameExpression 318..318
+                                    SubscriptVname 318..318
+                                      SubscriptVname 318..318
+                                        SubscriptVname 318..318
+                                          SimpleVname 318..318
+                                            Identifier "set" 318..318
+                                          VnameExpression 318..318
+                                            SimpleVname 318..318
+                                              Identifier "i" 318..318
+                                        VnameExpression 318..318
+                                          SimpleVname 318..318
+                                            Identifier "j" 318..318
+                                      VnameExpression 318..318
+                                        SimpleVname 318..318
+                                          Identifier "k" 318..318
+                                  Operator "=" 318..318
+                                  VnameExpression 318..318
+                                    SimpleVname 318..318
+                                      Identifier "true" 318..318
+                                SequentialCommand 320..322
+                                  SequentialCommand 320..322
+                                    CallCommand 320..320
+                                      Identifier "putint" 320..320
+                                      SingleActualParameterSequence 320..320
+                                        ConstActualParameter 320..320
+                                          VnameExpression 320..320
+                                            SimpleVname 320..320
+                                              Identifier "k" 320..320
+                                    CallCommand 321..321
+                                      Identifier "put" 321..321
+                                      SingleActualParameterSequence 321..321
+                                        ConstActualParameter 321..321
+                                          CharacterExpression 321..321
+                                            CharacterLiteral "' '" 321..321
+                                  EmptyCommand 322..322
+                                EmptyCommand 322..322
+                              AssignCommand 323..323
+                                SimpleVname 323..323
+                                  Identifier "k" 323..323
+                                BinaryExpression 323..0
+                                  VnameExpression 323..323
+                                    SimpleVname 323..323
+                                      Identifier "k" 323..323
+                                  Operator "+" 323..323
+                                  IntegerExpression 323..323
+                                    IntegerLiteral "1" 323..323
+                            EmptyCommand 324..324
+                      AssignCommand 325..325
+                        SimpleVname 325..325
+                          Identifier "j" 325..325
+                        BinaryExpression 325..0
+                          VnameExpression 325..325
+                            SimpleVname 325..325
+                              Identifier "j" 325..325
+                          Operator "+" 325..325
+                          IntegerExpression 325..325
+                            IntegerLiteral "1" 325..325
+                    EmptyCommand 326..326
+              AssignCommand 327..327
+                SimpleVname 327..327
+                  Identifier "i" 327..327
+                BinaryExpression 327..0
+                  VnameExpression 327..327
+                    SimpleVname 327..327
+                      Identifier "i" 327..327
+                  Operator "+" 327..327
+                  IntegerExpression 327..327
+                    IntegerLiteral "1" 327..327
+            EmptyCommand 328..328
+      EmptyCommand 330..329

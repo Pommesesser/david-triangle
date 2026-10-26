@@ -1,0 +1,185 @@
+Program 44..45
+  LetCommand 1..45
+    SequentialDeclaration 3..36
+      SequentialDeclaration 3..36
+        SequentialDeclaration 3..36
+          TypeDeclaration 3..6
+            Identifier "Line" 3..3
+            RecordTypeDenoter 3..6
+              MultipleFieldTypeDenoter 4..6
+                Identifier "content" 4..4
+                ArrayTypeDenoter 4..4
+                  IntegerLiteral "80" 4..4
+                  SimpleTypeDenoter 4..4
+                    Identifier "Char" 4..4
+                SingleFieldTypeDenoter 5..6
+                  Identifier "length" 5..5
+                  SimpleTypeDenoter 5..6
+                    Identifier "Integer" 5..6
+          ProcDeclaration 9..20
+            Identifier "readLine" 9..9
+            SingleFormalParameterSequence 9..9
+              VarFormalParameter 9..9
+                Identifier "line" 9..9
+                SimpleTypeDenoter 9..9
+                  Identifier "Line" 9..9
+            LetCommand 10..20
+              VarDeclaration 11..12
+                Identifier "ch" 11..11
+                SimpleTypeDenoter 11..12
+                  Identifier "Char" 11..12
+              SequentialCommand 13..20
+                SequentialCommand 13..20
+                  SequentialCommand 13..20
+                    AssignCommand 13..13
+                      DotVname 13..13
+                        SimpleVname 13..13
+                          Identifier "line" 13..13
+                        Identifier "length" 13..13
+                      IntegerExpression 13..13
+                        IntegerLiteral "0" 13..13
+                    CallCommand 14..14
+                      Identifier "get" 14..14
+                      SingleActualParameterSequence 14..14
+                        VarActualParameter 14..14
+                          SimpleVname 14..14
+                            Identifier "ch" 14..14
+                  WhileCommand 15..19
+                    BinaryExpression 15..0
+                      UnaryExpression 15..15
+                        Operator "\" 15..15
+                        CallExpression 15..15
+                          Identifier "eol" 15..15
+                          EmptyActualParameterSequence 15..15
+                      Operator "/\" 15..15
+                      UnaryExpression 15..15
+                        Operator "\" 15..15
+                        CallExpression 15..15
+                          Identifier "eof" 15..15
+                          EmptyActualParameterSequence 15..15
+                    SequentialCommand 16..19
+                      SequentialCommand 16..19
+                        SequentialCommand 16..19
+                          AssignCommand 16..16
+                            SubscriptVname 16..16
+                              DotVname 16..16
+                                SimpleVname 16..16
+                                  Identifier "line" 16..16
+                                Identifier "content" 16..16
+                              VnameExpression 16..16
+                                DotVname 16..16
+                                  SimpleVname 16..16
+                                    Identifier "line" 16..16
+                                  Identifier "length" 16..16
+                            VnameExpression 16..16
+                              SimpleVname 16..16
+                                Identifier "ch" 16..16
+                          AssignCommand 17..17
+                            DotVname 17..17
+                              SimpleVname 17..17
+                                Identifier "line" 17..17
+                              Identifier "length" 17..17
+                            BinaryExpression 17..0
+                              VnameExpression 17..17
+                                DotVname 17..17
+                                  SimpleVname 17..17
+                                    Identifier "line" 17..17
+                                  Identifier "length" 17..17
+                              Operator "+" 17..17
+                              IntegerExpression 17..17
+                                IntegerLiteral "1" 17..17
+                        CallCommand 18..18
+                          Identifier "get" 18..18
+                          SingleActualParameterSequence 18..18
+                            VarActualParameter 18..18
+                              SimpleVname 18..18
+                                Identifier "ch" 18..18
+                      EmptyCommand 19..19
+                EmptyCommand 20..20
+        ProcDeclaration 23..33
+          Identifier "putReversedLine" 23..23
+          SingleFormalParameterSequence 23..23
+            ConstFormalParameter 23..23
+              Identifier "line" 23..23
+              SimpleTypeDenoter 23..23
+                Identifier "Line" 23..23
+          LetCommand 24..33
+            VarDeclaration 25..26
+              Identifier "i" 25..25
+              SimpleTypeDenoter 25..26
+                Identifier "Integer" 25..26
+            SequentialCommand 27..33
+              SequentialCommand 27..33
+                SequentialCommand 27..33
+                  AssignCommand 27..27
+                    SimpleVname 27..27
+                      Identifier "i" 27..27
+                    VnameExpression 27..27
+                      DotVname 27..27
+                        SimpleVname 27..27
+                          Identifier "line" 27..27
+                        Identifier "length" 27..27
+                  WhileCommand 28..31
+                    BinaryExpression 28..0
+                      VnameExpression 28..28
+                        SimpleVname 28..28
+                          Identifier "i" 28..28
+                      Operator ">" 28..28
+                      IntegerExpression 28..28
+                        IntegerLiteral "0" 28..28
+                    SequentialCommand 29..31
+                      AssignCommand 29..29
+                        SimpleVname 29..29
+                          Identifier "i" 29..29
+                        BinaryExpression 29..0
+                          VnameExpression 29..29
+                            SimpleVname 29..29
+                              Identifier "i" 29..29
+                          Operator "-" 29..29
+                          IntegerExpression 29..29
+                            IntegerLiteral "1" 29..29
+                      CallCommand 30..31
+                        Identifier "put" 30..30
+                        SingleActualParameterSequence 30..30
+                          ConstActualParameter 30..30
+                            VnameExpression 30..30
+                              SubscriptVname 30..30
+                                DotVname 30..30
+                                  SimpleVname 30..30
+                                    Identifier "line" 30..30
+                                  Identifier "content" 30..30
+                                VnameExpression 30..30
+                                  SimpleVname 30..30
+                                    Identifier "i" 30..30
+                CallCommand 32..32
+                  Identifier "puteol" 32..32
+                  EmptyActualParameterSequence 32..32
+              EmptyCommand 33..33
+      VarDeclaration 35..36
+        Identifier "line" 35..35
+        SimpleTypeDenoter 35..36
+          Identifier "Line" 35..36
+    SequentialCommand 40..44
+      WhileCommand 40..43
+        UnaryExpression 40..40
+          Operator "\" 40..40
+          CallExpression 40..40
+            Identifier "eof" 40..40
+            EmptyActualParameterSequence 40..40
+        SequentialCommand 41..43
+          SequentialCommand 41..43
+            CallCommand 41..41
+              Identifier "readLine" 41..41
+              SingleActualParameterSequence 41..41
+                VarActualParameter 41..41
+                  SimpleVname 41..41
+                    Identifier "line" 41..41
+            CallCommand 42..42
+              Identifier "putReversedLine" 42..42
+              SingleActualParameterSequence 42..42
+                ConstActualParameter 42..42
+                  VnameExpression 42..42
+                    SimpleVname 42..42
+                      Identifier "line" 42..42
+          EmptyCommand 43..43
+      EmptyCommand 44..44

@@ -1,0 +1,2249 @@
+Program 322..323
+  LetCommand 6..323
+    SequentialDeclaration 8..278
+      SequentialDeclaration 8..278
+        SequentialDeclaration 8..278
+          SequentialDeclaration 8..278
+            SequentialDeclaration 8..278
+              SequentialDeclaration 8..278
+                SequentialDeclaration 8..278
+                  SequentialDeclaration 8..278
+                    SequentialDeclaration 8..278
+                      SequentialDeclaration 8..278
+                        SequentialDeclaration 8..278
+                          SequentialDeclaration 8..278
+                            SequentialDeclaration 8..278
+                              SequentialDeclaration 8..278
+                                SequentialDeclaration 8..278
+                                  SequentialDeclaration 8..278
+                                    SequentialDeclaration 8..278
+                                      SequentialDeclaration 8..278
+                                        TypeDeclaration 8..8
+                                          Identifier "PackedPixel" 8..8
+                                          SimpleTypeDenoter 8..8
+                                            Identifier "Integer" 8..8
+                                        TypeDeclaration 9..9
+                                          Identifier "Byte" 9..9
+                                          SimpleTypeDenoter 9..9
+                                            Identifier "Integer" 9..9
+                                      ConstDeclaration 33..33
+                                        Identifier "BUFFERSIZE" 33..33
+                                        IntegerExpression 33..33
+                                          IntegerLiteral "225" 33..33
+                                    ConstDeclaration 34..34
+                                      Identifier "PIXSIZE" 34..34
+                                      BinaryExpression 34..0
+                                        IntegerExpression 34..34
+                                          IntegerLiteral "3" 34..34
+                                        Operator "*" 34..34
+                                        VnameExpression 34..34
+                                          SimpleVname 34..34
+                                            Identifier "BUFFERSIZE" 34..34
+                                  TypeDeclaration 36..40
+                                    Identifier "Buffer" 36..36
+                                    RecordTypeDenoter 36..40
+                                      SingleFieldTypeDenoter 39..40
+                                        Identifier "data" 39..39
+                                        ArrayTypeDenoter 39..40
+                                          IntegerLiteral "225" 39..39
+                                          SimpleTypeDenoter 39..40
+                                            Identifier "PackedPixel" 39..40
+                                TypeDeclaration 42..48
+                                  Identifier "Image" 42..42
+                                  RecordTypeDenoter 42..48
+                                    MultipleFieldTypeDenoter 45..48
+                                      Identifier "buffer" 45..45
+                                      ArrayTypeDenoter 45..45
+                                        IntegerLiteral "4" 45..45
+                                        SimpleTypeDenoter 45..45
+                                          Identifier "Buffer" 45..45
+                                      MultipleFieldTypeDenoter 46..48
+                                        Identifier "width" 46..46
+                                        SimpleTypeDenoter 46..46
+                                          Identifier "Integer" 46..46
+                                        SingleFieldTypeDenoter 47..48
+                                          Identifier "height" 47..47
+                                          SimpleTypeDenoter 47..48
+                                            Identifier "Integer" 47..48
+                              ProcDeclaration 50..64
+                                Identifier "createImage" 50..50
+                                MultipleFormalParameterSequence 50..50
+                                  VarFormalParameter 50..50
+                                    Identifier "image" 50..50
+                                    SimpleTypeDenoter 50..50
+                                      Identifier "Image" 50..50
+                                  MultipleFormalParameterSequence 50..50
+                                    ConstFormalParameter 50..50
+                                      Identifier "w" 50..50
+                                      SimpleTypeDenoter 50..50
+                                        Identifier "Integer" 50..50
+                                    SingleFormalParameterSequence 50..50
+                                      ConstFormalParameter 50..50
+                                        Identifier "h" 50..50
+                                        SimpleTypeDenoter 50..50
+                                          Identifier "Integer" 50..50
+                                SequentialCommand 53..64
+                                  SequentialCommand 53..64
+                                    SequentialCommand 53..64
+                                      IfCommand 53..60
+                                        BinaryExpression 53..0
+                                          BinaryExpression 53..0
+                                            VnameExpression 53..53
+                                              SimpleVname 53..53
+                                                Identifier "w" 53..53
+                                            Operator "*" 53..53
+                                            VnameExpression 53..53
+                                              SimpleVname 53..53
+                                                Identifier "h" 53..53
+                                          Operator ">" 53..53
+                                          BinaryExpression 53..0
+                                            IntegerExpression 53..53
+                                              IntegerLiteral "4" 53..53
+                                            Operator "*" 53..53
+                                            VnameExpression 53..53
+                                              SimpleVname 53..53
+                                                Identifier "PIXSIZE" 53..53
+                                        LetCommand 54..60
+                                          VarDeclaration 55..56
+                                            Identifier "bla" 55..55
+                                            SimpleTypeDenoter 55..56
+                                              Identifier "Integer" 55..56
+                                          SequentialCommand 57..59
+                                            SequentialCommand 57..59
+                                              SequentialCommand 57..59
+                                                SequentialCommand 57..59
+                                                  CallCommand 57..57
+                                                    Identifier "put" 57..57
+                                                    SingleActualParameterSequence 57..57
+                                                      ConstActualParameter 57..57
+                                                        CharacterExpression 57..57
+                                                          CharacterLiteral "'x'" 57..57
+                                                  CallCommand 57..57
+                                                    Identifier "puteol" 57..57
+                                                    EmptyActualParameterSequence 57..57
+                                                AssignCommand 58..58
+                                                  SimpleVname 58..58
+                                                    Identifier "bla" 58..58
+                                                  IntegerExpression 58..58
+                                                    IntegerLiteral "30000" 58..58
+                                              AssignCommand 59..59
+                                                SimpleVname 59..59
+                                                  Identifier "bla" 59..59
+                                                BinaryExpression 59..0
+                                                  IntegerExpression 59..59
+                                                    IntegerLiteral "30000" 59..59
+                                                  Operator "*" 59..59
+                                                  VnameExpression 59..59
+                                                    SimpleVname 59..59
+                                                      Identifier "bla" 59..59
+                                            EmptyCommand 60..59
+                                        EmptyCommand 60..60
+                                      AssignCommand 62..62
+                                        DotVname 62..62
+                                          SimpleVname 62..62
+                                            Identifier "image" 62..62
+                                          Identifier "width" 62..62
+                                        VnameExpression 62..62
+                                          SimpleVname 62..62
+                                            Identifier "w" 62..62
+                                    AssignCommand 63..63
+                                      DotVname 63..63
+                                        SimpleVname 63..63
+                                          Identifier "image" 63..63
+                                        Identifier "height" 63..63
+                                      VnameExpression 63..63
+                                        SimpleVname 63..63
+                                          Identifier "h" 63..63
+                                  EmptyCommand 64..64
+                            FuncDeclaration 68..69
+                              Identifier "pow2" 68..68
+                              SingleFormalParameterSequence 68..68
+                                ConstFormalParameter 68..68
+                                  Identifier "v" 68..68
+                                  SimpleTypeDenoter 68..68
+                                    Identifier "Integer" 68..68
+                              SimpleTypeDenoter 68..68
+                                Identifier "Integer" 68..68
+                              IfExpression 69..69
+                                BinaryExpression 69..0
+                                  VnameExpression 69..69
+                                    SimpleVname 69..69
+                                      Identifier "v" 69..69
+                                  Operator "=" 69..69
+                                  IntegerExpression 69..69
+                                    IntegerLiteral "0" 69..69
+                                IntegerExpression 69..69
+                                  IntegerLiteral "1" 69..69
+                                BinaryExpression 69..0
+                                  IntegerExpression 69..69
+                                    IntegerLiteral "2" 69..69
+                                  Operator "*" 69..69
+                                  CallExpression 69..69
+                                    Identifier "pow2" 69..69
+                                    SingleActualParameterSequence 69..69
+                                      ConstActualParameter 69..69
+                                        BinaryExpression 69..0
+                                          VnameExpression 69..69
+                                            SimpleVname 69..69
+                                              Identifier "v" 69..69
+                                          Operator "-" 69..69
+                                          IntegerExpression 69..69
+                                            IntegerLiteral "1" 69..69
+                          FuncDeclaration 72..73
+                            Identifier "getGroup" 72..72
+                            MultipleFormalParameterSequence 72..72
+                              ConstFormalParameter 72..72
+                                Identifier "p" 72..72
+                                SimpleTypeDenoter 72..72
+                                  Identifier "PackedPixel" 72..72
+                              SingleFormalParameterSequence 72..72
+                                ConstFormalParameter 72..72
+                                  Identifier "g" 72..72
+                                  SimpleTypeDenoter 72..72
+                                    Identifier "Integer" 72..72
+                            SimpleTypeDenoter 72..72
+                              Identifier "Byte" 72..72
+                            BinaryExpression 73..0
+                              BinaryExpression 73..0
+                                VnameExpression 73..73
+                                  SimpleVname 73..73
+                                    Identifier "p" 73..73
+                                Operator "/" 73..73
+                                CallExpression 73..73
+                                  Identifier "pow2" 73..73
+                                  SingleActualParameterSequence 73..73
+                                    ConstActualParameter 73..73
+                                      BinaryExpression 73..0
+                                        VnameExpression 73..73
+                                          SimpleVname 73..73
+                                            Identifier "g" 73..73
+                                        Operator "*" 73..73
+                                        IntegerExpression 73..73
+                                          IntegerLiteral "5" 73..73
+                              Operator "//" 73..73
+                              IntegerExpression 73..73
+                                IntegerLiteral "32" 73..73
+                        ProcDeclaration 83..96
+                          Identifier "setGroup" 83..83
+                          MultipleFormalParameterSequence 83..83
+                            VarFormalParameter 83..83
+                              Identifier "p" 83..83
+                              SimpleTypeDenoter 83..83
+                                Identifier "PackedPixel" 83..83
+                            MultipleFormalParameterSequence 83..83
+                              ConstFormalParameter 83..83
+                                Identifier "v" 83..83
+                                SimpleTypeDenoter 83..83
+                                  Identifier "Byte" 83..83
+                              SingleFormalParameterSequence 83..83
+                                ConstFormalParameter 83..83
+                                  Identifier "g" 83..83
+                                  SimpleTypeDenoter 83..83
+                                    Identifier "Integer" 83..83
+                          LetCommand 84..96
+                            VarDeclaration 86..87
+                              Identifier "tmp" 86..86
+                              SimpleTypeDenoter 86..87
+                                Identifier "Integer" 86..87
+                            SequentialCommand 89..96
+                              SequentialCommand 89..96
+                                SequentialCommand 89..96
+                                  SequentialCommand 89..96
+                                    AssignCommand 89..89
+                                      SimpleVname 89..89
+                                        Identifier "tmp" 89..89
+                                      BinaryExpression 89..0
+                                        CallExpression 89..89
+                                          Identifier "getGroup" 89..89
+                                          MultipleActualParameterSequence 89..89
+                                            ConstActualParameter 89..89
+                                              VnameExpression 89..89
+                                                SimpleVname 89..89
+                                                  Identifier "p" 89..89
+                                            SingleActualParameterSequence 89..89
+                                              ConstActualParameter 89..89
+                                                VnameExpression 89..89
+                                                  SimpleVname 89..89
+                                                    Identifier "g" 89..89
+                                        Operator "*" 89..89
+                                        CallExpression 89..89
+                                          Identifier "pow2" 89..89
+                                          SingleActualParameterSequence 89..89
+                                            ConstActualParameter 89..89
+                                              BinaryExpression 89..0
+                                                VnameExpression 89..89
+                                                  SimpleVname 89..89
+                                                    Identifier "g" 89..89
+                                                Operator "*" 89..89
+                                                IntegerExpression 89..89
+                                                  IntegerLiteral "5" 89..89
+                                    AssignCommand 90..90
+                                      SimpleVname 90..90
+                                        Identifier "p" 90..90
+                                      BinaryExpression 90..0
+                                        VnameExpression 90..90
+                                          SimpleVname 90..90
+                                            Identifier "p" 90..90
+                                        Operator "-" 90..90
+                                        VnameExpression 90..90
+                                          SimpleVname 90..90
+                                            Identifier "tmp" 90..90
+                                  IfCommand 93..93
+                                    BinaryExpression 93..0
+                                      VnameExpression 93..93
+                                        SimpleVname 93..93
+                                          Identifier "v" 93..93
+                                      Operator "<" 93..93
+                                      IntegerExpression 93..93
+                                        IntegerLiteral "31" 93..93
+                                    AssignCommand 93..93
+                                      SimpleVname 93..93
+                                        Identifier "tmp" 93..93
+                                      VnameExpression 93..93
+                                        SimpleVname 93..93
+                                          Identifier "v" 93..93
+                                    AssignCommand 93..93
+                                      SimpleVname 93..93
+                                        Identifier "tmp" 93..93
+                                      IntegerExpression 93..93
+                                        IntegerLiteral "31" 93..93
+                                AssignCommand 94..94
+                                  SimpleVname 94..94
+                                    Identifier "tmp" 94..94
+                                  BinaryExpression 94..0
+                                    VnameExpression 94..94
+                                      SimpleVname 94..94
+                                        Identifier "tmp" 94..94
+                                    Operator "*" 94..94
+                                    CallExpression 94..94
+                                      Identifier "pow2" 94..94
+                                      SingleActualParameterSequence 94..94
+                                        ConstActualParameter 94..94
+                                          BinaryExpression 94..0
+                                            VnameExpression 94..94
+                                              SimpleVname 94..94
+                                                Identifier "g" 94..94
+                                            Operator "*" 94..94
+                                            IntegerExpression 94..94
+                                              IntegerLiteral "5" 94..94
+                              AssignCommand 95..96
+                                SimpleVname 95..95
+                                  Identifier "p" 95..95
+                                BinaryExpression 95..0
+                                  VnameExpression 95..95
+                                    SimpleVname 95..95
+                                      Identifier "p" 95..95
+                                  Operator "+" 95..95
+                                  VnameExpression 95..96
+                                    SimpleVname 95..96
+                                      Identifier "tmp" 95..96
+                      ProcDeclaration 117..137
+                        Identifier "setPixel" 117..117
+                        MultipleFormalParameterSequence 117..119
+                          ConstFormalParameter 117..117
+                            Identifier "x" 117..117
+                            SimpleTypeDenoter 117..117
+                              Identifier "Integer" 117..117
+                          MultipleFormalParameterSequence 117..119
+                            ConstFormalParameter 117..117
+                              Identifier "y" 117..117
+                              SimpleTypeDenoter 117..117
+                                Identifier "Integer" 117..117
+                            MultipleFormalParameterSequence 117..119
+                              ConstFormalParameter 117..117
+                                Identifier "w" 117..117
+                                SimpleTypeDenoter 117..117
+                                  Identifier "Integer" 117..117
+                              MultipleFormalParameterSequence 118..119
+                                VarFormalParameter 118..118
+                                  Identifier "buff0" 118..118
+                                  SimpleTypeDenoter 118..118
+                                    Identifier "Buffer" 118..118
+                                MultipleFormalParameterSequence 118..119
+                                  VarFormalParameter 118..118
+                                    Identifier "buff1" 118..118
+                                    SimpleTypeDenoter 118..118
+                                      Identifier "Buffer" 118..118
+                                  MultipleFormalParameterSequence 119..119
+                                    VarFormalParameter 119..119
+                                      Identifier "buff2" 119..119
+                                      SimpleTypeDenoter 119..119
+                                        Identifier "Buffer" 119..119
+                                    MultipleFormalParameterSequence 119..119
+                                      VarFormalParameter 119..119
+                                        Identifier "buff3" 119..119
+                                        SimpleTypeDenoter 119..119
+                                          Identifier "Buffer" 119..119
+                                      SingleFormalParameterSequence 119..119
+                                        ConstFormalParameter 119..119
+                                          Identifier "value" 119..119
+                                          SimpleTypeDenoter 119..119
+                                            Identifier "Byte" 119..119
+                        LetCommand 120..137
+                          VarDeclaration 121..122
+                            Identifier "address" 121..121
+                            SimpleTypeDenoter 121..122
+                              Identifier "Integer" 121..122
+                          SequentialCommand 123..137
+                            AssignCommand 123..123
+                              SimpleVname 123..123
+                                Identifier "address" 123..123
+                              BinaryExpression 123..0
+                                BinaryExpression 123..0
+                                  VnameExpression 123..123
+                                    SimpleVname 123..123
+                                      Identifier "y" 123..123
+                                  Operator "*" 123..123
+                                  VnameExpression 123..123
+                                    SimpleVname 123..123
+                                      Identifier "w" 123..123
+                                Operator "+" 123..123
+                                VnameExpression 123..123
+                                  SimpleVname 123..123
+                                    Identifier "x" 123..123
+                            IfCommand 124..137
+                              BinaryExpression 124..0
+                                BinaryExpression 124..0
+                                  VnameExpression 124..124
+                                    SimpleVname 124..124
+                                      Identifier "address" 124..124
+                                  Operator "/" 124..124
+                                  VnameExpression 124..124
+                                    SimpleVname 124..124
+                                      Identifier "PIXSIZE" 124..124
+                                Operator "=" 124..124
+                                IntegerExpression 124..124
+                                  IntegerLiteral "0" 124..124
+                              CallCommand 125..127
+                                Identifier "setGroup" 125..125
+                                MultipleActualParameterSequence 125..126
+                                  VarActualParameter 125..125
+                                    SubscriptVname 125..125
+                                      DotVname 125..125
+                                        SimpleVname 125..125
+                                          Identifier "buff0" 125..125
+                                        Identifier "data" 125..125
+                                      BinaryExpression 125..0
+                                        BinaryExpression 125..0
+                                          VnameExpression 125..125
+                                            SimpleVname 125..125
+                                              Identifier "address" 125..125
+                                          Operator "//" 125..125
+                                          VnameExpression 125..125
+                                            SimpleVname 125..125
+                                              Identifier "PIXSIZE" 125..125
+                                        Operator "/" 125..125
+                                        IntegerExpression 125..125
+                                          IntegerLiteral "3" 125..125
+                                  MultipleActualParameterSequence 125..126
+                                    ConstActualParameter 125..125
+                                      VnameExpression 125..125
+                                        SimpleVname 125..125
+                                          Identifier "value" 125..125
+                                    SingleActualParameterSequence 126..126
+                                      ConstActualParameter 126..126
+                                        BinaryExpression 126..0
+                                          BinaryExpression 126..0
+                                            VnameExpression 126..126
+                                              SimpleVname 126..126
+                                                Identifier "address" 126..126
+                                            Operator "//" 126..126
+                                            VnameExpression 126..126
+                                              SimpleVname 126..126
+                                                Identifier "PIXSIZE" 126..126
+                                          Operator "//" 126..126
+                                          IntegerExpression 126..126
+                                            IntegerLiteral "3" 126..126
+                              IfCommand 127..137
+                                BinaryExpression 127..0
+                                  BinaryExpression 127..0
+                                    VnameExpression 127..127
+                                      SimpleVname 127..127
+                                        Identifier "address" 127..127
+                                    Operator "/" 127..127
+                                    VnameExpression 127..127
+                                      SimpleVname 127..127
+                                        Identifier "PIXSIZE" 127..127
+                                  Operator "=" 127..127
+                                  IntegerExpression 127..127
+                                    IntegerLiteral "1" 127..127
+                                CallCommand 128..130
+                                  Identifier "setGroup" 128..128
+                                  MultipleActualParameterSequence 128..129
+                                    VarActualParameter 128..128
+                                      SubscriptVname 128..128
+                                        DotVname 128..128
+                                          SimpleVname 128..128
+                                            Identifier "buff1" 128..128
+                                          Identifier "data" 128..128
+                                        BinaryExpression 128..0
+                                          BinaryExpression 128..0
+                                            VnameExpression 128..128
+                                              SimpleVname 128..128
+                                                Identifier "address" 128..128
+                                            Operator "//" 128..128
+                                            VnameExpression 128..128
+                                              SimpleVname 128..128
+                                                Identifier "PIXSIZE" 128..128
+                                          Operator "/" 128..128
+                                          IntegerExpression 128..128
+                                            IntegerLiteral "3" 128..128
+                                    MultipleActualParameterSequence 128..129
+                                      ConstActualParameter 128..128
+                                        VnameExpression 128..128
+                                          SimpleVname 128..128
+                                            Identifier "value" 128..128
+                                      SingleActualParameterSequence 129..129
+                                        ConstActualParameter 129..129
+                                          BinaryExpression 129..0
+                                            BinaryExpression 129..0
+                                              VnameExpression 129..129
+                                                SimpleVname 129..129
+                                                  Identifier "address" 129..129
+                                              Operator "//" 129..129
+                                              VnameExpression 129..129
+                                                SimpleVname 129..129
+                                                  Identifier "PIXSIZE" 129..129
+                                            Operator "//" 129..129
+                                            IntegerExpression 129..129
+                                              IntegerLiteral "3" 129..129
+                                IfCommand 130..137
+                                  BinaryExpression 130..0
+                                    BinaryExpression 130..0
+                                      VnameExpression 130..130
+                                        SimpleVname 130..130
+                                          Identifier "address" 130..130
+                                      Operator "/" 130..130
+                                      VnameExpression 130..130
+                                        SimpleVname 130..130
+                                          Identifier "PIXSIZE" 130..130
+                                    Operator "=" 130..130
+                                    IntegerExpression 130..130
+                                      IntegerLiteral "2" 130..130
+                                  CallCommand 131..133
+                                    Identifier "setGroup" 131..131
+                                    MultipleActualParameterSequence 131..132
+                                      VarActualParameter 131..131
+                                        SubscriptVname 131..131
+                                          DotVname 131..131
+                                            SimpleVname 131..131
+                                              Identifier "buff2" 131..131
+                                            Identifier "data" 131..131
+                                          BinaryExpression 131..0
+                                            BinaryExpression 131..0
+                                              VnameExpression 131..131
+                                                SimpleVname 131..131
+                                                  Identifier "address" 131..131
+                                              Operator "//" 131..131
+                                              VnameExpression 131..131
+                                                SimpleVname 131..131
+                                                  Identifier "PIXSIZE" 131..131
+                                            Operator "/" 131..131
+                                            IntegerExpression 131..131
+                                              IntegerLiteral "3" 131..131
+                                      MultipleActualParameterSequence 131..132
+                                        ConstActualParameter 131..131
+                                          VnameExpression 131..131
+                                            SimpleVname 131..131
+                                              Identifier "value" 131..131
+                                        SingleActualParameterSequence 132..132
+                                          ConstActualParameter 132..132
+                                            BinaryExpression 132..0
+                                              BinaryExpression 132..0
+                                                VnameExpression 132..132
+                                                  SimpleVname 132..132
+                                                    Identifier "address" 132..132
+                                                Operator "//" 132..132
+                                                VnameExpression 132..132
+                                                  SimpleVname 132..132
+                                                    Identifier "PIXSIZE" 132..132
+                                              Operator "//" 132..132
+                                              IntegerExpression 132..132
+                                                IntegerLiteral "3" 132..132
+                                  IfCommand 133..137
+                                    BinaryExpression 133..0
+                                      BinaryExpression 133..0
+                                        VnameExpression 133..133
+                                          SimpleVname 133..133
+                                            Identifier "address" 133..133
+                                        Operator "/" 133..133
+                                        VnameExpression 133..133
+                                          SimpleVname 133..133
+                                            Identifier "PIXSIZE" 133..133
+                                      Operator "=" 133..133
+                                      IntegerExpression 133..133
+                                        IntegerLiteral "3" 133..133
+                                    CallCommand 134..136
+                                      Identifier "setGroup" 134..134
+                                      MultipleActualParameterSequence 134..135
+                                        VarActualParameter 134..134
+                                          SubscriptVname 134..134
+                                            DotVname 134..134
+                                              SimpleVname 134..134
+                                                Identifier "buff3" 134..134
+                                              Identifier "data" 134..134
+                                            BinaryExpression 134..0
+                                              BinaryExpression 134..0
+                                                VnameExpression 134..134
+                                                  SimpleVname 134..134
+                                                    Identifier "address" 134..134
+                                                Operator "//" 134..134
+                                                VnameExpression 134..134
+                                                  SimpleVname 134..134
+                                                    Identifier "PIXSIZE" 134..134
+                                              Operator "/" 134..134
+                                              IntegerExpression 134..134
+                                                IntegerLiteral "3" 134..134
+                                        MultipleActualParameterSequence 134..135
+                                          ConstActualParameter 134..134
+                                            VnameExpression 134..134
+                                              SimpleVname 134..134
+                                                Identifier "value" 134..134
+                                          SingleActualParameterSequence 135..135
+                                            ConstActualParameter 135..135
+                                              BinaryExpression 135..0
+                                                BinaryExpression 135..0
+                                                  VnameExpression 135..135
+                                                    SimpleVname 135..135
+                                                      Identifier "address" 135..135
+                                                  Operator "//" 135..135
+                                                  VnameExpression 135..135
+                                                    SimpleVname 135..135
+                                                      Identifier "PIXSIZE" 135..135
+                                                Operator "//" 135..135
+                                                IntegerExpression 135..135
+                                                  IntegerLiteral "3" 135..135
+                                    EmptyCommand 137..137
+                    FuncDeclaration 143..159
+                      Identifier "getPixel" 143..143
+                      MultipleFormalParameterSequence 143..145
+                        ConstFormalParameter 143..143
+                          Identifier "x" 143..143
+                          SimpleTypeDenoter 143..143
+                            Identifier "Integer" 143..143
+                        MultipleFormalParameterSequence 143..145
+                          ConstFormalParameter 143..143
+                            Identifier "y" 143..143
+                            SimpleTypeDenoter 143..143
+                              Identifier "Integer" 143..143
+                          MultipleFormalParameterSequence 143..145
+                            ConstFormalParameter 143..143
+                              Identifier "w" 143..143
+                              SimpleTypeDenoter 143..143
+                                Identifier "Integer" 143..143
+                            MultipleFormalParameterSequence 144..145
+                              VarFormalParameter 144..144
+                                Identifier "buff0" 144..144
+                                SimpleTypeDenoter 144..144
+                                  Identifier "Buffer" 144..144
+                              MultipleFormalParameterSequence 144..145
+                                VarFormalParameter 144..144
+                                  Identifier "buff1" 144..144
+                                  SimpleTypeDenoter 144..144
+                                    Identifier "Buffer" 144..144
+                                MultipleFormalParameterSequence 145..145
+                                  VarFormalParameter 145..145
+                                    Identifier "buff2" 145..145
+                                    SimpleTypeDenoter 145..145
+                                      Identifier "Buffer" 145..145
+                                  SingleFormalParameterSequence 145..145
+                                    VarFormalParameter 145..145
+                                      Identifier "buff3" 145..145
+                                      SimpleTypeDenoter 145..145
+                                        Identifier "Buffer" 145..145
+                      SimpleTypeDenoter 145..145
+                        Identifier "Byte" 145..145
+                      IfExpression 146..159
+                        BinaryExpression 146..0
+                          BinaryExpression 146..0
+                            BinaryExpression 146..0
+                              BinaryExpression 146..0
+                                VnameExpression 146..146
+                                  SimpleVname 146..146
+                                    Identifier "y" 146..146
+                                Operator "*" 146..146
+                                VnameExpression 146..146
+                                  SimpleVname 146..146
+                                    Identifier "w" 146..146
+                              Operator "+" 146..146
+                              VnameExpression 146..146
+                                SimpleVname 146..146
+                                  Identifier "x" 146..146
+                            Operator "/" 146..146
+                            VnameExpression 146..146
+                              SimpleVname 146..146
+                                Identifier "PIXSIZE" 146..146
+                          Operator "=" 146..146
+                          IntegerExpression 146..146
+                            IntegerLiteral "0" 146..146
+                        CallExpression 147..149
+                          Identifier "getGroup" 147..147
+                          MultipleActualParameterSequence 147..148
+                            ConstActualParameter 147..147
+                              VnameExpression 147..147
+                                SubscriptVname 147..147
+                                  DotVname 147..147
+                                    SimpleVname 147..147
+                                      Identifier "buff0" 147..147
+                                    Identifier "data" 147..147
+                                  BinaryExpression 147..0
+                                    BinaryExpression 147..0
+                                      BinaryExpression 147..0
+                                        BinaryExpression 147..0
+                                          VnameExpression 147..147
+                                            SimpleVname 147..147
+                                              Identifier "y" 147..147
+                                          Operator "*" 147..147
+                                          VnameExpression 147..147
+                                            SimpleVname 147..147
+                                              Identifier "w" 147..147
+                                        Operator "+" 147..147
+                                        VnameExpression 147..147
+                                          SimpleVname 147..147
+                                            Identifier "x" 147..147
+                                      Operator "//" 147..147
+                                      VnameExpression 147..147
+                                        SimpleVname 147..147
+                                          Identifier "PIXSIZE" 147..147
+                                    Operator "/" 147..147
+                                    IntegerExpression 147..147
+                                      IntegerLiteral "3" 147..147
+                            SingleActualParameterSequence 148..148
+                              ConstActualParameter 148..148
+                                BinaryExpression 148..0
+                                  BinaryExpression 148..0
+                                    BinaryExpression 148..0
+                                      BinaryExpression 148..0
+                                        VnameExpression 148..148
+                                          SimpleVname 148..148
+                                            Identifier "y" 148..148
+                                        Operator "*" 148..148
+                                        VnameExpression 148..148
+                                          SimpleVname 148..148
+                                            Identifier "w" 148..148
+                                      Operator "+" 148..148
+                                      VnameExpression 148..148
+                                        SimpleVname 148..148
+                                          Identifier "x" 148..148
+                                    Operator "//" 148..148
+                                    VnameExpression 148..148
+                                      SimpleVname 148..148
+                                        Identifier "PIXSIZE" 148..148
+                                  Operator "//" 148..148
+                                  IntegerExpression 148..148
+                                    IntegerLiteral "3" 148..148
+                        IfExpression 149..159
+                          BinaryExpression 149..0
+                            BinaryExpression 149..0
+                              BinaryExpression 149..0
+                                BinaryExpression 149..0
+                                  VnameExpression 149..149
+                                    SimpleVname 149..149
+                                      Identifier "y" 149..149
+                                  Operator "*" 149..149
+                                  VnameExpression 149..149
+                                    SimpleVname 149..149
+                                      Identifier "w" 149..149
+                                Operator "+" 149..149
+                                VnameExpression 149..149
+                                  SimpleVname 149..149
+                                    Identifier "x" 149..149
+                              Operator "/" 149..149
+                              VnameExpression 149..149
+                                SimpleVname 149..149
+                                  Identifier "PIXSIZE" 149..149
+                            Operator "=" 149..149
+                            IntegerExpression 149..149
+                              IntegerLiteral "1" 149..149
+                          CallExpression 150..152
+                            Identifier "getGroup" 150..150
+                            MultipleActualParameterSequence 150..151
+                              ConstActualParameter 150..150
+                                VnameExpression 150..150
+                                  SubscriptVname 150..150
+                                    DotVname 150..150
+                                      SimpleVname 150..150
+                                        Identifier "buff1" 150..150
+                                      Identifier "data" 150..150
+                                    BinaryExpression 150..0
+                                      BinaryExpression 150..0
+                                        BinaryExpression 150..0
+                                          BinaryExpression 150..0
+                                            VnameExpression 150..150
+                                              SimpleVname 150..150
+                                                Identifier "y" 150..150
+                                            Operator "*" 150..150
+                                            VnameExpression 150..150
+                                              SimpleVname 150..150
+                                                Identifier "w" 150..150
+                                          Operator "+" 150..150
+                                          VnameExpression 150..150
+                                            SimpleVname 150..150
+                                              Identifier "x" 150..150
+                                        Operator "//" 150..150
+                                        VnameExpression 150..150
+                                          SimpleVname 150..150
+                                            Identifier "PIXSIZE" 150..150
+                                      Operator "/" 150..150
+                                      IntegerExpression 150..150
+                                        IntegerLiteral "3" 150..150
+                              SingleActualParameterSequence 151..151
+                                ConstActualParameter 151..151
+                                  BinaryExpression 151..0
+                                    BinaryExpression 151..0
+                                      BinaryExpression 151..0
+                                        BinaryExpression 151..0
+                                          VnameExpression 151..151
+                                            SimpleVname 151..151
+                                              Identifier "y" 151..151
+                                          Operator "*" 151..151
+                                          VnameExpression 151..151
+                                            SimpleVname 151..151
+                                              Identifier "w" 151..151
+                                        Operator "+" 151..151
+                                        VnameExpression 151..151
+                                          SimpleVname 151..151
+                                            Identifier "x" 151..151
+                                      Operator "//" 151..151
+                                      VnameExpression 151..151
+                                        SimpleVname 151..151
+                                          Identifier "PIXSIZE" 151..151
+                                    Operator "//" 151..151
+                                    IntegerExpression 151..151
+                                      IntegerLiteral "3" 151..151
+                          IfExpression 152..159
+                            BinaryExpression 152..0
+                              BinaryExpression 152..0
+                                BinaryExpression 152..0
+                                  BinaryExpression 152..0
+                                    VnameExpression 152..152
+                                      SimpleVname 152..152
+                                        Identifier "y" 152..152
+                                    Operator "*" 152..152
+                                    VnameExpression 152..152
+                                      SimpleVname 152..152
+                                        Identifier "w" 152..152
+                                  Operator "+" 152..152
+                                  VnameExpression 152..152
+                                    SimpleVname 152..152
+                                      Identifier "x" 152..152
+                                Operator "/" 152..152
+                                VnameExpression 152..152
+                                  SimpleVname 152..152
+                                    Identifier "PIXSIZE" 152..152
+                              Operator "=" 152..152
+                              IntegerExpression 152..152
+                                IntegerLiteral "2" 152..152
+                            CallExpression 153..155
+                              Identifier "getGroup" 153..153
+                              MultipleActualParameterSequence 153..154
+                                ConstActualParameter 153..153
+                                  VnameExpression 153..153
+                                    SubscriptVname 153..153
+                                      DotVname 153..153
+                                        SimpleVname 153..153
+                                          Identifier "buff2" 153..153
+                                        Identifier "data" 153..153
+                                      BinaryExpression 153..0
+                                        BinaryExpression 153..0
+                                          BinaryExpression 153..0
+                                            BinaryExpression 153..0
+                                              VnameExpression 153..153
+                                                SimpleVname 153..153
+                                                  Identifier "y" 153..153
+                                              Operator "*" 153..153
+                                              VnameExpression 153..153
+                                                SimpleVname 153..153
+                                                  Identifier "w" 153..153
+                                            Operator "+" 153..153
+                                            VnameExpression 153..153
+                                              SimpleVname 153..153
+                                                Identifier "x" 153..153
+                                          Operator "//" 153..153
+                                          VnameExpression 153..153
+                                            SimpleVname 153..153
+                                              Identifier "PIXSIZE" 153..153
+                                        Operator "/" 153..153
+                                        IntegerExpression 153..153
+                                          IntegerLiteral "3" 153..153
+                                SingleActualParameterSequence 154..154
+                                  ConstActualParameter 154..154
+                                    BinaryExpression 154..0
+                                      BinaryExpression 154..0
+                                        BinaryExpression 154..0
+                                          BinaryExpression 154..0
+                                            VnameExpression 154..154
+                                              SimpleVname 154..154
+                                                Identifier "y" 154..154
+                                            Operator "*" 154..154
+                                            VnameExpression 154..154
+                                              SimpleVname 154..154
+                                                Identifier "w" 154..154
+                                          Operator "+" 154..154
+                                          VnameExpression 154..154
+                                            SimpleVname 154..154
+                                              Identifier "x" 154..154
+                                        Operator "//" 154..154
+                                        VnameExpression 154..154
+                                          SimpleVname 154..154
+                                            Identifier "PIXSIZE" 154..154
+                                      Operator "//" 154..154
+                                      IntegerExpression 154..154
+                                        IntegerLiteral "3" 154..154
+                            IfExpression 155..159
+                              BinaryExpression 155..0
+                                BinaryExpression 155..0
+                                  BinaryExpression 155..0
+                                    BinaryExpression 155..0
+                                      VnameExpression 155..155
+                                        SimpleVname 155..155
+                                          Identifier "y" 155..155
+                                      Operator "*" 155..155
+                                      VnameExpression 155..155
+                                        SimpleVname 155..155
+                                          Identifier "w" 155..155
+                                    Operator "+" 155..155
+                                    VnameExpression 155..155
+                                      SimpleVname 155..155
+                                        Identifier "x" 155..155
+                                  Operator "/" 155..155
+                                  VnameExpression 155..155
+                                    SimpleVname 155..155
+                                      Identifier "PIXSIZE" 155..155
+                                Operator "=" 155..155
+                                IntegerExpression 155..155
+                                  IntegerLiteral "3" 155..155
+                              CallExpression 156..158
+                                Identifier "getGroup" 156..156
+                                MultipleActualParameterSequence 156..157
+                                  ConstActualParameter 156..156
+                                    VnameExpression 156..156
+                                      SubscriptVname 156..156
+                                        DotVname 156..156
+                                          SimpleVname 156..156
+                                            Identifier "buff3" 156..156
+                                          Identifier "data" 156..156
+                                        BinaryExpression 156..0
+                                          BinaryExpression 156..0
+                                            BinaryExpression 156..0
+                                              BinaryExpression 156..0
+                                                VnameExpression 156..156
+                                                  SimpleVname 156..156
+                                                    Identifier "y" 156..156
+                                                Operator "*" 156..156
+                                                VnameExpression 156..156
+                                                  SimpleVname 156..156
+                                                    Identifier "w" 156..156
+                                              Operator "+" 156..156
+                                              VnameExpression 156..156
+                                                SimpleVname 156..156
+                                                  Identifier "x" 156..156
+                                            Operator "//" 156..156
+                                            VnameExpression 156..156
+                                              SimpleVname 156..156
+                                                Identifier "PIXSIZE" 156..156
+                                          Operator "/" 156..156
+                                          IntegerExpression 156..156
+                                            IntegerLiteral "3" 156..156
+                                  SingleActualParameterSequence 157..157
+                                    ConstActualParameter 157..157
+                                      BinaryExpression 157..0
+                                        BinaryExpression 157..0
+                                          BinaryExpression 157..0
+                                            BinaryExpression 157..0
+                                              VnameExpression 157..157
+                                                SimpleVname 157..157
+                                                  Identifier "y" 157..157
+                                              Operator "*" 157..157
+                                              VnameExpression 157..157
+                                                SimpleVname 157..157
+                                                  Identifier "w" 157..157
+                                            Operator "+" 157..157
+                                            VnameExpression 157..157
+                                              SimpleVname 157..157
+                                                Identifier "x" 157..157
+                                          Operator "//" 157..157
+                                          VnameExpression 157..157
+                                            SimpleVname 157..157
+                                              Identifier "PIXSIZE" 157..157
+                                        Operator "//" 157..157
+                                        IntegerExpression 157..157
+                                          IntegerLiteral "3" 157..157
+                              IntegerExpression 159..159
+                                IntegerLiteral "0" 159..159
+                  ProcDeclaration 164..190
+                    Identifier "writePbmAscii" 164..164
+                    MultipleFormalParameterSequence 164..166
+                      ConstFormalParameter 164..164
+                        Identifier "w" 164..164
+                        SimpleTypeDenoter 164..164
+                          Identifier "Integer" 164..164
+                      MultipleFormalParameterSequence 164..166
+                        ConstFormalParameter 164..164
+                          Identifier "h" 164..164
+                          SimpleTypeDenoter 164..164
+                            Identifier "Integer" 164..164
+                        MultipleFormalParameterSequence 165..166
+                          VarFormalParameter 165..165
+                            Identifier "buff0" 165..165
+                            SimpleTypeDenoter 165..165
+                              Identifier "Buffer" 165..165
+                          MultipleFormalParameterSequence 165..166
+                            VarFormalParameter 165..165
+                              Identifier "buff1" 165..165
+                              SimpleTypeDenoter 165..165
+                                Identifier "Buffer" 165..165
+                            MultipleFormalParameterSequence 166..166
+                              VarFormalParameter 166..166
+                                Identifier "buff2" 166..166
+                                SimpleTypeDenoter 166..166
+                                  Identifier "Buffer" 166..166
+                              SingleFormalParameterSequence 166..166
+                                VarFormalParameter 166..166
+                                  Identifier "buff3" 166..166
+                                  SimpleTypeDenoter 166..166
+                                    Identifier "Buffer" 166..166
+                    LetCommand 167..190
+                      SequentialDeclaration 168..170
+                        VarDeclaration 168..168
+                          Identifier "x" 168..168
+                          SimpleTypeDenoter 168..168
+                            Identifier "Integer" 168..168
+                        VarDeclaration 169..170
+                          Identifier "y" 169..169
+                          SimpleTypeDenoter 169..170
+                            Identifier "Integer" 169..170
+                      SequentialCommand 172..190
+                        SequentialCommand 172..190
+                          SequentialCommand 172..190
+                            SequentialCommand 172..190
+                              SequentialCommand 172..190
+                                SequentialCommand 172..190
+                                  SequentialCommand 172..190
+                                    SequentialCommand 172..190
+                                      SequentialCommand 172..190
+                                        SequentialCommand 172..190
+                                          SequentialCommand 172..190
+                                            CallCommand 172..172
+                                              Identifier "put" 172..172
+                                              SingleActualParameterSequence 172..172
+                                                ConstActualParameter 172..172
+                                                  CharacterExpression 172..172
+                                                    CharacterLiteral "'P'" 172..172
+                                            CallCommand 172..172
+                                              Identifier "put" 172..172
+                                              SingleActualParameterSequence 172..172
+                                                ConstActualParameter 172..172
+                                                  CharacterExpression 172..172
+                                                    CharacterLiteral "'2'" 172..172
+                                          CallCommand 172..172
+                                            Identifier "puteol" 172..172
+                                            EmptyActualParameterSequence 172..172
+                                        CallCommand 173..173
+                                          Identifier "putint" 173..173
+                                          SingleActualParameterSequence 173..173
+                                            ConstActualParameter 173..173
+                                              VnameExpression 173..173
+                                                SimpleVname 173..173
+                                                  Identifier "w" 173..173
+                                      CallCommand 173..173
+                                        Identifier "put" 173..173
+                                        SingleActualParameterSequence 173..173
+                                          ConstActualParameter 173..173
+                                            CharacterExpression 173..173
+                                              CharacterLiteral "' '" 173..173
+                                    CallCommand 173..173
+                                      Identifier "putint" 173..173
+                                      SingleActualParameterSequence 173..173
+                                        ConstActualParameter 173..173
+                                          VnameExpression 173..173
+                                            SimpleVname 173..173
+                                              Identifier "h" 173..173
+                                  CallCommand 173..173
+                                    Identifier "puteol" 173..173
+                                    EmptyActualParameterSequence 173..173
+                                CallCommand 174..174
+                                  Identifier "putint" 174..174
+                                  SingleActualParameterSequence 174..174
+                                    ConstActualParameter 174..174
+                                      IntegerExpression 174..174
+                                        IntegerLiteral "31" 174..174
+                              CallCommand 174..174
+                                Identifier "puteol" 174..174
+                                EmptyActualParameterSequence 174..174
+                            AssignCommand 177..177
+                              SimpleVname 177..177
+                                Identifier "y" 177..177
+                              IntegerExpression 177..177
+                                IntegerLiteral "0" 177..177
+                          WhileCommand 178..189
+                            BinaryExpression 178..0
+                              VnameExpression 178..178
+                                SimpleVname 178..178
+                                  Identifier "y" 178..178
+                              Operator "<" 178..178
+                              VnameExpression 178..178
+                                SimpleVname 178..178
+                                  Identifier "h" 178..178
+                            SequentialCommand 180..189
+                              SequentialCommand 180..189
+                                SequentialCommand 180..189
+                                  AssignCommand 180..180
+                                    SimpleVname 180..180
+                                      Identifier "x" 180..180
+                                    IntegerExpression 180..180
+                                      IntegerLiteral "0" 180..180
+                                  WhileCommand 181..185
+                                    BinaryExpression 181..0
+                                      VnameExpression 181..181
+                                        SimpleVname 181..181
+                                          Identifier "x" 181..181
+                                      Operator "<" 181..181
+                                      VnameExpression 181..181
+                                        SimpleVname 181..181
+                                          Identifier "w" 181..181
+                                    SequentialCommand 182..185
+                                      SequentialCommand 182..185
+                                        CallCommand 182..182
+                                          Identifier "putint" 182..182
+                                          SingleActualParameterSequence 182..182
+                                            ConstActualParameter 182..182
+                                              CallExpression 182..182
+                                                Identifier "getPixel" 182..182
+                                                MultipleActualParameterSequence 182..182
+                                                  ConstActualParameter 182..182
+                                                    VnameExpression 182..182
+                                                      SimpleVname 182..182
+                                                        Identifier "x" 182..182
+                                                  MultipleActualParameterSequence 182..182
+                                                    ConstActualParameter 182..182
+                                                      VnameExpression 182..182
+                                                        SimpleVname 182..182
+                                                          Identifier "y" 182..182
+                                                    MultipleActualParameterSequence 182..182
+                                                      ConstActualParameter 182..182
+                                                        VnameExpression 182..182
+                                                          SimpleVname 182..182
+                                                            Identifier "w" 182..182
+                                                      MultipleActualParameterSequence 182..182
+                                                        VarActualParameter 182..182
+                                                          SimpleVname 182..182
+                                                            Identifier "buff0" 182..182
+                                                        MultipleActualParameterSequence 182..182
+                                                          VarActualParameter 182..182
+                                                            SimpleVname 182..182
+                                                              Identifier "buff1" 182..182
+                                                          MultipleActualParameterSequence 182..182
+                                                            VarActualParameter 182..182
+                                                              SimpleVname 182..182
+                                                                Identifier "buff2" 182..182
+                                                            SingleActualParameterSequence 182..182
+                                                              VarActualParameter 182..182
+                                                                SimpleVname 182..182
+                                                                  Identifier "buff3" 182..182
+                                        CallCommand 183..183
+                                          Identifier "put" 183..183
+                                          SingleActualParameterSequence 183..183
+                                            ConstActualParameter 183..183
+                                              CharacterExpression 183..183
+                                                CharacterLiteral "' '" 183..183
+                                      AssignCommand 184..185
+                                        SimpleVname 184..184
+                                          Identifier "x" 184..184
+                                        BinaryExpression 184..0
+                                          VnameExpression 184..184
+                                            SimpleVname 184..184
+                                              Identifier "x" 184..184
+                                          Operator "+" 184..184
+                                          IntegerExpression 184..185
+                                            IntegerLiteral "1" 184..185
+                                CallCommand 187..187
+                                  Identifier "puteol" 187..187
+                                  EmptyActualParameterSequence 187..187
+                              AssignCommand 188..189
+                                SimpleVname 188..188
+                                  Identifier "y" 188..188
+                                BinaryExpression 188..0
+                                  VnameExpression 188..188
+                                    SimpleVname 188..188
+                                      Identifier "y" 188..188
+                                  Operator "+" 188..188
+                                  IntegerExpression 188..189
+                                    IntegerLiteral "1" 188..189
+                        EmptyCommand 190..190
+                ProcDeclaration 196..200
+                  Identifier "incPixel" 196..196
+                  MultipleFormalParameterSequence 196..198
+                    ConstFormalParameter 196..196
+                      Identifier "x" 196..196
+                      SimpleTypeDenoter 196..196
+                        Identifier "Integer" 196..196
+                    MultipleFormalParameterSequence 196..198
+                      ConstFormalParameter 196..196
+                        Identifier "y" 196..196
+                        SimpleTypeDenoter 196..196
+                          Identifier "Integer" 196..196
+                      MultipleFormalParameterSequence 196..198
+                        ConstFormalParameter 196..196
+                          Identifier "w" 196..196
+                          SimpleTypeDenoter 196..196
+                            Identifier "Integer" 196..196
+                        MultipleFormalParameterSequence 197..198
+                          VarFormalParameter 197..197
+                            Identifier "buff0" 197..197
+                            SimpleTypeDenoter 197..197
+                              Identifier "Buffer" 197..197
+                          MultipleFormalParameterSequence 197..198
+                            VarFormalParameter 197..197
+                              Identifier "buff1" 197..197
+                              SimpleTypeDenoter 197..197
+                                Identifier "Buffer" 197..197
+                            MultipleFormalParameterSequence 198..198
+                              VarFormalParameter 198..198
+                                Identifier "buff2" 198..198
+                                SimpleTypeDenoter 198..198
+                                  Identifier "Buffer" 198..198
+                              SingleFormalParameterSequence 198..198
+                                VarFormalParameter 198..198
+                                  Identifier "buff3" 198..198
+                                  SimpleTypeDenoter 198..198
+                                    Identifier "Buffer" 198..198
+                  CallCommand 199..200
+                    Identifier "setPixel" 199..199
+                    MultipleActualParameterSequence 199..200
+                      ConstActualParameter 199..199
+                        VnameExpression 199..199
+                          SimpleVname 199..199
+                            Identifier "x" 199..199
+                      MultipleActualParameterSequence 199..200
+                        ConstActualParameter 199..199
+                          VnameExpression 199..199
+                            SimpleVname 199..199
+                              Identifier "y" 199..199
+                        MultipleActualParameterSequence 199..200
+                          ConstActualParameter 199..199
+                            VnameExpression 199..199
+                              SimpleVname 199..199
+                                Identifier "w" 199..199
+                          MultipleActualParameterSequence 199..200
+                            VarActualParameter 199..199
+                              SimpleVname 199..199
+                                Identifier "buff0" 199..199
+                            MultipleActualParameterSequence 199..200
+                              VarActualParameter 199..199
+                                SimpleVname 199..199
+                                  Identifier "buff1" 199..199
+                              MultipleActualParameterSequence 199..200
+                                VarActualParameter 199..199
+                                  SimpleVname 199..199
+                                    Identifier "buff2" 199..199
+                                MultipleActualParameterSequence 199..200
+                                  VarActualParameter 199..199
+                                    SimpleVname 199..199
+                                      Identifier "buff3" 199..199
+                                  SingleActualParameterSequence 200..200
+                                    ConstActualParameter 200..200
+                                      BinaryExpression 200..0
+                                        CallExpression 200..200
+                                          Identifier "getPixel" 200..200
+                                          MultipleActualParameterSequence 200..200
+                                            ConstActualParameter 200..200
+                                              VnameExpression 200..200
+                                                SimpleVname 200..200
+                                                  Identifier "x" 200..200
+                                            MultipleActualParameterSequence 200..200
+                                              ConstActualParameter 200..200
+                                                VnameExpression 200..200
+                                                  SimpleVname 200..200
+                                                    Identifier "y" 200..200
+                                              MultipleActualParameterSequence 200..200
+                                                ConstActualParameter 200..200
+                                                  VnameExpression 200..200
+                                                    SimpleVname 200..200
+                                                      Identifier "w" 200..200
+                                                MultipleActualParameterSequence 200..200
+                                                  VarActualParameter 200..200
+                                                    SimpleVname 200..200
+                                                      Identifier "buff0" 200..200
+                                                  MultipleActualParameterSequence 200..200
+                                                    VarActualParameter 200..200
+                                                      SimpleVname 200..200
+                                                        Identifier "buff1" 200..200
+                                                    MultipleActualParameterSequence 200..200
+                                                      VarActualParameter 200..200
+                                                        SimpleVname 200..200
+                                                          Identifier "buff2" 200..200
+                                                      SingleActualParameterSequence 200..200
+                                                        VarActualParameter 200..200
+                                                          SimpleVname 200..200
+                                                            Identifier "buff3" 200..200
+                                        Operator "+" 200..200
+                                        IntegerExpression 200..200
+                                          IntegerLiteral "9" 200..200
+              ProcDeclaration 205..272
+                Identifier "drawLine" 205..205
+                MultipleFormalParameterSequence 205..207
+                  ConstFormalParameter 205..205
+                    Identifier "x1" 205..205
+                    SimpleTypeDenoter 205..205
+                      Identifier "Integer" 205..205
+                  MultipleFormalParameterSequence 205..207
+                    ConstFormalParameter 205..205
+                      Identifier "y1" 205..205
+                      SimpleTypeDenoter 205..205
+                        Identifier "Integer" 205..205
+                    MultipleFormalParameterSequence 205..207
+                      ConstFormalParameter 205..205
+                        Identifier "x2" 205..205
+                        SimpleTypeDenoter 205..205
+                          Identifier "Integer" 205..205
+                      MultipleFormalParameterSequence 205..207
+                        ConstFormalParameter 205..205
+                          Identifier "y2" 205..205
+                          SimpleTypeDenoter 205..205
+                            Identifier "Integer" 205..205
+                        MultipleFormalParameterSequence 206..207
+                          ConstFormalParameter 206..206
+                            Identifier "w" 206..206
+                            SimpleTypeDenoter 206..206
+                              Identifier "Integer" 206..206
+                          MultipleFormalParameterSequence 206..207
+                            VarFormalParameter 206..206
+                              Identifier "buff0" 206..206
+                              SimpleTypeDenoter 206..206
+                                Identifier "Buffer" 206..206
+                            MultipleFormalParameterSequence 206..207
+                              VarFormalParameter 206..206
+                                Identifier "buff1" 206..206
+                                SimpleTypeDenoter 206..206
+                                  Identifier "Buffer" 206..206
+                              MultipleFormalParameterSequence 207..207
+                                VarFormalParameter 207..207
+                                  Identifier "buff2" 207..207
+                                  SimpleTypeDenoter 207..207
+                                    Identifier "Buffer" 207..207
+                                SingleFormalParameterSequence 207..207
+                                  VarFormalParameter 207..207
+                                    Identifier "buff3" 207..207
+                                    SimpleTypeDenoter 207..207
+                                      Identifier "Buffer" 207..207
+                LetCommand 208..272
+                  SequentialDeclaration 209..217
+                    SequentialDeclaration 209..217
+                      SequentialDeclaration 209..217
+                        SequentialDeclaration 209..217
+                          SequentialDeclaration 209..217
+                            SequentialDeclaration 209..217
+                              SequentialDeclaration 209..217
+                                VarDeclaration 209..209
+                                  Identifier "xLength" 209..209
+                                  SimpleTypeDenoter 209..209
+                                    Identifier "Integer" 209..209
+                                VarDeclaration 210..210
+                                  Identifier "yLength" 210..210
+                                  SimpleTypeDenoter 210..210
+                                    Identifier "Integer" 210..210
+                              VarDeclaration 211..211
+                                Identifier "dx" 211..211
+                                SimpleTypeDenoter 211..211
+                                  Identifier "Integer" 211..211
+                            VarDeclaration 212..212
+                              Identifier "dy" 212..212
+                              SimpleTypeDenoter 212..212
+                                Identifier "Integer" 212..212
+                          VarDeclaration 213..213
+                            Identifier "error" 213..213
+                            SimpleTypeDenoter 213..213
+                              Identifier "Integer" 213..213
+                        VarDeclaration 214..214
+                          Identifier "i" 214..214
+                          SimpleTypeDenoter 214..214
+                            Identifier "Integer" 214..214
+                      VarDeclaration 215..215
+                        Identifier "xCoord" 215..215
+                        SimpleTypeDenoter 215..215
+                          Identifier "Integer" 215..215
+                    VarDeclaration 216..217
+                      Identifier "yCoord" 216..216
+                      SimpleTypeDenoter 216..217
+                        Identifier "Integer" 216..217
+                  SequentialCommand 219..272
+                    SequentialCommand 219..272
+                      SequentialCommand 219..272
+                        SequentialCommand 219..272
+                          SequentialCommand 219..272
+                            SequentialCommand 219..272
+                              SequentialCommand 219..272
+                                SequentialCommand 219..272
+                                  AssignCommand 219..219
+                                    SimpleVname 219..219
+                                      Identifier "xCoord" 219..219
+                                    VnameExpression 219..219
+                                      SimpleVname 219..219
+                                        Identifier "x1" 219..219
+                                  AssignCommand 220..220
+                                    SimpleVname 220..220
+                                      Identifier "yCoord" 220..220
+                                    VnameExpression 220..220
+                                      SimpleVname 220..220
+                                        Identifier "y1" 220..220
+                                AssignCommand 221..221
+                                  SimpleVname 221..221
+                                    Identifier "error" 221..221
+                                  IntegerExpression 221..221
+                                    IntegerLiteral "0" 221..221
+                              AssignCommand 222..222
+                                SimpleVname 222..222
+                                  Identifier "xLength" 222..222
+                                BinaryExpression 222..0
+                                  VnameExpression 222..222
+                                    SimpleVname 222..222
+                                      Identifier "x2" 222..222
+                                  Operator "-" 222..222
+                                  VnameExpression 222..222
+                                    SimpleVname 222..222
+                                      Identifier "x1" 222..222
+                            IfCommand 223..229
+                              BinaryExpression 223..0
+                                VnameExpression 223..223
+                                  SimpleVname 223..223
+                                    Identifier "xLength" 223..223
+                                Operator "<" 223..223
+                                IntegerExpression 223..223
+                                  IntegerLiteral "0" 223..223
+                              SequentialCommand 225..227
+                                SequentialCommand 225..227
+                                  AssignCommand 225..225
+                                    SimpleVname 225..225
+                                      Identifier "xLength" 225..225
+                                    BinaryExpression 225..0
+                                      IntegerExpression 225..225
+                                        IntegerLiteral "0" 225..225
+                                      Operator "-" 225..225
+                                      VnameExpression 225..225
+                                        SimpleVname 225..225
+                                          Identifier "xLength" 225..225
+                                  AssignCommand 226..226
+                                    SimpleVname 226..226
+                                      Identifier "dx" 226..226
+                                    BinaryExpression 226..0
+                                      IntegerExpression 226..226
+                                        IntegerLiteral "0" 226..226
+                                      Operator "-" 226..226
+                                      IntegerExpression 226..226
+                                        IntegerLiteral "1" 226..226
+                                EmptyCommand 227..227
+                              AssignCommand 229..229
+                                SimpleVname 229..229
+                                  Identifier "dx" 229..229
+                                IntegerExpression 229..229
+                                  IntegerLiteral "1" 229..229
+                          AssignCommand 231..231
+                            SimpleVname 231..231
+                              Identifier "yLength" 231..231
+                            BinaryExpression 231..0
+                              VnameExpression 231..231
+                                SimpleVname 231..231
+                                  Identifier "y2" 231..231
+                              Operator "-" 231..231
+                              VnameExpression 231..231
+                                SimpleVname 231..231
+                                  Identifier "y1" 231..231
+                        IfCommand 232..238
+                          BinaryExpression 232..0
+                            VnameExpression 232..232
+                              SimpleVname 232..232
+                                Identifier "yLength" 232..232
+                            Operator "<" 232..232
+                            IntegerExpression 232..232
+                              IntegerLiteral "0" 232..232
+                          SequentialCommand 234..236
+                            SequentialCommand 234..236
+                              AssignCommand 234..234
+                                SimpleVname 234..234
+                                  Identifier "yLength" 234..234
+                                BinaryExpression 234..0
+                                  IntegerExpression 234..234
+                                    IntegerLiteral "0" 234..234
+                                  Operator "-" 234..234
+                                  VnameExpression 234..234
+                                    SimpleVname 234..234
+                                      Identifier "yLength" 234..234
+                              AssignCommand 235..235
+                                SimpleVname 235..235
+                                  Identifier "dy" 235..235
+                                BinaryExpression 235..0
+                                  IntegerExpression 235..235
+                                    IntegerLiteral "0" 235..235
+                                  Operator "-" 235..235
+                                  IntegerExpression 235..235
+                                    IntegerLiteral "1" 235..235
+                            EmptyCommand 236..236
+                          AssignCommand 238..238
+                            SimpleVname 238..238
+                              Identifier "dy" 238..238
+                            IntegerExpression 238..238
+                              IntegerLiteral "1" 238..238
+                      IfCommand 240..271
+                        BinaryExpression 240..0
+                          VnameExpression 240..240
+                            SimpleVname 240..240
+                              Identifier "xLength" 240..240
+                          Operator "<" 240..240
+                          VnameExpression 240..240
+                            SimpleVname 240..240
+                              Identifier "yLength" 240..240
+                        SequentialCommand 242..255
+                          SequentialCommand 242..255
+                            AssignCommand 242..242
+                              SimpleVname 242..242
+                                Identifier "i" 242..242
+                              IntegerExpression 242..242
+                                IntegerLiteral "0" 242..242
+                            WhileCommand 243..254
+                              BinaryExpression 243..0
+                                VnameExpression 243..243
+                                  SimpleVname 243..243
+                                    Identifier "i" 243..243
+                                Operator "<=" 243..243
+                                VnameExpression 243..243
+                                  SimpleVname 243..243
+                                    Identifier "yLength" 243..243
+                              SequentialCommand 245..254
+                                SequentialCommand 245..254
+                                  SequentialCommand 245..254
+                                    SequentialCommand 245..254
+                                      CallCommand 245..245
+                                        Identifier "incPixel" 245..245
+                                        MultipleActualParameterSequence 245..245
+                                          ConstActualParameter 245..245
+                                            VnameExpression 245..245
+                                              SimpleVname 245..245
+                                                Identifier "xCoord" 245..245
+                                          MultipleActualParameterSequence 245..245
+                                            ConstActualParameter 245..245
+                                              VnameExpression 245..245
+                                                SimpleVname 245..245
+                                                  Identifier "yCoord" 245..245
+                                            MultipleActualParameterSequence 245..245
+                                              ConstActualParameter 245..245
+                                                VnameExpression 245..245
+                                                  SimpleVname 245..245
+                                                    Identifier "w" 245..245
+                                              MultipleActualParameterSequence 245..245
+                                                VarActualParameter 245..245
+                                                  SimpleVname 245..245
+                                                    Identifier "buff0" 245..245
+                                                MultipleActualParameterSequence 245..245
+                                                  VarActualParameter 245..245
+                                                    SimpleVname 245..245
+                                                      Identifier "buff1" 245..245
+                                                  MultipleActualParameterSequence 245..245
+                                                    VarActualParameter 245..245
+                                                      SimpleVname 245..245
+                                                        Identifier "buff2" 245..245
+                                                    SingleActualParameterSequence 245..245
+                                                      VarActualParameter 245..245
+                                                        SimpleVname 245..245
+                                                          Identifier "buff3" 245..245
+                                      AssignCommand 246..246
+                                        SimpleVname 246..246
+                                          Identifier "yCoord" 246..246
+                                        BinaryExpression 246..0
+                                          VnameExpression 246..246
+                                            SimpleVname 246..246
+                                              Identifier "yCoord" 246..246
+                                          Operator "+" 246..246
+                                          VnameExpression 246..246
+                                            SimpleVname 246..246
+                                              Identifier "dy" 246..246
+                                    AssignCommand 247..247
+                                      SimpleVname 247..247
+                                        Identifier "error" 247..247
+                                      BinaryExpression 247..0
+                                        VnameExpression 247..247
+                                          SimpleVname 247..247
+                                            Identifier "error" 247..247
+                                        Operator "+" 247..247
+                                        VnameExpression 247..247
+                                          SimpleVname 247..247
+                                            Identifier "xLength" 247..247
+                                  IfCommand 248..252
+                                    BinaryExpression 248..0
+                                      VnameExpression 248..248
+                                        SimpleVname 248..248
+                                          Identifier "error" 248..248
+                                      Operator ">=" 248..248
+                                      VnameExpression 248..248
+                                        SimpleVname 248..248
+                                          Identifier "yLength" 248..248
+                                    SequentialCommand 250..252
+                                      SequentialCommand 250..252
+                                        AssignCommand 250..250
+                                          SimpleVname 250..250
+                                            Identifier "xCoord" 250..250
+                                          BinaryExpression 250..0
+                                            VnameExpression 250..250
+                                              SimpleVname 250..250
+                                                Identifier "xCoord" 250..250
+                                            Operator "+" 250..250
+                                            VnameExpression 250..250
+                                              SimpleVname 250..250
+                                                Identifier "dx" 250..250
+                                        AssignCommand 251..251
+                                          SimpleVname 251..251
+                                            Identifier "error" 251..251
+                                          BinaryExpression 251..0
+                                            VnameExpression 251..251
+                                              SimpleVname 251..251
+                                                Identifier "error" 251..251
+                                            Operator "-" 251..251
+                                            VnameExpression 251..251
+                                              SimpleVname 251..251
+                                                Identifier "yLength" 251..251
+                                      EmptyCommand 252..252
+                                    EmptyCommand 252..252
+                                AssignCommand 253..254
+                                  SimpleVname 253..253
+                                    Identifier "i" 253..253
+                                  BinaryExpression 253..0
+                                    VnameExpression 253..253
+                                      SimpleVname 253..253
+                                        Identifier "i" 253..253
+                                    Operator "+" 253..253
+                                    IntegerExpression 253..254
+                                      IntegerLiteral "1" 253..254
+                          EmptyCommand 255..255
+                        SequentialCommand 258..271
+                          SequentialCommand 258..271
+                            AssignCommand 258..258
+                              SimpleVname 258..258
+                                Identifier "i" 258..258
+                              IntegerExpression 258..258
+                                IntegerLiteral "0" 258..258
+                            WhileCommand 259..270
+                              BinaryExpression 259..0
+                                VnameExpression 259..259
+                                  SimpleVname 259..259
+                                    Identifier "i" 259..259
+                                Operator "<=" 259..259
+                                VnameExpression 259..259
+                                  SimpleVname 259..259
+                                    Identifier "xLength" 259..259
+                              SequentialCommand 261..270
+                                SequentialCommand 261..270
+                                  SequentialCommand 261..270
+                                    SequentialCommand 261..270
+                                      CallCommand 261..261
+                                        Identifier "incPixel" 261..261
+                                        MultipleActualParameterSequence 261..261
+                                          ConstActualParameter 261..261
+                                            VnameExpression 261..261
+                                              SimpleVname 261..261
+                                                Identifier "xCoord" 261..261
+                                          MultipleActualParameterSequence 261..261
+                                            ConstActualParameter 261..261
+                                              VnameExpression 261..261
+                                                SimpleVname 261..261
+                                                  Identifier "yCoord" 261..261
+                                            MultipleActualParameterSequence 261..261
+                                              ConstActualParameter 261..261
+                                                VnameExpression 261..261
+                                                  SimpleVname 261..261
+                                                    Identifier "w" 261..261
+                                              MultipleActualParameterSequence 261..261
+                                                VarActualParameter 261..261
+                                                  SimpleVname 261..261
+                                                    Identifier "buff0" 261..261
+                                                MultipleActualParameterSequence 261..261
+                                                  VarActualParameter 261..261
+                                                    SimpleVname 261..261
+                                                      Identifier "buff1" 261..261
+                                                  MultipleActualParameterSequence 261..261
+                                                    VarActualParameter 261..261
+                                                      SimpleVname 261..261
+                                                        Identifier "buff2" 261..261
+                                                    SingleActualParameterSequence 261..261
+                                                      VarActualParameter 261..261
+                                                        SimpleVname 261..261
+                                                          Identifier "buff3" 261..261
+                                      AssignCommand 262..262
+                                        SimpleVname 262..262
+                                          Identifier "xCoord" 262..262
+                                        BinaryExpression 262..0
+                                          VnameExpression 262..262
+                                            SimpleVname 262..262
+                                              Identifier "xCoord" 262..262
+                                          Operator "+" 262..262
+                                          VnameExpression 262..262
+                                            SimpleVname 262..262
+                                              Identifier "dx" 262..262
+                                    AssignCommand 263..263
+                                      SimpleVname 263..263
+                                        Identifier "error" 263..263
+                                      BinaryExpression 263..0
+                                        VnameExpression 263..263
+                                          SimpleVname 263..263
+                                            Identifier "error" 263..263
+                                        Operator "+" 263..263
+                                        VnameExpression 263..263
+                                          SimpleVname 263..263
+                                            Identifier "yLength" 263..263
+                                  IfCommand 264..268
+                                    BinaryExpression 264..0
+                                      VnameExpression 264..264
+                                        SimpleVname 264..264
+                                          Identifier "error" 264..264
+                                      Operator ">=" 264..264
+                                      VnameExpression 264..264
+                                        SimpleVname 264..264
+                                          Identifier "xLength" 264..264
+                                    SequentialCommand 266..268
+                                      SequentialCommand 266..268
+                                        AssignCommand 266..266
+                                          SimpleVname 266..266
+                                            Identifier "yCoord" 266..266
+                                          BinaryExpression 266..0
+                                            VnameExpression 266..266
+                                              SimpleVname 266..266
+                                                Identifier "yCoord" 266..266
+                                            Operator "+" 266..266
+                                            VnameExpression 266..266
+                                              SimpleVname 266..266
+                                                Identifier "dy" 266..266
+                                        AssignCommand 267..267
+                                          SimpleVname 267..267
+                                            Identifier "error" 267..267
+                                          BinaryExpression 267..0
+                                            VnameExpression 267..267
+                                              SimpleVname 267..267
+                                                Identifier "error" 267..267
+                                            Operator "-" 267..267
+                                            VnameExpression 267..267
+                                              SimpleVname 267..267
+                                                Identifier "xLength" 267..267
+                                      EmptyCommand 268..268
+                                    EmptyCommand 268..268
+                                AssignCommand 269..270
+                                  SimpleVname 269..269
+                                    Identifier "i" 269..269
+                                  BinaryExpression 269..0
+                                    VnameExpression 269..269
+                                      SimpleVname 269..269
+                                        Identifier "i" 269..269
+                                    Operator "+" 269..269
+                                    IntegerExpression 269..270
+                                      IntegerLiteral "1" 269..270
+                          EmptyCommand 271..271
+                    EmptyCommand 272..272
+            ConstDeclaration 274..274
+              Identifier "STEPS" 274..274
+              IntegerExpression 274..274
+                IntegerLiteral "10" 274..274
+          VarDeclaration 275..275
+            Identifier "image" 275..275
+            SimpleTypeDenoter 275..275
+              Identifier "Image" 275..275
+        VarDeclaration 276..276
+          Identifier "i" 276..276
+          SimpleTypeDenoter 276..276
+            Identifier "Integer" 276..276
+      VarDeclaration 277..278
+        Identifier "j" 277..277
+        SimpleTypeDenoter 277..278
+          Identifier "Integer" 277..278
+    SequentialCommand 283..313
+      SequentialCommand 283..313
+        SequentialCommand 283..313
+          CallCommand 283..283
+            Identifier "createImage" 283..283
+            MultipleActualParameterSequence 283..283
+              VarActualParameter 283..283
+                SimpleVname 283..283
+                  Identifier "image" 283..283
+              MultipleActualParameterSequence 283..283
+                ConstActualParameter 283..283
+                  IntegerExpression 283..283
+                    IntegerLiteral "54" 283..283
+                SingleActualParameterSequence 283..283
+                  ConstActualParameter 283..283
+                    IntegerExpression 283..283
+                      IntegerLiteral "50" 283..283
+          AssignCommand 284..284
+            SimpleVname 284..284
+              Identifier "i" 284..284
+            IntegerExpression 284..284
+              IntegerLiteral "0" 284..284
+        WhileCommand 285..308
+          BinaryExpression 285..0
+            VnameExpression 285..285
+              SimpleVname 285..285
+                Identifier "i" 285..285
+            Operator "<" 285..285
+            VnameExpression 285..285
+              SimpleVname 285..285
+                Identifier "STEPS" 285..285
+          SequentialCommand 286..308
+            SequentialCommand 286..308
+              SequentialCommand 286..308
+                SequentialCommand 286..308
+                  CallCommand 286..290
+                    Identifier "drawLine" 286..286
+                    MultipleActualParameterSequence 286..290
+                      ConstActualParameter 286..286
+                        BinaryExpression 286..0
+                          BinaryExpression 286..0
+                            VnameExpression 286..286
+                              SimpleVname 286..286
+                                Identifier "i" 286..286
+                            Operator "*" 286..286
+                            VnameExpression 286..286
+                              DotVname 286..286
+                                SimpleVname 286..286
+                                  Identifier "image" 286..286
+                                Identifier "width" 286..286
+                          Operator "/" 286..286
+                          VnameExpression 286..286
+                            SimpleVname 286..286
+                              Identifier "STEPS" 286..286
+                      MultipleActualParameterSequence 286..290
+                        ConstActualParameter 286..286
+                          IntegerExpression 286..286
+                            IntegerLiteral "0" 286..286
+                        MultipleActualParameterSequence 287..290
+                          ConstActualParameter 287..287
+                            IntegerExpression 287..287
+                              IntegerLiteral "0" 287..287
+                          MultipleActualParameterSequence 287..290
+                            ConstActualParameter 287..287
+                              BinaryExpression 287..0
+                                BinaryExpression 287..0
+                                  VnameExpression 287..287
+                                    DotVname 287..287
+                                      SimpleVname 287..287
+                                        Identifier "image" 287..287
+                                      Identifier "height" 287..287
+                                  Operator "-" 287..287
+                                  IntegerExpression 287..287
+                                    IntegerLiteral "1" 287..287
+                                Operator "-" 287..287
+                                BinaryExpression 287..0
+                                  BinaryExpression 287..0
+                                    VnameExpression 287..287
+                                      SimpleVname 287..287
+                                        Identifier "i" 287..287
+                                    Operator "*" 287..287
+                                    VnameExpression 287..287
+                                      DotVname 287..287
+                                        SimpleVname 287..287
+                                          Identifier "image" 287..287
+                                        Identifier "height" 287..287
+                                  Operator "/" 287..287
+                                  VnameExpression 287..287
+                                    SimpleVname 287..287
+                                      Identifier "STEPS" 287..287
+                            MultipleActualParameterSequence 288..290
+                              ConstActualParameter 288..288
+                                VnameExpression 288..288
+                                  DotVname 288..288
+                                    SimpleVname 288..288
+                                      Identifier "image" 288..288
+                                    Identifier "width" 288..288
+                              MultipleActualParameterSequence 289..290
+                                VarActualParameter 289..289
+                                  SubscriptVname 289..289
+                                    DotVname 289..289
+                                      SimpleVname 289..289
+                                        Identifier "image" 289..289
+                                      Identifier "buffer" 289..289
+                                    IntegerExpression 289..289
+                                      IntegerLiteral "0" 289..289
+                                MultipleActualParameterSequence 289..290
+                                  VarActualParameter 289..289
+                                    SubscriptVname 289..289
+                                      DotVname 289..289
+                                        SimpleVname 289..289
+                                          Identifier "image" 289..289
+                                        Identifier "buffer" 289..289
+                                      IntegerExpression 289..289
+                                        IntegerLiteral "1" 289..289
+                                  MultipleActualParameterSequence 290..290
+                                    VarActualParameter 290..290
+                                      SubscriptVname 290..290
+                                        DotVname 290..290
+                                          SimpleVname 290..290
+                                            Identifier "image" 290..290
+                                          Identifier "buffer" 290..290
+                                        IntegerExpression 290..290
+                                          IntegerLiteral "2" 290..290
+                                    SingleActualParameterSequence 290..290
+                                      VarActualParameter 290..290
+                                        SubscriptVname 290..290
+                                          DotVname 290..290
+                                            SimpleVname 290..290
+                                              Identifier "image" 290..290
+                                            Identifier "buffer" 290..290
+                                          IntegerExpression 290..290
+                                            IntegerLiteral "3" 290..290
+                  CallCommand 291..295
+                    Identifier "drawLine" 291..291
+                    MultipleActualParameterSequence 291..295
+                      ConstActualParameter 291..291
+                        BinaryExpression 291..0
+                          BinaryExpression 291..0
+                            VnameExpression 291..291
+                              SimpleVname 291..291
+                                Identifier "i" 291..291
+                            Operator "*" 291..291
+                            VnameExpression 291..291
+                              DotVname 291..291
+                                SimpleVname 291..291
+                                  Identifier "image" 291..291
+                                Identifier "width" 291..291
+                          Operator "/" 291..291
+                          VnameExpression 291..291
+                            SimpleVname 291..291
+                              Identifier "STEPS" 291..291
+                      MultipleActualParameterSequence 291..295
+                        ConstActualParameter 291..291
+                          IntegerExpression 291..291
+                            IntegerLiteral "0" 291..291
+                        MultipleActualParameterSequence 292..295
+                          ConstActualParameter 292..292
+                            BinaryExpression 292..0
+                              VnameExpression 292..292
+                                DotVname 292..292
+                                  SimpleVname 292..292
+                                    Identifier "image" 292..292
+                                  Identifier "width" 292..292
+                              Operator "-" 292..292
+                              IntegerExpression 292..292
+                                IntegerLiteral "1" 292..292
+                          MultipleActualParameterSequence 292..295
+                            ConstActualParameter 292..292
+                              BinaryExpression 292..0
+                                BinaryExpression 292..0
+                                  VnameExpression 292..292
+                                    SimpleVname 292..292
+                                      Identifier "i" 292..292
+                                  Operator "*" 292..292
+                                  VnameExpression 292..292
+                                    DotVname 292..292
+                                      SimpleVname 292..292
+                                        Identifier "image" 292..292
+                                      Identifier "height" 292..292
+                                Operator "/" 292..292
+                                VnameExpression 292..292
+                                  SimpleVname 292..292
+                                    Identifier "STEPS" 292..292
+                            MultipleActualParameterSequence 293..295
+                              ConstActualParameter 293..293
+                                VnameExpression 293..293
+                                  DotVname 293..293
+                                    SimpleVname 293..293
+                                      Identifier "image" 293..293
+                                    Identifier "width" 293..293
+                              MultipleActualParameterSequence 294..295
+                                VarActualParameter 294..294
+                                  SubscriptVname 294..294
+                                    DotVname 294..294
+                                      SimpleVname 294..294
+                                        Identifier "image" 294..294
+                                      Identifier "buffer" 294..294
+                                    IntegerExpression 294..294
+                                      IntegerLiteral "0" 294..294
+                                MultipleActualParameterSequence 294..295
+                                  VarActualParameter 294..294
+                                    SubscriptVname 294..294
+                                      DotVname 294..294
+                                        SimpleVname 294..294
+                                          Identifier "image" 294..294
+                                        Identifier "buffer" 294..294
+                                      IntegerExpression 294..294
+                                        IntegerLiteral "1" 294..294
+                                  MultipleActualParameterSequence 295..295
+                                    VarActualParameter 295..295
+                                      SubscriptVname 295..295
+                                        DotVname 295..295
+                                          SimpleVname 295..295
+                                            Identifier "image" 295..295
+                                          Identifier "buffer" 295..295
+                                        IntegerExpression 295..295
+                                          IntegerLiteral "2" 295..295
+                                    SingleActualParameterSequence 295..295
+                                      VarActualParameter 295..295
+                                        SubscriptVname 295..295
+                                          DotVname 295..295
+                                            SimpleVname 295..295
+                                              Identifier "image" 295..295
+                                            Identifier "buffer" 295..295
+                                          IntegerExpression 295..295
+                                            IntegerLiteral "3" 295..295
+                CallCommand 297..301
+                  Identifier "drawLine" 297..297
+                  MultipleActualParameterSequence 297..301
+                    ConstActualParameter 297..297
+                      BinaryExpression 297..0
+                        BinaryExpression 297..0
+                          VnameExpression 297..297
+                            SimpleVname 297..297
+                              Identifier "i" 297..297
+                          Operator "*" 297..297
+                          VnameExpression 297..297
+                            DotVname 297..297
+                              SimpleVname 297..297
+                                Identifier "image" 297..297
+                              Identifier "width" 297..297
+                        Operator "/" 297..297
+                        VnameExpression 297..297
+                          SimpleVname 297..297
+                            Identifier "STEPS" 297..297
+                    MultipleActualParameterSequence 297..301
+                      ConstActualParameter 297..297
+                        BinaryExpression 297..0
+                          VnameExpression 297..297
+                            DotVname 297..297
+                              SimpleVname 297..297
+                                Identifier "image" 297..297
+                              Identifier "height" 297..297
+                          Operator "-" 297..297
+                          IntegerExpression 297..297
+                            IntegerLiteral "1" 297..297
+                      MultipleActualParameterSequence 298..301
+                        ConstActualParameter 298..298
+                          BinaryExpression 298..0
+                            VnameExpression 298..298
+                              DotVname 298..298
+                                SimpleVname 298..298
+                                  Identifier "image" 298..298
+                                Identifier "width" 298..298
+                            Operator "-" 298..298
+                            IntegerExpression 298..298
+                              IntegerLiteral "1" 298..298
+                        MultipleActualParameterSequence 298..301
+                          ConstActualParameter 298..298
+                            BinaryExpression 298..0
+                              BinaryExpression 298..0
+                                VnameExpression 298..298
+                                  DotVname 298..298
+                                    SimpleVname 298..298
+                                      Identifier "image" 298..298
+                                    Identifier "height" 298..298
+                                Operator "-" 298..298
+                                IntegerExpression 298..298
+                                  IntegerLiteral "1" 298..298
+                              Operator "-" 298..298
+                              BinaryExpression 298..0
+                                BinaryExpression 298..0
+                                  VnameExpression 298..298
+                                    SimpleVname 298..298
+                                      Identifier "i" 298..298
+                                  Operator "*" 298..298
+                                  VnameExpression 298..298
+                                    DotVname 298..298
+                                      SimpleVname 298..298
+                                        Identifier "image" 298..298
+                                      Identifier "height" 298..298
+                                Operator "/" 298..298
+                                VnameExpression 298..298
+                                  SimpleVname 298..298
+                                    Identifier "STEPS" 298..298
+                          MultipleActualParameterSequence 299..301
+                            ConstActualParameter 299..299
+                              VnameExpression 299..299
+                                DotVname 299..299
+                                  SimpleVname 299..299
+                                    Identifier "image" 299..299
+                                  Identifier "width" 299..299
+                            MultipleActualParameterSequence 300..301
+                              VarActualParameter 300..300
+                                SubscriptVname 300..300
+                                  DotVname 300..300
+                                    SimpleVname 300..300
+                                      Identifier "image" 300..300
+                                    Identifier "buffer" 300..300
+                                  IntegerExpression 300..300
+                                    IntegerLiteral "0" 300..300
+                              MultipleActualParameterSequence 300..301
+                                VarActualParameter 300..300
+                                  SubscriptVname 300..300
+                                    DotVname 300..300
+                                      SimpleVname 300..300
+                                        Identifier "image" 300..300
+                                      Identifier "buffer" 300..300
+                                    IntegerExpression 300..300
+                                      IntegerLiteral "1" 300..300
+                                MultipleActualParameterSequence 301..301
+                                  VarActualParameter 301..301
+                                    SubscriptVname 301..301
+                                      DotVname 301..301
+                                        SimpleVname 301..301
+                                          Identifier "image" 301..301
+                                        Identifier "buffer" 301..301
+                                      IntegerExpression 301..301
+                                        IntegerLiteral "2" 301..301
+                                  SingleActualParameterSequence 301..301
+                                    VarActualParameter 301..301
+                                      SubscriptVname 301..301
+                                        DotVname 301..301
+                                          SimpleVname 301..301
+                                            Identifier "image" 301..301
+                                          Identifier "buffer" 301..301
+                                        IntegerExpression 301..301
+                                          IntegerLiteral "3" 301..301
+              CallCommand 302..306
+                Identifier "drawLine" 302..302
+                MultipleActualParameterSequence 302..306
+                  ConstActualParameter 302..302
+                    BinaryExpression 302..0
+                      BinaryExpression 302..0
+                        VnameExpression 302..302
+                          SimpleVname 302..302
+                            Identifier "i" 302..302
+                        Operator "*" 302..302
+                        VnameExpression 302..302
+                          DotVname 302..302
+                            SimpleVname 302..302
+                              Identifier "image" 302..302
+                            Identifier "width" 302..302
+                      Operator "/" 302..302
+                      VnameExpression 302..302
+                        SimpleVname 302..302
+                          Identifier "STEPS" 302..302
+                  MultipleActualParameterSequence 302..306
+                    ConstActualParameter 302..302
+                      BinaryExpression 302..0
+                        VnameExpression 302..302
+                          DotVname 302..302
+                            SimpleVname 302..302
+                              Identifier "image" 302..302
+                            Identifier "height" 302..302
+                        Operator "-" 302..302
+                        IntegerExpression 302..302
+                          IntegerLiteral "1" 302..302
+                    MultipleActualParameterSequence 303..306
+                      ConstActualParameter 303..303
+                        IntegerExpression 303..303
+                          IntegerLiteral "0" 303..303
+                      MultipleActualParameterSequence 303..306
+                        ConstActualParameter 303..303
+                          BinaryExpression 303..0
+                            BinaryExpression 303..0
+                              VnameExpression 303..303
+                                SimpleVname 303..303
+                                  Identifier "i" 303..303
+                              Operator "*" 303..303
+                              VnameExpression 303..303
+                                DotVname 303..303
+                                  SimpleVname 303..303
+                                    Identifier "image" 303..303
+                                  Identifier "height" 303..303
+                            Operator "/" 303..303
+                            VnameExpression 303..303
+                              SimpleVname 303..303
+                                Identifier "STEPS" 303..303
+                        MultipleActualParameterSequence 304..306
+                          ConstActualParameter 304..304
+                            VnameExpression 304..304
+                              DotVname 304..304
+                                SimpleVname 304..304
+                                  Identifier "image" 304..304
+                                Identifier "width" 304..304
+                          MultipleActualParameterSequence 305..306
+                            VarActualParameter 305..305
+                              SubscriptVname 305..305
+                                DotVname 305..305
+                                  SimpleVname 305..305
+                                    Identifier "image" 305..305
+                                  Identifier "buffer" 305..305
+                                IntegerExpression 305..305
+                                  IntegerLiteral "0" 305..305
+                            MultipleActualParameterSequence 305..306
+                              VarActualParameter 305..305
+                                SubscriptVname 305..305
+                                  DotVname 305..305
+                                    SimpleVname 305..305
+                                      Identifier "image" 305..305
+                                    Identifier "buffer" 305..305
+                                  IntegerExpression 305..305
+                                    IntegerLiteral "1" 305..305
+                              MultipleActualParameterSequence 306..306
+                                VarActualParameter 306..306
+                                  SubscriptVname 306..306
+                                    DotVname 306..306
+                                      SimpleVname 306..306
+                                        Identifier "image" 306..306
+                                      Identifier "buffer" 306..306
+                                    IntegerExpression 306..306
+                                      IntegerLiteral "2" 306..306
+                                SingleActualParameterSequence 306..306
+                                  VarActualParameter 306..306
+                                    SubscriptVname 306..306
+                                      DotVname 306..306
+                                        SimpleVname 306..306
+                                          Identifier "image" 306..306
+                                        Identifier "buffer" 306..306
+                                      IntegerExpression 306..306
+                                        IntegerLiteral "3" 306..306
+            AssignCommand 307..308
+              SimpleVname 307..307
+                Identifier "i" 307..307
+              BinaryExpression 307..0
+                VnameExpression 307..307
+                  SimpleVname 307..307
+                    Identifier "i" 307..307
+                Operator "+" 307..307
+                IntegerExpression 307..308
+                  IntegerLiteral "1" 307..308
+      CallCommand 310..313
+        Identifier "writePbmAscii" 310..310
+        MultipleActualParameterSequence 310..312
+          ConstActualParameter 310..310
+            VnameExpression 310..310
+              DotVname 310..310
+                SimpleVname 310..310
+                  Identifier "image" 310..310
+                Identifier "width" 310..310
+          MultipleActualParameterSequence 310..312
+            ConstActualParameter 310..310
+              VnameExpression 310..310
+                DotVname 310..310
+                  SimpleVname 310..310
+                    Identifier "image" 310..310
+                  Identifier "height" 310..310
+            MultipleActualParameterSequence 311..312
+              VarActualParameter 311..311
+                SubscriptVname 311..311
+                  DotVname 311..311
+                    SimpleVname 311..311
+                      Identifier "image" 311..311
+                    Identifier "buffer" 311..311
+                  IntegerExpression 311..311
+                    IntegerLiteral "0" 311..311
+              MultipleActualParameterSequence 311..312
+                VarActualParameter 311..311
+                  SubscriptVname 311..311
+                    DotVname 311..311
+                      SimpleVname 311..311
+                        Identifier "image" 311..311
+                      Identifier "buffer" 311..311
+                    IntegerExpression 311..311
+                      IntegerLiteral "1" 311..311
+                MultipleActualParameterSequence 312..312
+                  VarActualParameter 312..312
+                    SubscriptVname 312..312
+                      DotVname 312..312
+                        SimpleVname 312..312
+                          Identifier "image" 312..312
+                        Identifier "buffer" 312..312
+                      IntegerExpression 312..312
+                        IntegerLiteral "2" 312..312
+                  SingleActualParameterSequence 312..312
+                    VarActualParameter 312..312
+                      SubscriptVname 312..312
+                        DotVname 312..312
+                          SimpleVname 312..312
+                            Identifier "image" 312..312
+                          Identifier "buffer" 312..312
+                        IntegerExpression 312..312
+                          IntegerLiteral "3" 312..312

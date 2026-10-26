@@ -1,0 +1,123 @@
+Program 42..43
+  LetCommand 1..43
+    SequentialDeclaration 3..31
+      SequentialDeclaration 3..31
+        VarDeclaration 3..3
+          Identifier "x" 3..3
+          SimpleTypeDenoter 3..3
+            Identifier "Integer" 3..3
+        VarDeclaration 5..5
+          Identifier "y" 5..5
+          SimpleTypeDenoter 5..5
+            Identifier "Integer" 5..5
+      ProcDeclaration 8..31
+        Identifier "foo" 8..8
+        MultipleFormalParameterSequence 8..8
+          VarFormalParameter 8..8
+            Identifier "k" 8..8
+            SimpleTypeDenoter 8..8
+              Identifier "Integer" 8..8
+          SingleFormalParameterSequence 8..8
+            ConstFormalParameter 8..8
+              Identifier "l" 8..8
+              SimpleTypeDenoter 8..8
+                Identifier "Integer" 8..8
+        LetCommand 9..31
+          SequentialDeclaration 11..24
+            VarDeclaration 11..11
+              Identifier "o" 11..11
+              SimpleTypeDenoter 11..11
+                Identifier "Integer" 11..11
+            ProcDeclaration 14..24
+              Identifier "bar" 14..14
+              MultipleFormalParameterSequence 14..14
+                VarFormalParameter 14..14
+                  Identifier "k" 14..14
+                  SimpleTypeDenoter 14..14
+                    Identifier "Integer" 14..14
+                SingleFormalParameterSequence 14..14
+                  ConstFormalParameter 14..14
+                    Identifier "l" 14..14
+                    SimpleTypeDenoter 14..14
+                      Identifier "Integer" 14..14
+              LetCommand 15..24
+                VarDeclaration 17..18
+                  Identifier "dummy" 17..17
+                  SimpleTypeDenoter 17..18
+                    Identifier "Integer" 17..18
+                SequentialCommand 20..23
+                  AssignCommand 20..20
+                    SimpleVname 20..20
+                      Identifier "k" 20..20
+                    BinaryExpression 20..0
+                      VnameExpression 20..20
+                        SimpleVname 20..20
+                          Identifier "l" 20..20
+                      Operator "*" 20..20
+                      VnameExpression 20..20
+                        SimpleVname 20..20
+                          Identifier "y" 20..20
+                  AssignCommand 22..23
+                    SimpleVname 22..22
+                      Identifier "y" 22..22
+                    BinaryExpression 22..0
+                      VnameExpression 22..22
+                        SimpleVname 22..22
+                          Identifier "k" 22..22
+                      Operator "+" 22..22
+                      IntegerExpression 22..23
+                        IntegerLiteral "1" 22..23
+          SequentialCommand 27..30
+            AssignCommand 27..27
+              SimpleVname 27..27
+                Identifier "o" 27..27
+              BinaryExpression 27..0
+                VnameExpression 27..27
+                  SimpleVname 27..27
+                    Identifier "l" 27..27
+                Operator "*" 27..27
+                IntegerExpression 27..27
+                  IntegerLiteral "2" 27..27
+            CallCommand 29..30
+              Identifier "bar" 29..29
+              MultipleActualParameterSequence 29..29
+                VarActualParameter 29..29
+                  SimpleVname 29..29
+                    Identifier "k" 29..29
+                SingleActualParameterSequence 29..29
+                  ConstActualParameter 29..29
+                    VnameExpression 29..29
+                      SimpleVname 29..29
+                        Identifier "o" 29..29
+    SequentialCommand 35..42
+      SequentialCommand 35..42
+        SequentialCommand 35..42
+          AssignCommand 35..35
+            SimpleVname 35..35
+              Identifier "x" 35..35
+            IntegerExpression 35..35
+              IntegerLiteral "42" 35..35
+          CallCommand 37..37
+            Identifier "foo" 37..37
+            MultipleActualParameterSequence 37..37
+              VarActualParameter 37..37
+                SimpleVname 37..37
+                  Identifier "x" 37..37
+              SingleActualParameterSequence 37..37
+                ConstActualParameter 37..37
+                  IntegerExpression 37..37
+                    IntegerLiteral "3" 37..37
+        CallCommand 39..39
+          Identifier "putint" 39..39
+          SingleActualParameterSequence 39..39
+            ConstActualParameter 39..39
+              VnameExpression 39..39
+                SimpleVname 39..39
+                  Identifier "x" 39..39
+      CallCommand 41..42
+        Identifier "putint" 41..41
+        SingleActualParameterSequence 41..41
+          ConstActualParameter 41..41
+            VnameExpression 41..41
+              SimpleVname 41..41
+                Identifier "y" 41..41

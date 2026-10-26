@@ -1,0 +1,69 @@
+Program 12..13
+  LetCommand 1..13
+    SequentialDeclaration 2..4
+      ConstDeclaration 2..2
+        Identifier "MAX" 2..2
+        IntegerExpression 2..2
+          IntegerLiteral "10" 2..2
+      VarDeclaration 3..4
+        Identifier "n" 3..3
+        SimpleTypeDenoter 3..4
+          Identifier "Integer" 3..4
+    SequentialCommand 5..12
+      CallCommand 5..5
+        Identifier "getint" 5..5
+        SingleActualParameterSequence 5..5
+          VarActualParameter 5..5
+            SimpleVname 5..5
+              Identifier "n" 5..5
+      IfCommand 6..12
+        BinaryExpression 6..0
+          BinaryExpression 6..0
+            VnameExpression 6..6
+              SimpleVname 6..6
+                Identifier "n" 6..6
+            Operator ">" 6..6
+            IntegerExpression 6..6
+              IntegerLiteral "0" 6..6
+          Operator "/\" 6..6
+          BinaryExpression 6..0
+            VnameExpression 6..6
+              SimpleVname 6..6
+                Identifier "n" 6..6
+            Operator "<=" 6..6
+            VnameExpression 6..6
+              SimpleVname 6..6
+                Identifier "MAX" 6..6
+        WhileCommand 7..11
+          BinaryExpression 7..0
+            VnameExpression 7..7
+              SimpleVname 7..7
+                Identifier "n" 7..7
+            Operator ">" 7..7
+            IntegerExpression 7..7
+              IntegerLiteral "0" 7..7
+          SequentialCommand 8..10
+            SequentialCommand 8..10
+              SequentialCommand 8..10
+                CallCommand 8..8
+                  Identifier "putint" 8..8
+                  SingleActualParameterSequence 8..8
+                    ConstActualParameter 8..8
+                      VnameExpression 8..8
+                        SimpleVname 8..8
+                          Identifier "n" 8..8
+                CallCommand 8..8
+                  Identifier "puteol" 8..8
+                  EmptyActualParameterSequence 8..8
+              AssignCommand 9..9
+                SimpleVname 9..9
+                  Identifier "n" 9..9
+                BinaryExpression 9..0
+                  VnameExpression 9..9
+                    SimpleVname 9..9
+                      Identifier "n" 9..9
+                  Operator "-" 9..9
+                  IntegerExpression 9..9
+                    IntegerLiteral "1" 9..9
+            EmptyCommand 10..10
+        EmptyCommand 12..12

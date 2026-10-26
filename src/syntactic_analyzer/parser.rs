@@ -75,10 +75,16 @@ impl<R: Read> Parser<R> {
         self.start(&mut command_position);
 
         let mut command = self.parse_single_command();
+        let mut chained_commands = Vec::new();
         while self.current_token.kind == TokenKind::Semicolon {
             self.accept_it();
-            let chained_command = self.parse_single_command();
+            chained_commands.push(self.parse_single_command());
             self.finish(&mut command_position);
+        }
+
+        // Java hands one SourcePosition object to every SequentialCommand of the chain and keeps
+        // moving its finish, so they all end up with the finish of the last command.
+        for chained_command in chained_commands {
             command = Command {
                 kind: Box::from(CommandKind::Sequential {
                     first: command,
@@ -306,35 +312,46 @@ impl<R: Read> Parser<R> {
     }
 
     fn parse_rest_of_v_name(&mut self, identifier: Identifier) -> VName {
-        let mut position = identifier.position.clone();
-        let mut v_name = VName {
-            kind: Box::new(VNameKind::Simple(identifier)),
-            position: position.clone(),
-        };
+        enum Selector {
+            Field(Identifier),
+            Index(Expression),
+        }
 
+        let mut position = identifier.position.clone();
+        let mut selectors = Vec::new();
         while self.current_token.kind == TokenKind::Dot || self.current_token.kind == TokenKind::LBracket {
             if self.current_token.kind == TokenKind::Dot {
                 self.accept_it();
-                v_name = VName {
-                    kind: Box::new(VNameKind::Dot {
-                        v_name,
-                        field: self.parse_identifier()
-                    }),
-                    position: position.clone(),
-                };
+                selectors.push(Selector::Field(self.parse_identifier()));
             } else {
                 self.accept_it();
                 let expression = self.parse_expression();
                 self.accept(TokenKind::RBracket);
                 self.finish(&mut position);
-                v_name = VName {
-                    kind: Box::new(VNameKind::Subscript {
-                        v_name,
-                        index: expression,
-                    }),
-                    position: position.clone(),
-                }
+                selectors.push(Selector::Index(expression));
             }
+        }
+
+        // Java uses the identifier's own SourcePosition object for every vname of the chain and
+        // finish() moves it on each subscript, so the identifier and all the vnames end up with
+        // the finish of the last `]`.
+        let identifier = Identifier {
+            position: position.clone(),
+            ..identifier
+        };
+        let mut v_name = VName {
+            kind: Box::new(VNameKind::Simple(identifier)),
+            position: position.clone(),
+        };
+        for selector in selectors {
+            let kind = match selector {
+                Selector::Field(field) => VNameKind::Dot { v_name, field },
+                Selector::Index(index) => VNameKind::Subscript { v_name, index },
+            };
+            v_name = VName {
+                kind: Box::new(kind),
+                position: position.clone(),
+            };
         }
 
         v_name
@@ -610,10 +627,15 @@ impl<R: Read> Parser<R> {
         self.start(&mut position);
 
         let mut declaration = self.parse_single_declaration();
+        let mut chained_declarations = Vec::new();
         while self.current_token.kind == TokenKind::Semicolon {
             self.accept_it();
-            let chained_declaration = self.parse_single_declaration();
+            chained_declarations.push(self.parse_single_declaration());
             self.finish(&mut position);
+        }
+
+        // Same position sharing as in parse_command.
+        for chained_declaration in chained_declarations {
             declaration = Declaration {
                 kind: Box::new(DeclarationKind::Sequential {
                     first: declaration,

@@ -1,0 +1,595 @@
+Program 113..113
+  LetCommand 2..113
+    SequentialDeclaration 3..89
+      SequentialDeclaration 3..89
+        SequentialDeclaration 3..89
+          SequentialDeclaration 3..89
+            SequentialDeclaration 3..89
+              SequentialDeclaration 3..89
+                SequentialDeclaration 3..89
+                  SequentialDeclaration 3..89
+                    SequentialDeclaration 3..89
+                      SequentialDeclaration 3..89
+                        SequentialDeclaration 3..89
+                          SequentialDeclaration 3..89
+                            SequentialDeclaration 3..89
+                              ConstDeclaration 3..3
+                                Identifier "MAXPRIM" 3..3
+                                IntegerExpression 3..3
+                                  IntegerLiteral "32750" 3..3
+                              ConstDeclaration 5..5
+                                Identifier "UPPERBOUND" 5..5
+                                IntegerExpression 5..5
+                                  IntegerLiteral "250" 5..5
+                            TypeDeclaration 6..6
+                              Identifier "BoolArray" 6..6
+                              ArrayTypeDenoter 6..6
+                                IntegerLiteral "250" 6..6
+                                SimpleTypeDenoter 6..6
+                                  Identifier "Boolean" 6..6
+                          VarDeclaration 7..7
+                            Identifier "numbers" 7..7
+                            SimpleTypeDenoter 7..7
+                              Identifier "BoolArray" 7..7
+                        ProcDeclaration 10..16
+                          Identifier "setArrayElement" 10..10
+                          MultipleFormalParameterSequence 10..10
+                            VarFormalParameter 10..10
+                              Identifier "Array" 10..10
+                              SimpleTypeDenoter 10..10
+                                Identifier "BoolArray" 10..10
+                            MultipleFormalParameterSequence 10..10
+                              ConstFormalParameter 10..10
+                                Identifier "index" 10..10
+                                SimpleTypeDenoter 10..10
+                                  Identifier "Integer" 10..10
+                              SingleFormalParameterSequence 10..10
+                                ConstFormalParameter 10..10
+                                  Identifier "bool" 10..10
+                                  SimpleTypeDenoter 10..10
+                                    Identifier "Boolean" 10..10
+                          IfCommand 12..16
+                            BinaryExpression 12..0
+                              BinaryExpression 12..0
+                                VnameExpression 12..12
+                                  SimpleVname 12..12
+                                    Identifier "index" 12..12
+                                Operator ">=" 12..12
+                                IntegerExpression 12..12
+                                  IntegerLiteral "0" 12..12
+                              Operator "\/" 12..12
+                              BinaryExpression 12..0
+                                VnameExpression 12..12
+                                  SimpleVname 12..12
+                                    Identifier "index" 12..12
+                                Operator "<" 12..12
+                                VnameExpression 12..12
+                                  SimpleVname 12..12
+                                    Identifier "UPPERBOUND" 12..12
+                            AssignCommand 14..15
+                              SubscriptVname 14..14
+                                SimpleVname 14..14
+                                  Identifier "Array" 14..14
+                                VnameExpression 14..14
+                                  SimpleVname 14..14
+                                    Identifier "index" 14..14
+                              VnameExpression 14..15
+                                SimpleVname 14..15
+                                  Identifier "bool" 14..15
+                            EmptyCommand 16..16
+                      ProcDeclaration 19..29
+                        Identifier "initArray" 19..19
+                        SingleFormalParameterSequence 19..19
+                          VarFormalParameter 19..19
+                            Identifier "Array" 19..19
+                            SimpleTypeDenoter 19..19
+                              Identifier "BoolArray" 19..19
+                        LetCommand 20..29
+                          VarDeclaration 21..22
+                            Identifier "count" 21..21
+                            SimpleTypeDenoter 21..22
+                              Identifier "Integer" 21..22
+                          SequentialCommand 23..29
+                            AssignCommand 23..23
+                              SimpleVname 23..23
+                                Identifier "count" 23..23
+                              IntegerExpression 23..23
+                                IntegerLiteral "0" 23..23
+                            WhileCommand 24..29
+                              BinaryExpression 24..0
+                                VnameExpression 24..24
+                                  SimpleVname 24..24
+                                    Identifier "count" 24..24
+                                Operator "<" 24..24
+                                VnameExpression 24..25
+                                  SimpleVname 24..25
+                                    Identifier "UPPERBOUND" 24..25
+                              SequentialCommand 26..28
+                                CallCommand 26..26
+                                  Identifier "setArrayElement" 26..26
+                                  MultipleActualParameterSequence 26..26
+                                    VarActualParameter 26..26
+                                      SimpleVname 26..26
+                                        Identifier "Array" 26..26
+                                    MultipleActualParameterSequence 26..26
+                                      ConstActualParameter 26..26
+                                        VnameExpression 26..26
+                                          SimpleVname 26..26
+                                            Identifier "count" 26..26
+                                      SingleActualParameterSequence 26..26
+                                        ConstActualParameter 26..26
+                                          VnameExpression 26..26
+                                            SimpleVname 26..26
+                                              Identifier "true" 26..26
+                                AssignCommand 27..28
+                                  SimpleVname 27..27
+                                    Identifier "count" 27..27
+                                  BinaryExpression 27..0
+                                    VnameExpression 27..27
+                                      SimpleVname 27..27
+                                        Identifier "count" 27..27
+                                    Operator "+" 27..27
+                                    IntegerExpression 27..28
+                                      IntegerLiteral "1" 27..28
+                    ProcDeclaration 34..50
+                      Identifier "eraseMultiples" 34..34
+                      MultipleFormalParameterSequence 34..34
+                        VarFormalParameter 34..34
+                          Identifier "Array" 34..34
+                          SimpleTypeDenoter 34..34
+                            Identifier "BoolArray" 34..34
+                        MultipleFormalParameterSequence 34..34
+                          ConstFormalParameter 34..34
+                            Identifier "number" 34..34
+                            SimpleTypeDenoter 34..34
+                              Identifier "Integer" 34..34
+                          SingleFormalParameterSequence 34..34
+                            ConstFormalParameter 34..34
+                              Identifier "start" 34..34
+                              SimpleTypeDenoter 34..34
+                                Identifier "Integer" 34..34
+                      LetCommand 35..50
+                        VarDeclaration 36..37
+                          Identifier "multiples" 36..36
+                          SimpleTypeDenoter 36..37
+                            Identifier "Integer" 36..37
+                        SequentialCommand 39..50
+                          AssignCommand 39..39
+                            SimpleVname 39..39
+                              Identifier "multiples" 39..39
+                            BinaryExpression 39..0
+                              VnameExpression 39..39
+                                SimpleVname 39..39
+                                  Identifier "number" 39..39
+                              Operator "*" 39..39
+                              VnameExpression 39..39
+                                SimpleVname 39..39
+                                  Identifier "number" 39..39
+                          WhileCommand 41..50
+                            BinaryExpression 41..0
+                              VnameExpression 41..41
+                                SimpleVname 41..41
+                                  Identifier "multiples" 41..41
+                              Operator "<" 41..41
+                              BinaryExpression 41..0
+                                VnameExpression 41..41
+                                  SimpleVname 41..41
+                                    Identifier "start" 41..41
+                                Operator "+" 41..41
+                                VnameExpression 41..41
+                                  SimpleVname 41..41
+                                    Identifier "UPPERBOUND" 41..41
+                            SequentialCommand 44..49
+                              IfCommand 44..47
+                                BinaryExpression 44..0
+                                  VnameExpression 44..44
+                                    SimpleVname 44..44
+                                      Identifier "multiples" 44..44
+                                  Operator ">" 44..44
+                                  BinaryExpression 44..0
+                                    VnameExpression 44..44
+                                      SimpleVname 44..44
+                                        Identifier "start" 44..44
+                                    Operator "-" 44..44
+                                    IntegerExpression 44..44
+                                      IntegerLiteral "1" 44..44
+                                CallCommand 46..47
+                                  Identifier "setArrayElement" 46..46
+                                  MultipleActualParameterSequence 46..46
+                                    VarActualParameter 46..46
+                                      SimpleVname 46..46
+                                        Identifier "Array" 46..46
+                                    MultipleActualParameterSequence 46..46
+                                      ConstActualParameter 46..46
+                                        BinaryExpression 46..0
+                                          VnameExpression 46..46
+                                            SimpleVname 46..46
+                                              Identifier "multiples" 46..46
+                                          Operator "-" 46..46
+                                          VnameExpression 46..46
+                                            SimpleVname 46..46
+                                              Identifier "start" 46..46
+                                      SingleActualParameterSequence 46..46
+                                        ConstActualParameter 46..46
+                                          VnameExpression 46..46
+                                            SimpleVname 46..46
+                                              Identifier "false" 46..46
+                                EmptyCommand 47..47
+                              AssignCommand 48..49
+                                SimpleVname 48..48
+                                  Identifier "multiples" 48..48
+                                BinaryExpression 48..0
+                                  VnameExpression 48..48
+                                    SimpleVname 48..48
+                                      Identifier "multiples" 48..48
+                                  Operator "+" 48..48
+                                  VnameExpression 48..49
+                                    SimpleVname 48..49
+                                      Identifier "number" 48..49
+                  TypeDeclaration 52..52
+                    Identifier "String" 52..52
+                    ArrayTypeDenoter 52..52
+                      IntegerLiteral "20" 52..52
+                      SimpleTypeDenoter 52..52
+                        Identifier "Char" 52..52
+                VarDeclaration 53..53
+                  Identifier "filename" 53..53
+                  SimpleTypeDenoter 53..53
+                    Identifier "String" 53..53
+              ProcDeclaration 56..61
+                Identifier "initFilename" 56..56
+                SingleFormalParameterSequence 56..56
+                  VarFormalParameter 56..56
+                    Identifier "file" 56..56
+                    SimpleTypeDenoter 56..56
+                      Identifier "String" 56..56
+                SequentialCommand 58..61
+                  SequentialCommand 58..61
+                    SequentialCommand 58..61
+                      SequentialCommand 58..61
+                        SequentialCommand 58..61
+                          SequentialCommand 58..61
+                            SequentialCommand 58..61
+                              SequentialCommand 58..61
+                                SequentialCommand 58..61
+                                  AssignCommand 58..58
+                                    SubscriptVname 58..58
+                                      SimpleVname 58..58
+                                        Identifier "file" 58..58
+                                      IntegerExpression 58..58
+                                        IntegerLiteral "0" 58..58
+                                    CharacterExpression 58..58
+                                      CharacterLiteral "'p'" 58..58
+                                  AssignCommand 58..58
+                                    SubscriptVname 58..58
+                                      SimpleVname 58..58
+                                        Identifier "file" 58..58
+                                      IntegerExpression 58..58
+                                        IntegerLiteral "1" 58..58
+                                    CharacterExpression 58..58
+                                      CharacterLiteral "'r'" 58..58
+                                AssignCommand 58..58
+                                  SubscriptVname 58..58
+                                    SimpleVname 58..58
+                                      Identifier "file" 58..58
+                                    IntegerExpression 58..58
+                                      IntegerLiteral "2" 58..58
+                                  CharacterExpression 58..58
+                                    CharacterLiteral "'i'" 58..58
+                              AssignCommand 59..59
+                                SubscriptVname 59..59
+                                  SimpleVname 59..59
+                                    Identifier "file" 59..59
+                                  IntegerExpression 59..59
+                                    IntegerLiteral "3" 59..59
+                                CharacterExpression 59..59
+                                  CharacterLiteral "'m'" 59..59
+                            AssignCommand 59..59
+                              SubscriptVname 59..59
+                                SimpleVname 59..59
+                                  Identifier "file" 59..59
+                                IntegerExpression 59..59
+                                  IntegerLiteral "4" 59..59
+                              CharacterExpression 59..59
+                                CharacterLiteral "'.'" 59..59
+                          AssignCommand 59..59
+                            SubscriptVname 59..59
+                              SimpleVname 59..59
+                                Identifier "file" 59..59
+                              IntegerExpression 59..59
+                                IntegerLiteral "5" 59..59
+                            CharacterExpression 59..59
+                              CharacterLiteral "'t'" 59..59
+                        AssignCommand 60..60
+                          SubscriptVname 60..60
+                            SimpleVname 60..60
+                              Identifier "file" 60..60
+                            IntegerExpression 60..60
+                              IntegerLiteral "6" 60..60
+                          CharacterExpression 60..60
+                            CharacterLiteral "'x'" 60..60
+                      AssignCommand 60..60
+                        SubscriptVname 60..60
+                          SimpleVname 60..60
+                            Identifier "file" 60..60
+                          IntegerExpression 60..60
+                            IntegerLiteral "7" 60..60
+                        CharacterExpression 60..60
+                          CharacterLiteral "'t'" 60..60
+                    AssignCommand 60..60
+                      SubscriptVname 60..60
+                        SimpleVname 60..60
+                          Identifier "file" 60..60
+                        IntegerExpression 60..60
+                          IntegerLiteral "8" 60..60
+                      CallExpression 60..60
+                        Identifier "chr" 60..60
+                        SingleActualParameterSequence 60..60
+                          ConstActualParameter 60..60
+                            IntegerExpression 60..60
+                              IntegerLiteral "0" 60..60
+                  EmptyCommand 61..61
+            ProcDeclaration 65..84
+              Identifier "printPrimToFile" 65..65
+              MultipleFormalParameterSequence 65..65
+                ConstFormalParameter 65..65
+                  Identifier "numbers" 65..65
+                  SimpleTypeDenoter 65..65
+                    Identifier "BoolArray" 65..65
+                MultipleFormalParameterSequence 65..65
+                  ConstFormalParameter 65..65
+                    Identifier "filehandle" 65..65
+                    SimpleTypeDenoter 65..65
+                      Identifier "Integer" 65..65
+                  SingleFormalParameterSequence 65..65
+                    ConstFormalParameter 65..65
+                      Identifier "start" 65..65
+                      SimpleTypeDenoter 65..65
+                        Identifier "Integer" 65..65
+              LetCommand 66..84
+                VarDeclaration 67..68
+                  Identifier "count" 67..67
+                  SimpleTypeDenoter 67..68
+                    Identifier "Integer" 67..68
+                SequentialCommand 69..84
+                  SequentialCommand 69..84
+                    AssignCommand 69..69
+                      SimpleVname 69..69
+                        Identifier "count" 69..69
+                      IntegerExpression 69..69
+                        IntegerLiteral "0" 69..69
+                    IfCommand 70..83
+                      BinaryExpression 70..0
+                        VnameExpression 70..70
+                          SimpleVname 70..70
+                            Identifier "filehandle" 70..70
+                        Operator ">" 70..70
+                        BinaryExpression 70..0
+                          IntegerExpression 70..70
+                            IntegerLiteral "0" 70..70
+                          Operator "-" 70..70
+                          IntegerExpression 70..70
+                            IntegerLiteral "1" 70..70
+                      WhileCommand 72..83
+                        BinaryExpression 72..0
+                          VnameExpression 72..72
+                            SimpleVname 72..72
+                              Identifier "count" 72..72
+                          Operator "<" 72..72
+                          VnameExpression 72..73
+                            SimpleVname 72..73
+                              Identifier "UPPERBOUND" 72..73
+                        SequentialCommand 74..82
+                          IfCommand 74..80
+                            BinaryExpression 74..0
+                              VnameExpression 74..74
+                                SubscriptVname 74..74
+                                  SimpleVname 74..74
+                                    Identifier "numbers" 74..74
+                                  VnameExpression 74..74
+                                    SimpleVname 74..74
+                                      Identifier "count" 74..74
+                              Operator "=" 74..74
+                              VnameExpression 74..74
+                                SimpleVname 74..74
+                                  Identifier "true" 74..74
+                            SequentialCommand 77..79
+                              CallCommand 77..77
+                                Identifier "fputint" 77..77
+                                MultipleActualParameterSequence 77..77
+                                  ConstActualParameter 77..77
+                                    VnameExpression 77..77
+                                      SimpleVname 77..77
+                                        Identifier "filehandle" 77..77
+                                  SingleActualParameterSequence 77..77
+                                    ConstActualParameter 77..77
+                                      BinaryExpression 77..0
+                                        VnameExpression 77..77
+                                          SimpleVname 77..77
+                                            Identifier "count" 77..77
+                                        Operator "+" 77..77
+                                        VnameExpression 77..77
+                                          SimpleVname 77..77
+                                            Identifier "start" 77..77
+                              CallCommand 78..79
+                                Identifier "fputeol" 78..78
+                                SingleActualParameterSequence 78..78
+                                  ConstActualParameter 78..78
+                                    VnameExpression 78..78
+                                      SimpleVname 78..78
+                                        Identifier "filehandle" 78..78
+                            EmptyCommand 80..80
+                          AssignCommand 81..82
+                            SimpleVname 81..81
+                              Identifier "count" 81..81
+                            BinaryExpression 81..0
+                              VnameExpression 81..81
+                                SimpleVname 81..81
+                                  Identifier "count" 81..81
+                              Operator "+" 81..81
+                              IntegerExpression 81..82
+                                IntegerLiteral "1" 81..82
+                      EmptyCommand 83..83
+                  EmptyCommand 84..84
+          VarDeclaration 86..86
+            Identifier "filehandle" 86..86
+            SimpleTypeDenoter 86..86
+              Identifier "Integer" 86..86
+        VarDeclaration 87..87
+          Identifier "maxNumber" 87..87
+          SimpleTypeDenoter 87..87
+            Identifier "Integer" 87..87
+      VarDeclaration 88..89
+        Identifier "actualNumber" 88..88
+        SimpleTypeDenoter 88..89
+          Identifier "Integer" 88..89
+    SequentialCommand 91..113
+      SequentialCommand 91..113
+        SequentialCommand 91..113
+          SequentialCommand 91..113
+            CallCommand 91..91
+              Identifier "initFilename" 91..91
+              SingleActualParameterSequence 91..91
+                VarActualParameter 91..91
+                  SimpleVname 91..91
+                    Identifier "filename" 91..91
+            CallCommand 92..92
+              Identifier "fopen" 92..92
+              MultipleActualParameterSequence 92..92
+                VarActualParameter 92..92
+                  SimpleVname 92..92
+                    Identifier "filehandle" 92..92
+                MultipleActualParameterSequence 92..92
+                  ConstActualParameter 92..92
+                    VnameExpression 92..92
+                      SimpleVname 92..92
+                        Identifier "filename" 92..92
+                  SingleActualParameterSequence 92..92
+                    ConstActualParameter 92..92
+                      VnameExpression 92..92
+                        SimpleVname 92..92
+                          Identifier "true" 92..92
+          AssignCommand 93..93
+            SimpleVname 93..93
+              Identifier "maxNumber" 93..93
+            VnameExpression 93..93
+              SimpleVname 93..93
+                Identifier "UPPERBOUND" 93..93
+        WhileCommand 95..110
+          BinaryExpression 95..0
+            VnameExpression 95..95
+              SimpleVname 95..95
+                Identifier "maxNumber" 95..95
+            Operator "<" 95..95
+            VnameExpression 95..96
+              SimpleVname 95..96
+                Identifier "MAXPRIM" 95..96
+          SequentialCommand 98..110
+            SequentialCommand 98..110
+              SequentialCommand 98..110
+                SequentialCommand 98..110
+                  AssignCommand 98..98
+                    SimpleVname 98..98
+                      Identifier "actualNumber" 98..98
+                    IntegerExpression 98..98
+                      IntegerLiteral "2" 98..98
+                  CallCommand 99..99
+                    Identifier "initArray" 99..99
+                    SingleActualParameterSequence 99..99
+                      VarActualParameter 99..99
+                        SimpleVname 99..99
+                          Identifier "numbers" 99..99
+                WhileCommand 102..106
+                  BinaryExpression 102..0
+                    BinaryExpression 102..0
+                      VnameExpression 102..102
+                        SimpleVname 102..102
+                          Identifier "actualNumber" 102..102
+                      Operator "*" 102..102
+                      VnameExpression 102..102
+                        SimpleVname 102..102
+                          Identifier "actualNumber" 102..102
+                    Operator "<" 102..102
+                    VnameExpression 102..103
+                      SimpleVname 102..103
+                        Identifier "maxNumber" 102..103
+                  SequentialCommand 104..106
+                    CallCommand 104..104
+                      Identifier "eraseMultiples" 104..104
+                      MultipleActualParameterSequence 104..104
+                        VarActualParameter 104..104
+                          SimpleVname 104..104
+                            Identifier "numbers" 104..104
+                        MultipleActualParameterSequence 104..104
+                          ConstActualParameter 104..104
+                            VnameExpression 104..104
+                              SimpleVname 104..104
+                                Identifier "actualNumber" 104..104
+                          SingleActualParameterSequence 104..104
+                            ConstActualParameter 104..104
+                              BinaryExpression 104..0
+                                BinaryExpression 104..0
+                                  VnameExpression 104..104
+                                    SimpleVname 104..104
+                                      Identifier "maxNumber" 104..104
+                                  Operator "-" 104..104
+                                  VnameExpression 104..104
+                                    SimpleVname 104..104
+                                      Identifier "UPPERBOUND" 104..104
+                                Operator "+" 104..104
+                                IntegerExpression 104..104
+                                  IntegerLiteral "1" 104..104
+                    AssignCommand 105..106
+                      SimpleVname 105..105
+                        Identifier "actualNumber" 105..105
+                      BinaryExpression 105..0
+                        VnameExpression 105..105
+                          SimpleVname 105..105
+                            Identifier "actualNumber" 105..105
+                        Operator "+" 105..105
+                        IntegerExpression 105..106
+                          IntegerLiteral "1" 105..106
+              CallCommand 108..108
+                Identifier "printPrimToFile" 108..108
+                MultipleActualParameterSequence 108..108
+                  ConstActualParameter 108..108
+                    VnameExpression 108..108
+                      SimpleVname 108..108
+                        Identifier "numbers" 108..108
+                  MultipleActualParameterSequence 108..108
+                    ConstActualParameter 108..108
+                      VnameExpression 108..108
+                        SimpleVname 108..108
+                          Identifier "filehandle" 108..108
+                    SingleActualParameterSequence 108..108
+                      ConstActualParameter 108..108
+                        BinaryExpression 108..0
+                          BinaryExpression 108..0
+                            VnameExpression 108..108
+                              SimpleVname 108..108
+                                Identifier "maxNumber" 108..108
+                            Operator "-" 108..108
+                            VnameExpression 108..108
+                              SimpleVname 108..108
+                                Identifier "UPPERBOUND" 108..108
+                          Operator "+" 108..108
+                          IntegerExpression 108..108
+                            IntegerLiteral "1" 108..108
+            AssignCommand 109..110
+              SimpleVname 109..109
+                Identifier "maxNumber" 109..109
+              BinaryExpression 109..0
+                VnameExpression 109..109
+                  SimpleVname 109..109
+                    Identifier "maxNumber" 109..109
+                Operator "+" 109..109
+                VnameExpression 109..110
+                  SimpleVname 109..110
+                    Identifier "UPPERBOUND" 109..110
+      CallCommand 112..113
+        Identifier "fclose" 112..112
+        SingleActualParameterSequence 112..112
+          ConstActualParameter 112..112
+            VnameExpression 112..112
+              SimpleVname 112..112
+                Identifier "filehandle" 112..112

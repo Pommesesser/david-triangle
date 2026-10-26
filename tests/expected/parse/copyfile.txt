@@ -1,0 +1,411 @@
+Program 53..54
+  LetCommand 5..54
+    SequentialDeclaration 6..16
+      SequentialDeclaration 6..16
+        SequentialDeclaration 6..16
+          SequentialDeclaration 6..16
+            SequentialDeclaration 6..16
+              ConstDeclaration 6..8
+                Identifier "INNAME" 6..6
+                ArrayExpression 7..8
+                  MultipleArrayAggregate 7..8
+                    CharacterExpression 7..7
+                      CharacterLiteral "'i'" 7..7
+                    MultipleArrayAggregate 7..8
+                      CharacterExpression 7..7
+                        CharacterLiteral "'n'" 7..7
+                      MultipleArrayAggregate 7..8
+                        CharacterExpression 7..7
+                          CharacterLiteral "'f'" 7..7
+                        MultipleArrayAggregate 7..8
+                          CharacterExpression 7..7
+                            CharacterLiteral "'i'" 7..7
+                          MultipleArrayAggregate 7..8
+                            CharacterExpression 7..7
+                              CharacterLiteral "'l'" 7..7
+                            MultipleArrayAggregate 7..8
+                              CharacterExpression 7..7
+                                CharacterLiteral "'e'" 7..7
+                              MultipleArrayAggregate 7..8
+                                CallExpression 7..7
+                                  Identifier "chr" 7..7
+                                  SingleActualParameterSequence 7..7
+                                    ConstActualParameter 7..7
+                                      IntegerExpression 7..7
+                                        IntegerLiteral "0" 7..7
+                                MultipleArrayAggregate 7..8
+                                  CallExpression 7..7
+                                    Identifier "chr" 7..7
+                                    SingleActualParameterSequence 7..7
+                                      ConstActualParameter 7..7
+                                        IntegerExpression 7..7
+                                          IntegerLiteral "0" 7..7
+                                  MultipleArrayAggregate 7..8
+                                    CallExpression 7..7
+                                      Identifier "chr" 7..7
+                                      SingleActualParameterSequence 7..7
+                                        ConstActualParameter 7..7
+                                          IntegerExpression 7..7
+                                            IntegerLiteral "0" 7..7
+                                    MultipleArrayAggregate 7..8
+                                      CallExpression 7..7
+                                        Identifier "chr" 7..7
+                                        SingleActualParameterSequence 7..7
+                                          ConstActualParameter 7..7
+                                            IntegerExpression 7..7
+                                              IntegerLiteral "0" 7..7
+                                      MultipleArrayAggregate 8..8
+                                        CallExpression 8..8
+                                          Identifier "chr" 8..8
+                                          SingleActualParameterSequence 8..8
+                                            ConstActualParameter 8..8
+                                              IntegerExpression 8..8
+                                                IntegerLiteral "0" 8..8
+                                        MultipleArrayAggregate 8..8
+                                          CallExpression 8..8
+                                            Identifier "chr" 8..8
+                                            SingleActualParameterSequence 8..8
+                                              ConstActualParameter 8..8
+                                                IntegerExpression 8..8
+                                                  IntegerLiteral "0" 8..8
+                                          MultipleArrayAggregate 8..8
+                                            CallExpression 8..8
+                                              Identifier "chr" 8..8
+                                              SingleActualParameterSequence 8..8
+                                                ConstActualParameter 8..8
+                                                  IntegerExpression 8..8
+                                                    IntegerLiteral "0" 8..8
+                                            MultipleArrayAggregate 8..8
+                                              CallExpression 8..8
+                                                Identifier "chr" 8..8
+                                                SingleActualParameterSequence 8..8
+                                                  ConstActualParameter 8..8
+                                                    IntegerExpression 8..8
+                                                      IntegerLiteral "0" 8..8
+                                              MultipleArrayAggregate 8..8
+                                                CallExpression 8..8
+                                                  Identifier "chr" 8..8
+                                                  SingleActualParameterSequence 8..8
+                                                    ConstActualParameter 8..8
+                                                      IntegerExpression 8..8
+                                                        IntegerLiteral "0" 8..8
+                                                MultipleArrayAggregate 8..8
+                                                  CallExpression 8..8
+                                                    Identifier "chr" 8..8
+                                                    SingleActualParameterSequence 8..8
+                                                      ConstActualParameter 8..8
+                                                        IntegerExpression 8..8
+                                                          IntegerLiteral "0" 8..8
+                                                  MultipleArrayAggregate 8..8
+                                                    CallExpression 8..8
+                                                      Identifier "chr" 8..8
+                                                      SingleActualParameterSequence 8..8
+                                                        ConstActualParameter 8..8
+                                                          IntegerExpression 8..8
+                                                            IntegerLiteral "0" 8..8
+                                                    MultipleArrayAggregate 8..8
+                                                      CallExpression 8..8
+                                                        Identifier "chr" 8..8
+                                                        SingleActualParameterSequence 8..8
+                                                          ConstActualParameter 8..8
+                                                            IntegerExpression 8..8
+                                                              IntegerLiteral "0" 8..8
+                                                      MultipleArrayAggregate 8..8
+                                                        CallExpression 8..8
+                                                          Identifier "chr" 8..8
+                                                          SingleActualParameterSequence 8..8
+                                                            ConstActualParameter 8..8
+                                                              IntegerExpression 8..8
+                                                                IntegerLiteral "0" 8..8
+                                                        SingleArrayAggregate 8..8
+                                                          CallExpression 8..8
+                                                            Identifier "chr" 8..8
+                                                            SingleActualParameterSequence 8..8
+                                                              ConstActualParameter 8..8
+                                                                IntegerExpression 8..8
+                                                                  IntegerLiteral "0" 8..8
+              ConstDeclaration 9..11
+                Identifier "OUTNAME" 9..9
+                ArrayExpression 10..11
+                  MultipleArrayAggregate 10..11
+                    CharacterExpression 10..10
+                      CharacterLiteral "'o'" 10..10
+                    MultipleArrayAggregate 10..11
+                      CharacterExpression 10..10
+                        CharacterLiteral "'u'" 10..10
+                      MultipleArrayAggregate 10..11
+                        CharacterExpression 10..10
+                          CharacterLiteral "'t'" 10..10
+                        MultipleArrayAggregate 10..11
+                          CharacterExpression 10..10
+                            CharacterLiteral "'f'" 10..10
+                          MultipleArrayAggregate 10..11
+                            CharacterExpression 10..10
+                              CharacterLiteral "'i'" 10..10
+                            MultipleArrayAggregate 10..11
+                              CharacterExpression 10..10
+                                CharacterLiteral "'l'" 10..10
+                              MultipleArrayAggregate 10..11
+                                CharacterExpression 10..10
+                                  CharacterLiteral "'e'" 10..10
+                                MultipleArrayAggregate 10..11
+                                  CallExpression 10..10
+                                    Identifier "chr" 10..10
+                                    SingleActualParameterSequence 10..10
+                                      ConstActualParameter 10..10
+                                        IntegerExpression 10..10
+                                          IntegerLiteral "0" 10..10
+                                  MultipleArrayAggregate 10..11
+                                    CallExpression 10..10
+                                      Identifier "chr" 10..10
+                                      SingleActualParameterSequence 10..10
+                                        ConstActualParameter 10..10
+                                          IntegerExpression 10..10
+                                            IntegerLiteral "0" 10..10
+                                    MultipleArrayAggregate 10..11
+                                      CallExpression 10..10
+                                        Identifier "chr" 10..10
+                                        SingleActualParameterSequence 10..10
+                                          ConstActualParameter 10..10
+                                            IntegerExpression 10..10
+                                              IntegerLiteral "0" 10..10
+                                      MultipleArrayAggregate 11..11
+                                        CallExpression 11..11
+                                          Identifier "chr" 11..11
+                                          SingleActualParameterSequence 11..11
+                                            ConstActualParameter 11..11
+                                              IntegerExpression 11..11
+                                                IntegerLiteral "0" 11..11
+                                        MultipleArrayAggregate 11..11
+                                          CallExpression 11..11
+                                            Identifier "chr" 11..11
+                                            SingleActualParameterSequence 11..11
+                                              ConstActualParameter 11..11
+                                                IntegerExpression 11..11
+                                                  IntegerLiteral "0" 11..11
+                                          MultipleArrayAggregate 11..11
+                                            CallExpression 11..11
+                                              Identifier "chr" 11..11
+                                              SingleActualParameterSequence 11..11
+                                                ConstActualParameter 11..11
+                                                  IntegerExpression 11..11
+                                                    IntegerLiteral "0" 11..11
+                                            MultipleArrayAggregate 11..11
+                                              CallExpression 11..11
+                                                Identifier "chr" 11..11
+                                                SingleActualParameterSequence 11..11
+                                                  ConstActualParameter 11..11
+                                                    IntegerExpression 11..11
+                                                      IntegerLiteral "0" 11..11
+                                              MultipleArrayAggregate 11..11
+                                                CallExpression 11..11
+                                                  Identifier "chr" 11..11
+                                                  SingleActualParameterSequence 11..11
+                                                    ConstActualParameter 11..11
+                                                      IntegerExpression 11..11
+                                                        IntegerLiteral "0" 11..11
+                                                MultipleArrayAggregate 11..11
+                                                  CallExpression 11..11
+                                                    Identifier "chr" 11..11
+                                                    SingleActualParameterSequence 11..11
+                                                      ConstActualParameter 11..11
+                                                        IntegerExpression 11..11
+                                                          IntegerLiteral "0" 11..11
+                                                  MultipleArrayAggregate 11..11
+                                                    CallExpression 11..11
+                                                      Identifier "chr" 11..11
+                                                      SingleActualParameterSequence 11..11
+                                                        ConstActualParameter 11..11
+                                                          IntegerExpression 11..11
+                                                            IntegerLiteral "0" 11..11
+                                                    MultipleArrayAggregate 11..11
+                                                      CallExpression 11..11
+                                                        Identifier "chr" 11..11
+                                                        SingleActualParameterSequence 11..11
+                                                          ConstActualParameter 11..11
+                                                            IntegerExpression 11..11
+                                                              IntegerLiteral "0" 11..11
+                                                      MultipleArrayAggregate 11..11
+                                                        CallExpression 11..11
+                                                          Identifier "chr" 11..11
+                                                          SingleActualParameterSequence 11..11
+                                                            ConstActualParameter 11..11
+                                                              IntegerExpression 11..11
+                                                                IntegerLiteral "0" 11..11
+                                                        SingleArrayAggregate 11..11
+                                                          CallExpression 11..11
+                                                            Identifier "chr" 11..11
+                                                            SingleActualParameterSequence 11..11
+                                                              ConstActualParameter 11..11
+                                                                IntegerExpression 11..11
+                                                                  IntegerLiteral "0" 11..11
+            VarDeclaration 12..12
+              Identifier "infile" 12..12
+              SimpleTypeDenoter 12..12
+                Identifier "Integer" 12..12
+          VarDeclaration 13..13
+            Identifier "outfile" 13..13
+            SimpleTypeDenoter 13..13
+              Identifier "Integer" 13..13
+        VarDeclaration 14..14
+          Identifier "c" 14..14
+          SimpleTypeDenoter 14..14
+            Identifier "Char" 14..14
+      VarDeclaration 15..16
+        Identifier "eof" 15..15
+        SimpleTypeDenoter 15..16
+          Identifier "Boolean" 15..16
+    SequentialCommand 18..53
+      CallCommand 18..18
+        Identifier "fopen" 18..18
+        MultipleActualParameterSequence 18..18
+          VarActualParameter 18..18
+            SimpleVname 18..18
+              Identifier "infile" 18..18
+          MultipleActualParameterSequence 18..18
+            ConstActualParameter 18..18
+              VnameExpression 18..18
+                SimpleVname 18..18
+                  Identifier "INNAME" 18..18
+            SingleActualParameterSequence 18..18
+              ConstActualParameter 18..18
+                VnameExpression 18..18
+                  SimpleVname 18..18
+                    Identifier "false" 18..18
+      IfCommand 20..53
+        BinaryExpression 20..0
+          VnameExpression 20..20
+            SimpleVname 20..20
+              Identifier "infile" 20..20
+          Operator "<" 20..20
+          IntegerExpression 20..20
+            IntegerLiteral "0" 20..20
+        SequentialCommand 23..26
+          SequentialCommand 23..26
+            CallCommand 23..23
+              Identifier "put" 23..23
+              SingleActualParameterSequence 23..23
+                ConstActualParameter 23..23
+                  CharacterExpression 23..23
+                    CharacterLiteral "'I'" 23..23
+            CallCommand 24..24
+              Identifier "put" 24..24
+              SingleActualParameterSequence 24..24
+                ConstActualParameter 24..24
+                  CharacterExpression 24..24
+                    CharacterLiteral "'!'" 24..24
+          CallCommand 25..26
+            Identifier "puteol" 25..25
+            EmptyActualParameterSequence 25..25
+        SequentialCommand 29..52
+          SequentialCommand 29..52
+            CallCommand 29..29
+              Identifier "fopen" 29..29
+              MultipleActualParameterSequence 29..29
+                VarActualParameter 29..29
+                  SimpleVname 29..29
+                    Identifier "outfile" 29..29
+                MultipleActualParameterSequence 29..29
+                  ConstActualParameter 29..29
+                    VnameExpression 29..29
+                      SimpleVname 29..29
+                        Identifier "OUTNAME" 29..29
+                  SingleActualParameterSequence 29..29
+                    ConstActualParameter 29..29
+                      VnameExpression 29..29
+                        SimpleVname 29..29
+                          Identifier "true" 29..29
+            IfCommand 31..49
+              BinaryExpression 31..0
+                VnameExpression 31..31
+                  SimpleVname 31..31
+                    Identifier "outfile" 31..31
+                Operator "<" 31..31
+                IntegerExpression 31..31
+                  IntegerLiteral "0" 31..31
+              SequentialCommand 34..37
+                SequentialCommand 34..37
+                  CallCommand 34..34
+                    Identifier "put" 34..34
+                    SingleActualParameterSequence 34..34
+                      ConstActualParameter 34..34
+                        CharacterExpression 34..34
+                          CharacterLiteral "'O'" 34..34
+                  CallCommand 35..35
+                    Identifier "put" 35..35
+                    SingleActualParameterSequence 35..35
+                      ConstActualParameter 35..35
+                        CharacterExpression 35..35
+                          CharacterLiteral "'!'" 35..35
+                CallCommand 36..37
+                  Identifier "puteol" 36..36
+                  EmptyActualParameterSequence 36..36
+              SequentialCommand 41..48
+                SequentialCommand 41..48
+                  CallCommand 41..41
+                    Identifier "feof" 41..41
+                    MultipleActualParameterSequence 41..41
+                      ConstActualParameter 41..41
+                        VnameExpression 41..41
+                          SimpleVname 41..41
+                            Identifier "infile" 41..41
+                      SingleActualParameterSequence 41..41
+                        VarActualParameter 41..41
+                          SimpleVname 41..41
+                            Identifier "eof" 41..41
+                  WhileCommand 42..46
+                    UnaryExpression 42..42
+                      Operator "\" 42..42
+                      VnameExpression 42..42
+                        SimpleVname 42..42
+                          Identifier "eof" 42..42
+                    SequentialCommand 43..46
+                      SequentialCommand 43..46
+                        CallCommand 43..43
+                          Identifier "fget" 43..43
+                          MultipleActualParameterSequence 43..43
+                            ConstActualParameter 43..43
+                              VnameExpression 43..43
+                                SimpleVname 43..43
+                                  Identifier "infile" 43..43
+                            SingleActualParameterSequence 43..43
+                              VarActualParameter 43..43
+                                SimpleVname 43..43
+                                  Identifier "c" 43..43
+                        CallCommand 44..44
+                          Identifier "fput" 44..44
+                          MultipleActualParameterSequence 44..44
+                            ConstActualParameter 44..44
+                              VnameExpression 44..44
+                                SimpleVname 44..44
+                                  Identifier "outfile" 44..44
+                            SingleActualParameterSequence 44..44
+                              ConstActualParameter 44..44
+                                VnameExpression 44..44
+                                  SimpleVname 44..44
+                                    Identifier "c" 44..44
+                      CallCommand 45..46
+                        Identifier "feof" 45..45
+                        MultipleActualParameterSequence 45..45
+                          ConstActualParameter 45..45
+                            VnameExpression 45..45
+                              SimpleVname 45..45
+                                Identifier "infile" 45..45
+                          SingleActualParameterSequence 45..45
+                            VarActualParameter 45..45
+                              SimpleVname 45..45
+                                Identifier "eof" 45..45
+                CallCommand 47..48
+                  Identifier "fclose" 47..47
+                  SingleActualParameterSequence 47..47
+                    ConstActualParameter 47..47
+                      VnameExpression 47..47
+                        SimpleVname 47..47
+                          Identifier "outfile" 47..47
+          CallCommand 51..52
+            Identifier "fclose" 51..51
+            SingleActualParameterSequence 51..51
+              ConstActualParameter 51..51
+                VnameExpression 51..51
+                  SimpleVname 51..51
+                    Identifier "infile" 51..51

@@ -1,0 +1,101 @@
+Program 13..14
+  LetCommand 1..14
+    SequentialDeclaration 2..6
+      SequentialDeclaration 2..6
+        SequentialDeclaration 2..6
+          VarDeclaration 2..2
+            Identifier "f" 2..2
+            SimpleTypeDenoter 2..2
+              Identifier "Integer" 2..2
+          VarDeclaration 3..3
+            Identifier "g" 3..3
+            SimpleTypeDenoter 3..3
+              Identifier "Integer" 3..3
+        VarDeclaration 4..4
+          Identifier "n" 4..4
+          SimpleTypeDenoter 4..4
+            Identifier "Integer" 4..4
+      ProcDeclaration 5..6
+        Identifier "p" 5..5
+        EmptyFormalParameterSequence 5..5
+        SequentialCommand 5..5
+          AssignCommand 5..5
+            SimpleVname 5..5
+              Identifier "f" 5..5
+            BinaryExpression 5..0
+              IntegerExpression 5..5
+                IntegerLiteral "2" 5..5
+              Operator "*" 5..5
+              VnameExpression 5..5
+                SimpleVname 5..5
+                  Identifier "g" 5..5
+          AssignCommand 5..5
+            SimpleVname 5..5
+              Identifier "g" 5..5
+            BinaryExpression 5..0
+              VnameExpression 5..5
+                SimpleVname 5..5
+                  Identifier "g" 5..5
+              Operator "+" 5..5
+              IntegerExpression 5..5
+                IntegerLiteral "1" 5..5
+    SequentialCommand 7..13
+      SequentialCommand 7..13
+        SequentialCommand 7..13
+          SequentialCommand 7..13
+            SequentialCommand 7..13
+              SequentialCommand 7..13
+                AssignCommand 7..7
+                  SimpleVname 7..7
+                    Identifier "n" 7..7
+                  IntegerExpression 7..7
+                    IntegerLiteral "1" 7..7
+                AssignCommand 7..7
+                  SimpleVname 7..7
+                    Identifier "f" 7..7
+                  IntegerExpression 7..7
+                    IntegerLiteral "2" 7..7
+              AssignCommand 7..7
+                SimpleVname 7..7
+                  Identifier "g" 7..7
+                IntegerExpression 7..7
+                  IntegerLiteral "3" 7..7
+            WhileCommand 8..11
+              BinaryExpression 8..0
+                VnameExpression 8..8
+                  SimpleVname 8..8
+                    Identifier "n" 8..8
+                Operator "<" 8..8
+                IntegerExpression 8..8
+                  IntegerLiteral "10" 8..8
+              SequentialCommand 9..11
+                CallCommand 9..9
+                  Identifier "p" 9..9
+                  EmptyActualParameterSequence 9..9
+                AssignCommand 10..11
+                  SimpleVname 10..10
+                    Identifier "n" 10..10
+                  BinaryExpression 10..0
+                    VnameExpression 10..10
+                      SimpleVname 10..10
+                        Identifier "n" 10..10
+                    Operator "+" 10..10
+                    IntegerExpression 10..11
+                      IntegerLiteral "1" 10..11
+          CallCommand 12..12
+            Identifier "putint" 12..12
+            SingleActualParameterSequence 12..12
+              ConstActualParameter 12..12
+                VnameExpression 12..12
+                  SimpleVname 12..12
+                    Identifier "f" 12..12
+        CallCommand 12..12
+          Identifier "puteol" 12..12
+          EmptyActualParameterSequence 12..12
+      CallCommand 12..13
+        Identifier "putint" 12..12
+        SingleActualParameterSequence 12..12
+          ConstActualParameter 12..12
+            VnameExpression 12..12
+              SimpleVname 12..12
+                Identifier "g" 12..12

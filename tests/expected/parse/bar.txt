@@ -1,0 +1,39 @@
+Program 6..7
+  SequentialCommand 1..7
+    LetCommand 1..6
+      SequentialDeclaration 2..5
+        SequentialDeclaration 2..5
+          VarDeclaration 2..2
+            Identifier "x" 2..2
+            SimpleTypeDenoter 2..2
+              Identifier "Integer" 2..2
+          ConstDeclaration 3..3
+            Identifier "n" 3..3
+            IntegerExpression 3..3
+              IntegerLiteral "42" 3..3
+        ConstDeclaration 4..5
+          Identifier "m" 4..4
+          BinaryExpression 4..0
+            VnameExpression 4..4
+              SimpleVname 4..4
+                Identifier "n" 4..4
+            Operator "+" 4..4
+            IntegerExpression 4..5
+              IntegerLiteral "1" 4..5
+      AssignCommand 6..6
+        SimpleVname 6..6
+          Identifier "x" 6..6
+        BinaryExpression 6..0
+          BinaryExpression 6..0
+            VnameExpression 6..6
+              SimpleVname 6..6
+                Identifier "x" 6..6
+            Operator "+" 6..6
+            VnameExpression 6..6
+              SimpleVname 6..6
+                Identifier "n" 6..6
+          Operator "*" 6..6
+          VnameExpression 6..6
+            SimpleVname 6..6
+              Identifier "m" 6..6
+    EmptyCommand 7..7

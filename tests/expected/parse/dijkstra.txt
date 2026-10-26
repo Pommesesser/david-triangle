@@ -1,0 +1,909 @@
+Program 167..167
+  LetCommand 1..167
+    SequentialDeclaration 4..112
+      SequentialDeclaration 4..112
+        SequentialDeclaration 4..112
+          SequentialDeclaration 4..112
+            SequentialDeclaration 4..112
+              SequentialDeclaration 4..112
+                SequentialDeclaration 4..112
+                  SequentialDeclaration 4..112
+                    SequentialDeclaration 4..112
+                      SequentialDeclaration 4..112
+                        SequentialDeclaration 4..112
+                          SequentialDeclaration 4..112
+                            TypeDeclaration 4..7
+                              Identifier "Edge" 4..4
+                              RecordTypeDenoter 4..7
+                                MultipleFieldTypeDenoter 5..7
+                                  Identifier "endNodeID" 5..5
+                                  SimpleTypeDenoter 5..5
+                                    Identifier "Integer" 5..5
+                                  SingleFieldTypeDenoter 6..7
+                                    Identifier "distance" 6..6
+                                    SimpleTypeDenoter 6..7
+                                      Identifier "Integer" 6..7
+                            TypeDeclaration 10..13
+                              Identifier "EdgeArray" 10..10
+                              RecordTypeDenoter 10..13
+                                MultipleFieldTypeDenoter 11..13
+                                  Identifier "content" 11..11
+                                  ArrayTypeDenoter 11..11
+                                    IntegerLiteral "10" 11..11
+                                    SimpleTypeDenoter 11..11
+                                      Identifier "Edge" 11..11
+                                  SingleFieldTypeDenoter 12..13
+                                    Identifier "length" 12..12
+                                    SimpleTypeDenoter 12..13
+                                      Identifier "Integer" 12..13
+                          TypeDeclaration 16..20
+                            Identifier "Node" 16..16
+                            RecordTypeDenoter 16..20
+                              MultipleFieldTypeDenoter 17..20
+                                Identifier "label" 17..17
+                                SimpleTypeDenoter 17..17
+                                  Identifier "Integer" 17..17
+                                MultipleFieldTypeDenoter 18..20
+                                  Identifier "permanent" 18..18
+                                  SimpleTypeDenoter 18..18
+                                    Identifier "Boolean" 18..18
+                                  SingleFieldTypeDenoter 19..20
+                                    Identifier "edges" 19..19
+                                    SimpleTypeDenoter 19..20
+                                      Identifier "EdgeArray" 19..20
+                        TypeDeclaration 23..26
+                          Identifier "NodeArray" 23..23
+                          RecordTypeDenoter 23..26
+                            MultipleFieldTypeDenoter 24..26
+                              Identifier "content" 24..24
+                              ArrayTypeDenoter 24..24
+                                IntegerLiteral "40" 24..24
+                                SimpleTypeDenoter 24..24
+                                  Identifier "Node" 24..24
+                              SingleFieldTypeDenoter 25..26
+                                Identifier "length" 25..25
+                                SimpleTypeDenoter 25..26
+                                  Identifier "Integer" 25..26
+                      ProcDeclaration 29..41
+                        Identifier "iniNodes" 29..29
+                        SingleFormalParameterSequence 29..29
+                          VarFormalParameter 29..29
+                            Identifier "nodes" 29..29
+                            SimpleTypeDenoter 29..29
+                              Identifier "NodeArray" 29..29
+                        LetCommand 30..41
+                          VarDeclaration 32..33
+                            Identifier "i" 32..32
+                            SimpleTypeDenoter 32..33
+                              Identifier "Integer" 32..33
+                          SequentialCommand 35..41
+                            SequentialCommand 35..41
+                              AssignCommand 35..35
+                                SimpleVname 35..35
+                                  Identifier "i" 35..35
+                                IntegerExpression 35..35
+                                  IntegerLiteral "0" 35..35
+                              WhileCommand 36..40
+                                BinaryExpression 36..0
+                                  VnameExpression 36..36
+                                    SimpleVname 36..36
+                                      Identifier "i" 36..36
+                                  Operator "<" 36..36
+                                  VnameExpression 36..36
+                                    DotVname 36..36
+                                      SimpleVname 36..36
+                                        Identifier "nodes" 36..36
+                                      Identifier "length" 36..36
+                                SequentialCommand 37..40
+                                  SequentialCommand 37..40
+                                    SequentialCommand 37..40
+                                      AssignCommand 37..37
+                                        DotVname 37..37
+                                          SubscriptVname 37..37
+                                            DotVname 37..37
+                                              SimpleVname 37..37
+                                                Identifier "nodes" 37..37
+                                              Identifier "content" 37..37
+                                            VnameExpression 37..37
+                                              SimpleVname 37..37
+                                                Identifier "i" 37..37
+                                          Identifier "label" 37..37
+                                        VnameExpression 37..37
+                                          SimpleVname 37..37
+                                            Identifier "maxint" 37..37
+                                      AssignCommand 38..38
+                                        DotVname 38..38
+                                          SubscriptVname 38..38
+                                            DotVname 38..38
+                                              SimpleVname 38..38
+                                                Identifier "nodes" 38..38
+                                              Identifier "content" 38..38
+                                            VnameExpression 38..38
+                                              SimpleVname 38..38
+                                                Identifier "i" 38..38
+                                          Identifier "permanent" 38..38
+                                        VnameExpression 38..38
+                                          SimpleVname 38..38
+                                            Identifier "false" 38..38
+                                    AssignCommand 39..39
+                                      SimpleVname 39..39
+                                        Identifier "i" 39..39
+                                      BinaryExpression 39..0
+                                        VnameExpression 39..39
+                                          SimpleVname 39..39
+                                            Identifier "i" 39..39
+                                        Operator "+" 39..39
+                                        IntegerExpression 39..39
+                                          IntegerLiteral "1" 39..39
+                                  EmptyCommand 40..40
+                            EmptyCommand 41..41
+                    ProcDeclaration 44..84
+                      Identifier "readGraph" 44..44
+                      SingleFormalParameterSequence 44..44
+                        VarFormalParameter 44..44
+                          Identifier "nodes" 44..44
+                          SimpleTypeDenoter 44..44
+                            Identifier "NodeArray" 44..44
+                      LetCommand 45..84
+                        SequentialDeclaration 48..62
+                          SequentialDeclaration 48..62
+                            SequentialDeclaration 48..62
+                              SequentialDeclaration 48..62
+                                SequentialDeclaration 48..62
+                                  SequentialDeclaration 48..62
+                                    ProcDeclaration 48..53
+                                      Identifier "addEdge" 48..48
+                                      MultipleFormalParameterSequence 48..48
+                                        VarFormalParameter 48..48
+                                          Identifier "edges" 48..48
+                                          SimpleTypeDenoter 48..48
+                                            Identifier "EdgeArray" 48..48
+                                        SingleFormalParameterSequence 48..48
+                                          ConstFormalParameter 48..48
+                                            Identifier "e" 48..48
+                                            SimpleTypeDenoter 48..48
+                                              Identifier "Edge" 48..48
+                                      SequentialCommand 50..53
+                                        SequentialCommand 50..53
+                                          SequentialCommand 50..53
+                                            AssignCommand 50..50
+                                              DotVname 50..50
+                                                SubscriptVname 50..50
+                                                  DotVname 50..50
+                                                    SimpleVname 50..50
+                                                      Identifier "edges" 50..50
+                                                    Identifier "content" 50..50
+                                                  VnameExpression 50..50
+                                                    DotVname 50..50
+                                                      SimpleVname 50..50
+                                                        Identifier "edges" 50..50
+                                                      Identifier "length" 50..50
+                                                Identifier "endNodeID" 50..50
+                                              VnameExpression 50..50
+                                                DotVname 50..50
+                                                  SimpleVname 50..50
+                                                    Identifier "e" 50..50
+                                                  Identifier "endNodeID" 50..50
+                                            AssignCommand 51..51
+                                              DotVname 51..51
+                                                SubscriptVname 51..51
+                                                  DotVname 51..51
+                                                    SimpleVname 51..51
+                                                      Identifier "edges" 51..51
+                                                    Identifier "content" 51..51
+                                                  VnameExpression 51..51
+                                                    DotVname 51..51
+                                                      SimpleVname 51..51
+                                                        Identifier "edges" 51..51
+                                                      Identifier "length" 51..51
+                                                Identifier "distance" 51..51
+                                              VnameExpression 51..51
+                                                DotVname 51..51
+                                                  SimpleVname 51..51
+                                                    Identifier "e" 51..51
+                                                  Identifier "distance" 51..51
+                                          AssignCommand 52..52
+                                            DotVname 52..52
+                                              SimpleVname 52..52
+                                                Identifier "edges" 52..52
+                                              Identifier "length" 52..52
+                                            BinaryExpression 52..0
+                                              VnameExpression 52..52
+                                                DotVname 52..52
+                                                  SimpleVname 52..52
+                                                    Identifier "edges" 52..52
+                                                  Identifier "length" 52..52
+                                              Operator "+" 52..52
+                                              IntegerExpression 52..52
+                                                IntegerLiteral "1" 52..52
+                                        EmptyCommand 53..53
+                                    VarDeclaration 55..55
+                                      Identifier "i" 55..55
+                                      SimpleTypeDenoter 55..55
+                                        Identifier "Integer" 55..55
+                                  VarDeclaration 56..56
+                                    Identifier "startID" 56..56
+                                    SimpleTypeDenoter 56..56
+                                      Identifier "Integer" 56..56
+                                VarDeclaration 57..57
+                                  Identifier "endID" 57..57
+                                  SimpleTypeDenoter 57..57
+                                    Identifier "Integer" 57..57
+                              VarDeclaration 58..58
+                                Identifier "distance" 58..58
+                                SimpleTypeDenoter 58..58
+                                  Identifier "Integer" 58..58
+                            VarDeclaration 59..59
+                              Identifier "edge" 59..59
+                              SimpleTypeDenoter 59..59
+                                Identifier "Edge" 59..59
+                          VarDeclaration 61..62
+                            Identifier "testeof" 61..61
+                            SimpleTypeDenoter 61..62
+                              Identifier "Boolean" 61..62
+                        SequentialCommand 64..84
+                          SequentialCommand 64..84
+                            SequentialCommand 64..84
+                              SequentialCommand 64..84
+                                SequentialCommand 64..84
+                                  CallCommand 64..64
+                                    Identifier "getint" 64..64
+                                    SingleActualParameterSequence 64..64
+                                      VarActualParameter 64..64
+                                        DotVname 64..64
+                                          SimpleVname 64..64
+                                            Identifier "nodes" 64..64
+                                          Identifier "length" 64..64
+                                  AssignCommand 66..66
+                                    SimpleVname 66..66
+                                      Identifier "i" 66..66
+                                    IntegerExpression 66..66
+                                      IntegerLiteral "0" 66..66
+                                WhileCommand 67..70
+                                  BinaryExpression 67..0
+                                    VnameExpression 67..67
+                                      SimpleVname 67..67
+                                        Identifier "i" 67..67
+                                    Operator "<" 67..67
+                                    VnameExpression 67..67
+                                      DotVname 67..67
+                                        SimpleVname 67..67
+                                          Identifier "nodes" 67..67
+                                        Identifier "length" 67..67
+                                  SequentialCommand 68..70
+                                    SequentialCommand 68..70
+                                      AssignCommand 68..68
+                                        DotVname 68..68
+                                          DotVname 68..68
+                                            SubscriptVname 68..68
+                                              DotVname 68..68
+                                                SimpleVname 68..68
+                                                  Identifier "nodes" 68..68
+                                                Identifier "content" 68..68
+                                              VnameExpression 68..68
+                                                SimpleVname 68..68
+                                                  Identifier "i" 68..68
+                                            Identifier "edges" 68..68
+                                          Identifier "length" 68..68
+                                        IntegerExpression 68..68
+                                          IntegerLiteral "0" 68..68
+                                      AssignCommand 69..69
+                                        SimpleVname 69..69
+                                          Identifier "i" 69..69
+                                        BinaryExpression 69..0
+                                          VnameExpression 69..69
+                                            SimpleVname 69..69
+                                              Identifier "i" 69..69
+                                          Operator "+" 69..69
+                                          IntegerExpression 69..69
+                                            IntegerLiteral "1" 69..69
+                                    EmptyCommand 70..70
+                              CallCommand 72..72
+                                Identifier "eof" 72..72
+                                SingleActualParameterSequence 72..72
+                                  VarActualParameter 72..72
+                                    SimpleVname 72..72
+                                      Identifier "testeof" 72..72
+                            WhileCommand 73..83
+                              UnaryExpression 73..73
+                                Operator "\" 73..73
+                                VnameExpression 73..73
+                                  SimpleVname 73..73
+                                    Identifier "testeof" 73..73
+                              SequentialCommand 75..83
+                                SequentialCommand 75..83
+                                  SequentialCommand 75..83
+                                    SequentialCommand 75..83
+                                      SequentialCommand 75..83
+                                        SequentialCommand 75..83
+                                          SequentialCommand 75..83
+                                            CallCommand 75..75
+                                              Identifier "getint" 75..75
+                                              SingleActualParameterSequence 75..75
+                                                VarActualParameter 75..75
+                                                  SimpleVname 75..75
+                                                    Identifier "startID" 75..75
+                                            CallCommand 76..76
+                                              Identifier "getint" 76..76
+                                              SingleActualParameterSequence 76..76
+                                                VarActualParameter 76..76
+                                                  SimpleVname 76..76
+                                                    Identifier "endID" 76..76
+                                          CallCommand 77..77
+                                            Identifier "getint" 77..77
+                                            SingleActualParameterSequence 77..77
+                                              VarActualParameter 77..77
+                                                SimpleVname 77..77
+                                                  Identifier "distance" 77..77
+                                        AssignCommand 78..78
+                                          DotVname 78..78
+                                            SimpleVname 78..78
+                                              Identifier "edge" 78..78
+                                            Identifier "endNodeID" 78..78
+                                          VnameExpression 78..78
+                                            SimpleVname 78..78
+                                              Identifier "endID" 78..78
+                                      AssignCommand 79..79
+                                        DotVname 79..79
+                                          SimpleVname 79..79
+                                            Identifier "edge" 79..79
+                                          Identifier "distance" 79..79
+                                        VnameExpression 79..79
+                                          SimpleVname 79..79
+                                            Identifier "distance" 79..79
+                                    CallCommand 81..81
+                                      Identifier "addEdge" 81..81
+                                      MultipleActualParameterSequence 81..81
+                                        VarActualParameter 81..81
+                                          DotVname 81..81
+                                            SubscriptVname 81..81
+                                              DotVname 81..81
+                                                SimpleVname 81..81
+                                                  Identifier "nodes" 81..81
+                                                Identifier "content" 81..81
+                                              VnameExpression 81..81
+                                                SimpleVname 81..81
+                                                  Identifier "startID" 81..81
+                                            Identifier "edges" 81..81
+                                        SingleActualParameterSequence 81..81
+                                          ConstActualParameter 81..81
+                                            VnameExpression 81..81
+                                              SimpleVname 81..81
+                                                Identifier "edge" 81..81
+                                  CallCommand 82..82
+                                    Identifier "eof" 82..82
+                                    SingleActualParameterSequence 82..82
+                                      VarActualParameter 82..82
+                                        SimpleVname 82..82
+                                          Identifier "testeof" 82..82
+                                EmptyCommand 83..83
+                          EmptyCommand 84..84
+                  ProcDeclaration 87..104
+                    Identifier "outputResults" 87..87
+                    MultipleFormalParameterSequence 87..87
+                      VarFormalParameter 87..87
+                        Identifier "nodes" 87..87
+                        SimpleTypeDenoter 87..87
+                          Identifier "NodeArray" 87..87
+                      SingleFormalParameterSequence 87..87
+                        ConstFormalParameter 87..87
+                          Identifier "startID" 87..87
+                          SimpleTypeDenoter 87..87
+                            Identifier "Integer" 87..87
+                    LetCommand 88..104
+                      VarDeclaration 90..91
+                        Identifier "i" 90..90
+                        SimpleTypeDenoter 90..91
+                          Identifier "Integer" 90..91
+                      SequentialCommand 93..104
+                        SequentialCommand 93..104
+                          SequentialCommand 93..104
+                            SequentialCommand 93..104
+                              AssignCommand 93..93
+                                SimpleVname 93..93
+                                  Identifier "i" 93..93
+                                IntegerExpression 93..93
+                                  IntegerLiteral "0" 93..93
+                              CallCommand 94..94
+                                Identifier "putint" 94..94
+                                SingleActualParameterSequence 94..94
+                                  ConstActualParameter 94..94
+                                    VnameExpression 94..94
+                                      SimpleVname 94..94
+                                        Identifier "startID" 94..94
+                            WhileCommand 95..102
+                              BinaryExpression 95..0
+                                VnameExpression 95..95
+                                  SimpleVname 95..95
+                                    Identifier "i" 95..95
+                                Operator "<" 95..95
+                                VnameExpression 95..95
+                                  DotVname 95..95
+                                    SimpleVname 95..95
+                                      Identifier "nodes" 95..95
+                                    Identifier "length" 95..95
+                              SequentialCommand 96..102
+                                SequentialCommand 96..102
+                                  SequentialCommand 96..102
+                                    CallCommand 96..96
+                                      Identifier "put" 96..96
+                                      SingleActualParameterSequence 96..96
+                                        ConstActualParameter 96..96
+                                          CallExpression 96..96
+                                            Identifier "chr" 96..96
+                                            SingleActualParameterSequence 96..96
+                                              ConstActualParameter 96..96
+                                                IntegerExpression 96..96
+                                                  IntegerLiteral "9" 96..96
+                                    IfCommand 98..100
+                                      BinaryExpression 98..0
+                                        VnameExpression 98..98
+                                          DotVname 98..98
+                                            SubscriptVname 98..98
+                                              DotVname 98..98
+                                                SimpleVname 98..98
+                                                  Identifier "nodes" 98..98
+                                                Identifier "content" 98..98
+                                              VnameExpression 98..98
+                                                SimpleVname 98..98
+                                                  Identifier "i" 98..98
+                                            Identifier "label" 98..98
+                                        Operator "<" 98..98
+                                        VnameExpression 98..98
+                                          SimpleVname 98..98
+                                            Identifier "maxint" 98..98
+                                      CallCommand 99..100
+                                        Identifier "putint" 99..99
+                                        SingleActualParameterSequence 99..99
+                                          ConstActualParameter 99..99
+                                            VnameExpression 99..99
+                                              DotVname 99..99
+                                                SubscriptVname 99..99
+                                                  DotVname 99..99
+                                                    SimpleVname 99..99
+                                                      Identifier "nodes" 99..99
+                                                    Identifier "content" 99..99
+                                                  VnameExpression 99..99
+                                                    SimpleVname 99..99
+                                                      Identifier "i" 99..99
+                                                Identifier "label" 99..99
+                                      EmptyCommand 100..100
+                                  AssignCommand 101..101
+                                    SimpleVname 101..101
+                                      Identifier "i" 101..101
+                                    BinaryExpression 101..0
+                                      VnameExpression 101..101
+                                        SimpleVname 101..101
+                                          Identifier "i" 101..101
+                                      Operator "+" 101..101
+                                      IntegerExpression 101..101
+                                        IntegerLiteral "1" 101..101
+                                EmptyCommand 102..102
+                          CallCommand 103..103
+                            Identifier "puteol" 103..103
+                            EmptyActualParameterSequence 103..103
+                        EmptyCommand 104..104
+                VarDeclaration 106..106
+                  Identifier "nodes" 106..106
+                  SimpleTypeDenoter 106..106
+                    Identifier "NodeArray" 106..106
+              VarDeclaration 107..107
+                Identifier "actID" 107..107
+                SimpleTypeDenoter 107..107
+                  Identifier "Integer" 107..107
+            VarDeclaration 108..108
+              Identifier "destID" 108..108
+              SimpleTypeDenoter 108..108
+                Identifier "Integer" 108..108
+          VarDeclaration 109..109
+            Identifier "newLabel" 109..109
+            SimpleTypeDenoter 109..109
+              Identifier "Integer" 109..109
+        VarDeclaration 110..110
+          Identifier "n" 110..110
+          SimpleTypeDenoter 110..110
+            Identifier "Integer" 110..110
+      VarDeclaration 111..112
+        Identifier "i" 111..111
+        SimpleTypeDenoter 111..112
+          Identifier "Integer" 111..112
+    SequentialCommand 114..167
+      SequentialCommand 114..167
+        SequentialCommand 114..167
+          SequentialCommand 114..167
+            SequentialCommand 114..167
+              CallCommand 114..114
+                Identifier "readGraph" 114..114
+                SingleActualParameterSequence 114..114
+                  VarActualParameter 114..114
+                    SimpleVname 114..114
+                      Identifier "nodes" 114..114
+              AssignCommand 116..116
+                SimpleVname 116..116
+                  Identifier "n" 116..116
+                IntegerExpression 116..116
+                  IntegerLiteral "0" 116..116
+            WhileCommand 117..121
+              BinaryExpression 117..0
+                VnameExpression 117..117
+                  SimpleVname 117..117
+                    Identifier "n" 117..117
+                Operator "<" 117..117
+                VnameExpression 117..117
+                  DotVname 117..117
+                    SimpleVname 117..117
+                      Identifier "nodes" 117..117
+                    Identifier "length" 117..117
+              SequentialCommand 118..121
+                SequentialCommand 118..121
+                  CallCommand 118..118
+                    Identifier "put" 118..118
+                    SingleActualParameterSequence 118..118
+                      ConstActualParameter 118..118
+                        CallExpression 118..118
+                          Identifier "chr" 118..118
+                          SingleActualParameterSequence 118..118
+                            ConstActualParameter 118..118
+                              IntegerExpression 118..118
+                                IntegerLiteral "9" 118..118
+                  CallCommand 119..119
+                    Identifier "putint" 119..119
+                    SingleActualParameterSequence 119..119
+                      ConstActualParameter 119..119
+                        VnameExpression 119..119
+                          SimpleVname 119..119
+                            Identifier "n" 119..119
+                AssignCommand 120..121
+                  SimpleVname 120..120
+                    Identifier "n" 120..120
+                  BinaryExpression 120..0
+                    VnameExpression 120..120
+                      SimpleVname 120..120
+                        Identifier "n" 120..120
+                    Operator "+" 120..120
+                    IntegerExpression 120..121
+                      IntegerLiteral "1" 120..121
+          CallCommand 122..122
+            Identifier "puteol" 122..122
+            EmptyActualParameterSequence 122..122
+        AssignCommand 124..124
+          SimpleVname 124..124
+            Identifier "n" 124..124
+          IntegerExpression 124..124
+            IntegerLiteral "0" 124..124
+      WhileCommand 125..167
+        BinaryExpression 125..0
+          VnameExpression 125..125
+            SimpleVname 125..125
+              Identifier "n" 125..125
+          Operator "<" 125..125
+          VnameExpression 125..125
+            DotVname 125..125
+              SimpleVname 125..125
+                Identifier "nodes" 125..125
+              Identifier "length" 125..125
+        SequentialCommand 126..166
+          SequentialCommand 126..166
+            SequentialCommand 126..166
+              SequentialCommand 126..166
+                SequentialCommand 126..166
+                  CallCommand 126..126
+                    Identifier "iniNodes" 126..126
+                    SingleActualParameterSequence 126..126
+                      VarActualParameter 126..126
+                        SimpleVname 126..126
+                          Identifier "nodes" 126..126
+                  AssignCommand 127..127
+                    DotVname 127..127
+                      SubscriptVname 127..127
+                        DotVname 127..127
+                          SimpleVname 127..127
+                            Identifier "nodes" 127..127
+                          Identifier "content" 127..127
+                        VnameExpression 127..127
+                          SimpleVname 127..127
+                            Identifier "n" 127..127
+                      Identifier "label" 127..127
+                    IntegerExpression 127..127
+                      IntegerLiteral "0" 127..127
+                AssignCommand 128..128
+                  SimpleVname 128..128
+                    Identifier "actID" 128..128
+                  VnameExpression 128..128
+                    SimpleVname 128..128
+                      Identifier "n" 128..128
+              WhileCommand 130..163
+                UnaryExpression 130..130
+                  Operator "\" 130..130
+                  VnameExpression 130..130
+                    DotVname 130..130
+                      SubscriptVname 130..130
+                        DotVname 130..130
+                          SimpleVname 130..130
+                            Identifier "nodes" 130..130
+                          Identifier "content" 130..130
+                        VnameExpression 130..130
+                          SimpleVname 130..130
+                            Identifier "actID" 130..130
+                      Identifier "permanent" 130..130
+                SequentialCommand 132..163
+                  SequentialCommand 132..163
+                    SequentialCommand 132..163
+                      SequentialCommand 132..163
+                        SequentialCommand 132..163
+                          AssignCommand 132..132
+                            DotVname 132..132
+                              SubscriptVname 132..132
+                                DotVname 132..132
+                                  SimpleVname 132..132
+                                    Identifier "nodes" 132..132
+                                  Identifier "content" 132..132
+                                VnameExpression 132..132
+                                  SimpleVname 132..132
+                                    Identifier "actID" 132..132
+                              Identifier "permanent" 132..132
+                            VnameExpression 132..132
+                              SimpleVname 132..132
+                                Identifier "true" 132..132
+                          AssignCommand 133..133
+                            SimpleVname 133..133
+                              Identifier "i" 133..133
+                            IntegerExpression 133..133
+                              IntegerLiteral "0" 133..133
+                        WhileCommand 135..143
+                          BinaryExpression 135..0
+                            VnameExpression 135..135
+                              SimpleVname 135..135
+                                Identifier "i" 135..135
+                            Operator "<" 135..135
+                            VnameExpression 135..135
+                              DotVname 135..135
+                                DotVname 135..135
+                                  SubscriptVname 135..135
+                                    DotVname 135..135
+                                      SimpleVname 135..135
+                                        Identifier "nodes" 135..135
+                                      Identifier "content" 135..135
+                                    VnameExpression 135..135
+                                      SimpleVname 135..135
+                                        Identifier "actID" 135..135
+                                  Identifier "edges" 135..135
+                                Identifier "length" 135..135
+                          SequentialCommand 136..143
+                            SequentialCommand 136..143
+                              SequentialCommand 136..143
+                                SequentialCommand 136..143
+                                  AssignCommand 136..136
+                                    SimpleVname 136..136
+                                      Identifier "newLabel" 136..136
+                                    BinaryExpression 136..0
+                                      VnameExpression 136..136
+                                        DotVname 136..136
+                                          SubscriptVname 136..136
+                                            DotVname 136..136
+                                              SimpleVname 136..136
+                                                Identifier "nodes" 136..136
+                                              Identifier "content" 136..136
+                                            VnameExpression 136..136
+                                              SimpleVname 136..136
+                                                Identifier "actID" 136..136
+                                          Identifier "label" 136..136
+                                      Operator "+" 136..136
+                                      VnameExpression 136..136
+                                        DotVname 136..136
+                                          SubscriptVname 136..136
+                                            DotVname 136..136
+                                              DotVname 136..136
+                                                SubscriptVname 136..136
+                                                  DotVname 136..136
+                                                    SimpleVname 136..136
+                                                      Identifier "nodes" 136..136
+                                                    Identifier "content" 136..136
+                                                  VnameExpression 136..136
+                                                    SimpleVname 136..136
+                                                      Identifier "actID" 136..136
+                                                Identifier "edges" 136..136
+                                              Identifier "content" 136..136
+                                            VnameExpression 136..136
+                                              SimpleVname 136..136
+                                                Identifier "i" 136..136
+                                          Identifier "distance" 136..136
+                                  AssignCommand 137..137
+                                    SimpleVname 137..137
+                                      Identifier "destID" 137..137
+                                    VnameExpression 137..137
+                                      DotVname 137..137
+                                        SubscriptVname 137..137
+                                          DotVname 137..137
+                                            DotVname 137..137
+                                              SubscriptVname 137..137
+                                                DotVname 137..137
+                                                  SimpleVname 137..137
+                                                    Identifier "nodes" 137..137
+                                                  Identifier "content" 137..137
+                                                VnameExpression 137..137
+                                                  SimpleVname 137..137
+                                                    Identifier "actID" 137..137
+                                              Identifier "edges" 137..137
+                                            Identifier "content" 137..137
+                                          VnameExpression 137..137
+                                            SimpleVname 137..137
+                                              Identifier "i" 137..137
+                                        Identifier "endNodeID" 137..137
+                                IfCommand 139..141
+                                  BinaryExpression 139..0
+                                    VnameExpression 139..139
+                                      DotVname 139..139
+                                        SubscriptVname 139..139
+                                          DotVname 139..139
+                                            SimpleVname 139..139
+                                              Identifier "nodes" 139..139
+                                            Identifier "content" 139..139
+                                          VnameExpression 139..139
+                                            SimpleVname 139..139
+                                              Identifier "destID" 139..139
+                                        Identifier "label" 139..139
+                                    Operator ">" 139..139
+                                    VnameExpression 139..139
+                                      SimpleVname 139..139
+                                        Identifier "newLabel" 139..139
+                                  AssignCommand 140..141
+                                    DotVname 140..140
+                                      SubscriptVname 140..140
+                                        DotVname 140..140
+                                          SimpleVname 140..140
+                                            Identifier "nodes" 140..140
+                                          Identifier "content" 140..140
+                                        VnameExpression 140..140
+                                          SimpleVname 140..140
+                                            Identifier "destID" 140..140
+                                      Identifier "label" 140..140
+                                    VnameExpression 140..141
+                                      SimpleVname 140..141
+                                        Identifier "newLabel" 140..141
+                                  EmptyCommand 141..141
+                              AssignCommand 142..142
+                                SimpleVname 142..142
+                                  Identifier "i" 142..142
+                                BinaryExpression 142..0
+                                  VnameExpression 142..142
+                                    SimpleVname 142..142
+                                      Identifier "i" 142..142
+                                  Operator "+" 142..142
+                                  IntegerExpression 142..142
+                                    IntegerLiteral "1" 142..142
+                            EmptyCommand 143..143
+                      AssignCommand 144..144
+                        SimpleVname 144..144
+                          Identifier "i" 144..144
+                        IntegerExpression 144..144
+                          IntegerLiteral "0" 144..144
+                    WhileCommand 146..162
+                      BinaryExpression 146..0
+                        VnameExpression 146..146
+                          SimpleVname 146..146
+                            Identifier "i" 146..146
+                        Operator "<" 146..146
+                        VnameExpression 146..146
+                          DotVname 146..146
+                            SimpleVname 146..146
+                              Identifier "nodes" 146..146
+                            Identifier "length" 146..146
+                      SequentialCommand 148..162
+                        SequentialCommand 148..162
+                          IfCommand 148..160
+                            UnaryExpression 148..148
+                              Operator "\" 148..148
+                              VnameExpression 148..148
+                                DotVname 148..148
+                                  SubscriptVname 148..148
+                                    DotVname 148..148
+                                      SimpleVname 148..148
+                                        Identifier "nodes" 148..148
+                                      Identifier "content" 148..148
+                                    VnameExpression 148..148
+                                      SimpleVname 148..148
+                                        Identifier "i" 148..148
+                                  Identifier "permanent" 148..148
+                            IfCommand 150..160
+                              BinaryExpression 150..0
+                                VnameExpression 150..150
+                                  DotVname 150..150
+                                    SubscriptVname 150..150
+                                      DotVname 150..150
+                                        SimpleVname 150..150
+                                          Identifier "nodes" 150..150
+                                        Identifier "content" 150..150
+                                      VnameExpression 150..150
+                                        SimpleVname 150..150
+                                          Identifier "i" 150..150
+                                    Identifier "label" 150..150
+                                Operator "<" 150..150
+                                VnameExpression 150..150
+                                  SimpleVname 150..150
+                                    Identifier "maxint" 150..150
+                              IfCommand 152..159
+                                VnameExpression 152..152
+                                  DotVname 152..152
+                                    SubscriptVname 152..152
+                                      DotVname 152..152
+                                        SimpleVname 152..152
+                                          Identifier "nodes" 152..152
+                                        Identifier "content" 152..152
+                                      VnameExpression 152..152
+                                        SimpleVname 152..152
+                                          Identifier "actID" 152..152
+                                    Identifier "permanent" 152..152
+                                AssignCommand 153..154
+                                  SimpleVname 153..153
+                                    Identifier "actID" 153..153
+                                  VnameExpression 153..154
+                                    SimpleVname 153..154
+                                      Identifier "i" 153..154
+                                IfCommand 156..159
+                                  BinaryExpression 156..0
+                                    VnameExpression 156..156
+                                      DotVname 156..156
+                                        SubscriptVname 156..156
+                                          DotVname 156..156
+                                            SimpleVname 156..156
+                                              Identifier "nodes" 156..156
+                                            Identifier "content" 156..156
+                                          VnameExpression 156..156
+                                            SimpleVname 156..156
+                                              Identifier "actID" 156..156
+                                        Identifier "label" 156..156
+                                    Operator ">" 156..156
+                                    VnameExpression 156..156
+                                      DotVname 156..156
+                                        SubscriptVname 156..156
+                                          DotVname 156..156
+                                            SimpleVname 156..156
+                                              Identifier "nodes" 156..156
+                                            Identifier "content" 156..156
+                                          VnameExpression 156..156
+                                            SimpleVname 156..156
+                                              Identifier "i" 156..156
+                                        Identifier "label" 156..156
+                                  AssignCommand 157..158
+                                    SimpleVname 157..157
+                                      Identifier "actID" 157..157
+                                    VnameExpression 157..158
+                                      SimpleVname 157..158
+                                        Identifier "i" 157..158
+                                  EmptyCommand 159..159
+                              EmptyCommand 160..160
+                            EmptyCommand 160..160
+                          AssignCommand 161..161
+                            SimpleVname 161..161
+                              Identifier "i" 161..161
+                            BinaryExpression 161..0
+                              VnameExpression 161..161
+                                SimpleVname 161..161
+                                  Identifier "i" 161..161
+                              Operator "+" 161..161
+                              IntegerExpression 161..161
+                                IntegerLiteral "1" 161..161
+                        EmptyCommand 162..162
+                  EmptyCommand 163..163
+            CallCommand 164..164
+              Identifier "outputResults" 164..164
+              MultipleActualParameterSequence 164..164
+                VarActualParameter 164..164
+                  SimpleVname 164..164
+                    Identifier "nodes" 164..164
+                SingleActualParameterSequence 164..164
+                  ConstActualParameter 164..164
+                    VnameExpression 164..164
+                      SimpleVname 164..164
+                        Identifier "n" 164..164
+          AssignCommand 165..166
+            SimpleVname 165..165
+              Identifier "n" 165..165
+            BinaryExpression 165..0
+              VnameExpression 165..165
+                SimpleVname 165..165
+                  Identifier "n" 165..165
+              Operator "+" 165..165
+              IntegerExpression 165..166
+                IntegerLiteral "1" 165..166

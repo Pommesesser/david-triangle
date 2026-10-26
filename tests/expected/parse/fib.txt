@@ -1,0 +1,75 @@
+Program 12..12
+  LetCommand 1..12
+    SequentialDeclaration 2..8
+      VarDeclaration 2..2
+        Identifier "n" 2..2
+        SimpleTypeDenoter 2..2
+          Identifier "Integer" 2..2
+      FuncDeclaration 4..8
+        Identifier "mfib" 4..4
+        SingleFormalParameterSequence 4..4
+          ConstFormalParameter 4..4
+            Identifier "n" 4..4
+            SimpleTypeDenoter 4..4
+              Identifier "Integer" 4..4
+        SimpleTypeDenoter 4..4
+          Identifier "Integer" 4..4
+        IfExpression 5..8
+          BinaryExpression 5..0
+            VnameExpression 5..5
+              SimpleVname 5..5
+                Identifier "n" 5..5
+            Operator "<=" 5..5
+            IntegerExpression 5..5
+              IntegerLiteral "2" 5..5
+          BinaryExpression 5..0
+            VnameExpression 5..5
+              SimpleVname 5..5
+                Identifier "n" 5..5
+            Operator "+" 5..5
+            IntegerExpression 5..6
+              IntegerLiteral "1" 5..6
+          BinaryExpression 7..0
+            CallExpression 7..7
+              Identifier "mfib" 7..7
+              SingleActualParameterSequence 7..7
+                ConstActualParameter 7..7
+                  BinaryExpression 7..0
+                    VnameExpression 7..7
+                      SimpleVname 7..7
+                        Identifier "n" 7..7
+                    Operator "-" 7..7
+                    IntegerExpression 7..7
+                      IntegerLiteral "1" 7..7
+            Operator "+" 7..7
+            CallExpression 7..8
+              Identifier "mfib" 7..7
+              SingleActualParameterSequence 7..7
+                ConstActualParameter 7..7
+                  BinaryExpression 7..0
+                    VnameExpression 7..7
+                      SimpleVname 7..7
+                        Identifier "n" 7..7
+                    Operator "-" 7..7
+                    IntegerExpression 7..7
+                      IntegerLiteral "2" 7..7
+    SequentialCommand 10..11
+      SequentialCommand 10..11
+        CallCommand 10..10
+          Identifier "getint" 10..10
+          SingleActualParameterSequence 10..10
+            VarActualParameter 10..10
+              SimpleVname 10..10
+                Identifier "n" 10..10
+        CallCommand 11..11
+          Identifier "putint" 11..11
+          SingleActualParameterSequence 11..11
+            ConstActualParameter 11..11
+              CallExpression 11..11
+                Identifier "mfib" 11..11
+                SingleActualParameterSequence 11..11
+                  ConstActualParameter 11..11
+                    VnameExpression 11..11
+                      SimpleVname 11..11
+                        Identifier "n" 11..11
+      EmptyCommand 12..11

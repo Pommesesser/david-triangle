@@ -1,0 +1,1471 @@
+Program 289..289
+  SequentialCommand 3..289
+    LetCommand 3..289
+      SequentialDeclaration 4..255
+        SequentialDeclaration 4..255
+          SequentialDeclaration 4..255
+            SequentialDeclaration 4..255
+              SequentialDeclaration 4..255
+                SequentialDeclaration 4..255
+                  SequentialDeclaration 4..255
+                    SequentialDeclaration 4..255
+                      SequentialDeclaration 4..255
+                        SequentialDeclaration 4..255
+                          SequentialDeclaration 4..255
+                            SequentialDeclaration 4..255
+                              SequentialDeclaration 4..255
+                                SequentialDeclaration 4..255
+                                  SequentialDeclaration 4..255
+                                    SequentialDeclaration 4..255
+                                      SequentialDeclaration 4..255
+                                        SequentialDeclaration 4..255
+                                          SequentialDeclaration 4..255
+                                            SequentialDeclaration 4..255
+                                              SequentialDeclaration 4..255
+                                                SequentialDeclaration 4..255
+                                                  ConstDeclaration 4..4
+                                                    Identifier "Arraylength" 4..4
+                                                    IntegerExpression 4..4
+                                                      IntegerLiteral "128" 4..4
+                                                  TypeDeclaration 5..5
+                                                    Identifier "Tree" 5..5
+                                                    ArrayTypeDenoter 5..5
+                                                      IntegerLiteral "128" 5..5
+                                                      SimpleTypeDenoter 5..5
+                                                        Identifier "Char" 5..5
+                                                TypeDeclaration 7..7
+                                                  Identifier "String" 7..7
+                                                  ArrayTypeDenoter 7..7
+                                                    IntegerLiteral "20" 7..7
+                                                    SimpleTypeDenoter 7..7
+                                                      Identifier "Char" 7..7
+                                              VarDeclaration 9..9
+                                                Identifier "loop" 9..9
+                                                SimpleTypeDenoter 9..9
+                                                  Identifier "Char" 9..9
+                                            VarDeclaration 11..11
+                                              Identifier "newLevel" 11..11
+                                              ArrayTypeDenoter 11..11
+                                                IntegerLiteral "7" 11..11
+                                                SimpleTypeDenoter 11..11
+                                                  Identifier "Integer" 11..11
+                                          ProcDeclaration 13..22
+                                            Identifier "initLevel" 13..13
+                                            EmptyFormalParameterSequence 13..13
+                                            SequentialCommand 15..22
+                                              SequentialCommand 15..22
+                                                SequentialCommand 15..22
+                                                  SequentialCommand 15..22
+                                                    SequentialCommand 15..22
+                                                      SequentialCommand 15..22
+                                                        SequentialCommand 15..22
+                                                          AssignCommand 15..15
+                                                            SubscriptVname 15..15
+                                                              SimpleVname 15..15
+                                                                Identifier "newLevel" 15..15
+                                                              IntegerExpression 15..15
+                                                                IntegerLiteral "0" 15..15
+                                                            IntegerExpression 15..15
+                                                              IntegerLiteral "2" 15..15
+                                                          AssignCommand 16..16
+                                                            SubscriptVname 16..16
+                                                              SimpleVname 16..16
+                                                                Identifier "newLevel" 16..16
+                                                              IntegerExpression 16..16
+                                                                IntegerLiteral "1" 16..16
+                                                            IntegerExpression 16..16
+                                                              IntegerLiteral "4" 16..16
+                                                        AssignCommand 17..17
+                                                          SubscriptVname 17..17
+                                                            SimpleVname 17..17
+                                                              Identifier "newLevel" 17..17
+                                                            IntegerExpression 17..17
+                                                              IntegerLiteral "2" 17..17
+                                                          IntegerExpression 17..17
+                                                            IntegerLiteral "8" 17..17
+                                                      AssignCommand 18..18
+                                                        SubscriptVname 18..18
+                                                          SimpleVname 18..18
+                                                            Identifier "newLevel" 18..18
+                                                          IntegerExpression 18..18
+                                                            IntegerLiteral "3" 18..18
+                                                        IntegerExpression 18..18
+                                                          IntegerLiteral "16" 18..18
+                                                    AssignCommand 19..19
+                                                      SubscriptVname 19..19
+                                                        SimpleVname 19..19
+                                                          Identifier "newLevel" 19..19
+                                                        IntegerExpression 19..19
+                                                          IntegerLiteral "4" 19..19
+                                                      IntegerExpression 19..19
+                                                        IntegerLiteral "32" 19..19
+                                                  AssignCommand 20..20
+                                                    SubscriptVname 20..20
+                                                      SimpleVname 20..20
+                                                        Identifier "newLevel" 20..20
+                                                      IntegerExpression 20..20
+                                                        IntegerLiteral "5" 20..20
+                                                    IntegerExpression 20..20
+                                                      IntegerLiteral "64" 20..20
+                                                AssignCommand 21..21
+                                                  SubscriptVname 21..21
+                                                    SimpleVname 21..21
+                                                      Identifier "newLevel" 21..21
+                                                    IntegerExpression 21..21
+                                                      IntegerLiteral "6" 21..21
+                                                  IntegerExpression 21..21
+                                                    IntegerLiteral "128" 21..21
+                                              EmptyCommand 22..22
+                                        VarDeclaration 24..24
+                                          Identifier "inorder" 24..24
+                                          SimpleTypeDenoter 24..24
+                                            Identifier "Tree" 24..24
+                                      VarDeclaration 25..25
+                                        Identifier "preorder" 25..25
+                                        SimpleTypeDenoter 25..25
+                                          Identifier "Tree" 25..25
+                                    VarDeclaration 26..26
+                                      Identifier "realtree" 26..26
+                                      SimpleTypeDenoter 26..26
+                                        Identifier "Tree" 26..26
+                                  ProcDeclaration 29..38
+                                    Identifier "initTree" 29..29
+                                    SingleFormalParameterSequence 29..29
+                                      VarFormalParameter 29..29
+                                        Identifier "tree" 29..29
+                                        SimpleTypeDenoter 29..29
+                                          Identifier "Tree" 29..29
+                                    LetCommand 30..38
+                                      VarDeclaration 31..32
+                                        Identifier "count" 31..31
+                                        SimpleTypeDenoter 31..32
+                                          Identifier "Integer" 31..32
+                                      SequentialCommand 33..38
+                                        SequentialCommand 33..38
+                                          AssignCommand 33..33
+                                            SimpleVname 33..33
+                                              Identifier "count" 33..33
+                                            IntegerExpression 33..33
+                                              IntegerLiteral "1" 33..33
+                                          WhileCommand 34..37
+                                            BinaryExpression 34..0
+                                              VnameExpression 34..34
+                                                SimpleVname 34..34
+                                                  Identifier "count" 34..34
+                                              Operator "<" 34..34
+                                              VnameExpression 34..34
+                                                SimpleVname 34..34
+                                                  Identifier "Arraylength" 34..34
+                                            SequentialCommand 35..37
+                                              SequentialCommand 35..37
+                                                AssignCommand 35..35
+                                                  SubscriptVname 35..35
+                                                    SimpleVname 35..35
+                                                      Identifier "tree" 35..35
+                                                    VnameExpression 35..35
+                                                      SimpleVname 35..35
+                                                        Identifier "count" 35..35
+                                                  CharacterExpression 35..35
+                                                    CharacterLiteral "'_'" 35..35
+                                                AssignCommand 36..36
+                                                  SimpleVname 36..36
+                                                    Identifier "count" 36..36
+                                                  BinaryExpression 36..0
+                                                    VnameExpression 36..36
+                                                      SimpleVname 36..36
+                                                        Identifier "count" 36..36
+                                                    Operator "+" 36..36
+                                                    IntegerExpression 36..36
+                                                      IntegerLiteral "1" 36..36
+                                              EmptyCommand 37..37
+                                        EmptyCommand 38..38
+                                ProcDeclaration 41..60
+                                  Identifier "printTree" 41..41
+                                  SingleFormalParameterSequence 41..41
+                                    ConstFormalParameter 41..41
+                                      Identifier "tree" 41..41
+                                      SimpleTypeDenoter 41..41
+                                        Identifier "Tree" 41..41
+                                  LetCommand 42..60
+                                    SequentialDeclaration 43..45
+                                      VarDeclaration 43..43
+                                        Identifier "count" 43..43
+                                        SimpleTypeDenoter 43..43
+                                          Identifier "Integer" 43..43
+                                      VarDeclaration 44..45
+                                        Identifier "levelCount" 44..44
+                                        SimpleTypeDenoter 44..45
+                                          Identifier "Integer" 44..45
+                                    SequentialCommand 46..60
+                                      SequentialCommand 46..60
+                                        AssignCommand 46..46
+                                          SimpleVname 46..46
+                                            Identifier "count" 46..46
+                                          IntegerExpression 46..46
+                                            IntegerLiteral "1" 46..46
+                                        AssignCommand 47..47
+                                          SimpleVname 47..47
+                                            Identifier "levelCount" 47..47
+                                          IntegerExpression 47..47
+                                            IntegerLiteral "0" 47..47
+                                      WhileCommand 48..60
+                                        BinaryExpression 48..0
+                                          VnameExpression 48..48
+                                            SimpleVname 48..48
+                                              Identifier "count" 48..48
+                                          Operator "<" 48..48
+                                          VnameExpression 48..48
+                                            SimpleVname 48..48
+                                              Identifier "Arraylength" 48..48
+                                        SequentialCommand 49..59
+                                          SequentialCommand 49..59
+                                            SequentialCommand 49..59
+                                              SequentialCommand 49..59
+                                                SequentialCommand 49..59
+                                                  SequentialCommand 49..59
+                                                    IfCommand 49..55
+                                                      BinaryExpression 49..0
+                                                        VnameExpression 49..49
+                                                          SubscriptVname 49..49
+                                                            SimpleVname 49..49
+                                                              Identifier "newLevel" 49..49
+                                                            VnameExpression 49..49
+                                                              SimpleVname 49..49
+                                                                Identifier "levelCount" 49..49
+                                                        Operator "=" 49..49
+                                                        VnameExpression 49..49
+                                                          SimpleVname 49..49
+                                                            Identifier "count" 49..49
+                                                      SequentialCommand 51..53
+                                                        CallCommand 51..51
+                                                          Identifier "puteol" 51..51
+                                                          EmptyActualParameterSequence 51..51
+                                                        AssignCommand 52..53
+                                                          SimpleVname 52..52
+                                                            Identifier "levelCount" 52..52
+                                                          BinaryExpression 52..0
+                                                            VnameExpression 52..52
+                                                              SimpleVname 52..52
+                                                                Identifier "levelCount" 52..52
+                                                            Operator "+" 52..52
+                                                            IntegerExpression 52..53
+                                                              IntegerLiteral "1" 52..53
+                                                      EmptyCommand 55..55
+                                                    CallCommand 57..57
+                                                      Identifier "put" 57..57
+                                                      SingleActualParameterSequence 57..57
+                                                        ConstActualParameter 57..57
+                                                          CharacterExpression 57..57
+                                                            CharacterLiteral "'_'" 57..57
+                                                  CallCommand 57..57
+                                                    Identifier "put" 57..57
+                                                    SingleActualParameterSequence 57..57
+                                                      ConstActualParameter 57..57
+                                                        VnameExpression 57..57
+                                                          SubscriptVname 57..57
+                                                            SimpleVname 57..57
+                                                              Identifier "tree" 57..57
+                                                            VnameExpression 57..57
+                                                              SimpleVname 57..57
+                                                                Identifier "count" 57..57
+                                                CallCommand 57..57
+                                                  Identifier "put" 57..57
+                                                  SingleActualParameterSequence 57..57
+                                                    ConstActualParameter 57..57
+                                                      CharacterExpression 57..57
+                                                        CharacterLiteral "'_'" 57..57
+                                              CallCommand 57..57
+                                                Identifier "put" 57..57
+                                                SingleActualParameterSequence 57..57
+                                                  ConstActualParameter 57..57
+                                                    CharacterExpression 57..57
+                                                      CharacterLiteral "' '" 57..57
+                                            AssignCommand 58..58
+                                              SimpleVname 58..58
+                                                Identifier "count" 58..58
+                                              BinaryExpression 58..0
+                                                VnameExpression 58..58
+                                                  SimpleVname 58..58
+                                                    Identifier "count" 58..58
+                                                Operator "+" 58..58
+                                                IntegerExpression 58..58
+                                                  IntegerLiteral "1" 58..58
+                                          EmptyCommand 59..59
+                              ProcDeclaration 64..74
+                                Identifier "initFileStringP" 64..64
+                                SingleFormalParameterSequence 64..64
+                                  VarFormalParameter 64..64
+                                    Identifier "filenameP" 64..64
+                                    SimpleTypeDenoter 64..64
+                                      Identifier "String" 64..64
+                                SequentialCommand 66..74
+                                  SequentialCommand 66..74
+                                    SequentialCommand 66..74
+                                      SequentialCommand 66..74
+                                        SequentialCommand 66..74
+                                          SequentialCommand 66..74
+                                            SequentialCommand 66..74
+                                              SequentialCommand 66..74
+                                                AssignCommand 66..66
+                                                  SubscriptVname 66..66
+                                                    SimpleVname 66..66
+                                                      Identifier "filenameP" 66..66
+                                                    IntegerExpression 66..66
+                                                      IntegerLiteral "0" 66..66
+                                                  CharacterExpression 66..66
+                                                    CharacterLiteral "'p'" 66..66
+                                                AssignCommand 67..67
+                                                  SubscriptVname 67..67
+                                                    SimpleVname 67..67
+                                                      Identifier "filenameP" 67..67
+                                                    IntegerExpression 67..67
+                                                      IntegerLiteral "1" 67..67
+                                                  CharacterExpression 67..67
+                                                    CharacterLiteral "'r'" 67..67
+                                              AssignCommand 68..68
+                                                SubscriptVname 68..68
+                                                  SimpleVname 68..68
+                                                    Identifier "filenameP" 68..68
+                                                  IntegerExpression 68..68
+                                                    IntegerLiteral "2" 68..68
+                                                CharacterExpression 68..68
+                                                  CharacterLiteral "'e'" 68..68
+                                            AssignCommand 69..69
+                                              SubscriptVname 69..69
+                                                SimpleVname 69..69
+                                                  Identifier "filenameP" 69..69
+                                                IntegerExpression 69..69
+                                                  IntegerLiteral "3" 69..69
+                                              CharacterExpression 69..69
+                                                CharacterLiteral "'.'" 69..69
+                                          AssignCommand 70..70
+                                            SubscriptVname 70..70
+                                              SimpleVname 70..70
+                                                Identifier "filenameP" 70..70
+                                              IntegerExpression 70..70
+                                                IntegerLiteral "4" 70..70
+                                            CharacterExpression 70..70
+                                              CharacterLiteral "'t'" 70..70
+                                        AssignCommand 71..71
+                                          SubscriptVname 71..71
+                                            SimpleVname 71..71
+                                              Identifier "filenameP" 71..71
+                                            IntegerExpression 71..71
+                                              IntegerLiteral "5" 71..71
+                                          CharacterExpression 71..71
+                                            CharacterLiteral "'x'" 71..71
+                                      AssignCommand 72..72
+                                        SubscriptVname 72..72
+                                          SimpleVname 72..72
+                                            Identifier "filenameP" 72..72
+                                          IntegerExpression 72..72
+                                            IntegerLiteral "6" 72..72
+                                        CharacterExpression 72..72
+                                          CharacterLiteral "'t'" 72..72
+                                    AssignCommand 73..73
+                                      SubscriptVname 73..73
+                                        SimpleVname 73..73
+                                          Identifier "filenameP" 73..73
+                                        IntegerExpression 73..73
+                                          IntegerLiteral "7" 73..73
+                                      CallExpression 73..73
+                                        Identifier "chr" 73..73
+                                        SingleActualParameterSequence 73..73
+                                          ConstActualParameter 73..73
+                                            IntegerExpression 73..73
+                                              IntegerLiteral "0" 73..73
+                                  EmptyCommand 74..74
+                            ProcDeclaration 77..86
+                              Identifier "initFileStringI" 77..77
+                              SingleFormalParameterSequence 77..77
+                                VarFormalParameter 77..77
+                                  Identifier "filenameI" 77..77
+                                  SimpleTypeDenoter 77..77
+                                    Identifier "String" 77..77
+                              SequentialCommand 79..86
+                                SequentialCommand 79..86
+                                  SequentialCommand 79..86
+                                    SequentialCommand 79..86
+                                      SequentialCommand 79..86
+                                        SequentialCommand 79..86
+                                          SequentialCommand 79..86
+                                            AssignCommand 79..79
+                                              SubscriptVname 79..79
+                                                SimpleVname 79..79
+                                                  Identifier "filenameI" 79..79
+                                                IntegerExpression 79..79
+                                                  IntegerLiteral "0" 79..79
+                                              CharacterExpression 79..79
+                                                CharacterLiteral "'i'" 79..79
+                                            AssignCommand 80..80
+                                              SubscriptVname 80..80
+                                                SimpleVname 80..80
+                                                  Identifier "filenameI" 80..80
+                                                IntegerExpression 80..80
+                                                  IntegerLiteral "1" 80..80
+                                              CharacterExpression 80..80
+                                                CharacterLiteral "'n'" 80..80
+                                          AssignCommand 81..81
+                                            SubscriptVname 81..81
+                                              SimpleVname 81..81
+                                                Identifier "filenameI" 81..81
+                                              IntegerExpression 81..81
+                                                IntegerLiteral "2" 81..81
+                                            CharacterExpression 81..81
+                                              CharacterLiteral "'.'" 81..81
+                                        AssignCommand 82..82
+                                          SubscriptVname 82..82
+                                            SimpleVname 82..82
+                                              Identifier "filenameI" 82..82
+                                            IntegerExpression 82..82
+                                              IntegerLiteral "3" 82..82
+                                          CharacterExpression 82..82
+                                            CharacterLiteral "'t'" 82..82
+                                      AssignCommand 83..83
+                                        SubscriptVname 83..83
+                                          SimpleVname 83..83
+                                            Identifier "filenameI" 83..83
+                                          IntegerExpression 83..83
+                                            IntegerLiteral "4" 83..83
+                                        CharacterExpression 83..83
+                                          CharacterLiteral "'x'" 83..83
+                                    AssignCommand 84..84
+                                      SubscriptVname 84..84
+                                        SimpleVname 84..84
+                                          Identifier "filenameI" 84..84
+                                        IntegerExpression 84..84
+                                          IntegerLiteral "5" 84..84
+                                      CharacterExpression 84..84
+                                        CharacterLiteral "'t'" 84..84
+                                  AssignCommand 85..85
+                                    SubscriptVname 85..85
+                                      SimpleVname 85..85
+                                        Identifier "filenameI" 85..85
+                                      IntegerExpression 85..85
+                                        IntegerLiteral "6" 85..85
+                                    CallExpression 85..85
+                                      Identifier "chr" 85..85
+                                      SingleActualParameterSequence 85..85
+                                        ConstActualParameter 85..85
+                                          IntegerExpression 85..85
+                                            IntegerLiteral "0" 85..85
+                                EmptyCommand 86..86
+                          VarDeclaration 88..88
+                            Identifier "filenameP" 88..88
+                            SimpleTypeDenoter 88..88
+                              Identifier "String" 88..88
+                        VarDeclaration 89..89
+                          Identifier "filenameI" 89..89
+                          SimpleTypeDenoter 89..89
+                            Identifier "String" 89..89
+                      VarDeclaration 90..90
+                        Identifier "filehandle" 90..90
+                        SimpleTypeDenoter 90..90
+                          Identifier "Integer" 90..90
+                    VarDeclaration 91..91
+                      Identifier "testeof" 91..91
+                      SimpleTypeDenoter 91..91
+                        Identifier "Boolean" 91..91
+                  VarDeclaration 92..92
+                    Identifier "testeol" 92..92
+                    SimpleTypeDenoter 92..92
+                      Identifier "Boolean" 92..92
+                VarDeclaration 93..93
+                  Identifier "testint" 93..93
+                  SimpleTypeDenoter 93..93
+                    Identifier "Integer" 93..93
+              VarDeclaration 94..94
+                Identifier "testchar" 94..94
+                SimpleTypeDenoter 94..94
+                  Identifier "Char" 94..94
+            ProcDeclaration 97..129
+              Identifier "putFileToTree" 97..97
+              MultipleFormalParameterSequence 97..97
+                ConstFormalParameter 97..97
+                  Identifier "filename" 97..97
+                  SimpleTypeDenoter 97..97
+                    Identifier "String" 97..97
+                SingleFormalParameterSequence 97..97
+                  VarFormalParameter 97..97
+                    Identifier "tree" 97..97
+                    SimpleTypeDenoter 97..97
+                      Identifier "Tree" 97..97
+              LetCommand 98..129
+                SequentialDeclaration 99..101
+                  VarDeclaration 99..99
+                    Identifier "count" 99..99
+                    SimpleTypeDenoter 99..99
+                      Identifier "Integer" 99..99
+                  VarDeclaration 100..101
+                    Identifier "newchar" 100..100
+                    SimpleTypeDenoter 100..101
+                      Identifier "Char" 100..101
+                SequentialCommand 102..129
+                  SequentialCommand 102..129
+                    SequentialCommand 102..129
+                      SequentialCommand 102..129
+                        AssignCommand 102..102
+                          SimpleVname 102..102
+                            Identifier "count" 102..102
+                          IntegerExpression 102..102
+                            IntegerLiteral "1" 102..102
+                        CallCommand 103..103
+                          Identifier "fopen" 103..103
+                          MultipleActualParameterSequence 103..103
+                            VarActualParameter 103..103
+                              SimpleVname 103..103
+                                Identifier "filehandle" 103..103
+                            MultipleActualParameterSequence 103..103
+                              ConstActualParameter 103..103
+                                VnameExpression 103..103
+                                  SimpleVname 103..103
+                                    Identifier "filename" 103..103
+                              SingleActualParameterSequence 103..103
+                                ConstActualParameter 103..103
+                                  VnameExpression 103..103
+                                    SimpleVname 103..103
+                                      Identifier "false" 103..103
+                      CallCommand 104..104
+                        Identifier "feof" 104..104
+                        MultipleActualParameterSequence 104..104
+                          ConstActualParameter 104..104
+                            VnameExpression 104..104
+                              SimpleVname 104..104
+                                Identifier "filehandle" 104..104
+                          SingleActualParameterSequence 104..104
+                            VarActualParameter 104..104
+                              SimpleVname 104..104
+                                Identifier "testeof" 104..104
+                    WhileCommand 105..127
+                      UnaryExpression 105..106
+                        Operator "\" 105..105
+                        VnameExpression 105..106
+                          SimpleVname 105..106
+                            Identifier "testeof" 105..106
+                      SequentialCommand 108..127
+                        SequentialCommand 108..127
+                          SequentialCommand 108..127
+                            SequentialCommand 108..127
+                              SequentialCommand 108..127
+                                SequentialCommand 108..127
+                                  CallCommand 108..108
+                                    Identifier "feol" 108..108
+                                    MultipleActualParameterSequence 108..108
+                                      ConstActualParameter 108..108
+                                        VnameExpression 108..108
+                                          SimpleVname 108..108
+                                            Identifier "filehandle" 108..108
+                                      SingleActualParameterSequence 108..108
+                                        VarActualParameter 108..108
+                                          SimpleVname 108..108
+                                            Identifier "testeol" 108..108
+                                  CallCommand 109..109
+                                    Identifier "feof" 109..109
+                                    MultipleActualParameterSequence 109..109
+                                      ConstActualParameter 109..109
+                                        VnameExpression 109..109
+                                          SimpleVname 109..109
+                                            Identifier "filehandle" 109..109
+                                      SingleActualParameterSequence 109..109
+                                        VarActualParameter 109..109
+                                          SimpleVname 109..109
+                                            Identifier "testeof" 109..109
+                                WhileCommand 110..117
+                                  BinaryExpression 110..0
+                                    UnaryExpression 110..110
+                                      Operator "\" 110..110
+                                      VnameExpression 110..110
+                                        SimpleVname 110..110
+                                          Identifier "testeol" 110..110
+                                    Operator "/\" 110..110
+                                    UnaryExpression 110..111
+                                      Operator "\" 110..110
+                                      VnameExpression 110..111
+                                        SimpleVname 110..111
+                                          Identifier "testeof" 110..111
+                                  SequentialCommand 112..117
+                                    SequentialCommand 112..117
+                                      SequentialCommand 112..117
+                                        SequentialCommand 112..117
+                                          SequentialCommand 112..117
+                                            CallCommand 112..112
+                                              Identifier "fget" 112..112
+                                              MultipleActualParameterSequence 112..112
+                                                ConstActualParameter 112..112
+                                                  VnameExpression 112..112
+                                                    SimpleVname 112..112
+                                                      Identifier "filehandle" 112..112
+                                                SingleActualParameterSequence 112..112
+                                                  VarActualParameter 112..112
+                                                    SimpleVname 112..112
+                                                      Identifier "newchar" 112..112
+                                            AssignCommand 113..113
+                                              SubscriptVname 113..113
+                                                SimpleVname 113..113
+                                                  Identifier "tree" 113..113
+                                                VnameExpression 113..113
+                                                  SimpleVname 113..113
+                                                    Identifier "count" 113..113
+                                              VnameExpression 113..113
+                                                SimpleVname 113..113
+                                                  Identifier "newchar" 113..113
+                                          AssignCommand 114..114
+                                            SimpleVname 114..114
+                                              Identifier "count" 114..114
+                                            BinaryExpression 114..0
+                                              VnameExpression 114..114
+                                                SimpleVname 114..114
+                                                  Identifier "count" 114..114
+                                              Operator "+" 114..114
+                                              IntegerExpression 114..114
+                                                IntegerLiteral "1" 114..114
+                                        CallCommand 115..115
+                                          Identifier "feol" 115..115
+                                          MultipleActualParameterSequence 115..115
+                                            ConstActualParameter 115..115
+                                              VnameExpression 115..115
+                                                SimpleVname 115..115
+                                                  Identifier "filehandle" 115..115
+                                            SingleActualParameterSequence 115..115
+                                              VarActualParameter 115..115
+                                                SimpleVname 115..115
+                                                  Identifier "testeol" 115..115
+                                      CallCommand 116..116
+                                        Identifier "feof" 116..116
+                                        MultipleActualParameterSequence 116..116
+                                          ConstActualParameter 116..116
+                                            VnameExpression 116..116
+                                              SimpleVname 116..116
+                                                Identifier "filehandle" 116..116
+                                          SingleActualParameterSequence 116..116
+                                            VarActualParameter 116..116
+                                              SimpleVname 116..116
+                                                Identifier "testeof" 116..116
+                                    EmptyCommand 117..117
+                              CallCommand 119..119
+                                Identifier "feol" 119..119
+                                MultipleActualParameterSequence 119..119
+                                  ConstActualParameter 119..119
+                                    VnameExpression 119..119
+                                      SimpleVname 119..119
+                                        Identifier "filehandle" 119..119
+                                  SingleActualParameterSequence 119..119
+                                    VarActualParameter 119..119
+                                      SimpleVname 119..119
+                                        Identifier "testeol" 119..119
+                            WhileCommand 120..124
+                              VnameExpression 120..121
+                                SimpleVname 120..121
+                                  Identifier "testeol" 120..121
+                              SequentialCommand 122..124
+                                SequentialCommand 122..124
+                                  CallCommand 122..122
+                                    Identifier "fgeteol" 122..122
+                                    SingleActualParameterSequence 122..122
+                                      ConstActualParameter 122..122
+                                        VnameExpression 122..122
+                                          SimpleVname 122..122
+                                            Identifier "filehandle" 122..122
+                                  CallCommand 123..123
+                                    Identifier "feol" 123..123
+                                    MultipleActualParameterSequence 123..123
+                                      ConstActualParameter 123..123
+                                        VnameExpression 123..123
+                                          SimpleVname 123..123
+                                            Identifier "filehandle" 123..123
+                                      SingleActualParameterSequence 123..123
+                                        VarActualParameter 123..123
+                                          SimpleVname 123..123
+                                            Identifier "testeol" 123..123
+                                EmptyCommand 124..124
+                          CallCommand 126..126
+                            Identifier "feof" 126..126
+                            MultipleActualParameterSequence 126..126
+                              ConstActualParameter 126..126
+                                VnameExpression 126..126
+                                  SimpleVname 126..126
+                                    Identifier "filehandle" 126..126
+                              SingleActualParameterSequence 126..126
+                                VarActualParameter 126..126
+                                  SimpleVname 126..126
+                                    Identifier "testeof" 126..126
+                        EmptyCommand 127..127
+                  CallCommand 128..129
+                    Identifier "fclose" 128..128
+                    SingleActualParameterSequence 128..128
+                      ConstActualParameter 128..128
+                        VnameExpression 128..128
+                          SimpleVname 128..128
+                            Identifier "filehandle" 128..128
+          ProcDeclaration 132..141
+            Identifier "getIndexInTree" 132..132
+            MultipleFormalParameterSequence 132..132
+              ConstFormalParameter 132..132
+                Identifier "tree" 132..132
+                SimpleTypeDenoter 132..132
+                  Identifier "Tree" 132..132
+              MultipleFormalParameterSequence 132..132
+                ConstFormalParameter 132..132
+                  Identifier "wanted" 132..132
+                  SimpleTypeDenoter 132..132
+                    Identifier "Char" 132..132
+                SingleFormalParameterSequence 132..132
+                  VarFormalParameter 132..132
+                    Identifier "position" 132..132
+                    SimpleTypeDenoter 132..132
+                      Identifier "Integer" 132..132
+            SequentialCommand 134..141
+              SequentialCommand 134..141
+                SequentialCommand 134..141
+                  AssignCommand 134..134
+                    SimpleVname 134..134
+                      Identifier "position" 134..134
+                    IntegerExpression 134..134
+                      IntegerLiteral "1" 134..134
+                  WhileCommand 135..136
+                    BinaryExpression 135..0
+                      UnaryExpression 135..135
+                        Operator "\" 135..135
+                        BinaryExpression 135..0
+                          VnameExpression 135..135
+                            SubscriptVname 135..135
+                              SimpleVname 135..135
+                                Identifier "tree" 135..135
+                              VnameExpression 135..135
+                                SimpleVname 135..135
+                                  Identifier "position" 135..135
+                          Operator "=" 135..135
+                          VnameExpression 135..135
+                            SimpleVname 135..135
+                              Identifier "wanted" 135..135
+                      Operator "/\" 135..135
+                      BinaryExpression 135..0
+                        VnameExpression 135..135
+                          SimpleVname 135..135
+                            Identifier "position" 135..135
+                        Operator "<=" 135..135
+                        BinaryExpression 135..0
+                          VnameExpression 135..135
+                            SimpleVname 135..135
+                              Identifier "Arraylength" 135..135
+                          Operator "+" 135..135
+                          IntegerExpression 135..135
+                            IntegerLiteral "1" 135..135
+                    AssignCommand 136..136
+                      SimpleVname 136..136
+                        Identifier "position" 136..136
+                      BinaryExpression 136..0
+                        VnameExpression 136..136
+                          SimpleVname 136..136
+                            Identifier "position" 136..136
+                        Operator "+" 136..136
+                        IntegerExpression 136..136
+                          IntegerLiteral "1" 136..136
+                IfCommand 138..140
+                  BinaryExpression 138..0
+                    VnameExpression 138..138
+                      SimpleVname 138..138
+                        Identifier "position" 138..138
+                    Operator "=" 138..138
+                    BinaryExpression 138..0
+                      VnameExpression 138..138
+                        SimpleVname 138..138
+                          Identifier "Arraylength" 138..138
+                      Operator "+" 138..138
+                      IntegerExpression 138..138
+                        IntegerLiteral "1" 138..138
+                  AssignCommand 139..140
+                    SimpleVname 139..139
+                      Identifier "position" 139..139
+                    IntegerExpression 139..140
+                      IntegerLiteral "0" 139..140
+                  EmptyCommand 140..140
+              EmptyCommand 141..141
+        ProcDeclaration 147..255
+          Identifier "setNodeFromPI" 147..147
+          MultipleFormalParameterSequence 147..147
+            VarFormalParameter 147..147
+              Identifier "preorder" 147..147
+              SimpleTypeDenoter 147..147
+                Identifier "Tree" 147..147
+            MultipleFormalParameterSequence 147..147
+              VarFormalParameter 147..147
+                Identifier "inorder" 147..147
+                SimpleTypeDenoter 147..147
+                  Identifier "Tree" 147..147
+              MultipleFormalParameterSequence 147..147
+                VarFormalParameter 147..147
+                  Identifier "realtree" 147..147
+                  SimpleTypeDenoter 147..147
+                    Identifier "Tree" 147..147
+                MultipleFormalParameterSequence 147..147
+                  ConstFormalParameter 147..147
+                    Identifier "node" 147..147
+                    SimpleTypeDenoter 147..147
+                      Identifier "Integer" 147..147
+                  SingleFormalParameterSequence 147..147
+                    ConstFormalParameter 147..147
+                      Identifier "countPre" 147..147
+                      SimpleTypeDenoter 147..147
+                        Identifier "Integer" 147..147
+          LetCommand 148..255
+            SequentialDeclaration 149..156
+              SequentialDeclaration 149..156
+                SequentialDeclaration 149..156
+                  SequentialDeclaration 149..156
+                    SequentialDeclaration 149..156
+                      SequentialDeclaration 149..156
+                        VarDeclaration 149..149
+                          Identifier "countP" 149..149
+                          SimpleTypeDenoter 149..149
+                            Identifier "Integer" 149..149
+                        VarDeclaration 150..150
+                          Identifier "countI" 150..150
+                          SimpleTypeDenoter 150..150
+                            Identifier "Integer" 150..150
+                      VarDeclaration 151..151
+                        Identifier "posThis" 151..151
+                        SimpleTypeDenoter 151..151
+                          Identifier "Integer" 151..151
+                    VarDeclaration 152..152
+                      Identifier "posNext" 152..152
+                      SimpleTypeDenoter 152..152
+                        Identifier "Integer" 152..152
+                  VarDeclaration 153..153
+                    Identifier "posParent" 153..153
+                    SimpleTypeDenoter 153..153
+                      Identifier "Integer" 153..153
+                VarDeclaration 154..154
+                  Identifier "leftChildIndex" 154..154
+                  SimpleTypeDenoter 154..154
+                    Identifier "Integer" 154..154
+              VarDeclaration 155..156
+                Identifier "rightChildIndex" 155..155
+                SimpleTypeDenoter 155..156
+                  Identifier "Integer" 155..156
+            SequentialCommand 161..253
+              IfCommand 161..252
+                BinaryExpression 161..0
+                  VnameExpression 161..161
+                    SubscriptVname 161..161
+                      SimpleVname 161..161
+                        Identifier "preorder" 161..161
+                      VnameExpression 161..161
+                        SimpleVname 161..161
+                          Identifier "countPre" 161..161
+                  Operator "\=" 161..161
+                  CharacterExpression 161..161
+                    CharacterLiteral "'_'" 161..161
+                SequentialCommand 164..251
+                  SequentialCommand 164..251
+                    SequentialCommand 164..251
+                      SequentialCommand 164..251
+                        SequentialCommand 164..251
+                          SequentialCommand 164..251
+                            SequentialCommand 164..251
+                              SequentialCommand 164..251
+                                SequentialCommand 164..251
+                                  SequentialCommand 164..251
+                                    SequentialCommand 164..251
+                                      SequentialCommand 164..251
+                                        SequentialCommand 164..251
+                                          SequentialCommand 164..251
+                                            SequentialCommand 164..251
+                                              SequentialCommand 164..251
+                                                AssignCommand 164..164
+                                                  SimpleVname 164..164
+                                                    Identifier "countP" 164..164
+                                                  VnameExpression 164..164
+                                                    SimpleVname 164..164
+                                                      Identifier "node" 164..164
+                                                AssignCommand 165..165
+                                                  SimpleVname 165..165
+                                                    Identifier "countI" 165..165
+                                                  VnameExpression 165..165
+                                                    SimpleVname 165..165
+                                                      Identifier "node" 165..165
+                                              AssignCommand 166..166
+                                                SimpleVname 166..166
+                                                  Identifier "leftChildIndex" 166..166
+                                                BinaryExpression 166..0
+                                                  IntegerExpression 166..166
+                                                    IntegerLiteral "2" 166..166
+                                                  Operator "*" 166..166
+                                                  VnameExpression 166..166
+                                                    SimpleVname 166..166
+                                                      Identifier "node" 166..166
+                                            AssignCommand 167..167
+                                              SimpleVname 167..167
+                                                Identifier "rightChildIndex" 167..167
+                                              BinaryExpression 167..0
+                                                BinaryExpression 167..0
+                                                  IntegerExpression 167..167
+                                                    IntegerLiteral "2" 167..167
+                                                  Operator "*" 167..167
+                                                  VnameExpression 167..167
+                                                    SimpleVname 167..167
+                                                      Identifier "node" 167..167
+                                                Operator "+" 167..167
+                                                IntegerExpression 167..167
+                                                  IntegerLiteral "1" 167..167
+                                          CallCommand 169..169
+                                            Identifier "puteol" 169..169
+                                            EmptyActualParameterSequence 169..169
+                                        CallCommand 169..169
+                                          Identifier "put" 169..169
+                                          SingleActualParameterSequence 169..169
+                                            ConstActualParameter 169..169
+                                              CharacterExpression 169..169
+                                                CharacterLiteral "'-'" 169..169
+                                      CallCommand 169..169
+                                        Identifier "put" 169..169
+                                        SingleActualParameterSequence 169..169
+                                          ConstActualParameter 169..169
+                                            CharacterExpression 169..169
+                                              CharacterLiteral "'-'" 169..169
+                                    CallCommand 169..169
+                                      Identifier "put" 169..169
+                                      SingleActualParameterSequence 169..169
+                                        ConstActualParameter 169..169
+                                          VnameExpression 169..169
+                                            SubscriptVname 169..169
+                                              SimpleVname 169..169
+                                                Identifier "preorder" 169..169
+                                              VnameExpression 169..169
+                                                SimpleVname 169..169
+                                                  Identifier "countPre" 169..169
+                                  CallCommand 169..169
+                                    Identifier "put" 169..169
+                                    SingleActualParameterSequence 169..169
+                                      ConstActualParameter 169..169
+                                        CharacterExpression 169..169
+                                          CharacterLiteral "'-'" 169..169
+                                CallCommand 169..169
+                                  Identifier "put" 169..169
+                                  SingleActualParameterSequence 169..169
+                                    ConstActualParameter 169..169
+                                      CharacterExpression 169..169
+                                        CharacterLiteral "'>'" 169..169
+                              CallCommand 169..169
+                                Identifier "putint" 169..169
+                                SingleActualParameterSequence 169..169
+                                  ConstActualParameter 169..169
+                                    VnameExpression 169..169
+                                      SimpleVname 169..169
+                                        Identifier "node" 169..169
+                            CallCommand 169..169
+                              Identifier "puteol" 169..169
+                              EmptyActualParameterSequence 169..169
+                          AssignCommand 175..175
+                            SubscriptVname 175..175
+                              SimpleVname 175..175
+                                Identifier "realtree" 175..175
+                              VnameExpression 175..175
+                                SimpleVname 175..175
+                                  Identifier "node" 175..175
+                            VnameExpression 175..175
+                              SubscriptVname 175..175
+                                SimpleVname 175..175
+                                  Identifier "preorder" 175..175
+                                VnameExpression 175..175
+                                  SimpleVname 175..175
+                                    Identifier "countPre" 175..175
+                        CallCommand 178..178
+                          Identifier "getIndexInTree" 178..178
+                          MultipleActualParameterSequence 178..178
+                            ConstActualParameter 178..178
+                              VnameExpression 178..178
+                                SimpleVname 178..178
+                                  Identifier "inorder" 178..178
+                            MultipleActualParameterSequence 178..178
+                              ConstActualParameter 178..178
+                                VnameExpression 178..178
+                                  SubscriptVname 178..178
+                                    SimpleVname 178..178
+                                      Identifier "preorder" 178..178
+                                    VnameExpression 178..178
+                                      SimpleVname 178..178
+                                        Identifier "countPre" 178..178
+                              SingleActualParameterSequence 178..178
+                                VarActualParameter 178..178
+                                  SimpleVname 178..178
+                                    Identifier "posThis" 178..178
+                      CallCommand 179..179
+                        Identifier "getIndexInTree" 179..179
+                        MultipleActualParameterSequence 179..179
+                          ConstActualParameter 179..179
+                            VnameExpression 179..179
+                              SimpleVname 179..179
+                                Identifier "inorder" 179..179
+                          MultipleActualParameterSequence 179..179
+                            ConstActualParameter 179..179
+                              VnameExpression 179..179
+                                SubscriptVname 179..179
+                                  SimpleVname 179..179
+                                    Identifier "preorder" 179..179
+                                  BinaryExpression 179..0
+                                    VnameExpression 179..179
+                                      SimpleVname 179..179
+                                        Identifier "countPre" 179..179
+                                    Operator "+" 179..179
+                                    IntegerExpression 179..179
+                                      IntegerLiteral "1" 179..179
+                            SingleActualParameterSequence 179..179
+                              VarActualParameter 179..179
+                                SimpleVname 179..179
+                                  Identifier "posNext" 179..179
+                    IfCommand 182..250
+                      BinaryExpression 182..0
+                        VnameExpression 182..182
+                          SimpleVname 182..182
+                            Identifier "posNext" 182..182
+                        Operator "<" 182..182
+                        VnameExpression 182..182
+                          SimpleVname 182..182
+                            Identifier "posThis" 182..182
+                      CallCommand 187..188
+                        Identifier "setNodeFromPI" 187..187
+                        MultipleActualParameterSequence 187..187
+                          VarActualParameter 187..187
+                            SimpleVname 187..187
+                              Identifier "preorder" 187..187
+                          MultipleActualParameterSequence 187..187
+                            VarActualParameter 187..187
+                              SimpleVname 187..187
+                                Identifier "inorder" 187..187
+                            MultipleActualParameterSequence 187..187
+                              VarActualParameter 187..187
+                                SimpleVname 187..187
+                                  Identifier "realtree" 187..187
+                              MultipleActualParameterSequence 187..187
+                                ConstActualParameter 187..187
+                                  VnameExpression 187..187
+                                    SimpleVname 187..187
+                                      Identifier "leftChildIndex" 187..187
+                                SingleActualParameterSequence 187..187
+                                  ConstActualParameter 187..187
+                                    BinaryExpression 187..0
+                                      VnameExpression 187..187
+                                        SimpleVname 187..187
+                                          Identifier "countPre" 187..187
+                                      Operator "+" 187..187
+                                      IntegerExpression 187..187
+                                        IntegerLiteral "1" 187..187
+                      LetCommand 195..242
+                        SequentialDeclaration 196..199
+                          SequentialDeclaration 196..199
+                            VarDeclaration 196..196
+                              Identifier "helper" 196..196
+                              SimpleTypeDenoter 196..196
+                                Identifier "Integer" 196..196
+                            VarDeclaration 197..197
+                              Identifier "posReal" 197..197
+                              SimpleTypeDenoter 197..197
+                                Identifier "Integer" 197..197
+                          VarDeclaration 198..199
+                            Identifier "once" 198..198
+                            SimpleTypeDenoter 198..199
+                              Identifier "Integer" 198..199
+                        SequentialCommand 201..241
+                          SequentialCommand 201..241
+                            SequentialCommand 201..241
+                              SequentialCommand 201..241
+                                SequentialCommand 201..241
+                                  SequentialCommand 201..241
+                                    CallCommand 201..201
+                                      Identifier "getIndexInTree" 201..201
+                                      MultipleActualParameterSequence 201..201
+                                        ConstActualParameter 201..201
+                                          VnameExpression 201..201
+                                            SimpleVname 201..201
+                                              Identifier "inorder" 201..201
+                                        MultipleActualParameterSequence 201..201
+                                          ConstActualParameter 201..201
+                                            VnameExpression 201..201
+                                              SubscriptVname 201..201
+                                                SimpleVname 201..201
+                                                  Identifier "preorder" 201..201
+                                                BinaryExpression 201..0
+                                                  VnameExpression 201..201
+                                                    SimpleVname 201..201
+                                                      Identifier "countPre" 201..201
+                                                  Operator "-" 201..201
+                                                  IntegerExpression 201..201
+                                                    IntegerLiteral "1" 201..201
+                                          SingleActualParameterSequence 201..201
+                                            VarActualParameter 201..201
+                                              SimpleVname 201..201
+                                                Identifier "posParent" 201..201
+                                    AssignCommand 203..203
+                                      SimpleVname 203..203
+                                        Identifier "helper" 203..203
+                                      IntegerExpression 203..203
+                                        IntegerLiteral "0" 203..203
+                                  AssignCommand 204..204
+                                    SimpleVname 204..204
+                                      Identifier "once" 204..204
+                                    IntegerExpression 204..204
+                                      IntegerLiteral "1" 204..204
+                                WhileCommand 207..213
+                                  BinaryExpression 207..0
+                                    BinaryExpression 207..0
+                                      VnameExpression 207..207
+                                        SimpleVname 207..207
+                                          Identifier "posParent" 207..207
+                                      Operator "<" 207..207
+                                      VnameExpression 207..207
+                                        SimpleVname 207..207
+                                          Identifier "posNext" 207..207
+                                    Operator "\/" 207..207
+                                    BinaryExpression 207..0
+                                      VnameExpression 207..207
+                                        SimpleVname 207..207
+                                          Identifier "once" 207..207
+                                      Operator "=" 207..207
+                                      IntegerExpression 207..207
+                                        IntegerLiteral "1" 207..207
+                                  SequentialCommand 209..213
+                                    SequentialCommand 209..213
+                                      AssignCommand 209..209
+                                        SimpleVname 209..209
+                                          Identifier "helper" 209..209
+                                        BinaryExpression 209..0
+                                          VnameExpression 209..209
+                                            SimpleVname 209..209
+                                              Identifier "helper" 209..209
+                                          Operator "+" 209..209
+                                          IntegerExpression 209..209
+                                            IntegerLiteral "1" 209..209
+                                      CallCommand 211..211
+                                        Identifier "getIndexInTree" 211..211
+                                        MultipleActualParameterSequence 211..211
+                                          ConstActualParameter 211..211
+                                            VnameExpression 211..211
+                                              SimpleVname 211..211
+                                                Identifier "inorder" 211..211
+                                          MultipleActualParameterSequence 211..211
+                                            ConstActualParameter 211..211
+                                              VnameExpression 211..211
+                                                SubscriptVname 211..211
+                                                  SimpleVname 211..211
+                                                    Identifier "preorder" 211..211
+                                                  BinaryExpression 211..0
+                                                    VnameExpression 211..211
+                                                      SimpleVname 211..211
+                                                        Identifier "countPre" 211..211
+                                                    Operator "-" 211..211
+                                                    VnameExpression 211..211
+                                                      SimpleVname 211..211
+                                                        Identifier "helper" 211..211
+                                            SingleActualParameterSequence 211..211
+                                              VarActualParameter 211..211
+                                                SimpleVname 211..211
+                                                  Identifier "posParent" 211..211
+                                    AssignCommand 212..213
+                                      SimpleVname 212..212
+                                        Identifier "once" 212..212
+                                      IntegerExpression 212..213
+                                        IntegerLiteral "0" 212..213
+                              IfCommand 218..226
+                                BinaryExpression 218..0
+                                  BinaryExpression 218..0
+                                    VnameExpression 218..218
+                                      SimpleVname 218..218
+                                        Identifier "countPre" 218..218
+                                    Operator "-" 218..218
+                                    VnameExpression 218..218
+                                      SimpleVname 218..218
+                                        Identifier "helper" 218..218
+                                  Operator "=" 218..218
+                                  IntegerExpression 218..218
+                                    IntegerLiteral "0" 218..218
+                                SequentialCommand 220..221
+                                  AssignCommand 220..220
+                                    SimpleVname 220..220
+                                      Identifier "helper" 220..220
+                                    IntegerExpression 220..220
+                                      IntegerLiteral "1" 220..220
+                                  EmptyCommand 221..221
+                                SequentialCommand 224..226
+                                  CallCommand 224..224
+                                    Identifier "getIndexInTree" 224..224
+                                    MultipleActualParameterSequence 224..224
+                                      ConstActualParameter 224..224
+                                        VnameExpression 224..224
+                                          SimpleVname 224..224
+                                            Identifier "realtree" 224..224
+                                      MultipleActualParameterSequence 224..224
+                                        ConstActualParameter 224..224
+                                          VnameExpression 224..224
+                                            SubscriptVname 224..224
+                                              SimpleVname 224..224
+                                                Identifier "preorder" 224..224
+                                              BinaryExpression 224..0
+                                                VnameExpression 224..224
+                                                  SimpleVname 224..224
+                                                    Identifier "countPre" 224..224
+                                                Operator "-" 224..224
+                                                VnameExpression 224..224
+                                                  SimpleVname 224..224
+                                                    Identifier "helper" 224..224
+                                        SingleActualParameterSequence 224..224
+                                          VarActualParameter 224..224
+                                            SimpleVname 224..224
+                                              Identifier "posReal" 224..224
+                                  AssignCommand 225..226
+                                    SimpleVname 225..225
+                                      Identifier "helper" 225..225
+                                    BinaryExpression 225..0
+                                      BinaryExpression 225..0
+                                        BinaryExpression 225..0
+                                          VnameExpression 225..225
+                                            SimpleVname 225..225
+                                              Identifier "posReal" 225..225
+                                          Operator "*" 225..225
+                                          IntegerExpression 225..225
+                                            IntegerLiteral "2" 225..225
+                                        Operator "*" 225..225
+                                        IntegerExpression 225..225
+                                          IntegerLiteral "2" 225..225
+                                      Operator "+" 225..225
+                                      IntegerExpression 225..226
+                                        IntegerLiteral "1" 225..226
+                            WhileCommand 232..235
+                              BinaryExpression 232..0
+                                VnameExpression 232..232
+                                  SubscriptVname 232..232
+                                    SimpleVname 232..232
+                                      Identifier "realtree" 232..232
+                                    VnameExpression 232..232
+                                      SimpleVname 232..232
+                                        Identifier "helper" 232..232
+                                Operator "\=" 232..232
+                                CharacterExpression 232..232
+                                  CharacterLiteral "'_'" 232..232
+                              AssignCommand 234..235
+                                SimpleVname 234..234
+                                  Identifier "helper" 234..234
+                                BinaryExpression 234..0
+                                  BinaryExpression 234..0
+                                    VnameExpression 234..234
+                                      SimpleVname 234..234
+                                        Identifier "helper" 234..234
+                                    Operator "*" 234..234
+                                    IntegerExpression 234..234
+                                      IntegerLiteral "2" 234..234
+                                  Operator "+" 234..234
+                                  IntegerExpression 234..235
+                                    IntegerLiteral "1" 234..235
+                          CallCommand 240..241
+                            Identifier "setNodeFromPI" 240..240
+                            MultipleActualParameterSequence 240..240
+                              VarActualParameter 240..240
+                                SimpleVname 240..240
+                                  Identifier "preorder" 240..240
+                              MultipleActualParameterSequence 240..240
+                                VarActualParameter 240..240
+                                  SimpleVname 240..240
+                                    Identifier "inorder" 240..240
+                                MultipleActualParameterSequence 240..240
+                                  VarActualParameter 240..240
+                                    SimpleVname 240..240
+                                      Identifier "realtree" 240..240
+                                  MultipleActualParameterSequence 240..240
+                                    ConstActualParameter 240..240
+                                      VnameExpression 240..240
+                                        SimpleVname 240..240
+                                          Identifier "helper" 240..240
+                                    SingleActualParameterSequence 240..240
+                                      ConstActualParameter 240..240
+                                        BinaryExpression 240..0
+                                          VnameExpression 240..240
+                                            SimpleVname 240..240
+                                              Identifier "countPre" 240..240
+                                          Operator "+" 240..240
+                                          IntegerExpression 240..240
+                                            IntegerLiteral "1" 240..240
+                  EmptyCommand 251..251
+                EmptyCommand 252..252
+              EmptyCommand 254..253
+      SequentialCommand 259..288
+        SequentialCommand 259..288
+          SequentialCommand 259..288
+            SequentialCommand 259..288
+              SequentialCommand 259..288
+                SequentialCommand 259..288
+                  SequentialCommand 259..288
+                    SequentialCommand 259..288
+                      SequentialCommand 259..288
+                        SequentialCommand 259..288
+                          SequentialCommand 259..288
+                            SequentialCommand 259..288
+                              SequentialCommand 259..288
+                                SequentialCommand 259..288
+                                  SequentialCommand 259..288
+                                    SequentialCommand 259..288
+                                      SequentialCommand 259..288
+                                        SequentialCommand 259..288
+                                          SequentialCommand 259..288
+                                            SequentialCommand 259..288
+                                              SequentialCommand 259..288
+                                                SequentialCommand 259..288
+                                                  SequentialCommand 259..288
+                                                    SequentialCommand 259..288
+                                                      SequentialCommand 259..288
+                                                        CallCommand 259..259
+                                                          Identifier "initLevel" 259..259
+                                                          EmptyActualParameterSequence 259..259
+                                                        CallCommand 260..260
+                                                          Identifier "initTree" 260..260
+                                                          SingleActualParameterSequence 260..260
+                                                            VarActualParameter 260..260
+                                                              SimpleVname 260..260
+                                                                Identifier "inorder" 260..260
+                                                      CallCommand 261..261
+                                                        Identifier "initTree" 261..261
+                                                        SingleActualParameterSequence 261..261
+                                                          VarActualParameter 261..261
+                                                            SimpleVname 261..261
+                                                              Identifier "preorder" 261..261
+                                                    CallCommand 262..262
+                                                      Identifier "initTree" 262..262
+                                                      SingleActualParameterSequence 262..262
+                                                        VarActualParameter 262..262
+                                                          SimpleVname 262..262
+                                                            Identifier "realtree" 262..262
+                                                  CallCommand 265..265
+                                                    Identifier "initFileStringP" 265..265
+                                                    SingleActualParameterSequence 265..265
+                                                      VarActualParameter 265..265
+                                                        SimpleVname 265..265
+                                                          Identifier "filenameP" 265..265
+                                                CallCommand 266..266
+                                                  Identifier "initFileStringI" 266..266
+                                                  SingleActualParameterSequence 266..266
+                                                    VarActualParameter 266..266
+                                                      SimpleVname 266..266
+                                                        Identifier "filenameI" 266..266
+                                              CallCommand 269..269
+                                                Identifier "putFileToTree" 269..269
+                                                MultipleActualParameterSequence 269..269
+                                                  ConstActualParameter 269..269
+                                                    VnameExpression 269..269
+                                                      SimpleVname 269..269
+                                                        Identifier "filenameP" 269..269
+                                                  SingleActualParameterSequence 269..269
+                                                    VarActualParameter 269..269
+                                                      SimpleVname 269..269
+                                                        Identifier "preorder" 269..269
+                                            CallCommand 270..270
+                                              Identifier "putFileToTree" 270..270
+                                              MultipleActualParameterSequence 270..270
+                                                ConstActualParameter 270..270
+                                                  VnameExpression 270..270
+                                                    SimpleVname 270..270
+                                                      Identifier "filenameI" 270..270
+                                                SingleActualParameterSequence 270..270
+                                                  VarActualParameter 270..270
+                                                    SimpleVname 270..270
+                                                      Identifier "inorder" 270..270
+                                          CallCommand 276..276
+                                            Identifier "setNodeFromPI" 276..276
+                                            MultipleActualParameterSequence 276..276
+                                              VarActualParameter 276..276
+                                                SimpleVname 276..276
+                                                  Identifier "preorder" 276..276
+                                              MultipleActualParameterSequence 276..276
+                                                VarActualParameter 276..276
+                                                  SimpleVname 276..276
+                                                    Identifier "inorder" 276..276
+                                                MultipleActualParameterSequence 276..276
+                                                  VarActualParameter 276..276
+                                                    SimpleVname 276..276
+                                                      Identifier "realtree" 276..276
+                                                  MultipleActualParameterSequence 276..276
+                                                    ConstActualParameter 276..276
+                                                      IntegerExpression 276..276
+                                                        IntegerLiteral "1" 276..276
+                                                    SingleActualParameterSequence 276..276
+                                                      ConstActualParameter 276..276
+                                                        IntegerExpression 276..276
+                                                          IntegerLiteral "1" 276..276
+                                        CallCommand 279..279
+                                          Identifier "put" 279..279
+                                          SingleActualParameterSequence 279..279
+                                            ConstActualParameter 279..279
+                                              CharacterExpression 279..279
+                                                CharacterLiteral "'I'" 279..279
+                                      CallCommand 279..279
+                                        Identifier "put" 279..279
+                                        SingleActualParameterSequence 279..279
+                                          ConstActualParameter 279..279
+                                            CharacterExpression 279..279
+                                              CharacterLiteral "':'" 279..279
+                                    CallCommand 279..279
+                                      Identifier "puteol" 279..279
+                                      EmptyActualParameterSequence 279..279
+                                  CallCommand 280..280
+                                    Identifier "printTree" 280..280
+                                    SingleActualParameterSequence 280..280
+                                      ConstActualParameter 280..280
+                                        VnameExpression 280..280
+                                          SimpleVname 280..280
+                                            Identifier "inorder" 280..280
+                                CallCommand 281..281
+                                  Identifier "puteol" 281..281
+                                  EmptyActualParameterSequence 281..281
+                              CallCommand 281..281
+                                Identifier "puteol" 281..281
+                                EmptyActualParameterSequence 281..281
+                            CallCommand 282..282
+                              Identifier "put" 282..282
+                              SingleActualParameterSequence 282..282
+                                ConstActualParameter 282..282
+                                  CharacterExpression 282..282
+                                    CharacterLiteral "'P'" 282..282
+                          CallCommand 282..282
+                            Identifier "put" 282..282
+                            SingleActualParameterSequence 282..282
+                              ConstActualParameter 282..282
+                                CharacterExpression 282..282
+                                  CharacterLiteral "':'" 282..282
+                        CallCommand 282..282
+                          Identifier "puteol" 282..282
+                          EmptyActualParameterSequence 282..282
+                      CallCommand 283..283
+                        Identifier "printTree" 283..283
+                        SingleActualParameterSequence 283..283
+                          ConstActualParameter 283..283
+                            VnameExpression 283..283
+                              SimpleVname 283..283
+                                Identifier "preorder" 283..283
+                    CallCommand 285..285
+                      Identifier "puteol" 285..285
+                      EmptyActualParameterSequence 285..285
+                  CallCommand 285..285
+                    Identifier "puteol" 285..285
+                    EmptyActualParameterSequence 285..285
+                CallCommand 286..286
+                  Identifier "put" 286..286
+                  SingleActualParameterSequence 286..286
+                    ConstActualParameter 286..286
+                      CharacterExpression 286..286
+                        CharacterLiteral "'R'" 286..286
+              CallCommand 286..286
+                Identifier "put" 286..286
+                SingleActualParameterSequence 286..286
+                  ConstActualParameter 286..286
+                    CharacterExpression 286..286
+                      CharacterLiteral "':'" 286..286
+            CallCommand 286..286
+              Identifier "puteol" 286..286
+              EmptyActualParameterSequence 286..286
+          CallCommand 287..287
+            Identifier "printTree" 287..287
+            SingleActualParameterSequence 287..287
+              ConstActualParameter 287..287
+                VnameExpression 287..287
+                  SimpleVname 287..287
+                    Identifier "realtree" 287..287
+        EmptyCommand 289..288
+    EmptyCommand 291..289

@@ -1,0 +1,50 @@
+Program 9..10
+  LetCommand 1..10
+    SequentialDeclaration 2..4
+      ConstDeclaration 2..2
+        Identifier "MAX" 2..2
+        IntegerExpression 2..2
+          IntegerLiteral "10" 2..2
+      VarDeclaration 3..4
+        Identifier "n" 3..3
+        SimpleTypeDenoter 3..4
+          Identifier "Integer" 3..4
+    SequentialCommand 5..9
+      SequentialCommand 5..9
+        SequentialCommand 5..9
+          SequentialCommand 5..9
+            CallCommand 5..5
+              Identifier "putint" 5..5
+              SingleActualParameterSequence 5..5
+                ConstActualParameter 5..5
+                  BinaryExpression 5..0
+                    BinaryExpression 5..0
+                      IntegerExpression 5..5
+                        IntegerLiteral "4" 5..5
+                      Operator "*" 5..5
+                      IntegerExpression 5..5
+                        IntegerLiteral "5" 5..5
+                    Operator "+" 5..5
+                    IntegerExpression 5..5
+                      IntegerLiteral "2" 5..5
+            CallCommand 6..6
+              Identifier "puteol" 6..6
+              EmptyActualParameterSequence 6..6
+          CallCommand 7..7
+            Identifier "putint" 7..7
+            SingleActualParameterSequence 7..7
+              ConstActualParameter 7..7
+                BinaryExpression 7..0
+                  BinaryExpression 7..0
+                    IntegerExpression 7..7
+                      IntegerLiteral "2" 7..7
+                    Operator "+" 7..7
+                    IntegerExpression 7..7
+                      IntegerLiteral "4" 7..7
+                  Operator "*" 7..7
+                  IntegerExpression 7..7
+                    IntegerLiteral "5" 7..7
+        CallCommand 8..8
+          Identifier "puteol" 8..8
+          EmptyActualParameterSequence 8..8
+      EmptyCommand 9..9

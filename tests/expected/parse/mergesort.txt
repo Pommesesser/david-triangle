@@ -1,0 +1,746 @@
+Program 134..135
+  LetCommand 1..135
+    SequentialDeclaration 3..128
+      SequentialDeclaration 3..128
+        SequentialDeclaration 3..128
+          SequentialDeclaration 3..128
+            SequentialDeclaration 3..128
+              SequentialDeclaration 3..128
+                TypeDeclaration 3..6
+                  Identifier "IntArray" 3..3
+                  RecordTypeDenoter 3..6
+                    MultipleFieldTypeDenoter 4..6
+                      Identifier "content" 4..4
+                      ArrayTypeDenoter 4..4
+                        IntegerLiteral "80" 4..4
+                        SimpleTypeDenoter 4..4
+                          Identifier "Integer" 4..4
+                      SingleFieldTypeDenoter 5..6
+                        Identifier "length" 5..5
+                        SimpleTypeDenoter 5..6
+                          Identifier "Integer" 5..6
+                ProcDeclaration 9..23
+                  Identifier "readArray" 9..9
+                  SingleFormalParameterSequence 9..9
+                    VarFormalParameter 9..9
+                      Identifier "intarray" 9..9
+                      SimpleTypeDenoter 9..9
+                        Identifier "IntArray" 9..9
+                  LetCommand 10..23
+                    SequentialDeclaration 11..13
+                      VarDeclaration 11..11
+                        Identifier "i" 11..11
+                        SimpleTypeDenoter 11..11
+                          Identifier "Integer" 11..11
+                      VarDeclaration 12..13
+                        Identifier "testeof" 12..12
+                        SimpleTypeDenoter 12..13
+                          Identifier "Boolean" 12..13
+                    SequentialCommand 14..23
+                      SequentialCommand 14..23
+                        SequentialCommand 14..23
+                          SequentialCommand 14..23
+                            AssignCommand 14..14
+                              DotVname 14..14
+                                SimpleVname 14..14
+                                  Identifier "intarray" 14..14
+                                Identifier "length" 14..14
+                              IntegerExpression 14..14
+                                IntegerLiteral "0" 14..14
+                            CallCommand 15..15
+                              Identifier "getint" 15..15
+                              SingleActualParameterSequence 15..15
+                                VarActualParameter 15..15
+                                  SimpleVname 15..15
+                                    Identifier "i" 15..15
+                          CallCommand 16..16
+                            Identifier "eof" 16..16
+                            SingleActualParameterSequence 16..16
+                              VarActualParameter 16..16
+                                SimpleVname 16..16
+                                  Identifier "testeof" 16..16
+                        WhileCommand 17..22
+                          BinaryExpression 17..0
+                            BinaryExpression 17..0
+                              VnameExpression 17..17
+                                SimpleVname 17..17
+                                  Identifier "i" 17..17
+                              Operator "\=" 17..17
+                              IntegerExpression 17..17
+                                IntegerLiteral "0" 17..17
+                            Operator "/\" 17..17
+                            UnaryExpression 17..17
+                              Operator "\" 17..17
+                              VnameExpression 17..17
+                                SimpleVname 17..17
+                                  Identifier "testeof" 17..17
+                          SequentialCommand 18..22
+                            SequentialCommand 18..22
+                              SequentialCommand 18..22
+                                SequentialCommand 18..22
+                                  AssignCommand 18..18
+                                    SubscriptVname 18..18
+                                      DotVname 18..18
+                                        SimpleVname 18..18
+                                          Identifier "intarray" 18..18
+                                        Identifier "content" 18..18
+                                      VnameExpression 18..18
+                                        DotVname 18..18
+                                          SimpleVname 18..18
+                                            Identifier "intarray" 18..18
+                                          Identifier "length" 18..18
+                                    VnameExpression 18..18
+                                      SimpleVname 18..18
+                                        Identifier "i" 18..18
+                                  AssignCommand 19..19
+                                    DotVname 19..19
+                                      SimpleVname 19..19
+                                        Identifier "intarray" 19..19
+                                      Identifier "length" 19..19
+                                    BinaryExpression 19..0
+                                      VnameExpression 19..19
+                                        DotVname 19..19
+                                          SimpleVname 19..19
+                                            Identifier "intarray" 19..19
+                                          Identifier "length" 19..19
+                                      Operator "+" 19..19
+                                      IntegerExpression 19..19
+                                        IntegerLiteral "1" 19..19
+                                CallCommand 20..20
+                                  Identifier "getint" 20..20
+                                  SingleActualParameterSequence 20..20
+                                    VarActualParameter 20..20
+                                      SimpleVname 20..20
+                                        Identifier "i" 20..20
+                              CallCommand 21..21
+                                Identifier "eof" 21..21
+                                SingleActualParameterSequence 21..21
+                                  VarActualParameter 21..21
+                                    SimpleVname 21..21
+                                      Identifier "testeof" 21..21
+                            EmptyCommand 22..22
+                      EmptyCommand 23..23
+              ProcDeclaration 26..37
+                Identifier "writeArray" 26..26
+                SingleFormalParameterSequence 26..26
+                  VarFormalParameter 26..26
+                    Identifier "intarray" 26..26
+                    SimpleTypeDenoter 26..26
+                      Identifier "IntArray" 26..26
+                LetCommand 27..37
+                  VarDeclaration 28..29
+                    Identifier "i" 28..28
+                    SimpleTypeDenoter 28..29
+                      Identifier "Integer" 28..29
+                  SequentialCommand 31..37
+                    SequentialCommand 31..37
+                      AssignCommand 31..31
+                        SimpleVname 31..31
+                          Identifier "i" 31..31
+                        IntegerExpression 31..31
+                          IntegerLiteral "0" 31..31
+                      WhileCommand 32..36
+                        BinaryExpression 32..0
+                          VnameExpression 32..32
+                            SimpleVname 32..32
+                              Identifier "i" 32..32
+                          Operator "<" 32..32
+                          VnameExpression 32..32
+                            DotVname 32..32
+                              SimpleVname 32..32
+                                Identifier "intarray" 32..32
+                              Identifier "length" 32..32
+                        SequentialCommand 33..36
+                          SequentialCommand 33..36
+                            CallCommand 33..33
+                              Identifier "putint" 33..33
+                              SingleActualParameterSequence 33..33
+                                ConstActualParameter 33..33
+                                  VnameExpression 33..33
+                                    SubscriptVname 33..33
+                                      DotVname 33..33
+                                        SimpleVname 33..33
+                                          Identifier "intarray" 33..33
+                                        Identifier "content" 33..33
+                                      VnameExpression 33..33
+                                        SimpleVname 33..33
+                                          Identifier "i" 33..33
+                            AssignCommand 34..34
+                              SimpleVname 34..34
+                                Identifier "i" 34..34
+                              BinaryExpression 34..0
+                                VnameExpression 34..34
+                                  SimpleVname 34..34
+                                    Identifier "i" 34..34
+                                Operator "+" 34..34
+                                IntegerExpression 34..34
+                                  IntegerLiteral "1" 34..34
+                          CallCommand 35..36
+                            Identifier "puteol" 35..35
+                            EmptyActualParameterSequence 35..35
+                    EmptyCommand 37..37
+            ProcDeclaration 41..64
+              Identifier "splitArray" 41..41
+              MultipleFormalParameterSequence 41..41
+                VarFormalParameter 41..41
+                  Identifier "intarray" 41..41
+                  SimpleTypeDenoter 41..41
+                    Identifier "IntArray" 41..41
+                MultipleFormalParameterSequence 41..41
+                  VarFormalParameter 41..41
+                    Identifier "ia1" 41..41
+                    SimpleTypeDenoter 41..41
+                      Identifier "IntArray" 41..41
+                  SingleFormalParameterSequence 41..41
+                    VarFormalParameter 41..41
+                      Identifier "ia2" 41..41
+                      SimpleTypeDenoter 41..41
+                        Identifier "IntArray" 41..41
+              LetCommand 42..64
+                SequentialDeclaration 43..45
+                  VarDeclaration 43..43
+                    Identifier "i" 43..43
+                    SimpleTypeDenoter 43..43
+                      Identifier "Integer" 43..43
+                  VarDeclaration 44..45
+                    Identifier "j" 44..44
+                    SimpleTypeDenoter 44..45
+                      Identifier "Integer" 44..45
+                SequentialCommand 47..64
+                  SequentialCommand 47..64
+                    SequentialCommand 47..64
+                      SequentialCommand 47..64
+                        SequentialCommand 47..64
+                          AssignCommand 47..47
+                            SimpleVname 47..47
+                              Identifier "i" 47..47
+                            IntegerExpression 47..47
+                              IntegerLiteral "0" 47..47
+                          AssignCommand 48..48
+                            SimpleVname 48..48
+                              Identifier "j" 48..48
+                            BinaryExpression 48..0
+                              VnameExpression 48..48
+                                DotVname 48..48
+                                  SimpleVname 48..48
+                                    Identifier "intarray" 48..48
+                                  Identifier "length" 48..48
+                              Operator "/" 48..48
+                              IntegerExpression 48..48
+                                IntegerLiteral "2" 48..48
+                        WhileCommand 50..53
+                          BinaryExpression 50..0
+                            VnameExpression 50..50
+                              SimpleVname 50..50
+                                Identifier "i" 50..50
+                            Operator "<" 50..50
+                            VnameExpression 50..50
+                              SimpleVname 50..50
+                                Identifier "j" 50..50
+                          SequentialCommand 51..53
+                            AssignCommand 51..51
+                              SubscriptVname 51..51
+                                DotVname 51..51
+                                  SimpleVname 51..51
+                                    Identifier "ia1" 51..51
+                                  Identifier "content" 51..51
+                                VnameExpression 51..51
+                                  SimpleVname 51..51
+                                    Identifier "i" 51..51
+                              VnameExpression 51..51
+                                SubscriptVname 51..51
+                                  DotVname 51..51
+                                    SimpleVname 51..51
+                                      Identifier "intarray" 51..51
+                                    Identifier "content" 51..51
+                                  VnameExpression 51..51
+                                    SimpleVname 51..51
+                                      Identifier "i" 51..51
+                            AssignCommand 52..53
+                              SimpleVname 52..52
+                                Identifier "i" 52..52
+                              BinaryExpression 52..0
+                                VnameExpression 52..52
+                                  SimpleVname 52..52
+                                    Identifier "i" 52..52
+                                Operator "+" 52..52
+                                IntegerExpression 52..53
+                                  IntegerLiteral "1" 52..53
+                      AssignCommand 55..55
+                        DotVname 55..55
+                          SimpleVname 55..55
+                            Identifier "ia1" 55..55
+                          Identifier "length" 55..55
+                        VnameExpression 55..55
+                          SimpleVname 55..55
+                            Identifier "i" 55..55
+                    WhileCommand 58..61
+                      BinaryExpression 58..0
+                        VnameExpression 58..58
+                          SimpleVname 58..58
+                            Identifier "i" 58..58
+                        Operator "<" 58..58
+                        VnameExpression 58..58
+                          DotVname 58..58
+                            SimpleVname 58..58
+                              Identifier "intarray" 58..58
+                            Identifier "length" 58..58
+                      SequentialCommand 59..61
+                        AssignCommand 59..59
+                          SubscriptVname 59..59
+                            DotVname 59..59
+                              SimpleVname 59..59
+                                Identifier "ia2" 59..59
+                              Identifier "content" 59..59
+                            BinaryExpression 59..0
+                              VnameExpression 59..59
+                                SimpleVname 59..59
+                                  Identifier "i" 59..59
+                              Operator "-" 59..59
+                              VnameExpression 59..59
+                                SimpleVname 59..59
+                                  Identifier "j" 59..59
+                          VnameExpression 59..59
+                            SubscriptVname 59..59
+                              DotVname 59..59
+                                SimpleVname 59..59
+                                  Identifier "intarray" 59..59
+                                Identifier "content" 59..59
+                              VnameExpression 59..59
+                                SimpleVname 59..59
+                                  Identifier "i" 59..59
+                        AssignCommand 60..61
+                          SimpleVname 60..60
+                            Identifier "i" 60..60
+                          BinaryExpression 60..0
+                            VnameExpression 60..60
+                              SimpleVname 60..60
+                                Identifier "i" 60..60
+                            Operator "+" 60..60
+                            IntegerExpression 60..61
+                              IntegerLiteral "1" 60..61
+                  AssignCommand 63..64
+                    DotVname 63..63
+                      SimpleVname 63..63
+                        Identifier "ia2" 63..63
+                      Identifier "length" 63..63
+                    BinaryExpression 63..0
+                      VnameExpression 63..63
+                        SimpleVname 63..63
+                          Identifier "i" 63..63
+                      Operator "-" 63..63
+                      VnameExpression 63..64
+                        SimpleVname 63..64
+                          Identifier "j" 63..64
+          ProcDeclaration 67..109
+            Identifier "mergeArray" 67..67
+            MultipleFormalParameterSequence 67..67
+              VarFormalParameter 67..67
+                Identifier "intarray" 67..67
+                SimpleTypeDenoter 67..67
+                  Identifier "IntArray" 67..67
+              MultipleFormalParameterSequence 67..67
+                VarFormalParameter 67..67
+                  Identifier "ia1" 67..67
+                  SimpleTypeDenoter 67..67
+                    Identifier "IntArray" 67..67
+                SingleFormalParameterSequence 67..67
+                  VarFormalParameter 67..67
+                    Identifier "ia2" 67..67
+                    SimpleTypeDenoter 67..67
+                      Identifier "IntArray" 67..67
+            LetCommand 68..109
+              SequentialDeclaration 69..72
+                SequentialDeclaration 69..72
+                  VarDeclaration 69..69
+                    Identifier "i" 69..69
+                    SimpleTypeDenoter 69..69
+                      Identifier "Integer" 69..69
+                  VarDeclaration 70..70
+                    Identifier "j" 70..70
+                    SimpleTypeDenoter 70..70
+                      Identifier "Integer" 70..70
+                VarDeclaration 71..72
+                  Identifier "k" 71..71
+                  SimpleTypeDenoter 71..72
+                    Identifier "Integer" 71..72
+              SequentialCommand 74..109
+                SequentialCommand 74..109
+                  SequentialCommand 74..109
+                    SequentialCommand 74..109
+                      SequentialCommand 74..109
+                        SequentialCommand 74..109
+                          AssignCommand 74..74
+                            SimpleVname 74..74
+                              Identifier "i" 74..74
+                            IntegerExpression 74..74
+                              IntegerLiteral "0" 74..74
+                          AssignCommand 75..75
+                            SimpleVname 75..75
+                              Identifier "j" 75..75
+                            IntegerExpression 75..75
+                              IntegerLiteral "0" 75..75
+                        AssignCommand 76..76
+                          SimpleVname 76..76
+                            Identifier "k" 76..76
+                          IntegerExpression 76..76
+                            IntegerLiteral "0" 76..76
+                      AssignCommand 78..78
+                        DotVname 78..78
+                          SimpleVname 78..78
+                            Identifier "intarray" 78..78
+                          Identifier "length" 78..78
+                        BinaryExpression 78..0
+                          VnameExpression 78..78
+                            DotVname 78..78
+                              SimpleVname 78..78
+                                Identifier "ia1" 78..78
+                              Identifier "length" 78..78
+                          Operator "+" 78..78
+                          VnameExpression 78..78
+                            DotVname 78..78
+                              SimpleVname 78..78
+                                Identifier "ia2" 78..78
+                              Identifier "length" 78..78
+                    WhileCommand 82..94
+                      BinaryExpression 82..0
+                        BinaryExpression 82..0
+                          BinaryExpression 82..0
+                            VnameExpression 82..82
+                              SimpleVname 82..82
+                                Identifier "i" 82..82
+                            Operator "<" 82..82
+                            VnameExpression 82..82
+                              DotVname 82..82
+                                SimpleVname 82..82
+                                  Identifier "intarray" 82..82
+                                Identifier "length" 82..82
+                          Operator "/\" 82..82
+                          BinaryExpression 82..0
+                            VnameExpression 82..82
+                              SimpleVname 82..82
+                                Identifier "j" 82..82
+                            Operator "<" 82..82
+                            VnameExpression 82..82
+                              DotVname 82..82
+                                SimpleVname 82..82
+                                  Identifier "ia1" 82..82
+                                Identifier "length" 82..82
+                        Operator "/\" 82..82
+                        BinaryExpression 82..0
+                          VnameExpression 82..82
+                            SimpleVname 82..82
+                              Identifier "k" 82..82
+                          Operator "<" 82..82
+                          VnameExpression 82..82
+                            DotVname 82..82
+                              SimpleVname 82..82
+                                Identifier "ia2" 82..82
+                              Identifier "length" 82..82
+                      SequentialCommand 84..93
+                        IfCommand 84..91
+                          BinaryExpression 84..0
+                            VnameExpression 84..84
+                              SubscriptVname 84..84
+                                DotVname 84..84
+                                  SimpleVname 84..84
+                                    Identifier "ia1" 84..84
+                                  Identifier "content" 84..84
+                                VnameExpression 84..84
+                                  SimpleVname 84..84
+                                    Identifier "j" 84..84
+                            Operator "<" 84..84
+                            VnameExpression 84..84
+                              SubscriptVname 84..84
+                                DotVname 84..84
+                                  SimpleVname 84..84
+                                    Identifier "ia2" 84..84
+                                  Identifier "content" 84..84
+                                VnameExpression 84..84
+                                  SimpleVname 84..84
+                                    Identifier "k" 84..84
+                          SequentialCommand 85..87
+                            AssignCommand 85..85
+                              SubscriptVname 85..85
+                                DotVname 85..85
+                                  SimpleVname 85..85
+                                    Identifier "intarray" 85..85
+                                  Identifier "content" 85..85
+                                VnameExpression 85..85
+                                  SimpleVname 85..85
+                                    Identifier "i" 85..85
+                              VnameExpression 85..85
+                                SubscriptVname 85..85
+                                  DotVname 85..85
+                                    SimpleVname 85..85
+                                      Identifier "ia1" 85..85
+                                    Identifier "content" 85..85
+                                  VnameExpression 85..85
+                                    SimpleVname 85..85
+                                      Identifier "j" 85..85
+                            AssignCommand 86..87
+                              SimpleVname 86..86
+                                Identifier "j" 86..86
+                              BinaryExpression 86..0
+                                VnameExpression 86..86
+                                  SimpleVname 86..86
+                                    Identifier "j" 86..86
+                                Operator "+" 86..86
+                                IntegerExpression 86..87
+                                  IntegerLiteral "1" 86..87
+                          SequentialCommand 89..91
+                            AssignCommand 89..89
+                              SubscriptVname 89..89
+                                DotVname 89..89
+                                  SimpleVname 89..89
+                                    Identifier "intarray" 89..89
+                                  Identifier "content" 89..89
+                                VnameExpression 89..89
+                                  SimpleVname 89..89
+                                    Identifier "i" 89..89
+                              VnameExpression 89..89
+                                SubscriptVname 89..89
+                                  DotVname 89..89
+                                    SimpleVname 89..89
+                                      Identifier "ia2" 89..89
+                                    Identifier "content" 89..89
+                                  VnameExpression 89..89
+                                    SimpleVname 89..89
+                                      Identifier "k" 89..89
+                            AssignCommand 90..91
+                              SimpleVname 90..90
+                                Identifier "k" 90..90
+                              BinaryExpression 90..0
+                                VnameExpression 90..90
+                                  SimpleVname 90..90
+                                    Identifier "k" 90..90
+                                Operator "+" 90..90
+                                IntegerExpression 90..91
+                                  IntegerLiteral "1" 90..91
+                        AssignCommand 92..93
+                          SimpleVname 92..92
+                            Identifier "i" 92..92
+                          BinaryExpression 92..0
+                            VnameExpression 92..92
+                              SimpleVname 92..92
+                                Identifier "i" 92..92
+                            Operator "+" 92..92
+                            IntegerExpression 92..93
+                              IntegerLiteral "1" 92..93
+                  IfCommand 97..108
+                    BinaryExpression 97..0
+                      VnameExpression 97..97
+                        SimpleVname 97..97
+                          Identifier "j" 97..97
+                      Operator "<" 97..97
+                      VnameExpression 97..97
+                        DotVname 97..97
+                          SimpleVname 97..97
+                            Identifier "ia1" 97..97
+                          Identifier "length" 97..97
+                    WhileCommand 98..103
+                      BinaryExpression 98..0
+                        VnameExpression 98..98
+                          SimpleVname 98..98
+                            Identifier "i" 98..98
+                        Operator "<" 98..98
+                        VnameExpression 98..98
+                          DotVname 98..98
+                            SimpleVname 98..98
+                              Identifier "intarray" 98..98
+                            Identifier "length" 98..98
+                      SequentialCommand 99..102
+                        SequentialCommand 99..102
+                          AssignCommand 99..99
+                            SubscriptVname 99..99
+                              DotVname 99..99
+                                SimpleVname 99..99
+                                  Identifier "intarray" 99..99
+                                Identifier "content" 99..99
+                              VnameExpression 99..99
+                                SimpleVname 99..99
+                                  Identifier "i" 99..99
+                            VnameExpression 99..99
+                              SubscriptVname 99..99
+                                DotVname 99..99
+                                  SimpleVname 99..99
+                                    Identifier "ia1" 99..99
+                                  Identifier "content" 99..99
+                                VnameExpression 99..99
+                                  SimpleVname 99..99
+                                    Identifier "j" 99..99
+                          AssignCommand 100..100
+                            SimpleVname 100..100
+                              Identifier "i" 100..100
+                            BinaryExpression 100..0
+                              VnameExpression 100..100
+                                SimpleVname 100..100
+                                  Identifier "i" 100..100
+                              Operator "+" 100..100
+                              IntegerExpression 100..100
+                                IntegerLiteral "1" 100..100
+                        AssignCommand 101..102
+                          SimpleVname 101..101
+                            Identifier "j" 101..101
+                          BinaryExpression 101..0
+                            VnameExpression 101..101
+                              SimpleVname 101..101
+                                Identifier "j" 101..101
+                            Operator "+" 101..101
+                            IntegerExpression 101..102
+                              IntegerLiteral "1" 101..102
+                    WhileCommand 104..108
+                      BinaryExpression 104..0
+                        VnameExpression 104..104
+                          SimpleVname 104..104
+                            Identifier "i" 104..104
+                        Operator "<" 104..104
+                        VnameExpression 104..104
+                          DotVname 104..104
+                            SimpleVname 104..104
+                              Identifier "intarray" 104..104
+                            Identifier "length" 104..104
+                      SequentialCommand 105..108
+                        SequentialCommand 105..108
+                          AssignCommand 105..105
+                            SubscriptVname 105..105
+                              DotVname 105..105
+                                SimpleVname 105..105
+                                  Identifier "intarray" 105..105
+                                Identifier "content" 105..105
+                              VnameExpression 105..105
+                                SimpleVname 105..105
+                                  Identifier "i" 105..105
+                            VnameExpression 105..105
+                              SubscriptVname 105..105
+                                DotVname 105..105
+                                  SimpleVname 105..105
+                                    Identifier "ia2" 105..105
+                                  Identifier "content" 105..105
+                                VnameExpression 105..105
+                                  SimpleVname 105..105
+                                    Identifier "k" 105..105
+                          AssignCommand 106..106
+                            SimpleVname 106..106
+                              Identifier "i" 106..106
+                            BinaryExpression 106..0
+                              VnameExpression 106..106
+                                SimpleVname 106..106
+                                  Identifier "i" 106..106
+                              Operator "+" 106..106
+                              IntegerExpression 106..106
+                                IntegerLiteral "1" 106..106
+                        AssignCommand 107..108
+                          SimpleVname 107..107
+                            Identifier "k" 107..107
+                          BinaryExpression 107..0
+                            VnameExpression 107..107
+                              SimpleVname 107..107
+                                Identifier "k" 107..107
+                            Operator "+" 107..107
+                            IntegerExpression 107..108
+                              IntegerLiteral "1" 107..108
+                EmptyCommand 109..109
+        ProcDeclaration 112..125
+          Identifier "mergesort" 112..112
+          SingleFormalParameterSequence 112..112
+            VarFormalParameter 112..112
+              Identifier "intarray" 112..112
+              SimpleTypeDenoter 112..112
+                Identifier "IntArray" 112..112
+          LetCommand 113..125
+            SequentialDeclaration 114..116
+              VarDeclaration 114..114
+                Identifier "ia1" 114..114
+                SimpleTypeDenoter 114..114
+                  Identifier "IntArray" 114..114
+              VarDeclaration 115..116
+                Identifier "ia2" 115..115
+                SimpleTypeDenoter 115..116
+                  Identifier "IntArray" 115..116
+            SequentialCommand 118..125
+              IfCommand 118..124
+                BinaryExpression 118..0
+                  VnameExpression 118..118
+                    DotVname 118..118
+                      SimpleVname 118..118
+                        Identifier "intarray" 118..118
+                      Identifier "length" 118..118
+                  Operator ">=" 118..118
+                  IntegerExpression 118..118
+                    IntegerLiteral "2" 118..118
+                SequentialCommand 119..123
+                  SequentialCommand 119..123
+                    SequentialCommand 119..123
+                      CallCommand 119..119
+                        Identifier "splitArray" 119..119
+                        MultipleActualParameterSequence 119..119
+                          VarActualParameter 119..119
+                            SimpleVname 119..119
+                              Identifier "intarray" 119..119
+                          MultipleActualParameterSequence 119..119
+                            VarActualParameter 119..119
+                              SimpleVname 119..119
+                                Identifier "ia1" 119..119
+                            SingleActualParameterSequence 119..119
+                              VarActualParameter 119..119
+                                SimpleVname 119..119
+                                  Identifier "ia2" 119..119
+                      CallCommand 120..120
+                        Identifier "mergesort" 120..120
+                        SingleActualParameterSequence 120..120
+                          VarActualParameter 120..120
+                            SimpleVname 120..120
+                              Identifier "ia1" 120..120
+                    CallCommand 121..121
+                      Identifier "mergesort" 121..121
+                      SingleActualParameterSequence 121..121
+                        VarActualParameter 121..121
+                          SimpleVname 121..121
+                            Identifier "ia2" 121..121
+                  CallCommand 122..123
+                    Identifier "mergeArray" 122..122
+                    MultipleActualParameterSequence 122..122
+                      VarActualParameter 122..122
+                        SimpleVname 122..122
+                          Identifier "intarray" 122..122
+                      MultipleActualParameterSequence 122..122
+                        VarActualParameter 122..122
+                          SimpleVname 122..122
+                            Identifier "ia1" 122..122
+                        SingleActualParameterSequence 122..122
+                          VarActualParameter 122..122
+                            SimpleVname 122..122
+                              Identifier "ia2" 122..122
+                EmptyCommand 124..124
+              EmptyCommand 125..125
+      VarDeclaration 127..128
+        Identifier "intarray" 127..127
+        SimpleTypeDenoter 127..128
+          Identifier "IntArray" 127..128
+    SequentialCommand 130..134
+      SequentialCommand 130..134
+        SequentialCommand 130..134
+          SequentialCommand 130..134
+            CallCommand 130..130
+              Identifier "readArray" 130..130
+              SingleActualParameterSequence 130..130
+                VarActualParameter 130..130
+                  SimpleVname 130..130
+                    Identifier "intarray" 130..130
+            CallCommand 131..131
+              Identifier "puteol" 131..131
+              EmptyActualParameterSequence 131..131
+          CallCommand 132..132
+            Identifier "mergesort" 132..132
+            SingleActualParameterSequence 132..132
+              VarActualParameter 132..132
+                SimpleVname 132..132
+                  Identifier "intarray" 132..132
+        CallCommand 133..133
+          Identifier "writeArray" 133..133
+          SingleActualParameterSequence 133..133
+            VarActualParameter 133..133
+              SimpleVname 133..133
+                Identifier "intarray" 133..133
+      EmptyCommand 134..134

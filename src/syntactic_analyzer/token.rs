@@ -19,14 +19,4 @@ impl Token {
             position,
         }
     }
-
-    pub fn test_repr(&self) -> String {
-        format!(
-            "{},{},({}|{})",
-            self.kind.spelling(),
-            self.spelling.clone(),
-            self.position.start,
-            self.position.finish
-        )
-    }
 }

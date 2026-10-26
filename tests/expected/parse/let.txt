@@ -1,0 +1,83 @@
+Program 16..17
+  LetCommand 1..17
+    SequentialDeclaration 2..6
+      SequentialDeclaration 2..6
+        SequentialDeclaration 2..6
+          ConstDeclaration 2..2
+            Identifier "MAX" 2..2
+            IntegerExpression 2..2
+              IntegerLiteral "10" 2..2
+          ConstDeclaration 3..3
+            Identifier "MIN" 3..3
+            IntegerExpression 3..3
+              IntegerLiteral "4" 3..3
+        VarDeclaration 4..4
+          Identifier "n" 4..4
+          SimpleTypeDenoter 4..4
+            Identifier "Integer" 4..4
+      VarDeclaration 5..6
+        Identifier "m" 5..5
+        SimpleTypeDenoter 5..6
+          Identifier "Integer" 5..6
+    SequentialCommand 7..16
+      SequentialCommand 7..16
+        SequentialCommand 7..16
+          SequentialCommand 7..16
+            SequentialCommand 7..16
+              AssignCommand 7..7
+                SimpleVname 7..7
+                  Identifier "n" 7..7
+                BinaryExpression 7..0
+                  IntegerExpression 7..7
+                    IntegerLiteral "2" 7..7
+                  Operator "*" 7..7
+                  VnameExpression 7..7
+                    SimpleVname 7..7
+                      Identifier "MAX" 7..7
+              LetCommand 8..12
+                SequentialDeclaration 9..11
+                  VarDeclaration 9..9
+                    Identifier "q" 9..9
+                    SimpleTypeDenoter 9..9
+                      Identifier "Integer" 9..9
+                  ConstDeclaration 10..11
+                    Identifier "MIN" 10..10
+                    BinaryExpression 10..0
+                      VnameExpression 10..10
+                        SimpleVname 10..10
+                          Identifier "MIN" 10..10
+                      Operator "-" 10..10
+                      IntegerExpression 10..11
+                        IntegerLiteral "1" 10..11
+                AssignCommand 12..12
+                  SimpleVname 12..12
+                    Identifier "q" 12..12
+                  BinaryExpression 12..0
+                    IntegerExpression 12..12
+                      IntegerLiteral "3" 12..12
+                    Operator "*" 12..12
+                    VnameExpression 12..12
+                      SimpleVname 12..12
+                        Identifier "n" 12..12
+            CallCommand 13..13
+              Identifier "putint" 13..13
+              SingleActualParameterSequence 13..13
+                ConstActualParameter 13..13
+                  VnameExpression 13..13
+                    SimpleVname 13..13
+                      Identifier "n" 13..13
+          CallCommand 14..14
+            Identifier "putint" 14..14
+            SingleActualParameterSequence 14..14
+              ConstActualParameter 14..14
+                VnameExpression 14..14
+                  SimpleVname 14..14
+                    Identifier "MAX" 14..14
+        CallCommand 15..15
+          Identifier "putint" 15..15
+          SingleActualParameterSequence 15..15
+            ConstActualParameter 15..15
+              VnameExpression 15..15
+                SimpleVname 15..15
+                  Identifier "MIN" 15..15
+      EmptyCommand 16..16
