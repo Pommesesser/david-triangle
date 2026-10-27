@@ -26,16 +26,17 @@ impl Parser {
 
     fn accept(&mut self, token_expected: TokenKind) {
         if self.current_token.kind == token_expected {
-            self.previous_token_position = self.current_token.position;
-            self.current_token = self.token_stream.next();
+            self.accept_it();
         } else {
             self.syntactic_error(&format!("\"{}\" expected here", token_expected.spelling()))
         }
     }
 
-    fn accept_it(&mut self) {
-        self.previous_token_position = self.current_token.position;
-        self.current_token = self.token_stream.next();
+    fn accept_it(&mut self) -> Token {
+        let next = self.token_stream.next();
+        let token = std::mem::replace(&mut self.current_token, next);
+        self.previous_token_position = token.position;
+        token
     }
 
     fn start_pos(&self) -> u32 {
@@ -177,15 +178,8 @@ impl Parser {
 
     fn parse_identifier(&mut self) -> Identifier {
         if self.current_token.kind == TokenKind::Identifier {
-            self.previous_token_position = self.current_token.position;
-            let spelling = self.current_token.spelling.clone();
-            let identifier = Identifier {
-                spelling,
-                position: self.previous_token_position,
-            };
-            self.current_token = self.token_stream.next();
-
-            identifier
+            let token = self.accept_it();
+            Identifier { spelling: token.spelling, position: token.position }
         } else {
             self.syntactic_error("identifier expected here")
         }
@@ -467,14 +461,8 @@ impl Parser {
 
     fn parse_int_literal(&mut self) -> IntegerLiteral {
         if self.current_token.kind == TokenKind::IntLiteral {
-            self.previous_token_position = self.current_token.position;
-            let literal = IntegerLiteral {
-                spelling: self.current_token.spelling.clone(),
-                position: self.previous_token_position,
-            };
-            self.current_token = self.token_stream.next();
-
-            literal
+            let token = self.accept_it();
+            IntegerLiteral { spelling: token.spelling, position: token.position }
         } else {
             self.syntactic_error("integer literal expected here")
         }
@@ -482,14 +470,8 @@ impl Parser {
 
     fn parse_char_literal(&mut self) -> CharacterLiteral {
         if self.current_token.kind == TokenKind::CharLiteral {
-            self.previous_token_position = self.current_token.position;
-            let literal = CharacterLiteral {
-                spelling: self.current_token.spelling.clone(),
-                position: self.previous_token_position,
-            };
-            self.current_token = self.token_stream.next();
-
-            literal
+            let token = self.accept_it();
+            CharacterLiteral { spelling: token.spelling, position: token.position }
         } else {
             self.syntactic_error("character literal expected here")
         }
@@ -497,14 +479,8 @@ impl Parser {
 
     fn parse_operator(&mut self) -> Operator {
         if self.current_token.kind == TokenKind::Operator {
-            self.previous_token_position = self.current_token.position;
-            let operator = Operator {
-                spelling: self.current_token.spelling.clone(),
-                position: self.previous_token_position,
-            };
-            self.current_token = self.token_stream.next();
-
-            operator
+            let token = self.accept_it();
+            Operator { spelling: token.spelling, position: token.position }
         } else {
             self.syntactic_error("operator expected here")
         }
