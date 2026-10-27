@@ -148,14 +148,14 @@ impl<'a> Scanner<'a> {
 
         self.currently_scanning_token = true;
         self.spelling.clear();
-        
+
         let start = self.line;
         let kind = match self.scan_token() {
             TokenKind::Identifier => TokenKind::keyword_of(&self.spelling).unwrap_or(TokenKind::Identifier),
             kind => kind,
         };
         let finish = self.line;
-        
+
         Token {
             kind,
             spelling: self.spelling.clone(),
