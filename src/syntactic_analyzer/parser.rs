@@ -27,7 +27,7 @@ impl<R: Read> Parser<R> {
 
     fn accept(&mut self, token_expected: TokenKind) {
         if self.current_token.kind == token_expected {
-            self.previous_token_position = self.current_token.position.clone();
+            self.previous_token_position = self.current_token.position;
             self.current_token = self.lexical_analyser.scan();
         } else {
             self.syntactic_error(&format!("\"{}\" expected here", token_expected.spelling()))
@@ -35,16 +35,16 @@ impl<R: Read> Parser<R> {
     }
 
     fn accept_it(&mut self) {
-        self.previous_token_position = self.current_token.position.clone();
+        self.previous_token_position = self.current_token.position;
         self.current_token = self.lexical_analyser.scan();
     }
 
     fn start(&mut self, position: &mut SourcePosition) {
-        position.start = self.current_token.position.start.clone();
+        position.start = self.current_token.position.start;
     }
 
     fn finish(&mut self, position: &mut SourcePosition) {
-        position.finish = self.previous_token_position.finish.clone();
+        position.finish = self.previous_token_position.finish;
     }
 
     // Same output as the Java ErrorReporter, but aborts instead of throwing SyntaxError.
@@ -59,7 +59,7 @@ impl<R: Read> Parser<R> {
         let command = self.parse_command();
         let program = Program {
             command,
-            position: self.previous_token_position.clone(),
+            position: self.previous_token_position,
         };
         if self.current_token.kind != TokenKind::Eof {
             self.syntactic_error(&format!("\"{}\" not expected after end of program", self.current_token.spelling));
@@ -88,7 +88,7 @@ impl<R: Read> Parser<R> {
                     first: command,
                     second: chained_command,
                 }),
-                position: command_position.clone(),
+                position: command_position,
             }
         }
 
@@ -188,11 +188,11 @@ impl<R: Read> Parser<R> {
 
     fn parse_identifier(&mut self) -> Identifier {
         if self.current_token.kind == TokenKind::Identifier {
-            self.previous_token_position = self.current_token.position.clone();
+            self.previous_token_position = self.current_token.position;
             let spelling = self.current_token.spelling.clone();
             let identifier = Identifier {
                 spelling,
-                position: self.previous_token_position.clone(),
+                position: self.previous_token_position,
             };
             self.current_token = self.lexical_analyser.scan();
 
@@ -303,7 +303,7 @@ impl<R: Read> Parser<R> {
             Index(Expression),
         }
 
-        let mut position = identifier.position.clone();
+        let mut position = identifier.position;
         let mut selectors = Vec::new();
         while self.current_token.kind == TokenKind::Dot || self.current_token.kind == TokenKind::LBracket {
             if self.current_token.kind == TokenKind::Dot {
@@ -322,12 +322,12 @@ impl<R: Read> Parser<R> {
         // finish() moves it on each subscript, so the identifier and all the vnames end up with
         // the finish of the last `]`.
         let identifier = Identifier {
-            position: position.clone(),
+            position,
             ..identifier
         };
         let mut v_name = VName {
             kind: Box::new(VNameKind::Simple(identifier)),
-            position: position.clone(),
+            position,
         };
         for selector in selectors {
             let kind = match selector {
@@ -336,7 +336,7 @@ impl<R: Read> Parser<R> {
             };
             v_name = VName {
                 kind: Box::new(kind),
-                position: position.clone(),
+                position: position,
             };
         }
 
@@ -404,7 +404,7 @@ impl<R: Read> Parser<R> {
                     operator,
                     right: second_expression,
                 }),
-                position: position.clone(),
+                position,
             }
         }
 
@@ -500,10 +500,10 @@ impl<R: Read> Parser<R> {
 
     fn parse_int_literal(&mut self) -> IntegerLiteral {
         if self.current_token.kind == TokenKind::IntLiteral {
-            self.previous_token_position = self.current_token.position.clone();
+            self.previous_token_position = self.current_token.position;
             let literal = IntegerLiteral {
                 spelling: self.current_token.spelling.clone(),
-                position: self.previous_token_position.clone(),
+                position: self.previous_token_position,
             };
             self.current_token = self.lexical_analyser.scan();
 
@@ -515,10 +515,10 @@ impl<R: Read> Parser<R> {
 
     fn parse_char_literal(&mut self) -> CharacterLiteral {
         if self.current_token.kind == TokenKind::CharLiteral {
-            self.previous_token_position = self.current_token.position.clone();
+            self.previous_token_position = self.current_token.position;
             let literal = CharacterLiteral {
                 spelling: self.current_token.spelling.clone(),
-                position: self.previous_token_position.clone(),
+                position: self.previous_token_position,
             };
             self.current_token = self.lexical_analyser.scan();
 
@@ -530,10 +530,10 @@ impl<R: Read> Parser<R> {
 
     fn parse_operator(&mut self) -> Operator {
         if self.current_token.kind == TokenKind::Operator {
-            self.previous_token_position = self.current_token.position.clone();
+            self.previous_token_position = self.current_token.position;
             let operator = Operator {
                 spelling: self.current_token.spelling.clone(),
-                position: self.previous_token_position.clone(),
+                position: self.previous_token_position,
             };
             self.current_token = self.lexical_analyser.scan();
 
@@ -609,7 +609,7 @@ impl<R: Read> Parser<R> {
                     first: declaration,
                     second: chained_declaration,
                 }),
-                position: position.clone(),
+                position,
             }
         }
 
