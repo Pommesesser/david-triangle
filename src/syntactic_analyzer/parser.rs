@@ -70,25 +70,23 @@ impl<R: Read> Parser<R> {
 
     fn parse_command(&mut self) -> Command {
         let start = self.start_pos();
-        let mut finish = 0;
 
         let mut command = self.parse_single_command();
         let mut chained_commands = Vec::new();
         while self.current_token.kind == TokenKind::Semicolon {
             self.accept_it();
             chained_commands.push(self.parse_single_command());
-            finish = self.finish_pos();
         }
 
         // Java hands one SourcePosition object to every SequentialCommand of the chain and keeps
         // moving its finish, so they all end up with the finish of the last command.
         for chained_command in chained_commands {
             command = Command {
-                kind: Box::from(CommandKind::Sequential {
+                kind: Box::new(CommandKind::Sequential {
                     first: command,
                     second: chained_command,
                 }),
-                position: SourcePosition { start, finish },
+                position: SourcePosition { start, finish: self.finish_pos() },
             }
         }
 
@@ -556,14 +554,12 @@ impl<R: Read> Parser<R> {
 
     fn parse_declaration(&mut self) -> Declaration {
         let start = self.start_pos();
-        let mut finish = 0;
 
         let mut declaration = self.parse_single_declaration();
         let mut chained_declarations = Vec::new();
         while self.current_token.kind == TokenKind::Semicolon {
             self.accept_it();
             chained_declarations.push(self.parse_single_declaration());
-            finish = self.finish_pos();
         }
 
         // Same position sharing as in parse_command.
@@ -573,7 +569,7 @@ impl<R: Read> Parser<R> {
                     first: declaration,
                     second: chained_declaration,
                 }),
-                position: SourcePosition { start, finish },
+                position: SourcePosition { start, finish: self.finish_pos() },
             }
         }
 
