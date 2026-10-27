@@ -46,10 +46,8 @@ fn parser_matches_java_reference() {
             .unwrap_or_else(|_| panic!("missing expected/parse/{name}.txt"));
 
         // A syntax error panics with the same "ERROR: ..." line the Java parser prints.
-        let actual = match panic::catch_unwind(|| program_printer::print(&parse(&source))) {
-            Ok(tree) => tree,
-            Err(error) => format!("{}\n", error.downcast_ref::<String>().unwrap()),
-        };
+        let actual = panic::catch_unwind(|| program_printer::print(&parse(&source)))
+            .unwrap_or_else(|error| format!("{}\n", error.downcast_ref::<String>().unwrap()));
 
         if actual == expected {
             println!("PASS  {name:<28} {:>5} nodes", actual.lines().count());

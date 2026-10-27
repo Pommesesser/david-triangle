@@ -12,11 +12,16 @@ pub struct Parser<R: Read> {
 }
 
 impl<R: Read> Parser<R> {
+    /// Creates a new parser and scans the first token.
+    ///
+    /// <p> The first token is scanned immediately to avoid
+    /// making current_token an optional type!
+    /// This makes the implementations slightly different.
     pub fn new(mut scanner: Scanner<R>) -> Self {
         Self {
             current_token: scanner.scan(),
             lexical_analyser: scanner,
-            previous_token_position: SourcePosition {start: 0, finish: 0},
+            previous_token_position: SourcePosition::default(),
         }
     }
 
@@ -50,11 +55,7 @@ impl<R: Read> Parser<R> {
 
     pub fn parse_program(&mut self) -> Program {
         // The first token was already scanned by `new`.
-        self.previous_token_position = SourcePosition {
-            start: 0,
-            finish: 0,
-        };
-
+        self.previous_token_position = SourcePosition::default();
         let command = self.parse_command();
         let program = Program {
             command,
@@ -68,10 +69,7 @@ impl<R: Read> Parser<R> {
     }
 
     fn parse_command(&mut self) -> Command {
-        let mut command_position = SourcePosition {
-            start: 0,
-            finish: 0,
-        };
+        let mut command_position = SourcePosition::default();
         self.start(&mut command_position);
 
         let mut command = self.parse_single_command();
@@ -98,10 +96,7 @@ impl<R: Read> Parser<R> {
     }
 
     fn parse_single_command(&mut self) -> Command {
-        let mut command_position = SourcePosition {
-            start: 0,
-            finish: 0,
-        };
+        let mut command_position = SourcePosition::default();
         self.start(&mut command_position);
 
         match self.current_token.kind {
@@ -208,10 +203,7 @@ impl<R: Read> Parser<R> {
     }
 
     fn parse_actual_parameter_sequence(&mut self) -> ActualParameterSequence {
-        let mut position = SourcePosition {
-            start: 0,
-            finish: 0,
-        };
+        let mut position = SourcePosition::default();
         self.start(&mut position);
 
         if self.current_token.kind == TokenKind::RParen {
@@ -226,10 +218,7 @@ impl<R: Read> Parser<R> {
     }
 
     fn parse_proper_actual_parameter_sequence(&mut self) -> ActualParameterSequence {
-        let mut position = SourcePosition {
-            start: 0,
-            finish: 0,
-        };
+        let mut position = SourcePosition::default();
         self.start(&mut position);
 
         let actual_parameter = self.parse_actual_parameter();
@@ -254,10 +243,7 @@ impl<R: Read> Parser<R> {
     }
 
     fn parse_actual_parameter(&mut self) -> ActualParameter {
-        let mut position = SourcePosition {
-            start: 0,
-            finish: 0,
-        };
+        let mut position = SourcePosition::default();
         self.start(&mut position);
 
         match self.current_token.kind {
@@ -358,10 +344,7 @@ impl<R: Read> Parser<R> {
     }
 
     fn parse_expression(&mut self) -> Expression {
-        let mut position = SourcePosition {
-            start: 0,
-            finish: 0,
-        };
+        let mut position = SourcePosition::default();
         self.start(&mut position);
 
         match self.current_token.kind {
@@ -407,10 +390,7 @@ impl<R: Read> Parser<R> {
     }
 
     fn parse_secondary_expression(&mut self) -> Expression {
-        let mut position = SourcePosition {
-            start: 0,
-            finish: 0,
-        };
+        let mut position = SourcePosition::default();
         self.start(&mut position);
 
         let mut expression = self.parse_primary_expression();
@@ -432,10 +412,7 @@ impl<R: Read> Parser<R> {
     }
 
     fn parse_primary_expression(&mut self) -> Expression {
-        let mut position = SourcePosition {
-            start: 0,
-            finish: 0,
-        };
+        let mut position = SourcePosition::default();
         self.start(&mut position);
 
         match self.current_token.kind {
@@ -567,10 +544,7 @@ impl<R: Read> Parser<R> {
     }
 
     fn parse_record_aggregate(&mut self) -> RecordAggregate {
-        let mut position = SourcePosition {
-            start: 0,
-            finish: 0,
-        };
+        let mut position = SourcePosition::default();
         self.start(&mut position);
 
         let identifier = self.parse_identifier();
@@ -595,10 +569,7 @@ impl<R: Read> Parser<R> {
     }
 
     fn parse_array_aggregate(&mut self) -> ArrayAggregate {
-        let mut position = SourcePosition {
-            start: 0,
-            finish: 0,
-        };
+        let mut position = SourcePosition::default();
         self.start(&mut position);
 
         let expression = self.parse_expression();
@@ -620,10 +591,7 @@ impl<R: Read> Parser<R> {
     }
 
     fn parse_declaration(&mut self) -> Declaration {
-        let mut position = SourcePosition {
-            start: 0,
-            finish: 0,
-        };
+        let mut position = SourcePosition::default();
         self.start(&mut position);
 
         let mut declaration = self.parse_single_declaration();
@@ -649,10 +617,7 @@ impl<R: Read> Parser<R> {
     }
 
     fn parse_single_declaration(&mut self) -> Declaration {
-        let mut position = SourcePosition {
-            start: 0,
-            finish: 0,
-        };
+        let mut position = SourcePosition::default();
         self.start(&mut position);
 
         match self.current_token.kind {
@@ -729,10 +694,7 @@ impl<R: Read> Parser<R> {
     }
 
     fn parse_formal_parameter_sequence(&mut self) -> FormalParameterSequence {
-        let mut position = SourcePosition {
-            start: 0,
-            finish: 0,
-        };
+        let mut position = SourcePosition::default();
         self.start(&mut position);
 
         if self.current_token.kind == TokenKind::RParen {
@@ -747,10 +709,7 @@ impl<R: Read> Parser<R> {
     }
 
     fn parse_proper_formal_parameter_sequence(&mut self) -> FormalParameterSequence {
-        let mut position = SourcePosition {
-            start: 0,
-            finish: 0,
-        };
+        let mut position = SourcePosition::default();
         self.start(&mut position);
 
         let formal_parameter = self.parse_formal_parameter();
@@ -775,10 +734,7 @@ impl<R: Read> Parser<R> {
     }
 
     fn parse_formal_parameter(&mut self) -> FormalParameter {
-        let mut position = SourcePosition {
-            start: 0,
-            finish: 0,
-        };
+        let mut position = SourcePosition::default();
         self.start(&mut position);
 
         match self.current_token.kind {
@@ -838,10 +794,7 @@ impl<R: Read> Parser<R> {
     }
 
     fn parse_type_denoter(&mut self) -> TypeDenoter {
-        let mut position = SourcePosition {
-            start: 0,
-            finish: 0,
-        };
+        let mut position = SourcePosition::default();
         self.start(&mut position);
 
         match self.current_token.kind {
@@ -882,10 +835,7 @@ impl<R: Read> Parser<R> {
     }
 
     fn parse_field_type_denoter(&mut self) -> FieldTypeDenoter {
-        let mut position = SourcePosition {
-            start: 0,
-            finish: 0,
-        };
+        let mut position = SourcePosition::default();
         self.start(&mut position);
 
         let identifier = self.parse_identifier();
