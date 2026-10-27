@@ -39,12 +39,12 @@ impl<R: Read> Parser<R> {
         self.current_token = self.lexical_analyser.scan();
     }
 
-    fn start(&mut self, position: &mut SourcePosition) {
-        position.start = self.current_token.position.start;
+    fn start_pos(&self) -> i32 {
+        self.current_token.position.start
     }
 
-    fn finish(&mut self, position: &mut SourcePosition) {
-        position.finish = self.previous_token_position.finish;
+    fn finish_pos(&self) -> i32 {
+        self.previous_token_position.finish
     }
 
     // Same output as the Java ErrorReporter, but aborts instead of throwing SyntaxError.
@@ -69,15 +69,15 @@ impl<R: Read> Parser<R> {
     }
 
     fn parse_command(&mut self) -> Command {
-        let mut command_position = SourcePosition::default();
-        self.start(&mut command_position);
+        let start = self.start_pos();
+        let mut finish = 0;
 
         let mut command = self.parse_single_command();
         let mut chained_commands = Vec::new();
         while self.current_token.kind == TokenKind::Semicolon {
             self.accept_it();
             chained_commands.push(self.parse_single_command());
-            self.finish(&mut command_position);
+            finish = self.finish_pos();
         }
 
         // Java hands one SourcePosition object to every SequentialCommand of the chain and keeps
@@ -88,7 +88,7 @@ impl<R: Read> Parser<R> {
                     first: command,
                     second: chained_command,
                 }),
-                position: command_position,
+                position: SourcePosition::new(start, finish),
             }
         }
 
@@ -96,8 +96,7 @@ impl<R: Read> Parser<R> {
     }
 
     fn parse_single_command(&mut self) -> Command {
-        let mut command_position = SourcePosition::default();
-        self.start(&mut command_position);
+        let start = self.start_pos();
 
         match self.current_token.kind {
             TokenKind::Identifier => {
@@ -106,21 +105,19 @@ impl<R: Read> Parser<R> {
                     self.accept_it();
                     let arguments = self.parse_actual_parameter_sequence();
                     self.accept(TokenKind::RParen);
-                    self.finish(&mut command_position);
 
                     Command {
                         kind: Box::new(CommandKind::Call { identifier, arguments }),
-                        position: command_position,
+                        position: SourcePosition::new(start, self.finish_pos()),
                     }
                 } else {
                     let v_name = self.parse_rest_of_v_name(identifier);
                     self.accept(TokenKind::Becomes);
                     let expression = self.parse_expression();
-                    self.finish(&mut command_position);
 
                     Command {
                         kind: Box::new(CommandKind::Assign { v_name, expression }),
-                        position: command_position,
+                        position: SourcePosition::new(start, self.finish_pos()),
                     }
                 }
             }
@@ -137,11 +134,10 @@ impl<R: Read> Parser<R> {
                 let declaration = self.parse_declaration();
                 self.accept(TokenKind::In);
                 let body = self.parse_single_command();
-                self.finish(&mut command_position);
 
                 Command {
                     kind: Box::new(CommandKind::Let { declaration, body }),
-                    position: command_position,
+                    position: SourcePosition::new(start, self.finish_pos()),
                 }
             }
 
@@ -152,11 +148,10 @@ impl<R: Read> Parser<R> {
                 let then_branch = self.parse_single_command();
                 self.accept(TokenKind::Else);
                 let else_branch = self.parse_single_command();
-                self.finish(&mut command_position);
 
                 Command {
                     kind: Box::new(CommandKind::If { condition, then_branch, else_branch }),
-                    position: command_position,
+                    position: SourcePosition::new(start, self.finish_pos()),
                 }
             }
 
@@ -165,20 +160,17 @@ impl<R: Read> Parser<R> {
                 let condition = self.parse_expression();
                 self.accept(TokenKind::Do);
                 let body = self.parse_single_command();
-                self.finish(&mut command_position);
 
                 Command {
                     kind: Box::new(CommandKind::While { condition, body }),
-                    position: command_position,
+                    position: SourcePosition::new(start, self.finish_pos()),
                 }
             }
 
             TokenKind::Semicolon | TokenKind::End | TokenKind::Else | TokenKind::In | TokenKind::Eof => {
-                self.finish(&mut command_position);
-
                 Command {
                     kind: Box::new(CommandKind::Empty),
-                    position: command_position,
+                    position: SourcePosition::new(start, self.finish_pos()),
                 }
             }
 
@@ -203,14 +195,12 @@ impl<R: Read> Parser<R> {
     }
 
     fn parse_actual_parameter_sequence(&mut self) -> ActualParameterSequence {
-        let mut position = SourcePosition::default();
-        self.start(&mut position);
+        let start = self.start_pos();
 
         if self.current_token.kind == TokenKind::RParen {
-           self.finish(&mut position);
             ActualParameterSequence {
                 kind: Box::new(ActualParameterSequenceKind::Empty),
-                position,
+                position: SourcePosition::new(start, self.finish_pos()),
             }
         } else {
             self.parse_proper_actual_parameter_sequence()
@@ -218,73 +208,65 @@ impl<R: Read> Parser<R> {
     }
 
     fn parse_proper_actual_parameter_sequence(&mut self) -> ActualParameterSequence {
-        let mut position = SourcePosition::default();
-        self.start(&mut position);
+        let start = self.start_pos();
 
         let actual_parameter = self.parse_actual_parameter();
         if self.current_token.kind == TokenKind::Comma {
             self.accept_it();
             let actual_parameter_sequence = self.parse_proper_actual_parameter_sequence();
-            self.finish(&mut position);
             ActualParameterSequence {
                 kind: Box::new(ActualParameterSequenceKind::Multiple {
                     parameter: actual_parameter,
                     rest: actual_parameter_sequence,
                 }),
-                position,
+                position: SourcePosition::new(start, self.finish_pos()),
             }
         } else {
-            self.finish(&mut position);
             ActualParameterSequence {
                 kind: Box::new(ActualParameterSequenceKind::Single(actual_parameter)),
-                position,
+                position: SourcePosition::new(start, self.finish_pos()),
             }
         }
     }
 
     fn parse_actual_parameter(&mut self) -> ActualParameter {
-        let mut position = SourcePosition::default();
-        self.start(&mut position);
+        let start = self.start_pos();
 
         match self.current_token.kind {
             TokenKind::Identifier | TokenKind::IntLiteral | TokenKind::CharLiteral
             | TokenKind::Operator | TokenKind::Let | TokenKind::If | TokenKind::LParen
             | TokenKind::LBracket | TokenKind::LCurly => {
                 let expression = self.parse_expression();
-                self.finish(&mut position);
                 ActualParameter {
                     kind: ActualParameterKind::Const(expression),
-                    position,
+                    position: SourcePosition::new(start, self.finish_pos()),
                 }
             }
 
             TokenKind::Var => {
                 self.accept_it();
                 let v_name = self.parse_v_name();
-                self.finish(&mut position);
                 ActualParameter {
                     kind: ActualParameterKind::Var(v_name),
-                    position,
+                    position: SourcePosition::new(start, self.finish_pos()),
                 }
             }
 
             TokenKind::Proc => {
                 self.accept_it();
                 let identifier = self.parse_identifier();
-                self.finish(&mut position);
                 ActualParameter {
                     kind: ActualParameterKind::Proc(identifier),
-                    position,
+                    position: SourcePosition::new(start, self.finish_pos()),
                 }
             }
 
             TokenKind::Func => {
                 self.accept_it();
                 let identifier = self.parse_identifier();
-                self.finish(&mut position);
                 ActualParameter {
                     kind: ActualParameterKind::Func(identifier),
-                    position,
+                    position: SourcePosition::new(start, self.finish_pos()),
                 }
             }
 
@@ -313,7 +295,7 @@ impl<R: Read> Parser<R> {
                 self.accept_it();
                 let expression = self.parse_expression();
                 self.accept(TokenKind::RBracket);
-                self.finish(&mut position);
+                position.finish = self.finish_pos();
                 selectors.push(Selector::Index(expression));
             }
         }
@@ -336,7 +318,7 @@ impl<R: Read> Parser<R> {
             };
             v_name = VName {
                 kind: Box::new(kind),
-                position: position,
+                position,
             };
         }
 
@@ -344,8 +326,7 @@ impl<R: Read> Parser<R> {
     }
 
     fn parse_expression(&mut self) -> Expression {
-        let mut position = SourcePosition::default();
-        self.start(&mut position);
+        let start = self.start_pos();
 
         match self.current_token.kind {
             TokenKind::Let => {
@@ -353,14 +334,13 @@ impl<R: Read> Parser<R> {
                 let declaration = self.parse_declaration();
                 self.accept(TokenKind::In);
                 let expression = self.parse_expression();
-                self.finish(&mut position);
 
                 Expression {
                     kind: Box::new(ExpressionKind::Let {
                         declaration,
                         body: expression,
                     }),
-                    position,
+                    position: SourcePosition::new(start, self.finish_pos()),
                 }
             }
 
@@ -371,7 +351,6 @@ impl<R: Read> Parser<R> {
                 let then_expression = self.parse_expression();
                 self.accept(TokenKind::Else);
                 let else_expression = self.parse_expression();
-                self.finish(&mut position);
 
                 Expression {
                     kind: Box::new(ExpressionKind::If {
@@ -379,7 +358,7 @@ impl<R: Read> Parser<R> {
                         then_branch: then_expression,
                         else_branch: else_expression,
                     }),
-                    position,
+                    position: SourcePosition::new(start, self.finish_pos()),
                 }
             }
 
@@ -390,8 +369,7 @@ impl<R: Read> Parser<R> {
     }
 
     fn parse_secondary_expression(&mut self) -> Expression {
-        let mut position = SourcePosition::default();
-        self.start(&mut position);
+        let position = SourcePosition::new(self.start_pos(), 0);
 
         let mut expression = self.parse_primary_expression();
         while self.current_token.kind == TokenKind::Operator {
@@ -412,25 +390,22 @@ impl<R: Read> Parser<R> {
     }
 
     fn parse_primary_expression(&mut self) -> Expression {
-        let mut position = SourcePosition::default();
-        self.start(&mut position);
+        let start = self.start_pos();
 
         match self.current_token.kind {
             TokenKind::IntLiteral => {
                 let literal = self.parse_int_literal();
-                self.finish(&mut position);
                 Expression {
                     kind: Box::new(ExpressionKind::Integer(literal)),
-                    position,
+                    position: SourcePosition::new(start, self.finish_pos()),
                 }
             }
 
             TokenKind::CharLiteral => {
                 let literal = self.parse_char_literal();
-                self.finish(&mut position);
                 Expression {
                     kind: Box::new(ExpressionKind::Character(literal)),
-                    position,
+                    position: SourcePosition::new(start, self.finish_pos()),
                 }
             }
 
@@ -438,10 +413,9 @@ impl<R: Read> Parser<R> {
                 self.accept_it();
                 let aggregate = self.parse_array_aggregate();
                 self.accept(TokenKind::RBracket);
-                self.finish(&mut position);
                 Expression {
                     kind: Box::new(ExpressionKind::Array(aggregate)),
-                    position,
+                    position: SourcePosition::new(start, self.finish_pos()),
                 }
             }
 
@@ -449,10 +423,9 @@ impl<R: Read> Parser<R> {
                 self.accept_it();
                 let aggregate = self.parse_record_aggregate();
                 self.accept(TokenKind::RCurly);
-                self.finish(&mut position);
                 Expression {
                     kind: Box::new(ExpressionKind::Record(aggregate)),
-                    position,
+                    position: SourcePosition::new(start, self.finish_pos()),
                 }
             }
 
@@ -462,17 +435,15 @@ impl<R: Read> Parser<R> {
                     self.accept_it();
                     let arguments = self.parse_actual_parameter_sequence();
                     self.accept(TokenKind::RParen);
-                    self.finish(&mut position);
                     Expression {
                         kind: Box::new(ExpressionKind::Call { identifier, arguments }),
-                        position,
+                        position: SourcePosition::new(start, self.finish_pos()),
                     }
                 } else {
                     let v_name = self.parse_rest_of_v_name(identifier);
-                    self.finish(&mut position);
                     Expression {
                         kind: Box::new(ExpressionKind::VName(v_name)),
-                        position,
+                        position: SourcePosition::new(start, self.finish_pos()),
                     }
                 }
             }
@@ -480,10 +451,9 @@ impl<R: Read> Parser<R> {
             TokenKind::Operator => {
                 let operator = self.parse_operator();
                 let operand = self.parse_primary_expression();
-                self.finish(&mut position);
                 Expression {
                     kind: Box::new(ExpressionKind::Unary { operator, operand }),
-                    position,
+                    position: SourcePosition::new(start, self.finish_pos()),
                 }
             }
 
@@ -544,8 +514,7 @@ impl<R: Read> Parser<R> {
     }
 
     fn parse_record_aggregate(&mut self) -> RecordAggregate {
-        let mut position = SourcePosition::default();
-        self.start(&mut position);
+        let start = self.start_pos();
 
         let identifier = self.parse_identifier();
         self.accept(TokenKind::Is);
@@ -554,52 +523,47 @@ impl<R: Read> Parser<R> {
         if self.current_token.kind == TokenKind::Comma {
             self.accept_it();
             let rest = self.parse_record_aggregate();
-            self.finish(&mut position);
             RecordAggregate {
                 kind: Box::new(RecordAggregateKind::Multiple { identifier, expression, rest }),
-                position,
+                position: SourcePosition::new(start, self.finish_pos()),
             }
         } else {
-            self.finish(&mut position);
             RecordAggregate {
                 kind: Box::new(RecordAggregateKind::Single { identifier, expression }),
-                position,
+                position: SourcePosition::new(start, self.finish_pos()),
             }
         }
     }
 
     fn parse_array_aggregate(&mut self) -> ArrayAggregate {
-        let mut position = SourcePosition::default();
-        self.start(&mut position);
+        let start = self.start_pos();
 
         let expression = self.parse_expression();
         if self.current_token.kind == TokenKind::Comma {
             self.accept_it();
             let rest = self.parse_array_aggregate();
-            self.finish(&mut position);
             ArrayAggregate {
                 kind: Box::new(ArrayAggregateKind::Multiple { expression, rest }),
-                position,
+                position: SourcePosition::new(start, self.finish_pos()),
             }
         } else {
-            self.finish(&mut position);
             ArrayAggregate {
                 kind: Box::new(ArrayAggregateKind::Single(expression)),
-                position,
+                position: SourcePosition::new(start, self.finish_pos()),
             }
         }
     }
 
     fn parse_declaration(&mut self) -> Declaration {
-        let mut position = SourcePosition::default();
-        self.start(&mut position);
+        let start = self.start_pos();
+        let mut finish = 0;
 
         let mut declaration = self.parse_single_declaration();
         let mut chained_declarations = Vec::new();
         while self.current_token.kind == TokenKind::Semicolon {
             self.accept_it();
             chained_declarations.push(self.parse_single_declaration());
-            self.finish(&mut position);
+            finish = self.finish_pos();
         }
 
         // Same position sharing as in parse_command.
@@ -609,7 +573,7 @@ impl<R: Read> Parser<R> {
                     first: declaration,
                     second: chained_declaration,
                 }),
-                position,
+                position: SourcePosition::new(start, finish),
             }
         }
 
@@ -617,8 +581,7 @@ impl<R: Read> Parser<R> {
     }
 
     fn parse_single_declaration(&mut self) -> Declaration {
-        let mut position = SourcePosition::default();
-        self.start(&mut position);
+        let start = self.start_pos();
 
         match self.current_token.kind {
             TokenKind::Const => {
@@ -626,10 +589,9 @@ impl<R: Read> Parser<R> {
                 let identifier = self.parse_identifier();
                 self.accept(TokenKind::Is);
                 let expression = self.parse_expression();
-                self.finish(&mut position);
                 Declaration {
                     kind: Box::new(DeclarationKind::Const { identifier, expression }),
-                    position,
+                    position: SourcePosition::new(start, self.finish_pos()),
                 }
             }
 
@@ -638,10 +600,9 @@ impl<R: Read> Parser<R> {
                 let identifier = self.parse_identifier();
                 self.accept(TokenKind::Colon);
                 let type_denoter = self.parse_type_denoter();
-                self.finish(&mut position);
                 Declaration {
                     kind: Box::new(DeclarationKind::Var { identifier, type_denoter }),
-                    position,
+                    position: SourcePosition::new(start, self.finish_pos()),
                 }
             }
 
@@ -653,10 +614,9 @@ impl<R: Read> Parser<R> {
                 self.accept(TokenKind::RParen);
                 self.accept(TokenKind::Is);
                 let body = self.parse_single_command();
-                self.finish(&mut position);
                 Declaration {
                     kind: Box::new(DeclarationKind::Proc { identifier, parameters, body }),
-                    position,
+                    position: SourcePosition::new(start, self.finish_pos()),
                 }
             }
 
@@ -670,10 +630,9 @@ impl<R: Read> Parser<R> {
                 let return_type = self.parse_type_denoter();
                 self.accept(TokenKind::Is);
                 let body = self.parse_expression();
-                self.finish(&mut position);
                 Declaration {
                     kind: Box::new(DeclarationKind::Func { identifier, parameters, return_type, body }),
-                    position,
+                    position: SourcePosition::new(start, self.finish_pos()),
                 }
             }
 
@@ -682,10 +641,9 @@ impl<R: Read> Parser<R> {
                 let identifier = self.parse_identifier();
                 self.accept(TokenKind::Is);
                 let type_denoter = self.parse_type_denoter();
-                self.finish(&mut position);
                 Declaration {
                     kind: Box::new(DeclarationKind::Type { identifier, type_denoter }),
-                    position,
+                    position: SourcePosition::new(start, self.finish_pos()),
                 }
             }
 
@@ -694,14 +652,12 @@ impl<R: Read> Parser<R> {
     }
 
     fn parse_formal_parameter_sequence(&mut self) -> FormalParameterSequence {
-        let mut position = SourcePosition::default();
-        self.start(&mut position);
+        let start = self.start_pos();
 
         if self.current_token.kind == TokenKind::RParen {
-            self.finish(&mut position);
             FormalParameterSequence {
                 kind: Box::new(FormalParameterSequenceKind::Empty),
-                position,
+                position: SourcePosition::new(start, self.finish_pos()),
             }
         } else {
             self.parse_proper_formal_parameter_sequence()
@@ -709,43 +665,38 @@ impl<R: Read> Parser<R> {
     }
 
     fn parse_proper_formal_parameter_sequence(&mut self) -> FormalParameterSequence {
-        let mut position = SourcePosition::default();
-        self.start(&mut position);
+        let start = self.start_pos();
 
         let formal_parameter = self.parse_formal_parameter();
         if self.current_token.kind == TokenKind::Comma {
             self.accept_it();
             let formal_parameter_sequence = self.parse_proper_formal_parameter_sequence();
-            self.finish(&mut position);
             FormalParameterSequence {
                 kind: Box::new(FormalParameterSequenceKind::Multiple {
                     parameter: formal_parameter,
                     rest: formal_parameter_sequence,
                 }),
-                position,
+                position: SourcePosition::new(start, self.finish_pos()),
             }
         } else {
-            self.finish(&mut position);
             FormalParameterSequence {
                 kind: Box::new(FormalParameterSequenceKind::Single(formal_parameter)),
-                position,
+                position: SourcePosition::new(start, self.finish_pos()),
             }
         }
     }
 
     fn parse_formal_parameter(&mut self) -> FormalParameter {
-        let mut position = SourcePosition::default();
-        self.start(&mut position);
+        let start = self.start_pos();
 
         match self.current_token.kind {
             TokenKind::Identifier => {
                 let identifier = self.parse_identifier();
                 self.accept(TokenKind::Colon);
                 let type_denoter = self.parse_type_denoter();
-                self.finish(&mut position);
                 FormalParameter {
                     kind: FormalParameterKind::Const { identifier, type_denoter },
-                    position,
+                    position: SourcePosition::new(start, self.finish_pos()),
                 }
             }
 
@@ -754,10 +705,9 @@ impl<R: Read> Parser<R> {
                 let identifier = self.parse_identifier();
                 self.accept(TokenKind::Colon);
                 let type_denoter = self.parse_type_denoter();
-                self.finish(&mut position);
                 FormalParameter {
                     kind: FormalParameterKind::Var { identifier, type_denoter },
-                    position,
+                    position: SourcePosition::new(start, self.finish_pos()),
                 }
             }
 
@@ -767,10 +717,9 @@ impl<R: Read> Parser<R> {
                 self.accept(TokenKind::LParen);
                 let parameters = self.parse_formal_parameter_sequence();
                 self.accept(TokenKind::RParen);
-                self.finish(&mut position);
                 FormalParameter {
                     kind: FormalParameterKind::Proc { identifier, parameters },
-                    position,
+                    position: SourcePosition::new(start, self.finish_pos()),
                 }
             }
 
@@ -782,10 +731,9 @@ impl<R: Read> Parser<R> {
                 self.accept(TokenKind::RParen);
                 self.accept(TokenKind::Colon);
                 let return_type = self.parse_type_denoter();
-                self.finish(&mut position);
                 FormalParameter {
                     kind: FormalParameterKind::Func { identifier, parameters, return_type },
-                    position,
+                    position: SourcePosition::new(start, self.finish_pos()),
                 }
             }
 
@@ -794,16 +742,14 @@ impl<R: Read> Parser<R> {
     }
 
     fn parse_type_denoter(&mut self) -> TypeDenoter {
-        let mut position = SourcePosition::default();
-        self.start(&mut position);
+        let start = self.start_pos();
 
         match self.current_token.kind {
             TokenKind::Identifier => {
                 let identifier = self.parse_identifier();
-                self.finish(&mut position);
                 TypeDenoter {
                     kind: Box::new(TypeDenoterKind::Simple(identifier)),
-                    position,
+                    position: SourcePosition::new(start, self.finish_pos()),
                 }
             }
 
@@ -812,10 +758,9 @@ impl<R: Read> Parser<R> {
                 let size = self.parse_int_literal();
                 self.accept(TokenKind::Of);
                 let element_type = self.parse_type_denoter();
-                self.finish(&mut position);
                 TypeDenoter {
                     kind: Box::new(TypeDenoterKind::Array { size, element_type }),
-                    position,
+                    position: SourcePosition::new(start, self.finish_pos()),
                 }
             }
 
@@ -823,10 +768,9 @@ impl<R: Read> Parser<R> {
                 self.accept_it();
                 let fields = self.parse_field_type_denoter();
                 self.accept(TokenKind::End);
-                self.finish(&mut position);
                 TypeDenoter {
                     kind: Box::new(TypeDenoterKind::Record(fields)),
-                    position,
+                    position: SourcePosition::new(start, self.finish_pos()),
                 }
             }
 
@@ -835,8 +779,7 @@ impl<R: Read> Parser<R> {
     }
 
     fn parse_field_type_denoter(&mut self) -> FieldTypeDenoter {
-        let mut position = SourcePosition::default();
-        self.start(&mut position);
+        let start = self.start_pos();
 
         let identifier = self.parse_identifier();
         self.accept(TokenKind::Colon);
@@ -844,16 +787,14 @@ impl<R: Read> Parser<R> {
         if self.current_token.kind == TokenKind::Comma {
             self.accept_it();
             let rest = self.parse_field_type_denoter();
-            self.finish(&mut position);
             FieldTypeDenoter {
                 kind: Box::new(FieldTypeDenoterKind::Multiple { identifier, type_denoter, rest }),
-                position,
+                position: SourcePosition::new(start, self.finish_pos()),
             }
         } else {
-            self.finish(&mut position);
             FieldTypeDenoter {
                 kind: Box::new(FieldTypeDenoterKind::Single { identifier, type_denoter }),
-                position,
+                position: SourcePosition::new(start, self.finish_pos()),
             }
         }
     }

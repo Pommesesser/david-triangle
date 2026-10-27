@@ -5,7 +5,7 @@ pub struct SourcePosition {
 }
 
 impl SourcePosition {
-    fn of(start: i32, finish: i32) -> Self {
+    pub fn new(start: i32, finish: i32) -> Self {
         Self {
             start,
             finish,
