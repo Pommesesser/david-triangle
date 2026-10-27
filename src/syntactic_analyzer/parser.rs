@@ -188,7 +188,7 @@ impl<R: Read> Parser<R> {
             };
             self.current_token = self.lexical_analyser.scan();
 
-            return identifier
+            identifier
         } else {
             self.syntactic_error("identifier expected here")
         }
@@ -300,8 +300,8 @@ impl<R: Read> Parser<R> {
             }
         }
 
-        // Java uses the identifier's own SourcePosition object for every vname of the chain and
-        // finish() moves it on each subscript, so the identifier and all the vnames end up with
+        // Java uses the identifier's own SourcePosition object for every v_name of the chain and
+        // finish() moves it on each subscript, so the identifier and all the v_names end up with
         // the finish of the last `]`.
         let identifier = Identifier {
             position,
