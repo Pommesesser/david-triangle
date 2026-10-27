@@ -11,7 +11,7 @@ struct Scanner<'a> {
     current_char: char,
     source: &'a [u8],
     index: usize,
-    line: i32,
+    line: u32,
 }
 
 impl<'a> Scanner<'a> {

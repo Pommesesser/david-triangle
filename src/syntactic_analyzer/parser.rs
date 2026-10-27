@@ -38,11 +38,11 @@ impl Parser {
         self.current_token = self.token_stream.next();
     }
 
-    fn start_pos(&self) -> i32 {
+    fn start_pos(&self) -> u32 {
         self.current_token.position.start
     }
 
-    fn finish_pos(&self) -> i32 {
+    fn finish_pos(&self) -> u32 {
         self.previous_token_position.finish
     }
 
