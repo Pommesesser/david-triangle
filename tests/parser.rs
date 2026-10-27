@@ -5,11 +5,11 @@ use std::path::Path;
 use david_triangle::abstract_syntax_trees::ast::Program;
 use david_triangle::printers::program_printer;
 use david_triangle::syntactic_analyzer::parser::Parser;
-use david_triangle::syntactic_analyzer::scanner::Scanner;
-use david_triangle::syntactic_analyzer::source_stream::SourceStream;
+use david_triangle::syntactic_analyzer::scanner::scan_all;
+use david_triangle::syntactic_analyzer::token_stream::TokenStream;
 
 fn parse(source: &[u8]) -> Program {
-    Parser::new(Scanner::new(SourceStream::new(source))).parse_program()
+    Parser::new(TokenStream::new(scan_all(source))).parse_program()
 }
 
 fn first_difference(actual: &str, expected: &str) -> String {

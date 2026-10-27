@@ -1,26 +1,25 @@
-use std::io::Read;
 use crate::abstract_syntax_trees::ast::{ActualParameter, ActualParameterKind, ActualParameterSequence, ActualParameterSequenceKind, ArrayAggregate, ArrayAggregateKind, CharacterLiteral, Command, CommandKind, Declaration, DeclarationKind, Expression, ExpressionKind, FieldTypeDenoter, FieldTypeDenoterKind, FormalParameter, FormalParameterKind, FormalParameterSequence, FormalParameterSequenceKind, Identifier, IntegerLiteral, Operator, Program, RecordAggregate, RecordAggregateKind, TypeDenoter, TypeDenoterKind, VName, VNameKind};
-use crate::syntactic_analyzer::scanner::Scanner;
 use crate::syntactic_analyzer::source_position::SourcePosition;
 use crate::syntactic_analyzer::token::Token;
 use crate::syntactic_analyzer::token_kind::TokenKind;
+use crate::syntactic_analyzer::token_stream::TokenStream;
 
-pub struct Parser<R: Read> {
+pub struct Parser {
     current_token: Token,
-    lexical_analyser: Scanner<R>,
+    token_stream: TokenStream,
     previous_token_position: SourcePosition,
 }
 
-impl<R: Read> Parser<R> {
+impl Parser {
     /// Creates a new parser and scans the first token.
     ///
     /// <p> The first token is scanned immediately to avoid
     /// making current_token an optional type!
     /// This makes the implementations slightly different.
-    pub fn new(mut scanner: Scanner<R>) -> Self {
+    pub fn new(mut token_stream: TokenStream) -> Self {
         Self {
-            current_token: scanner.scan(),
-            lexical_analyser: scanner,
+            current_token: token_stream.next(),
+            token_stream,
             previous_token_position: SourcePosition::default(),
         }
     }
@@ -28,7 +27,7 @@ impl<R: Read> Parser<R> {
     fn accept(&mut self, token_expected: TokenKind) {
         if self.current_token.kind == token_expected {
             self.previous_token_position = self.current_token.position;
-            self.current_token = self.lexical_analyser.scan();
+            self.current_token = self.token_stream.next();
         } else {
             self.syntactic_error(&format!("\"{}\" expected here", token_expected.spelling()))
         }
@@ -36,7 +35,7 @@ impl<R: Read> Parser<R> {
 
     fn accept_it(&mut self) {
         self.previous_token_position = self.current_token.position;
-        self.current_token = self.lexical_analyser.scan();
+        self.current_token = self.token_stream.next();
     }
 
     fn start_pos(&self) -> i32 {
@@ -184,7 +183,7 @@ impl<R: Read> Parser<R> {
                 spelling,
                 position: self.previous_token_position,
             };
-            self.current_token = self.lexical_analyser.scan();
+            self.current_token = self.token_stream.next();
 
             identifier
         } else {
@@ -473,7 +472,7 @@ impl<R: Read> Parser<R> {
                 spelling: self.current_token.spelling.clone(),
                 position: self.previous_token_position,
             };
-            self.current_token = self.lexical_analyser.scan();
+            self.current_token = self.token_stream.next();
 
             literal
         } else {
@@ -488,7 +487,7 @@ impl<R: Read> Parser<R> {
                 spelling: self.current_token.spelling.clone(),
                 position: self.previous_token_position,
             };
-            self.current_token = self.lexical_analyser.scan();
+            self.current_token = self.token_stream.next();
 
             literal
         } else {
@@ -503,7 +502,7 @@ impl<R: Read> Parser<R> {
                 spelling: self.current_token.spelling.clone(),
                 position: self.previous_token_position,
             };
-            self.current_token = self.lexical_analyser.scan();
+            self.current_token = self.token_stream.next();
 
             operator
         } else {
