@@ -7,16 +7,3 @@ pub struct Token {
     pub spelling: String,
     pub position: SourcePosition,
 }
-
-impl Token {
-    pub fn new(kind: TokenKind, spelling: &str, position: SourcePosition) -> Self {
-        Token {
-            kind: match kind {
-                TokenKind::Identifier => TokenKind::get_specific_token_for_identifier(spelling),
-                _ => kind,
-            },
-            spelling: spelling.to_string(),
-            position,
-        }
-    }
-}

@@ -42,26 +42,26 @@ pub enum TokenKind {
 }
 
 impl TokenKind {
-    pub fn get_specific_token_for_identifier(spelling: &str) -> TokenKind {
+    pub fn keyword_of(spelling: &str) -> Option<TokenKind> {
         match spelling {
-            "array" => TokenKind::Array,
-            "begin" => TokenKind::Begin,
-            "const" => TokenKind::Const,
-            "do" => TokenKind::Do,
-            "else" => TokenKind::Else,
-            "end" => TokenKind::End,
-            "func" => TokenKind::Func,
-            "if" => TokenKind::If,
-            "in" => TokenKind::In,
-            "let" => TokenKind::Let,
-            "of" => TokenKind::Of,
-            "proc" => TokenKind::Proc,
-            "record" => TokenKind::Record,
-            "then" => TokenKind::Then,
-            "type" => TokenKind::Type,
-            "var" => TokenKind::Var,
-            "while" => TokenKind::While,
-            _ => TokenKind::Identifier,
+            "array" => Some(TokenKind::Array),
+            "begin" => Some(TokenKind::Begin),
+            "const" => Some(TokenKind::Const),
+            "do" => Some(TokenKind::Do),
+            "else" => Some(TokenKind::Else),
+            "end" => Some(TokenKind::End),
+            "func" => Some(TokenKind::Func),
+            "if" => Some(TokenKind::If),
+            "in" => Some(TokenKind::In),
+            "let" => Some(TokenKind::Let),
+            "of" => Some(TokenKind::Of),
+            "proc" => Some(TokenKind::Proc),
+            "record" => Some(TokenKind::Record),
+            "then" => Some(TokenKind::Then),
+            "type" => Some(TokenKind::Type),
+            "var" => Some(TokenKind::Var),
+            "while" => Some(TokenKind::While),
+            _ => None,
         }
     }
 

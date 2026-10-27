@@ -6,7 +6,7 @@ use crate::syntactic_analyzer::token::Token;
 use crate::syntactic_analyzer::token_kind::TokenKind;
 
 pub struct Scanner<R: Read> {
-    lex: String,
+    spelling: String,
     currently_scanning_token: bool,
     current_char: char,
     source_stream: SourceStream<R>,
@@ -15,7 +15,7 @@ pub struct Scanner<R: Read> {
 impl<R: Read> Scanner<R> {
     pub fn new(mut source_stream: SourceStream<R>) -> Self {
         Self {
-            lex: String::new(),
+            spelling: String::new(),
             currently_scanning_token: false,
             current_char: source_stream.get_source(),
             source_stream,
@@ -24,7 +24,7 @@ impl<R: Read> Scanner<R> {
 
     fn take_it(&mut self) {
         if self.currently_scanning_token {
-            self.lex.push(self.current_char);
+            self.spelling.push(self.current_char);
         }
         self.current_char = self.source_stream.get_source();
     }
@@ -126,13 +126,20 @@ impl<R: Read> Scanner<R> {
         }
 
         self.currently_scanning_token = true;
-        self.lex.clear();
+        self.spelling.clear();
         let start = self.source_stream.line;
 
-        let kind = self.scan_token();
+        let kind = match self.scan_token() {
+            TokenKind::Identifier => TokenKind::keyword_of(&self.spelling).unwrap_or(TokenKind::Identifier),
+            kind => kind,
+        };
 
         let finish = self.source_stream.line;
-        Token::new(kind, &self.lex, SourcePosition{start, finish})
+        Token {
+            kind,
+            spelling: self.spelling.clone(),
+            position: SourcePosition::new(start, finish),
+        }
     }
 
     fn is_letter(c: char) -> bool {
