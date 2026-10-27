@@ -138,7 +138,7 @@ impl<R: Read> Scanner<R> {
         Token {
             kind,
             spelling: self.spelling.clone(),
-            position: SourcePosition::new(start, finish),
+            position: SourcePosition { start, finish },
         }
     }
 
