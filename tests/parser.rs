@@ -1,22 +1,15 @@
 use std::fs;
+use std::panic;
 use std::path::Path;
 
-use david_triangle::printers::lexeme_printer;
+use david_triangle::abstract_syntax_trees::ast::Program;
+use david_triangle::printers::program_printer;
+use david_triangle::syntactic_analyzer::parser::Parser;
 use david_triangle::syntactic_analyzer::scanner::Scanner;
 use david_triangle::syntactic_analyzer::source_stream::SourceStream;
-use david_triangle::syntactic_analyzer::token_kind::TokenKind;
 
-fn lex(source: &[u8]) -> String {
-    let mut scanner = Scanner::new(SourceStream::new(source));
-    let mut output = String::new();
-    loop {
-        let token = scanner.scan();
-        output.push_str(&lexeme_printer::print(&token));
-        output.push('\n');
-        if token.kind == TokenKind::Eof {
-            return output;
-        }
-    }
+fn parse(source: &[u8]) -> Program {
+    Parser::new(Scanner::new(SourceStream::new(source))).parse_program()
 }
 
 fn first_difference(actual: &str, expected: &str) -> String {
@@ -33,7 +26,7 @@ fn first_difference(actual: &str, expected: &str) -> String {
 }
 
 #[test]
-fn lexer_matches_java_reference() {
+fn parser_matches_java_reference() {
     let tests_dir = Path::new(env!("CARGO_MANIFEST_DIR")).join("tests");
 
     let mut inputs: Vec<_> = fs::read_dir(tests_dir.join("examples"))
@@ -42,7 +35,6 @@ fn lexer_matches_java_reference() {
         .filter(|path| path.extension().is_some_and(|ext| ext == "tri"))
         .collect();
     inputs.sort();
-    // Guard against a wrong path making the test pass by checking nothing.
     assert!(!inputs.is_empty(), "no example programs found");
 
     let mut failures = Vec::new();
@@ -50,19 +42,21 @@ fn lexer_matches_java_reference() {
         let name = input.file_stem().unwrap().to_str().unwrap();
 
         let source = fs::read(input).unwrap();
-        let expected = fs::read_to_string(tests_dir.join("expected/lex").join(format!("{name}.txt")))
-            .unwrap_or_else(|_| panic!("missing expected/lex/{name}.txt"));
+        let expected = fs::read_to_string(tests_dir.join("expected/parser").join(format!("{name}.txt")))
+            .unwrap_or_else(|_| panic!("missing expected/parser/{name}.txt"));
 
-        let actual = lex(&source);
+        // A syntax error panics with the same "ERROR: ..." line the Java parser prints.
+        let actual = panic::catch_unwind(|| program_printer::print(&parse(&source)))
+            .unwrap_or_else(|error| format!("{}\n", error.downcast_ref::<String>().unwrap()));
 
         if actual == expected {
-            println!("PASS  {name:<28} {:>5} tokens", actual.lines().count());
+            println!("PASS  {name:<28} {:>5} nodes", actual.lines().count());
         } else {
             println!("FAIL  {name}: {}", first_difference(&actual, &expected));
             failures.push(name.to_string());
         }
     }
 
-    println!("{} of {} examples match the Java lexer", inputs.len() - failures.len(), inputs.len());
+    println!("{} of {} examples match the Java parser", inputs.len() - failures.len(), inputs.len());
     assert!(failures.is_empty(), "differs from Java: {failures:?}");
 }

@@ -1,16 +1,7 @@
 use std::fs;
-use std::panic;
 use std::path::Path;
-
-use david_triangle::abstract_syntax_trees::ast::Program;
-use david_triangle::printers::program_printer;
-use david_triangle::syntactic_analyzer::parser::Parser;
-use david_triangle::syntactic_analyzer::scanner::Scanner;
-use david_triangle::syntactic_analyzer::source_stream::SourceStream;
-
-fn parse(source: &[u8]) -> Program {
-    Parser::new(Scanner::new(SourceStream::new(source))).parse_program()
-}
+use david_triangle::printers::token_printer::print;
+use david_triangle::syntactic_analyzer::scanner::scan_all;
 
 fn first_difference(actual: &str, expected: &str) -> String {
     let mut actual_lines = actual.lines();
@@ -26,7 +17,7 @@ fn first_difference(actual: &str, expected: &str) -> String {
 }
 
 #[test]
-fn parser_matches_java_reference() {
+fn scanner_matches_java_reference() {
     let tests_dir = Path::new(env!("CARGO_MANIFEST_DIR")).join("tests");
 
     let mut inputs: Vec<_> = fs::read_dir(tests_dir.join("examples"))
@@ -35,6 +26,7 @@ fn parser_matches_java_reference() {
         .filter(|path| path.extension().is_some_and(|ext| ext == "tri"))
         .collect();
     inputs.sort();
+    // Guard against a wrong path making the test pass by checking nothing.
     assert!(!inputs.is_empty(), "no example programs found");
 
     let mut failures = Vec::new();
@@ -42,21 +34,25 @@ fn parser_matches_java_reference() {
         let name = input.file_stem().unwrap().to_str().unwrap();
 
         let source = fs::read(input).unwrap();
-        let expected = fs::read_to_string(tests_dir.join("expected/parse").join(format!("{name}.txt")))
-            .unwrap_or_else(|_| panic!("missing expected/parse/{name}.txt"));
+        let expected = fs::read_to_string(tests_dir.join("expected/scanner").join(format!("{name}.txt")))
+            .unwrap_or_else(|_| panic!("missing expected/scanner/{name}.txt"));
 
-        // A syntax error panics with the same "ERROR: ..." line the Java parser prints.
-        let actual = panic::catch_unwind(|| program_printer::print(&parse(&source)))
-            .unwrap_or_else(|error| format!("{}\n", error.downcast_ref::<String>().unwrap()));
+        let tokens = scan_all(&source);
+
+        let mut actual = String::new();
+        for token in tokens {
+            actual.push_str(&print(&token));
+            actual.push('\n');
+        }
 
         if actual == expected {
-            println!("PASS  {name:<28} {:>5} nodes", actual.lines().count());
+            println!("PASS  {name:<28} {:>5} tokens", actual.lines().count());
         } else {
             println!("FAIL  {name}: {}", first_difference(&actual, &expected));
             failures.push(name.to_string());
         }
     }
 
-    println!("{} of {} examples match the Java parser", inputs.len() - failures.len(), inputs.len());
+    println!("{} of {} examples match the Java scanner", inputs.len() - failures.len(), inputs.len());
     assert!(failures.is_empty(), "differs from Java: {failures:?}");
 }

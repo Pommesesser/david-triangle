@@ -154,3 +154,18 @@ impl<R: Read> Scanner<R> {
         matches!(c, '+' | '-' | '*' | '/' | '=' | '<' | '>' | '\\' | '&' | '@' | '%' | '^' | '?')
     }
 }
+
+pub fn scan_all(source: &[u8]) -> Vec<Token> {
+    let mut scanner = Scanner::new(SourceStream::new(source));
+    let mut output = vec![];
+
+    loop {
+        let token = scanner.scan();
+        let is_eof = token.kind == TokenKind::Eof;
+        output.push(token);
+
+        if is_eof {
+            return output;
+        }
+    }
+}
