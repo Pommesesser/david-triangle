@@ -97,7 +97,7 @@ impl TokenKind {
             TokenKind::LCurly => "{",
             TokenKind::RCurly => "}",
             TokenKind::Eof => "",
-            TokenKind::Error => "",
+            TokenKind::Error => "<error>",
             TokenKind::Identifier => "<identifier>",
             TokenKind::IntLiteral => "<int>",
             TokenKind::CharLiteral => "<char>",
