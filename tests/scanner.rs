@@ -1,7 +1,7 @@
-use std::fs;
-use std::path::Path;
 use david_triangle::printers::token_printer::print;
 use david_triangle::syntactic_analyzer::scanner::scan_all;
+use std::fs;
+use std::path::Path;
 
 fn first_difference(actual: &str, expected: &str) -> String {
     let mut actual_lines = actual.lines();
@@ -34,8 +34,12 @@ fn scanner_matches_java_reference() {
         let name = input.file_stem().unwrap().to_str().unwrap();
 
         let source = fs::read(input).unwrap();
-        let expected = fs::read_to_string(tests_dir.join("expected/scanner").join(format!("{name}.txt")))
-            .unwrap_or_else(|_| panic!("missing expected/scanner/{name}.txt"));
+        let expected = fs::read_to_string(
+            tests_dir
+                .join("expected/scanner")
+                .join(format!("{name}.txt")),
+        )
+        .unwrap_or_else(|_| panic!("missing expected/scanner/{name}.txt"));
 
         let tokens = scan_all(&source);
 
@@ -53,6 +57,10 @@ fn scanner_matches_java_reference() {
         }
     }
 
-    println!("{} of {} examples match the Java scanner", inputs.len() - failures.len(), inputs.len());
+    println!(
+        "{} of {} examples match the Java scanner",
+        inputs.len() - failures.len(),
+        inputs.len()
+    );
     assert!(failures.is_empty(), "differs from Java: {failures:?}");
 }

@@ -1,10 +1,17 @@
-use crate::abstract_syntax_trees::ast::{ActualParameter, ActualParameterKind, ActualParameterSequence, ActualParameterSequenceKind, ArrayAggregate, ArrayAggregateKind, CharacterLiteral, Command, CommandKind, Declaration, DeclarationKind, Expression, ExpressionKind, FieldTypeDenoter, FieldTypeDenoterKind, FormalParameter, FormalParameterKind, FormalParameterSequence, FormalParameterSequenceKind, Identifier, IntegerLiteral, Operator, Program, RecordAggregate, RecordAggregateKind, TypeDenoter, TypeDenoterKind, VName, VNameKind};
+use crate::abstract_syntax_trees::ast::{
+    ActualParameter, ActualParameterKind, ActualParameterSequence, ActualParameterSequenceKind,
+    ArrayAggregate, ArrayAggregateKind, CharacterLiteral, Command, CommandKind, Declaration,
+    DeclarationKind, Expression, ExpressionKind, FieldTypeDenoter, FieldTypeDenoterKind,
+    FormalParameter, FormalParameterKind, FormalParameterSequence, FormalParameterSequenceKind,
+    Identifier, IntegerLiteral, Operator, Program, RecordAggregate, RecordAggregateKind,
+    TypeDenoter, TypeDenoterKind, VName, VNameKind,
+};
 use bumpalo::Bump;
 
-use crate::syntactic_analyzer::source_position::SourcePosition;
-use crate::syntactic_analyzer::token::{latin1_to_string, Token};
-use crate::syntactic_analyzer::token_kind::TokenKind;
 use crate::syntactic_analyzer::scanner::Scanner;
+use crate::syntactic_analyzer::source_position::SourcePosition;
+use crate::syntactic_analyzer::token::{Token, latin1_to_string};
+use crate::syntactic_analyzer::token_kind::TokenKind;
 
 /// One `.field` or `[index]` after the identifier of a v_name.
 enum Selector<'a> {
@@ -79,7 +86,10 @@ impl<'a> Parser<'a> {
             position: self.previous_token_position,
         };
         if self.current_token.kind != TokenKind::Eof {
-            self.syntactic_error(&format!("\"{}\" not expected after end of program", latin1_to_string(self.current_token.spelling)));
+            self.syntactic_error(&format!(
+                "\"{}\" not expected after end of program",
+                latin1_to_string(self.current_token.spelling)
+            ));
         }
 
         program
@@ -127,8 +137,14 @@ impl<'a> Parser<'a> {
                     self.accept(TokenKind::RParen);
 
                     Command {
-                        kind: self.arena.alloc(CommandKind::Call { identifier, arguments }),
-                        position: SourcePosition { start, finish: self.finish_pos() },
+                        kind: self.arena.alloc(CommandKind::Call {
+                            identifier,
+                            arguments,
+                        }),
+                        position: SourcePosition {
+                            start,
+                            finish: self.finish_pos(),
+                        },
                     }
                 } else {
                     let v_name = self.parse_rest_of_v_name(identifier);
@@ -137,7 +153,10 @@ impl<'a> Parser<'a> {
 
                     Command {
                         kind: self.arena.alloc(CommandKind::Assign { v_name, expression }),
-                        position: SourcePosition { start, finish: self.finish_pos() },
+                        position: SourcePosition {
+                            start,
+                            finish: self.finish_pos(),
+                        },
                     }
                 }
             }
@@ -157,7 +176,10 @@ impl<'a> Parser<'a> {
 
                 Command {
                     kind: self.arena.alloc(CommandKind::Let { declaration, body }),
-                    position: SourcePosition { start, finish: self.finish_pos() },
+                    position: SourcePosition {
+                        start,
+                        finish: self.finish_pos(),
+                    },
                 }
             }
 
@@ -170,8 +192,15 @@ impl<'a> Parser<'a> {
                 let else_branch = self.parse_single_command();
 
                 Command {
-                    kind: self.arena.alloc(CommandKind::If { condition, then_branch, else_branch }),
-                    position: SourcePosition { start, finish: self.finish_pos() },
+                    kind: self.arena.alloc(CommandKind::If {
+                        condition,
+                        then_branch,
+                        else_branch,
+                    }),
+                    position: SourcePosition {
+                        start,
+                        finish: self.finish_pos(),
+                    },
                 }
             }
 
@@ -183,25 +212,39 @@ impl<'a> Parser<'a> {
 
                 Command {
                     kind: self.arena.alloc(CommandKind::While { condition, body }),
-                    position: SourcePosition { start, finish: self.finish_pos() },
+                    position: SourcePosition {
+                        start,
+                        finish: self.finish_pos(),
+                    },
                 }
             }
 
-            TokenKind::Semicolon | TokenKind::End | TokenKind::Else | TokenKind::In | TokenKind::Eof => {
-                Command {
-                    kind: self.arena.alloc(CommandKind::Empty),
-                    position: SourcePosition { start, finish: self.finish_pos() },
-                }
-            }
+            TokenKind::Semicolon
+            | TokenKind::End
+            | TokenKind::Else
+            | TokenKind::In
+            | TokenKind::Eof => Command {
+                kind: self.arena.alloc(CommandKind::Empty),
+                position: SourcePosition {
+                    start,
+                    finish: self.finish_pos(),
+                },
+            },
 
-            _ => self.syntactic_error(&format!("\"{}\" cannot start a command", latin1_to_string(self.current_token.spelling))),
+            _ => self.syntactic_error(&format!(
+                "\"{}\" cannot start a command",
+                latin1_to_string(self.current_token.spelling)
+            )),
         }
     }
 
     fn parse_identifier(&mut self) -> Identifier<'a> {
         if self.current_token.kind == TokenKind::Identifier {
             let token = self.accept_it();
-            Identifier { spelling: token.spelling, position: token.position }
+            Identifier {
+                spelling: token.spelling,
+                position: token.position,
+            }
         } else {
             self.syntactic_error("identifier expected here")
         }
@@ -213,7 +256,10 @@ impl<'a> Parser<'a> {
         if self.current_token.kind == TokenKind::RParen {
             ActualParameterSequence {
                 kind: self.arena.alloc(ActualParameterSequenceKind::Empty),
-                position: SourcePosition { start, finish: self.finish_pos() },
+                position: SourcePosition {
+                    start,
+                    finish: self.finish_pos(),
+                },
             }
         } else {
             self.parse_proper_actual_parameter_sequence()
@@ -232,12 +278,20 @@ impl<'a> Parser<'a> {
                     parameter: actual_parameter,
                     rest: actual_parameter_sequence,
                 }),
-                position: SourcePosition { start, finish: self.finish_pos() },
+                position: SourcePosition {
+                    start,
+                    finish: self.finish_pos(),
+                },
             }
         } else {
             ActualParameterSequence {
-                kind: self.arena.alloc(ActualParameterSequenceKind::Single(actual_parameter)),
-                position: SourcePosition { start, finish: self.finish_pos() },
+                kind: self
+                    .arena
+                    .alloc(ActualParameterSequenceKind::Single(actual_parameter)),
+                position: SourcePosition {
+                    start,
+                    finish: self.finish_pos(),
+                },
             }
         }
     }
@@ -246,13 +300,22 @@ impl<'a> Parser<'a> {
         let start = self.start_pos();
 
         match self.current_token.kind {
-            TokenKind::Identifier | TokenKind::IntLiteral | TokenKind::CharLiteral
-            | TokenKind::Operator | TokenKind::Let | TokenKind::If | TokenKind::LParen
-            | TokenKind::LBracket | TokenKind::LCurly => {
+            TokenKind::Identifier
+            | TokenKind::IntLiteral
+            | TokenKind::CharLiteral
+            | TokenKind::Operator
+            | TokenKind::Let
+            | TokenKind::If
+            | TokenKind::LParen
+            | TokenKind::LBracket
+            | TokenKind::LCurly => {
                 let expression = self.parse_expression();
                 ActualParameter {
                     kind: ActualParameterKind::Const(expression),
-                    position: SourcePosition { start, finish: self.finish_pos() },
+                    position: SourcePosition {
+                        start,
+                        finish: self.finish_pos(),
+                    },
                 }
             }
 
@@ -261,7 +324,10 @@ impl<'a> Parser<'a> {
                 let v_name = self.parse_v_name();
                 ActualParameter {
                     kind: ActualParameterKind::Var(v_name),
-                    position: SourcePosition { start, finish: self.finish_pos() },
+                    position: SourcePosition {
+                        start,
+                        finish: self.finish_pos(),
+                    },
                 }
             }
 
@@ -270,7 +336,10 @@ impl<'a> Parser<'a> {
                 let identifier = self.parse_identifier();
                 ActualParameter {
                     kind: ActualParameterKind::Proc(identifier),
-                    position: SourcePosition { start, finish: self.finish_pos() },
+                    position: SourcePosition {
+                        start,
+                        finish: self.finish_pos(),
+                    },
                 }
             }
 
@@ -279,11 +348,17 @@ impl<'a> Parser<'a> {
                 let identifier = self.parse_identifier();
                 ActualParameter {
                     kind: ActualParameterKind::Func(identifier),
-                    position: SourcePosition { start, finish: self.finish_pos() },
+                    position: SourcePosition {
+                        start,
+                        finish: self.finish_pos(),
+                    },
                 }
             }
 
-            _ => self.syntactic_error(&format!("\"{}\" cannot start an actual parameter", latin1_to_string(self.current_token.spelling))),
+            _ => self.syntactic_error(&format!(
+                "\"{}\" cannot start an actual parameter",
+                latin1_to_string(self.current_token.spelling)
+            )),
         }
     }
 
@@ -296,7 +371,9 @@ impl<'a> Parser<'a> {
         let mut position = identifier.position;
         // Same shared-stack scheme as in parse_command.
         let base = self.selector_stack.len();
-        while self.current_token.kind == TokenKind::Dot || self.current_token.kind == TokenKind::LBracket {
+        while self.current_token.kind == TokenKind::Dot
+            || self.current_token.kind == TokenKind::LBracket
+        {
             if self.current_token.kind == TokenKind::Dot {
                 self.accept_it();
                 let field = self.parse_identifier();
@@ -351,7 +428,10 @@ impl<'a> Parser<'a> {
                         declaration,
                         body: expression,
                     }),
-                    position: SourcePosition { start, finish: self.finish_pos() },
+                    position: SourcePosition {
+                        start,
+                        finish: self.finish_pos(),
+                    },
                 }
             }
 
@@ -369,18 +449,22 @@ impl<'a> Parser<'a> {
                         then_branch: then_expression,
                         else_branch: else_expression,
                     }),
-                    position: SourcePosition { start, finish: self.finish_pos() },
+                    position: SourcePosition {
+                        start,
+                        finish: self.finish_pos(),
+                    },
                 }
             }
 
-            _ => {
-                self.parse_secondary_expression()
-            }
+            _ => self.parse_secondary_expression(),
         }
     }
 
     fn parse_secondary_expression(&mut self) -> Expression<'a> {
-        let position = SourcePosition { start: self.start_pos(), finish: 0 };
+        let position = SourcePosition {
+            start: self.start_pos(),
+            finish: 0,
+        };
 
         let mut expression = self.parse_primary_expression();
         while self.current_token.kind == TokenKind::Operator {
@@ -408,7 +492,10 @@ impl<'a> Parser<'a> {
                 let literal = self.parse_int_literal();
                 Expression {
                     kind: self.arena.alloc(ExpressionKind::Integer(literal)),
-                    position: SourcePosition { start, finish: self.finish_pos() },
+                    position: SourcePosition {
+                        start,
+                        finish: self.finish_pos(),
+                    },
                 }
             }
 
@@ -416,7 +503,10 @@ impl<'a> Parser<'a> {
                 let literal = self.parse_char_literal();
                 Expression {
                     kind: self.arena.alloc(ExpressionKind::Character(literal)),
-                    position: SourcePosition { start, finish: self.finish_pos() },
+                    position: SourcePosition {
+                        start,
+                        finish: self.finish_pos(),
+                    },
                 }
             }
 
@@ -426,7 +516,10 @@ impl<'a> Parser<'a> {
                 self.accept(TokenKind::RBracket);
                 Expression {
                     kind: self.arena.alloc(ExpressionKind::Array(aggregate)),
-                    position: SourcePosition { start, finish: self.finish_pos() },
+                    position: SourcePosition {
+                        start,
+                        finish: self.finish_pos(),
+                    },
                 }
             }
 
@@ -436,7 +529,10 @@ impl<'a> Parser<'a> {
                 self.accept(TokenKind::RCurly);
                 Expression {
                     kind: self.arena.alloc(ExpressionKind::Record(aggregate)),
-                    position: SourcePosition { start, finish: self.finish_pos() },
+                    position: SourcePosition {
+                        start,
+                        finish: self.finish_pos(),
+                    },
                 }
             }
 
@@ -447,14 +543,23 @@ impl<'a> Parser<'a> {
                     let arguments = self.parse_actual_parameter_sequence();
                     self.accept(TokenKind::RParen);
                     Expression {
-                        kind: self.arena.alloc(ExpressionKind::Call { identifier, arguments }),
-                        position: SourcePosition { start, finish: self.finish_pos() },
+                        kind: self.arena.alloc(ExpressionKind::Call {
+                            identifier,
+                            arguments,
+                        }),
+                        position: SourcePosition {
+                            start,
+                            finish: self.finish_pos(),
+                        },
                     }
                 } else {
                     let v_name = self.parse_rest_of_v_name(identifier);
                     Expression {
                         kind: self.arena.alloc(ExpressionKind::VName(v_name)),
-                        position: SourcePosition { start, finish: self.finish_pos() },
+                        position: SourcePosition {
+                            start,
+                            finish: self.finish_pos(),
+                        },
                     }
                 }
             }
@@ -463,8 +568,13 @@ impl<'a> Parser<'a> {
                 let operator = self.parse_operator();
                 let operand = self.parse_primary_expression();
                 Expression {
-                    kind: self.arena.alloc(ExpressionKind::Unary { operator, operand }),
-                    position: SourcePosition { start, finish: self.finish_pos() },
+                    kind: self
+                        .arena
+                        .alloc(ExpressionKind::Unary { operator, operand }),
+                    position: SourcePosition {
+                        start,
+                        finish: self.finish_pos(),
+                    },
                 }
             }
 
@@ -475,14 +585,20 @@ impl<'a> Parser<'a> {
                 expression
             }
 
-            _ => self.syntactic_error(&format!("\"{}\" cannot start an expression", latin1_to_string(self.current_token.spelling))),
+            _ => self.syntactic_error(&format!(
+                "\"{}\" cannot start an expression",
+                latin1_to_string(self.current_token.spelling)
+            )),
         }
     }
 
     fn parse_int_literal(&mut self) -> IntegerLiteral<'a> {
         if self.current_token.kind == TokenKind::IntLiteral {
             let token = self.accept_it();
-            IntegerLiteral { spelling: token.spelling, position: token.position }
+            IntegerLiteral {
+                spelling: token.spelling,
+                position: token.position,
+            }
         } else {
             self.syntactic_error("integer literal expected here")
         }
@@ -491,7 +607,10 @@ impl<'a> Parser<'a> {
     fn parse_char_literal(&mut self) -> CharacterLiteral<'a> {
         if self.current_token.kind == TokenKind::CharLiteral {
             let token = self.accept_it();
-            CharacterLiteral { spelling: token.spelling, position: token.position }
+            CharacterLiteral {
+                spelling: token.spelling,
+                position: token.position,
+            }
         } else {
             self.syntactic_error("character literal expected here")
         }
@@ -500,7 +619,10 @@ impl<'a> Parser<'a> {
     fn parse_operator(&mut self) -> Operator<'a> {
         if self.current_token.kind == TokenKind::Operator {
             let token = self.accept_it();
-            Operator { spelling: token.spelling, position: token.position }
+            Operator {
+                spelling: token.spelling,
+                position: token.position,
+            }
         } else {
             self.syntactic_error("operator expected here")
         }
@@ -517,13 +639,26 @@ impl<'a> Parser<'a> {
             self.accept_it();
             let rest = self.parse_record_aggregate();
             RecordAggregate {
-                kind: self.arena.alloc(RecordAggregateKind::Multiple { identifier, expression, rest }),
-                position: SourcePosition { start, finish: self.finish_pos() },
+                kind: self.arena.alloc(RecordAggregateKind::Multiple {
+                    identifier,
+                    expression,
+                    rest,
+                }),
+                position: SourcePosition {
+                    start,
+                    finish: self.finish_pos(),
+                },
             }
         } else {
             RecordAggregate {
-                kind: self.arena.alloc(RecordAggregateKind::Single { identifier, expression }),
-                position: SourcePosition { start, finish: self.finish_pos() },
+                kind: self.arena.alloc(RecordAggregateKind::Single {
+                    identifier,
+                    expression,
+                }),
+                position: SourcePosition {
+                    start,
+                    finish: self.finish_pos(),
+                },
             }
         }
     }
@@ -536,13 +671,21 @@ impl<'a> Parser<'a> {
             self.accept_it();
             let rest = self.parse_array_aggregate();
             ArrayAggregate {
-                kind: self.arena.alloc(ArrayAggregateKind::Multiple { expression, rest }),
-                position: SourcePosition { start, finish: self.finish_pos() },
+                kind: self
+                    .arena
+                    .alloc(ArrayAggregateKind::Multiple { expression, rest }),
+                position: SourcePosition {
+                    start,
+                    finish: self.finish_pos(),
+                },
             }
         } else {
             ArrayAggregate {
                 kind: self.arena.alloc(ArrayAggregateKind::Single(expression)),
-                position: SourcePosition { start, finish: self.finish_pos() },
+                position: SourcePosition {
+                    start,
+                    finish: self.finish_pos(),
+                },
             }
         }
     }
@@ -585,8 +728,14 @@ impl<'a> Parser<'a> {
                 self.accept(TokenKind::Is);
                 let expression = self.parse_expression();
                 Declaration {
-                    kind: self.arena.alloc(DeclarationKind::Const { identifier, expression }),
-                    position: SourcePosition { start, finish: self.finish_pos() },
+                    kind: self.arena.alloc(DeclarationKind::Const {
+                        identifier,
+                        expression,
+                    }),
+                    position: SourcePosition {
+                        start,
+                        finish: self.finish_pos(),
+                    },
                 }
             }
 
@@ -596,8 +745,14 @@ impl<'a> Parser<'a> {
                 self.accept(TokenKind::Colon);
                 let type_denoter = self.parse_type_denoter();
                 Declaration {
-                    kind: self.arena.alloc(DeclarationKind::Var { identifier, type_denoter }),
-                    position: SourcePosition { start, finish: self.finish_pos() },
+                    kind: self.arena.alloc(DeclarationKind::Var {
+                        identifier,
+                        type_denoter,
+                    }),
+                    position: SourcePosition {
+                        start,
+                        finish: self.finish_pos(),
+                    },
                 }
             }
 
@@ -610,8 +765,15 @@ impl<'a> Parser<'a> {
                 self.accept(TokenKind::Is);
                 let body = self.parse_single_command();
                 Declaration {
-                    kind: self.arena.alloc(DeclarationKind::Proc { identifier, parameters, body }),
-                    position: SourcePosition { start, finish: self.finish_pos() },
+                    kind: self.arena.alloc(DeclarationKind::Proc {
+                        identifier,
+                        parameters,
+                        body,
+                    }),
+                    position: SourcePosition {
+                        start,
+                        finish: self.finish_pos(),
+                    },
                 }
             }
 
@@ -626,8 +788,16 @@ impl<'a> Parser<'a> {
                 self.accept(TokenKind::Is);
                 let body = self.parse_expression();
                 Declaration {
-                    kind: self.arena.alloc(DeclarationKind::Func { identifier, parameters, return_type, body }),
-                    position: SourcePosition { start, finish: self.finish_pos() },
+                    kind: self.arena.alloc(DeclarationKind::Func {
+                        identifier,
+                        parameters,
+                        return_type,
+                        body,
+                    }),
+                    position: SourcePosition {
+                        start,
+                        finish: self.finish_pos(),
+                    },
                 }
             }
 
@@ -637,12 +807,21 @@ impl<'a> Parser<'a> {
                 self.accept(TokenKind::Is);
                 let type_denoter = self.parse_type_denoter();
                 Declaration {
-                    kind: self.arena.alloc(DeclarationKind::Type { identifier, type_denoter }),
-                    position: SourcePosition { start, finish: self.finish_pos() },
+                    kind: self.arena.alloc(DeclarationKind::Type {
+                        identifier,
+                        type_denoter,
+                    }),
+                    position: SourcePosition {
+                        start,
+                        finish: self.finish_pos(),
+                    },
                 }
             }
 
-            _ => self.syntactic_error(&format!("\"{}\" cannot start a declaration", latin1_to_string(self.current_token.spelling))),
+            _ => self.syntactic_error(&format!(
+                "\"{}\" cannot start a declaration",
+                latin1_to_string(self.current_token.spelling)
+            )),
         }
     }
 
@@ -652,7 +831,10 @@ impl<'a> Parser<'a> {
         if self.current_token.kind == TokenKind::RParen {
             FormalParameterSequence {
                 kind: self.arena.alloc(FormalParameterSequenceKind::Empty),
-                position: SourcePosition { start, finish: self.finish_pos() },
+                position: SourcePosition {
+                    start,
+                    finish: self.finish_pos(),
+                },
             }
         } else {
             self.parse_proper_formal_parameter_sequence()
@@ -671,12 +853,20 @@ impl<'a> Parser<'a> {
                     parameter: formal_parameter,
                     rest: formal_parameter_sequence,
                 }),
-                position: SourcePosition { start, finish: self.finish_pos() },
+                position: SourcePosition {
+                    start,
+                    finish: self.finish_pos(),
+                },
             }
         } else {
             FormalParameterSequence {
-                kind: self.arena.alloc(FormalParameterSequenceKind::Single(formal_parameter)),
-                position: SourcePosition { start, finish: self.finish_pos() },
+                kind: self
+                    .arena
+                    .alloc(FormalParameterSequenceKind::Single(formal_parameter)),
+                position: SourcePosition {
+                    start,
+                    finish: self.finish_pos(),
+                },
             }
         }
     }
@@ -690,8 +880,14 @@ impl<'a> Parser<'a> {
                 self.accept(TokenKind::Colon);
                 let type_denoter = self.parse_type_denoter();
                 FormalParameter {
-                    kind: FormalParameterKind::Const { identifier, type_denoter },
-                    position: SourcePosition { start, finish: self.finish_pos() },
+                    kind: FormalParameterKind::Const {
+                        identifier,
+                        type_denoter,
+                    },
+                    position: SourcePosition {
+                        start,
+                        finish: self.finish_pos(),
+                    },
                 }
             }
 
@@ -701,8 +897,14 @@ impl<'a> Parser<'a> {
                 self.accept(TokenKind::Colon);
                 let type_denoter = self.parse_type_denoter();
                 FormalParameter {
-                    kind: FormalParameterKind::Var { identifier, type_denoter },
-                    position: SourcePosition { start, finish: self.finish_pos() },
+                    kind: FormalParameterKind::Var {
+                        identifier,
+                        type_denoter,
+                    },
+                    position: SourcePosition {
+                        start,
+                        finish: self.finish_pos(),
+                    },
                 }
             }
 
@@ -713,8 +915,14 @@ impl<'a> Parser<'a> {
                 let parameters = self.parse_formal_parameter_sequence();
                 self.accept(TokenKind::RParen);
                 FormalParameter {
-                    kind: FormalParameterKind::Proc { identifier, parameters },
-                    position: SourcePosition { start, finish: self.finish_pos() },
+                    kind: FormalParameterKind::Proc {
+                        identifier,
+                        parameters,
+                    },
+                    position: SourcePosition {
+                        start,
+                        finish: self.finish_pos(),
+                    },
                 }
             }
 
@@ -727,12 +935,22 @@ impl<'a> Parser<'a> {
                 self.accept(TokenKind::Colon);
                 let return_type = self.parse_type_denoter();
                 FormalParameter {
-                    kind: FormalParameterKind::Func { identifier, parameters, return_type },
-                    position: SourcePosition { start, finish: self.finish_pos() },
+                    kind: FormalParameterKind::Func {
+                        identifier,
+                        parameters,
+                        return_type,
+                    },
+                    position: SourcePosition {
+                        start,
+                        finish: self.finish_pos(),
+                    },
                 }
             }
 
-            _ => self.syntactic_error(&format!("\"{}\" cannot start a formal parameter", latin1_to_string(self.current_token.spelling))),
+            _ => self.syntactic_error(&format!(
+                "\"{}\" cannot start a formal parameter",
+                latin1_to_string(self.current_token.spelling)
+            )),
         }
     }
 
@@ -744,7 +962,10 @@ impl<'a> Parser<'a> {
                 let identifier = self.parse_identifier();
                 TypeDenoter {
                     kind: self.arena.alloc(TypeDenoterKind::Simple(identifier)),
-                    position: SourcePosition { start, finish: self.finish_pos() },
+                    position: SourcePosition {
+                        start,
+                        finish: self.finish_pos(),
+                    },
                 }
             }
 
@@ -754,8 +975,13 @@ impl<'a> Parser<'a> {
                 self.accept(TokenKind::Of);
                 let element_type = self.parse_type_denoter();
                 TypeDenoter {
-                    kind: self.arena.alloc(TypeDenoterKind::Array { size, element_type }),
-                    position: SourcePosition { start, finish: self.finish_pos() },
+                    kind: self
+                        .arena
+                        .alloc(TypeDenoterKind::Array { size, element_type }),
+                    position: SourcePosition {
+                        start,
+                        finish: self.finish_pos(),
+                    },
                 }
             }
 
@@ -765,11 +991,17 @@ impl<'a> Parser<'a> {
                 self.accept(TokenKind::End);
                 TypeDenoter {
                     kind: self.arena.alloc(TypeDenoterKind::Record(fields)),
-                    position: SourcePosition { start, finish: self.finish_pos() },
+                    position: SourcePosition {
+                        start,
+                        finish: self.finish_pos(),
+                    },
                 }
             }
 
-            _ => self.syntactic_error(&format!("\"{}\" cannot start a type denoter", latin1_to_string(self.current_token.spelling))),
+            _ => self.syntactic_error(&format!(
+                "\"{}\" cannot start a type denoter",
+                latin1_to_string(self.current_token.spelling)
+            )),
         }
     }
 
@@ -783,13 +1015,26 @@ impl<'a> Parser<'a> {
             self.accept_it();
             let rest = self.parse_field_type_denoter();
             FieldTypeDenoter {
-                kind: self.arena.alloc(FieldTypeDenoterKind::Multiple { identifier, type_denoter, rest }),
-                position: SourcePosition { start, finish: self.finish_pos() },
+                kind: self.arena.alloc(FieldTypeDenoterKind::Multiple {
+                    identifier,
+                    type_denoter,
+                    rest,
+                }),
+                position: SourcePosition {
+                    start,
+                    finish: self.finish_pos(),
+                },
             }
         } else {
             FieldTypeDenoter {
-                kind: self.arena.alloc(FieldTypeDenoterKind::Single { identifier, type_denoter }),
-                position: SourcePosition { start, finish: self.finish_pos() },
+                kind: self.arena.alloc(FieldTypeDenoterKind::Single {
+                    identifier,
+                    type_denoter,
+                }),
+                position: SourcePosition {
+                    start,
+                    finish: self.finish_pos(),
+                },
             }
         }
     }

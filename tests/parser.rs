@@ -43,8 +43,12 @@ fn parser_matches_java_reference() {
         let name = input.file_stem().unwrap().to_str().unwrap();
 
         let source = fs::read(input).unwrap();
-        let expected = fs::read_to_string(tests_dir.join("expected/parser").join(format!("{name}.txt")))
-            .unwrap_or_else(|_| panic!("missing expected/parser/{name}.txt"));
+        let expected = fs::read_to_string(
+            tests_dir
+                .join("expected/parser")
+                .join(format!("{name}.txt")),
+        )
+        .unwrap_or_else(|_| panic!("missing expected/parser/{name}.txt"));
 
         // A syntax error panics with the same "ERROR: ..." line the Java parser prints.
         let actual = panic::catch_unwind(|| program_printer::print(&parse(&source, &Bump::new())))
@@ -58,6 +62,11 @@ fn parser_matches_java_reference() {
         }
     }
 
-    println!("{} of {} examples match the Java parser", inputs.len() - failures.len(), inputs.len());
+    println!(
+        "{} of {} examples match the Java parser",
+        inputs.len() - failures.len(),
+        inputs.len()
+    );
     assert!(failures.is_empty(), "differs from Java: {failures:?}");
 }
+

@@ -1,4 +1,4 @@
-use crate::syntactic_analyzer::token::{latin1_to_string, Token};
+use crate::syntactic_analyzer::token::{Token, latin1_to_string};
 
 // Same output as LexemePrinter.java in the Java reference:
 //   <kind spelling>,<token spelling>,(<start>|<finish>)

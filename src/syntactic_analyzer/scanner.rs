@@ -65,7 +65,7 @@ impl<'a> Scanner<'a> {
                 self.take_it();
             }
 
-            _ => unreachable!()
+            _ => unreachable!(),
         }
     }
 
@@ -121,15 +121,42 @@ impl<'a> Scanner<'a> {
                 }
             }
 
-            ';' => { self.take_it(); TokenKind::Semicolon }
-            ',' => { self.take_it(); TokenKind::Comma }
-            '~' => { self.take_it(); TokenKind::Is }
-            '(' => { self.take_it(); TokenKind::LParen }
-            ')' => { self.take_it(); TokenKind::RParen }
-            '[' => { self.take_it(); TokenKind::LBracket }
-            ']' => { self.take_it(); TokenKind::RBracket }
-            '{' => { self.take_it(); TokenKind::LCurly }
-            '}' => { self.take_it(); TokenKind::RCurly }
+            ';' => {
+                self.take_it();
+                TokenKind::Semicolon
+            }
+            ',' => {
+                self.take_it();
+                TokenKind::Comma
+            }
+            '~' => {
+                self.take_it();
+                TokenKind::Is
+            }
+            '(' => {
+                self.take_it();
+                TokenKind::LParen
+            }
+            ')' => {
+                self.take_it();
+                TokenKind::RParen
+            }
+            '[' => {
+                self.take_it();
+                TokenKind::LBracket
+            }
+            ']' => {
+                self.take_it();
+                TokenKind::RBracket
+            }
+            '{' => {
+                self.take_it();
+                TokenKind::LCurly
+            }
+            '}' => {
+                self.take_it();
+                TokenKind::RCurly
+            }
             EOF => TokenKind::Eof,
 
             _ => {
@@ -155,14 +182,19 @@ impl<'a> Scanner<'a> {
 
         let spelling = &self.src[spelling_start..spelling_finish];
         let kind = match kind {
-            TokenKind::Identifier => TokenKind::keyword_of(spelling).unwrap_or(TokenKind::Identifier),
+            TokenKind::Identifier => {
+                TokenKind::keyword_of(spelling).unwrap_or(TokenKind::Identifier)
+            }
             kind => kind,
         };
 
         Token {
             kind,
             spelling,
-            position: SourcePosition { start: line_start, finish: line_finish },
+            position: SourcePosition {
+                start: line_start,
+                finish: line_finish,
+            },
         }
     }
 
@@ -175,7 +207,10 @@ impl<'a> Scanner<'a> {
     }
 
     fn is_operator(c: char) -> bool {
-        matches!(c, '+' | '-' | '*' | '/' | '=' | '<' | '>' | '\\' | '&' | '@' | '%' | '^' | '?')
+        matches!(
+            c,
+            '+' | '-' | '*' | '/' | '=' | '<' | '>' | '\\' | '&' | '@' | '%' | '^' | '?'
+        )
     }
 }
 
