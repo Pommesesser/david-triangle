@@ -6,11 +6,20 @@ use crate::syntactic_analyzer::token::{latin1_to_string, Token};
 use crate::syntactic_analyzer::token_kind::TokenKind;
 use crate::syntactic_analyzer::token_stream::TokenStream;
 
+/// One `.field` or `[index]` after the identifier of a v_name.
+enum Selector<'a> {
+    Field(Identifier<'a>),
+    Index(Expression<'a>),
+}
+
 pub struct Parser<'a> {
     current_token: Token<'a>,
     token_stream: TokenStream<'a>,
     previous_token_position: SourcePosition,
     arena: &'a Bump,
+    command_stack: Vec<Command<'a>>,
+    declaration_stack: Vec<Declaration<'a>>,
+    selector_stack: Vec<Selector<'a>>,
 }
 
 impl<'a> Parser<'a> {
@@ -26,6 +35,9 @@ impl<'a> Parser<'a> {
             token_stream,
             previous_token_position: SourcePosition::default(),
             arena,
+            command_stack: vec![],
+            declaration_stack: vec![],
+            selector_stack: vec![],
         }
     }
 
@@ -77,21 +89,26 @@ impl<'a> Parser<'a> {
         let start = self.start_pos();
 
         let mut command = self.parse_single_command();
-        let mut chained_commands = Vec::new();
+        // The chained commands go on the shared stack above `base`; nested calls push above us
+        // and drain back down before they return, so our part stays intact.
+        let base = self.command_stack.len();
         while self.current_token.kind == TokenKind::Semicolon {
             self.accept_it();
-            chained_commands.push(self.parse_single_command());
+            let chained_command = self.parse_single_command();
+            self.command_stack.push(chained_command);
         }
 
         // Java hands one SourcePosition object to every SequentialCommand of the chain and keeps
         // moving its finish, so they all end up with the finish of the last command.
-        for chained_command in chained_commands {
+        let finish = self.finish_pos();
+        let arena = self.arena;
+        for chained_command in self.command_stack.drain(base..) {
             command = Command {
-                kind: self.arena.alloc(CommandKind::Sequential {
+                kind: arena.alloc(CommandKind::Sequential {
                     first: command,
                     second: chained_command,
                 }),
-                position: SourcePosition { start, finish: self.finish_pos() },
+                position: SourcePosition { start, finish },
             }
         }
 
@@ -276,23 +293,20 @@ impl<'a> Parser<'a> {
     }
 
     fn parse_rest_of_v_name(&mut self, identifier: Identifier<'a>) -> VName<'a> {
-        enum Selector<'s> {
-            Field(Identifier<'s>),
-            Index(Expression<'s>),
-        }
-
         let mut position = identifier.position;
-        let mut selectors = Vec::new();
+        // Same shared-stack scheme as in parse_command.
+        let base = self.selector_stack.len();
         while self.current_token.kind == TokenKind::Dot || self.current_token.kind == TokenKind::LBracket {
             if self.current_token.kind == TokenKind::Dot {
                 self.accept_it();
-                selectors.push(Selector::Field(self.parse_identifier()));
+                let field = self.parse_identifier();
+                self.selector_stack.push(Selector::Field(field));
             } else {
                 self.accept_it();
                 let expression = self.parse_expression();
                 self.accept(TokenKind::RBracket);
                 position.finish = self.finish_pos();
-                selectors.push(Selector::Index(expression));
+                self.selector_stack.push(Selector::Index(expression));
             }
         }
 
@@ -307,13 +321,14 @@ impl<'a> Parser<'a> {
             kind: self.arena.alloc(VNameKind::Simple(identifier)),
             position,
         };
-        for selector in selectors {
+        let arena = self.arena;
+        for selector in self.selector_stack.drain(base..) {
             let kind = match selector {
                 Selector::Field(field) => VNameKind::Dot { v_name, field },
                 Selector::Index(index) => VNameKind::Subscript { v_name, index },
             };
             v_name = VName {
-                kind: self.arena.alloc(kind),
+                kind: arena.alloc(kind),
                 position,
             };
         }
@@ -536,20 +551,24 @@ impl<'a> Parser<'a> {
         let start = self.start_pos();
 
         let mut declaration = self.parse_single_declaration();
-        let mut chained_declarations = Vec::new();
+        // Same shared-stack scheme as in parse_command.
+        let base = self.declaration_stack.len();
         while self.current_token.kind == TokenKind::Semicolon {
             self.accept_it();
-            chained_declarations.push(self.parse_single_declaration());
+            let chained_declaration = self.parse_single_declaration();
+            self.declaration_stack.push(chained_declaration);
         }
 
         // Same position sharing as in parse_command.
-        for chained_declaration in chained_declarations {
+        let finish = self.finish_pos();
+        let arena = self.arena;
+        for chained_declaration in self.declaration_stack.drain(base..) {
             declaration = Declaration {
-                kind: self.arena.alloc(DeclarationKind::Sequential {
+                kind: arena.alloc(DeclarationKind::Sequential {
                     first: declaration,
                     second: chained_declaration,
                 }),
-                position: SourcePosition { start, finish: self.finish_pos() },
+                position: SourcePosition { start, finish },
             }
         }
 
