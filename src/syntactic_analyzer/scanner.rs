@@ -7,10 +7,10 @@ const EOL: char = '\n';
 
 struct Scanner<'a> {
     spelling: String,
-    currently_scanning_token: bool,
-    current_char: char,
-    source: &'a [u8],
-    index: usize,
+    curr_scanning: bool,
+    curr_char: char,
+    src: &'a [u8],
+    idx: usize,
     line: u32,
 }
 
@@ -18,23 +18,23 @@ impl<'a> Scanner<'a> {
     fn new(source: &'a [u8]) -> Self {
         let mut scanner = Self {
             spelling: String::new(),
-            currently_scanning_token: false,
-            current_char: EOF,
-            source,
-            index: 0,
+            curr_scanning: false,
+            curr_char: EOF,
+            src: source,
+            idx: 0,
             line: 1,
         };
-        scanner.current_char = scanner.get_source();
+        scanner.curr_char = scanner.get_source();
         scanner
     }
 
     /// Each byte is one char (Latin-1), and past the end is EOF, like Java's SourceFile.
     /// The line is counted when the newline is fetched, not when it is consumed.
     fn get_source(&mut self) -> char {
-        let Some(&byte) = self.source.get(self.index) else {
+        let Some(&byte) = self.src.get(self.idx) else {
             return EOF;
         };
-        self.index += 1;
+        self.idx += 1;
 
         let c = char::from(byte);
         if c == EOL {
@@ -44,20 +44,20 @@ impl<'a> Scanner<'a> {
     }
 
     fn take_it(&mut self) {
-        if self.currently_scanning_token {
-            self.spelling.push(self.current_char);
+        if self.curr_scanning {
+            self.spelling.push(self.curr_char);
         }
-        self.current_char = self.get_source();
+        self.curr_char = self.get_source();
     }
 
     fn scan_separator(&mut self) {
-        match self.current_char {
+        match self.curr_char {
             '!' => {
                 self.take_it();
-                while self.current_char != EOL && self.current_char != EOF {
+                while self.curr_char != EOL && self.curr_char != EOF {
                     self.take_it();
                 }
-                if self.current_char == EOL {
+                if self.curr_char == EOL {
                     self.take_it();
                 }
             }
@@ -71,10 +71,10 @@ impl<'a> Scanner<'a> {
     }
 
     fn scan_token(&mut self) -> TokenKind {
-        match self.current_char {
+        match self.curr_char {
             'a'..='z' | 'A'..='Z' => {
                 self.take_it();
-                while Self::is_letter(self.current_char) || Self::is_digit(self.current_char) {
+                while Self::is_letter(self.curr_char) || Self::is_digit(self.curr_char) {
                     self.take_it();
                 }
                 TokenKind::Identifier
@@ -82,7 +82,7 @@ impl<'a> Scanner<'a> {
 
             '0'..='9' => {
                 self.take_it();
-                while Self::is_digit(self.current_char) {
+                while Self::is_digit(self.curr_char) {
                     self.take_it();
                 }
                 TokenKind::IntLiteral
@@ -90,7 +90,7 @@ impl<'a> Scanner<'a> {
 
             '+' | '-' | '*' | '/' | '=' | '<' | '>' | '\\' | '&' | '@' | '%' | '^' | '?' => {
                 self.take_it();
-                while Self::is_operator(self.current_char) {
+                while Self::is_operator(self.curr_char) {
                     self.take_it();
                 }
                 TokenKind::Operator
@@ -99,7 +99,7 @@ impl<'a> Scanner<'a> {
             '\'' => {
                 self.take_it();
                 self.take_it();
-                if self.current_char == '\'' {
+                if self.curr_char == '\'' {
                     self.take_it();
                     TokenKind::CharLiteral
                 } else {
@@ -114,7 +114,7 @@ impl<'a> Scanner<'a> {
 
             ':' => {
                 self.take_it();
-                if self.current_char == '=' {
+                if self.curr_char == '=' {
                     self.take_it();
                     TokenKind::Becomes
                 } else {
@@ -141,12 +141,12 @@ impl<'a> Scanner<'a> {
     }
 
     fn scan(&mut self) -> Token {
-        self.currently_scanning_token = false;
-        while matches!(self.current_char, '!' | ' ' | '\n' | '\r' | '\t') {
+        self.curr_scanning = false;
+        while matches!(self.curr_char, '!' | ' ' | '\n' | '\r' | '\t') {
             self.scan_separator();
         }
 
-        self.currently_scanning_token = true;
+        self.curr_scanning = true;
         self.spelling.clear();
 
         let start = self.line;
