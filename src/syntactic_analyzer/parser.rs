@@ -1,22 +1,22 @@
 use crate::abstract_syntax_trees::ast::{ActualParameter, ActualParameterKind, ActualParameterSequence, ActualParameterSequenceKind, ArrayAggregate, ArrayAggregateKind, CharacterLiteral, Command, CommandKind, Declaration, DeclarationKind, Expression, ExpressionKind, FieldTypeDenoter, FieldTypeDenoterKind, FormalParameter, FormalParameterKind, FormalParameterSequence, FormalParameterSequenceKind, Identifier, IntegerLiteral, Operator, Program, RecordAggregate, RecordAggregateKind, TypeDenoter, TypeDenoterKind, VName, VNameKind};
 use crate::syntactic_analyzer::source_position::SourcePosition;
-use crate::syntactic_analyzer::token::Token;
+use crate::syntactic_analyzer::token::{latin1_to_string, Token};
 use crate::syntactic_analyzer::token_kind::TokenKind;
 use crate::syntactic_analyzer::token_stream::TokenStream;
 
-pub struct Parser {
-    current_token: Token,
-    token_stream: TokenStream,
+pub struct Parser<'a> {
+    current_token: Token<'a>,
+    token_stream: TokenStream<'a>,
     previous_token_position: SourcePosition,
 }
 
-impl Parser {
+impl<'a> Parser<'a> {
     /// Creates a new parser and scans the first token.
     ///
     /// <p> The first token is scanned immediately to avoid
     /// making current_token an optional type!
     /// This makes the implementations slightly different.
-    pub fn new(mut token_stream: TokenStream) -> Self {
+    pub fn new(mut token_stream: TokenStream<'a>) -> Self {
         Self {
             current_token: token_stream.next(),
             token_stream,
@@ -32,7 +32,7 @@ impl Parser {
         }
     }
 
-    fn accept_it(&mut self) -> Token {
+    fn accept_it(&mut self) -> Token<'a> {
         let next = self.token_stream.next();
         let token = std::mem::replace(&mut self.current_token, next);
         self.previous_token_position = token.position;
@@ -62,7 +62,7 @@ impl Parser {
             position: self.previous_token_position,
         };
         if self.current_token.kind != TokenKind::Eof {
-            self.syntactic_error(&format!("\"{}\" not expected after end of program", self.current_token.spelling));
+            self.syntactic_error(&format!("\"{}\" not expected after end of program", latin1_to_string(self.current_token.spelling)));
         }
 
         program
@@ -172,14 +172,14 @@ impl Parser {
                 }
             }
 
-            _ => self.syntactic_error(&format!("\"{}\" cannot start a command", self.current_token.spelling)),
+            _ => self.syntactic_error(&format!("\"{}\" cannot start a command", latin1_to_string(self.current_token.spelling))),
         }
     }
 
     fn parse_identifier(&mut self) -> Identifier {
         if self.current_token.kind == TokenKind::Identifier {
             let token = self.accept_it();
-            Identifier { spelling: token.spelling, position: token.position }
+            Identifier { spelling: latin1_to_string(token.spelling), position: token.position }
         } else {
             self.syntactic_error("identifier expected here")
         }
@@ -261,7 +261,7 @@ impl Parser {
                 }
             }
 
-            _ => self.syntactic_error(&format!("\"{}\" cannot start an actual parameter", self.current_token.spelling)),
+            _ => self.syntactic_error(&format!("\"{}\" cannot start an actual parameter", latin1_to_string(self.current_token.spelling))),
         }
     }
 
@@ -455,14 +455,14 @@ impl Parser {
                 expression
             }
 
-            _ => self.syntactic_error(&format!("\"{}\" cannot start an expression", self.current_token.spelling)),
+            _ => self.syntactic_error(&format!("\"{}\" cannot start an expression", latin1_to_string(self.current_token.spelling))),
         }
     }
 
     fn parse_int_literal(&mut self) -> IntegerLiteral {
         if self.current_token.kind == TokenKind::IntLiteral {
             let token = self.accept_it();
-            IntegerLiteral { spelling: token.spelling, position: token.position }
+            IntegerLiteral { spelling: latin1_to_string(token.spelling), position: token.position }
         } else {
             self.syntactic_error("integer literal expected here")
         }
@@ -471,7 +471,7 @@ impl Parser {
     fn parse_char_literal(&mut self) -> CharacterLiteral {
         if self.current_token.kind == TokenKind::CharLiteral {
             let token = self.accept_it();
-            CharacterLiteral { spelling: token.spelling, position: token.position }
+            CharacterLiteral { spelling: latin1_to_string(token.spelling), position: token.position }
         } else {
             self.syntactic_error("character literal expected here")
         }
@@ -480,7 +480,7 @@ impl Parser {
     fn parse_operator(&mut self) -> Operator {
         if self.current_token.kind == TokenKind::Operator {
             let token = self.accept_it();
-            Operator { spelling: token.spelling, position: token.position }
+            Operator { spelling: latin1_to_string(token.spelling), position: token.position }
         } else {
             self.syntactic_error("operator expected here")
         }
@@ -618,7 +618,7 @@ impl Parser {
                 }
             }
 
-            _ => self.syntactic_error(&format!("\"{}\" cannot start a declaration", self.current_token.spelling)),
+            _ => self.syntactic_error(&format!("\"{}\" cannot start a declaration", latin1_to_string(self.current_token.spelling))),
         }
     }
 
@@ -708,7 +708,7 @@ impl Parser {
                 }
             }
 
-            _ => self.syntactic_error(&format!("\"{}\" cannot start a formal parameter", self.current_token.spelling)),
+            _ => self.syntactic_error(&format!("\"{}\" cannot start a formal parameter", latin1_to_string(self.current_token.spelling))),
         }
     }
 
@@ -745,7 +745,7 @@ impl Parser {
                 }
             }
 
-            _ => self.syntactic_error(&format!("\"{}\" cannot start a type denoter", self.current_token.spelling)),
+            _ => self.syntactic_error(&format!("\"{}\" cannot start a type denoter", latin1_to_string(self.current_token.spelling))),
         }
     }
 

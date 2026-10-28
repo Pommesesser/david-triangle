@@ -6,23 +6,22 @@ const EOF: char = '\0';
 const EOL: char = '\n';
 
 struct Scanner<'a> {
-    spelling: String,
-    curr_scanning: bool,
     curr_char: char,
+    curr_i: usize,
+
     src: &'a [u8],
-    idx: usize,
-    line: u32,
+    src_i: usize,
+    src_line: u32,
 }
 
 impl<'a> Scanner<'a> {
     fn new(source: &'a [u8]) -> Self {
         let mut scanner = Self {
-            spelling: String::new(),
-            curr_scanning: false,
             curr_char: EOF,
+            curr_i: 0,
             src: source,
-            idx: 0,
-            line: 1,
+            src_i: 0,
+            src_line: 1,
         };
         scanner.curr_char = scanner.get_source();
         scanner
@@ -31,23 +30,23 @@ impl<'a> Scanner<'a> {
     /// Each byte is one char (Latin-1), and past the end is EOF, like Java's SourceFile.
     /// The line is counted when the newline is fetched, not when it is consumed.
     fn get_source(&mut self) -> char {
-        let Some(&byte) = self.src.get(self.idx) else {
+        let Some(&byte) = self.src.get(self.src_i) else {
             return EOF;
         };
-        self.idx += 1;
+        self.src_i += 1;
 
         let c = char::from(byte);
         if c == EOL {
-            self.line += 1;
+            self.src_line += 1;
         }
         c
     }
 
     fn take_it(&mut self) {
-        if self.curr_scanning {
-            self.spelling.push(self.curr_char);
-        }
         self.curr_char = self.get_source();
+        if self.curr_i < self.src.len() {
+            self.curr_i += 1;
+        }
     }
 
     fn scan_separator(&mut self) {
@@ -140,26 +139,29 @@ impl<'a> Scanner<'a> {
         }
     }
 
-    fn scan(&mut self) -> Token {
-        self.curr_scanning = false;
+    fn scan(&mut self) -> Token<'a> {
         while matches!(self.curr_char, '!' | ' ' | '\n' | '\r' | '\t') {
             self.scan_separator();
         }
 
-        self.curr_scanning = true;
-        self.spelling.clear();
+        let spelling_start = self.curr_i;
+        let line_start = self.src_line;
 
-        let start = self.line;
-        let kind = match self.scan_token() {
-            TokenKind::Identifier => TokenKind::keyword_of(&self.spelling).unwrap_or(TokenKind::Identifier),
+        let kind = self.scan_token();
+
+        let spelling_finish = self.curr_i;
+        let line_finish = self.src_line;
+
+        let spelling = &self.src[spelling_start..spelling_finish];
+        let kind = match kind {
+            TokenKind::Identifier => TokenKind::keyword_of(spelling).unwrap_or(TokenKind::Identifier),
             kind => kind,
         };
-        let finish = self.line;
 
         Token {
             kind,
-            spelling: self.spelling.clone(),
-            position: SourcePosition { start, finish },
+            spelling,
+            position: SourcePosition { start: line_start, finish: line_finish },
         }
     }
 
@@ -176,7 +178,7 @@ impl<'a> Scanner<'a> {
     }
 }
 
-pub fn scan_all(source: &[u8]) -> Vec<Token> {
+pub fn scan_all<'a>(source: &'a [u8]) -> Vec<Token<'a>> {
     let mut scanner = Scanner::new(source);
     let mut output = vec![];
 

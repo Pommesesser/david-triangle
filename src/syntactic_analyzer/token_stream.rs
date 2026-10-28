@@ -1,13 +1,13 @@
 use crate::syntactic_analyzer::token::Token;
 use crate::syntactic_analyzer::token_kind::TokenKind;
 
-pub struct TokenStream {
-    tokens: std::vec::IntoIter<Token>,
-    eof: Token,
+pub struct TokenStream<'a> {
+    tokens: std::vec::IntoIter<Token<'a>>,
+    eof: Token<'a>,
 }
 
-impl TokenStream {
-    pub fn new(tokens: Vec<Token>) -> Self {
+impl<'a> TokenStream<'a> {
+    pub fn new(tokens: Vec<Token<'a>>) -> Self {
         let eof = tokens.last()
             .filter(|t| t.kind == TokenKind::Eof)
             .cloned()
@@ -17,7 +17,7 @@ impl TokenStream {
     }
 
     /// Hands out each token once, then repeats Eof forever like the streaming scanner did.
-    pub fn next(&mut self) -> Token {
+    pub fn next(&mut self) -> Token<'a> {
         self.tokens.next().unwrap_or_else(|| self.eof.clone())
     }
 }
