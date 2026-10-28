@@ -2,6 +2,7 @@ use std::fmt::Write;
 
 use crate::abstract_syntax_trees::ast::{ActualParameter, ActualParameterKind, ActualParameterSequence, ActualParameterSequenceKind, ArrayAggregate, ArrayAggregateKind, CharacterLiteral, Command, CommandKind, Declaration, DeclarationKind, Expression, ExpressionKind, FieldTypeDenoter, FieldTypeDenoterKind, FormalParameter, FormalParameterKind, FormalParameterSequence, FormalParameterSequenceKind, Identifier, IntegerLiteral, Operator, Program, RecordAggregate, RecordAggregateKind, TypeDenoter, TypeDenoterKind, VName, VNameKind};
 use crate::syntactic_analyzer::source_position::SourcePosition;
+use crate::syntactic_analyzer::token::latin1_to_string;
 
 // Same output as ProgramPrinter.java in the Java reference: one node per line, children indented
 // by two spaces, nodes named after their Java class so the two outputs can be diffed directly.
@@ -24,8 +25,8 @@ impl Printer {
         writeln!(self.out, "{}{} {}..{}", "  ".repeat(self.depth), name, position.start, position.finish).unwrap();
     }
 
-    fn terminal(&mut self, name: &str, spelling: &str, position: &SourcePosition) {
-        writeln!(self.out, "{}{} \"{}\" {}..{}", "  ".repeat(self.depth), name, spelling, position.start, position.finish).unwrap();
+    fn terminal(&mut self, name: &str, spelling: &[u8], position: &SourcePosition) {
+        writeln!(self.out, "{}{} \"{}\" {}..{}", "  ".repeat(self.depth), name, latin1_to_string(spelling), position.start, position.finish).unwrap();
     }
 
     // Prints the node's line, then runs `children` one level deeper.
@@ -265,18 +266,18 @@ impl Printer {
     }
 
     fn identifier(&mut self, identifier: &Identifier) {
-        self.terminal("Identifier", &identifier.spelling, &identifier.position);
+        self.terminal("Identifier", identifier.spelling, &identifier.position);
     }
 
     fn integer_literal(&mut self, literal: &IntegerLiteral) {
-        self.terminal("IntegerLiteral", &literal.spelling, &literal.position);
+        self.terminal("IntegerLiteral", literal.spelling, &literal.position);
     }
 
     fn character_literal(&mut self, literal: &CharacterLiteral) {
-        self.terminal("CharacterLiteral", &literal.spelling, &literal.position);
+        self.terminal("CharacterLiteral", literal.spelling, &literal.position);
     }
 
     fn operator(&mut self, operator: &Operator) {
-        self.terminal("Operator", &operator.spelling, &operator.position);
+        self.terminal("Operator", operator.spelling, &operator.position);
     }
 }
