@@ -5,7 +5,7 @@ use crate::syntactic_analyzer::token_kind::TokenKind;
 const EOF: char = '\0';
 const EOL: char = '\n';
 
-struct Scanner<'a> {
+pub struct Scanner<'a> {
     curr_char: char,
     curr_i: usize,
 
@@ -15,7 +15,7 @@ struct Scanner<'a> {
 }
 
 impl<'a> Scanner<'a> {
-    fn new(source: &'a [u8]) -> Self {
+    pub fn new(source: &'a [u8]) -> Self {
         let mut scanner = Self {
             curr_char: EOF,
             curr_i: 0,
@@ -139,7 +139,8 @@ impl<'a> Scanner<'a> {
         }
     }
 
-    fn scan(&mut self) -> Token<'a> {
+    /// Scans the next token; at the end it keeps returning the same Eof token.
+    pub fn scan(&mut self) -> Token<'a> {
         while matches!(self.curr_char, '!' | ' ' | '\n' | '\r' | '\t') {
             self.scan_separator();
         }

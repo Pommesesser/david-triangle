@@ -4,7 +4,7 @@ use bumpalo::Bump;
 use crate::syntactic_analyzer::source_position::SourcePosition;
 use crate::syntactic_analyzer::token::{latin1_to_string, Token};
 use crate::syntactic_analyzer::token_kind::TokenKind;
-use crate::syntactic_analyzer::token_stream::TokenStream;
+use crate::syntactic_analyzer::scanner::Scanner;
 
 /// One `.field` or `[index]` after the identifier of a v_name.
 enum Selector<'a> {
@@ -14,7 +14,7 @@ enum Selector<'a> {
 
 pub struct Parser<'a> {
     current_token: Token<'a>,
-    token_stream: TokenStream<'a>,
+    scanner: Scanner<'a>,
     previous_token_position: SourcePosition,
     arena: &'a Bump,
     command_stack: Vec<Command<'a>>,
@@ -29,10 +29,10 @@ impl<'a> Parser<'a> {
     /// making current_token an optional type!
     /// This makes the implementations slightly different.
     /// Every AST node is allocated in `arena`, so the tree lives as long as the arena does.
-    pub fn new(mut token_stream: TokenStream<'a>, arena: &'a Bump) -> Self {
+    pub fn new(mut scanner: Scanner<'a>, arena: &'a Bump) -> Self {
         Self {
-            current_token: token_stream.next(),
-            token_stream,
+            current_token: scanner.scan(),
+            scanner,
             previous_token_position: SourcePosition::default(),
             arena,
             command_stack: vec![],
@@ -50,7 +50,7 @@ impl<'a> Parser<'a> {
     }
 
     fn accept_it(&mut self) -> Token<'a> {
-        let next = self.token_stream.next();
+        let next = self.scanner.scan();
         let token = std::mem::replace(&mut self.current_token, next);
         self.previous_token_position = token.position;
         token

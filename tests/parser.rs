@@ -7,11 +7,10 @@ use bumpalo::Bump;
 use david_triangle::abstract_syntax_trees::ast::Program;
 use david_triangle::printers::program_printer;
 use david_triangle::syntactic_analyzer::parser::Parser;
-use david_triangle::syntactic_analyzer::scanner::scan_all;
-use david_triangle::syntactic_analyzer::token_stream::TokenStream;
+use david_triangle::syntactic_analyzer::scanner::Scanner;
 
 fn parse<'a>(source: &'a [u8], arena: &'a Bump) -> Program<'a> {
-    Parser::new(TokenStream::new(scan_all(source)), arena).parse_program()
+    Parser::new(Scanner::new(source), arena).parse_program()
 }
 
 fn first_difference(actual: &str, expected: &str) -> String {
