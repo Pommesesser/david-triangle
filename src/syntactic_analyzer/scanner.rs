@@ -180,7 +180,7 @@ impl<'a> Scanner<'a> {
 
 pub fn scan_all<'a>(source: &'a [u8]) -> Vec<Token<'a>> {
     let mut scanner = Scanner::new(source);
-    let mut output = vec![];
+    let mut output = Vec::with_capacity(source.len() / 4 + 1);
 
     loop {
         let token = scanner.scan();
